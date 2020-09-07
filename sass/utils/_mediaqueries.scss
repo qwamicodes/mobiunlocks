@@ -1,0 +1,45 @@
+//All the mixins and functions for the media queries
+/*
+  mobile-small = 320px = 20em
+  mobile = 480px = 30em
+  mobile-big = 600px = 37.5em
+  tab-port = 768px = 48em
+  tab = 900px = 56.25em
+  tab-land = 1024px = 64em
+  wide-desktop = 1336px = 83.5em
+  full-desktop = 12000 = 75em
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == mobile-small {
+    @media only screen and (max-width: 20em) {@content}; //320px
+  }
+
+  @if $breakpoint == mobile {
+    @media only screen and (max-width: 30em) {@content}; //480px
+  }
+
+  @if $breakpoint == mobile-big {
+    @media only screen and (max-width: 37.5em) {@content}; //600px
+  }
+
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 48em) {@content}; //768px
+  }
+
+  @if $breakpoint == tab {
+    @media only screen and (max-width: 56.25em) {@content}; //900px
+  }
+
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 64em) {@content}; //1024px
+  }
+
+  @if $breakpoint == full-desktop {
+    @media only screen and (min-width: 75em) {@content}; //1200px
+  }
+
+  @if $breakpoint == 4k {
+    @media only screen and (min-width: 160em) {@content}; //2560px
+  }
+}

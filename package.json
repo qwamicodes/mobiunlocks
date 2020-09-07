@@ -1,0 +1,36 @@
+{
+  "name": "mobiunlocks",
+  "version": "1.0.0",
+  "description": "A website for that helps remotely unlock your carriers and phones",
+  "main": "app.js",
+  "scripts": {
+    "write": "node-sass sass/main.scss dist/css/styles.css -w",
+    "dev": "webpack --mode development",
+    "server": "webpack-dev-server --mode development --open",
+    "start": "npm-run-all --parallel write server",
+    "build": "webpack --mode production"
+  },
+  "author": "Kwaame Ofori-Adjekum",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.10.4",
+    "autoprefixer": "^9.7.6",
+    "axios": "^0.19.2",
+    "concat": "^1.0.3",
+    "live-server": "^1.2.1",
+    "node-sass": "^4.14.1",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-preset-env": "^1.7.0",
+    "html-webpack-plugin": "^4.3.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

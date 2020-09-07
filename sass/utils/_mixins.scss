@@ -1,0 +1,30 @@
+@mixin flexcenter {
+  @extend %df;
+  @extend %djc;
+  @extend %dai;
+}
+
+@mixin flexeven {
+  @extend %df;
+  @extend %dai;
+  @extend %dje;
+}
+
+@mixin flexbottom {
+  @extend %df;
+  @extend %djc;
+  @extend %dai;
+  @extend %dc;
+}
+
+@mixin flexaround {
+  @extend %df;
+  @extend %dai;
+  @extend %dja;
+}
+
+@mixin flexbetween {
+  @extend %df;
+  @extend %dai;
+  @extend %djb;
+}
