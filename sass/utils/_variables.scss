@@ -1,0 +1,69 @@
+//Colors
+$primary-color: #0a6bd6;
+$secondary-color: #00d3e5;
+$accent-color: #ff3e86;
+
+$success-color: #3af766;
+$success-color-dark: #25c41f;
+$danger-color: #ff3d51;
+$alternate-color: #3c435a;
+$basis-color: #f1cf79;
+
+$color-grey-light: #a1a1a1;
+$color-grey: #666666;
+$color-grey-dark: #333333;
+
+$color-white: #fff;
+$color-dark: #121212;
+
+$color-dashboard: #e5e5e5;
+
+//Transition
+$transition-fastest: all 0.25s cubic-bezier(0.21, 0.45, 0.83, 0.67);
+$transition-faster: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67);
+$transition-fast: all 0.8s cubic-bezier(0.21, 0.45, 0.83, 0.67);
+$transition-slow: all 1s cubic-bezier(0.21, 0.45, 0.83, 0.67);
+
+//Font Size
+$small-size: 1.8rem;
+$default-size: 2.2rem;
+$medium-size: 3.5rem;
+$big-size: 5rem;
+
+//Box shadows
+%neu-shadow {
+  background: #e5e5e5;
+  box-shadow: 20px 20px 60px #c3c3c3, -20px -20px 60px #ffffff;
+}
+
+%neu-shadow-linear {
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+}
+
+$box-shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+  0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
+  0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+
+$box-shadow-short: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+  0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11),
+  0 8px 16px rgba(0, 0, 0, 0.11);
+
+$box-shadow-long: 0 2px 1px rgba(0, 0, 0, 0.09), 0 4px 2px rgba(0, 0, 0, 0.09),
+  0 8px 4px rgba(0, 0, 0, 0.09), 0 16px 8px rgba(0, 0, 0, 0.09),
+  0 32px 16px rgba(0, 0, 0, 0.09);
+
+//Fonts
+$lato-bold: 2rem/1 "Lato Bold", Fallback, sans-serif;
+$lato-bold-italic: 2rem/1 "Lato Bold Italic", Fallback, sans-serif;
+$lato-italic: 2rem/1 "Lato Italic", Fallback, sans-serif;
+$lato-light: 2rem/1 "Lato Light", Fallback, sans-serif;
+$lato-light-italic: 2rem/1 "Lato Light Italic", Fallback, sans-serif;
+$lato-regular: 2rem/1 "Lato Regular", Fallback, sans-serif;
+
+$lora-bold: 2rem/1 "Lora Light", Fallback, sans-serif;
+$lora-bold-italic: 2rem/1 "Lora Bold Italic", Fallback, sans-serif;
+$lora-regular: 2rem/1 "Lora Regular", Fallback, sans-serif;
+$lora-italic: 2rem/1 "Lora Italic", Fallback, sans-serif;
+$lora-semibold: 2rem/1 "Lora Semi Bold", Fallback, sans-serif;
+$lora-semibold-italic: 2rem/1 "Lora Semi Bold Italic", Fallback, sans-serif;

@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*::before,
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: sans-serif;
+
+  @include respond(tab-land) {
+    font-size: 60%;
+  }
+
+  @include respond(tab) {
+    font-size: 50%;
+  }
+}
+
+html,
+body {
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  color: $color-grey;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+input,button {
+  &:focus {
+    outline: 0;
+  }
+}
