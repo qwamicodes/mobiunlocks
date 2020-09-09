@@ -1,0 +1,85 @@
+//ProzaLibre fonts inport
+@font-face {
+  font-family: "ProzaLibre Italic";
+  src: url("../fonts/ProzaLibre-Italic.ttf");
+}
+
+@font-face {
+  font-family: "ProzaLibre Regular";
+  src: url("../fonts/ProzaLibre-Regular.ttf");
+}
+
+@font-face {
+  font-family: "ProzaLibre Bold";
+  src: url("../fonts/ProzaLibre-Bold.ttf");
+}
+
+@font-face {
+  font-family: "ProzaLibre Bold Italic";
+  src: url("../fonts/ProzaLibre-BoldItalic.ttf");
+}
+
+@font-face {
+  font-family: "ProzaLibre Medium";
+  src: url("../fonts/ProzaLibre-Medium.ttf");
+}
+
+@font-face {
+  font-family: "ProzaLibre Medium Italic";
+  src: url("../fonts/ProzaLibre-MediumItalic.ttf");
+}
+
+@font-face {
+  font-family: "ProzaLibre Semi Bold";
+  src: url("../fonts/ProzaLibre-SemiBold.ttf");
+}
+
+//Nunito fonts
+@font-face {
+  font-family: "Nunito Light";
+  src: url("../fonts/Nunito-Light.ttf");
+}
+
+@font-face {
+  font-family: "Nunito Light Italic";
+  src: url("../fonts/Nunito-LightItalic.ttf");
+}
+
+@font-face {
+  font-family: "Nunito Italic";
+  src: url("../fonts/Nunito-Italic.ttf");
+}
+
+@font-face {
+  font-family: "Nunito Regular";
+  src: url("../fonts/Nunito-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Nunito Bold";
+  src: url("../fonts/Nunito-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Nunito Bold Italic";
+  src: url("../fonts/Nunito-BoldItalic.ttf");
+}
+
+@font-face {
+  font-family: "Nunito Semi Bold";
+  src: url("../fonts/Nunito-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "Nunito Extra Light";
+  src: url("../fonts/Nunito-ExtraLight.ttf");
+}
+
+.heading {
+  &-primary {
+    color: $primary-color;
+    font: $ProzaLibre-bold;
+    font-size: $medium-size;
+    text-transform: capitalize;
+  }
+}
