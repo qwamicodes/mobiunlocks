@@ -1,9 +1,15 @@
+//Styles for the top part of the page
 .top {
   width: 100%;
   height: 62.5rem;
   display: grid;
   grid-template-rows: 10% 80% 10%;
   position: relative;
+}
+
+//Styles for the whyus part of the page
+.features {
+  font-size: 4rem;
 }
 
 .svg-background {

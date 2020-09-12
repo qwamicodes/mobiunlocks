@@ -14,7 +14,6 @@
   0% {
     transform: translate(0%, 0%);
   }
-
   100% {
     transform: translate(-15%, 5%) skewX(10deg);
   }
@@ -22,7 +21,7 @@
 
 @keyframes innerCircle {
   0% {
-    transform: scale(0);
+    transform: scale(0.75);
   }
   100% {
     transform: scale(1.1);

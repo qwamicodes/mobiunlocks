@@ -127,7 +127,7 @@
 
 @keyframes innerCircle {
   0% {
-    transform: scale(0); }
+    transform: scale(0.75); }
   100% {
     transform: scale(1.1); } }
 
@@ -376,7 +376,9 @@ g {
   left: 0;
   width: 100%;
   height: 100%;
-  grid-area: 1 / 1 / 2 / 2; }
+  grid-area: 1 / 1 / 2 / 2;
+  background-color: transparent;
+  transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
   .nav__brand {
     flex: 0 0 40%;
     height: 100%;
@@ -407,6 +409,9 @@ g {
   display: grid;
   grid-template-rows: 10% 80% 10%;
   position: relative; }
+
+.features {
+  font-size: 4rem; }
 
 .svg-background {
   position: absolute;

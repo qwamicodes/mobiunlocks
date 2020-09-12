@@ -6,6 +6,8 @@
   height: 100%;
   @include flexcenter;
   grid-area: 1 / 1 / 2 / 2;
+  background-color: transparent;
+  transition: $transition-faster;
 
   &__brand {
     flex: 0 0 40%;
