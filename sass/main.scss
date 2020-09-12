@@ -1,5 +1,26 @@
 //Util files
+@import "./utils/variables";
 @import "./utils/helpers";
 @import "./utils/mediaqueries";
 @import "./utils/mixins";
 @import "./utils/utilities";
+
+//base files
+@import "./base/animations";
+@import "./base/reset";
+@import "./base/typography";
+
+//components files
+@import "./components/buttons";
+@import "./components/cards";
+@import "./components/forms";
+@import "./components/scroll";
+@import "./components/tabs";
+
+//layout files
+@import "./layout/footer";
+@import "./layout/header";
+@import "./layout/navigation";
+
+//pages files
+@import "./pages/landing";

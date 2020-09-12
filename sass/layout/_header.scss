@@ -1,0 +1,88 @@
+.header {
+  grid-area: 2 / 1 / 3 / -1;
+  width: 80%;
+  margin: 0 auto;
+  @extend %df;
+
+  &__herobox {
+    width: 100%;
+    height: 100%;
+
+    &--left {
+      flex: 0 0 60%;
+      display: grid;
+      grid-template-rows: 60% 20% 20%;
+    }
+
+    &--right {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+
+      svg {
+        position: absolute;
+        height: 90%;
+        top: 50%;
+        left: 75%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+      }
+    }
+  }
+
+  &__intro {
+    &--main {
+    }
+
+    &--sub {
+      font: $nunito-light;
+      width: 85%;
+      margin: 0 auto;
+    }
+
+    &--cta {
+      width: 85%;
+      margin: 0 auto;
+    }
+  }
+}
+
+.filled-text {
+  text-transform: capitalize;
+  font: $prozaLibre-regular;
+  font-size: 7.5rem;
+  font-weight: 600;
+}
+
+#background .bg-path {
+  animation: pulse 4s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+
+  /* Necessary to keep the SVG objects in place while scaling */
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+}
+
+g {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+#phone-body {
+  animation: phoneMovement 2s ease-in-out infinite backwards alternate;
+}
+
+#outer-circle-nonfill {
+  animation: innerCircle 2s ease-in-out infinite backwards alternate;
+}
+
+#inner-circle-nonfill {
+  animation: innerCircle 2s ease-in-out infinite backwards alternate;
+}
+
+#inner-circle-fill {
+}
+
+#key {
+  transform-box: view-box;
+  animation: key 2s ease-in-out infinite backwards alternate;
+}

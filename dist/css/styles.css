@@ -1,10 +1,13 @@
-.u-flex-center {
+.u-flex-center, .header, .nav, .nav__brand, .nav__brand--container, .nav__links ul {
   display: flex; }
 
-.u-flex-center {
+.u-flex-center, .nav {
   justify-content: center; }
 
-.u-flex-center {
+.nav__brand, .nav__brand--container, .nav__links ul {
+  justify-content: space-evenly; }
+
+.u-flex-center, .nav, .nav__brand, .nav__brand--container, .nav__links ul {
   align-items: center; }
 
 /*
@@ -106,3 +109,308 @@
 
 .u-position-sticky {
   position: sticky !important; }
+
+@keyframes pulse {
+  /* Rotating it along with the scale makes it a little bit more fancy */
+  0%,
+  100% {
+    transform: scale(0) rotate(33deg); }
+  35%,
+  65% {
+    transform: scale(1) rotate(0deg); } }
+
+@keyframes key {
+  0% {
+    transform: translate(0%, 0%); }
+  100% {
+    transform: translate(-15%, 5%) skewX(10deg); } }
+
+@keyframes innerCircle {
+  0% {
+    transform: scale(0); }
+  100% {
+    transform: scale(1.1); } }
+
+@keyframes phoneMovement {
+  0% {
+    transform: translatey(0); }
+  0% {
+    transform: translatey(-2rem); } }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html {
+  font-size: 62.5%;
+  font-family: sans-serif; }
+  @media only screen and (max-width: 64em) {
+    html {
+      font-size: 60%; } }
+  @media only screen and (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+
+html,
+body {
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  color: #666;
+  max-width: 192rem; }
+
+a {
+  text-decoration: none; }
+
+ul {
+  list-style-type: none; }
+
+input:focus,
+button:focus {
+  outline: 0; }
+
+@font-face {
+  font-family: "ProzaLibre Italic";
+  src: url("../font/ProzaLibre-Italic.ttf"); }
+
+@font-face {
+  font-family: "ProzaLibre Regular";
+  src: url("../font/ProzaLibre-Regular.ttf"); }
+
+@font-face {
+  font-family: "ProzaLibre Bold";
+  src: url("../font/ProzaLibre-Bold.ttf"); }
+
+@font-face {
+  font-family: "ProzaLibre Bold Italic";
+  src: url("../font/ProzaLibre-BoldItalic.ttf"); }
+
+@font-face {
+  font-family: "ProzaLibre Medium";
+  src: url("../font/ProzaLibre-Medium.ttf"); }
+
+@font-face {
+  font-family: "ProzaLibre Medium Italic";
+  src: url("../font/ProzaLibre-MediumItalic.ttf"); }
+
+@font-face {
+  font-family: "ProzaLibre Semi Bold";
+  src: url("../font/ProzaLibre-SemiBold.ttf"); }
+
+@font-face {
+  font-family: "Nunito Light";
+  src: url("../font/Nunito-Light.ttf"); }
+
+@font-face {
+  font-family: "Nunito Light Italic";
+  src: url("../font/Nunito-LightItalic.ttf"); }
+
+@font-face {
+  font-family: "Nunito Italic";
+  src: url("../font/Nunito-Italic.ttf"); }
+
+@font-face {
+  font-family: "Nunito Regular";
+  src: url("../font/Nunito-Regular.ttf"); }
+
+@font-face {
+  font-family: "Nunito Bold";
+  src: url("../font/Nunito-Bold.ttf"); }
+
+@font-face {
+  font-family: "Nunito Bold Italic";
+  src: url("../font/Nunito-BoldItalic.ttf"); }
+
+@font-face {
+  font-family: "Nunito Semi Bold";
+  src: url("../font/Nunito-SemiBold.ttf"); }
+
+@font-face {
+  font-family: "Nunito Extra Light";
+  src: url("../font/Nunito-ExtraLight.ttf"); }
+
+.heading-primary {
+  color: #ff9a00;
+  font: 2rem/1 "ProzaLibre Bold", Fallback, sans-serif;
+  font-size: 3.5rem;
+  text-transform: capitalize; }
+
+.btn {
+  text-transform: capitalize;
+  font: 2rem/1 "Nunito Light", Fallback, sans-serif;
+  font-size: 1.8rem;
+  color: #3c435a;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+  .btn-primary {
+    padding: 1rem 3rem;
+    border: 1px solid #3c435a;
+    background-color: transparent;
+    border-radius: 10rem; }
+    .btn-primary:hover {
+      color: #fff;
+      background-color: #3c435a;
+      border: 1px solid transparent; }
+  .btn-secondary {
+    padding: 2rem 4rem;
+    background-color: #ff9a00;
+    color: #fff;
+    font: 2rem/1 "Nunito Regular", Fallback, sans-serif;
+    font-size: 2.2rem;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    box-shadow: 0px 3px 30px 5px rgba(255, 154, 0, 0.25);
+    transition: all 0.25s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+    .btn-secondary:hover {
+      transform: translateY(-3px); }
+    .btn-secondary:focus {
+      transform: translateY(1px); }
+
+.scroll {
+  width: 10rem;
+  height: 100%;
+  margin: 0 auto; }
+  .scroll a {
+    display: block;
+    width: 33%;
+    height: 100%;
+    border: 1px solid rgba(102, 102, 102, 0.5);
+    background: transparent;
+    border-radius: 50rem;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.75s cubic-bezier(0.21, 0.45, 0.83, 0.67);
+    margin: 0 auto; }
+    .scroll a::before {
+      content: "";
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      width: 1rem;
+      height: 1rem;
+      background-color: #a1a1a1;
+      border: none;
+      animation: scrolldown 1.5s linear .2s infinite backwards; }
+    .scroll a:hover {
+      opacity: .5; }
+
+@keyframes scrolldown {
+  from {
+    top: 35%;
+    opacity: 1; }
+  to {
+    top: 90%;
+    opacity: 0; } }
+
+.header {
+  grid-area: 2 / 1 / 3 / -1;
+  width: 80%;
+  margin: 0 auto; }
+  .header__herobox {
+    width: 100%;
+    height: 100%; }
+    .header__herobox--left {
+      flex: 0 0 60%;
+      display: grid;
+      grid-template-rows: 60% 20% 20%; }
+    .header__herobox--right {
+      flex: 1;
+      position: relative;
+      overflow: hidden; }
+      .header__herobox--right svg {
+        position: absolute;
+        height: 90%;
+        top: 50%;
+        left: 75%;
+        transform: translate(-50%, -50%);
+        z-index: -1; }
+  .header__intro--sub {
+    font: 2rem/1 "Nunito Light", Fallback, sans-serif;
+    width: 85%;
+    margin: 0 auto; }
+  .header__intro--cta {
+    width: 85%;
+    margin: 0 auto; }
+
+.filled-text {
+  text-transform: capitalize;
+  font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
+  font-size: 7.5rem;
+  font-weight: 600; }
+
+#background .bg-path {
+  animation: pulse 4s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+  /* Necessary to keep the SVG objects in place while scaling */
+  transform-origin: 50% 50%;
+  transform-box: fill-box; }
+
+g {
+  transform-origin: center;
+  transform-box: fill-box; }
+
+#phone-body {
+  animation: phoneMovement 2s ease-in-out infinite backwards alternate; }
+
+#outer-circle-nonfill {
+  animation: innerCircle 2s ease-in-out infinite backwards alternate; }
+
+#inner-circle-nonfill {
+  animation: innerCircle 2s ease-in-out infinite backwards alternate; }
+
+#key {
+  transform-box: view-box;
+  animation: key 2s ease-in-out infinite backwards alternate; }
+
+.nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  grid-area: 1 / 1 / 2 / 2; }
+  .nav__brand {
+    flex: 0 0 40%;
+    height: 100%;
+    align-self: stretch; }
+    .nav__brand--container {
+      width: 50%;
+      margin-right: 30%;
+      align-self: stretch; }
+    .nav__brand--logo {
+      width: 10%;
+      margin-left: 20%; }
+    .nav__brand--title {
+      font: 2rem/1 "Nunito Regular", Fallback, sans-serif;
+      font-size: 2rem;
+      color: #3c435a;
+      text-transform: uppercase; }
+  .nav__links {
+    flex: 0 0 50%; }
+    .nav__links--item {
+      text-transform: capitalize;
+      color: #3c435a;
+      font: 2rem/1 "Nunito Light", Fallback, sans-serif;
+      font-size: 1.8rem; }
+
+.top {
+  width: 100%;
+  height: 62.5rem;
+  display: grid;
+  grid-template-rows: 10% 80% 10%;
+  position: relative; }
+
+.svg-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: -1; }

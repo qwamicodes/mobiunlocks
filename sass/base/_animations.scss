@@ -1,0 +1,39 @@
+@keyframes pulse {
+  /* Rotating it along with the scale makes it a little bit more fancy */
+  0%,
+  100% {
+    transform: scale(0) rotate(33deg);
+  }
+  35%,
+  65% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes key {
+  0% {
+    transform: translate(0%, 0%);
+  }
+
+  100% {
+    transform: translate(-15%, 5%) skewX(10deg);
+  }
+}
+
+@keyframes innerCircle {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes phoneMovement {
+  0% {
+    transform: translatey(0);
+  }
+  0% {
+    transform: translatey(-2rem);
+  }
+}

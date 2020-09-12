@@ -1,2 +1,50 @@
 .nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  @include flexcenter;
+  grid-area: 1 / 1 / 2 / 2;
+
+  &__brand {
+    flex: 0 0 40%;
+    height: 100%;
+    align-self: stretch;
+    @include flexeven;
+    // margin-left: 5%;
+
+    &--container {
+      width: 50%;
+      @include flexeven;
+      margin-right: 30%;
+      align-self: stretch;
+    }
+
+    &--logo {
+      width: 10%;
+      margin-left: 20%;
+    }
+
+    &--title {
+      font: $nunito-regular;
+      font-size: 2rem;
+      color: $accent-color;
+      text-transform: uppercase;
+    }
+  }
+
+  &__links {
+    flex: 0 0 50%;
+
+    ul {
+      @include flexeven;
+    }
+    &--item {
+      text-transform: capitalize;
+      color: $accent-color;
+      font: $nunito-light;
+      font-size: $small-size;
+    }
+  }
 }

@@ -1,0 +1,42 @@
+.btn {
+  text-transform: capitalize;
+  font: $nunito-light;
+  font-size: $small-size;
+  color: $accent-color;
+  cursor: pointer;
+  display: inline-block;
+  transition: $transition-faster;
+
+  &-primary {
+    padding: 1rem 3rem;
+    border: 1px solid $accent-color;
+    background-color: transparent;
+    border-radius: 10rem;
+
+    &:hover {
+      color: $color-white;
+      background-color: $accent-color;
+      border: 1px solid transparent;
+    }
+  }
+
+  &-secondary {
+    padding: 2rem 4rem;
+    background-color: $primary-color;
+    color: $color-white;
+    font: $nunito-regular;
+    font-size: $default-size;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    box-shadow: 0px 3px 30px 5px rgba($primary-color, 0.25);
+    transition: $transition-fastest;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
+
+    &:focus {
+      transform: translateY(1px);
+    }
+  }
+}
