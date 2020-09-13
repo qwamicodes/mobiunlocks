@@ -76,10 +76,18 @@
 }
 
 .heading {
+  display: inline-block;
   &-primary {
     color: $primary-color;
     font: $prozaLibre-bold;
     font-size: $medium-size;
     text-transform: capitalize;
+  }
+
+  &-secondary {
+    color: $accent-color;
+    font: $prozaLibre-regular;
+    font-size: 3rem;
+    text-transform: uppercase;
   }
 }
