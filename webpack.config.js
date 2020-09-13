@@ -5,15 +5,16 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   entry: {
     app: ['@babel/polyfill','./src/js/app.js'],
-    // portal: ['@babel/polyfill', './src/js/portal.js'],
-    // dashboard: ['@babel/polyfill', './src/js/dashboard.js']
-  },
+},
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: './js/[name].[contentHash].bundle.js'
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    disableHostCheck: true,
+    host: '127.0.0.1',
+    port: '1234',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -21,18 +22,8 @@ module.exports = {
       filename: 'index.html',
       template: './src/index.html',
     }),
-    // new HtmlWebpackPlugin({
-    //   chunks: ['portal'],
-    //   filename: './public/login.html',
-    //   template: './src/login.html',
-    // }),
-    // new HtmlWebpackPlugin({
-    //   chunks: ['dashboard'],
-    //   filename: './public/dashboard.html',
-    //   template: './src/dashboard.html',
-    // }),
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ['**/*', '!assets/**', '!font/**', '!css/**']
+      cleanOnceBeforeBuildPatterns: ['**/*', '!assets/**', '!fonts/**', '!css/**']
     })
   ],
   module: {
