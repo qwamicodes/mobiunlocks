@@ -1,0 +1,11 @@
+.card {
+  border: 1px solid rgba($accent-color, 0.5);
+  padding: 1rem;
+  border-radius: 1rem;
+  overflow: hidden;
+
+  &-large {
+    width: 30rem;
+    height: 30rem;
+  }
+}

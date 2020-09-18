@@ -1,0 +1,19 @@
+.tabs {
+  width: 100%;
+  @include flexeven;
+}
+
+.tab {
+  font: $prozaLibre-regular;
+  font-size: 1.4rem;
+  border: 1px solid rgba($accent-color, 0.75);
+  padding: 1.5rem 2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: $accent-color;
+
+  &-active {
+    background-color: $accent-color;
+    color: rgba($color-white, 0.75);
+  }
+}

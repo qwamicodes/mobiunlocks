@@ -1,11 +1,10 @@
 .nav {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 6.5rem;
   @include flexcenter;
-  grid-area: 1 / 1 / 2 / 2;
   background-color: transparent;
   transition: $transition-faster;
 
@@ -14,7 +13,6 @@
     height: 100%;
     align-self: stretch;
     @include flexeven;
-    // margin-left: 5%;
 
     &--container {
       width: 50%;
@@ -42,6 +40,7 @@
     ul {
       @include flexeven;
     }
+
     &--item {
       text-transform: capitalize;
       color: $accent-color;

@@ -1,27 +1,79 @@
-//Styles for the top part of the page
+section {
+  padding-top: 5rem;
+  width: 80%;
+  margin: 0 auto;
+  height: auto;
+}
+
+//Styles for the top section
 .top {
   width: 100%;
-  height: 62.5rem;
-  display: grid;
-  grid-template-rows: 10% 80% 10%;
+  height: 64.5rem;
+  @extend %dg;
+  grid-template-rows: 90% 10%;
   position: relative;
+  padding: 0;
 }
 
-//Styles for the whyus part of the page
+//Styles for the features section
 .features {
-  font-size: 4rem;
+  &__container {
+    @extend %dg;
+    @extend %col-1-of-3;
+    padding: 5rem 0;
+  }
+
+  &__title {
+    @include flexeven;
+
+    &--no {
+      position: relative;
+      border: 0;
+      border-radius: 50%;
+      background-color: $secondary-color;
+      width: 3rem;
+      height: 3rem;
+      z-index: -1;
+
+      span {
+        color: $color-white;
+        font: $prozaLibre-regular;
+        font-size: $default-size;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &--value {
+      color: $accent-color;
+      font: $prozaLibre-regular;
+      font-size: $default-size;
+      text-transform: capitalize;
+    }
+  }
+
+  &__text {
+    font: $nunito-light;
+    font-size: $small-size;
+    margin: auto 0;
+    line-height: 1.5;
+  }
 }
 
+//Styles for the services section
+.services {
+  &__container {
+    @include flexcenter;
+  }
+}
+
+//Styles for the header svg background
 .svg-background {
   position: absolute;
   top: 0;
   right: 0;
   height: 100%;
   z-index: -1;
-}
-
-.title {
-  width: 100%;
-  display: block;
-  padding: 1rem 0;
 }

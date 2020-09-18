@@ -102,3 +102,53 @@
 .u-flex-center {
   @include flexcenter;
 }
+
+.col-1-of-2 {
+  @extend %dg;
+  @extend %col-1-of-2;
+}
+
+.col-1-of-3 {
+  @extend %dg;
+  @extend %col-1-of-3;
+}
+
+.col-1-of-4 {
+  @extend %dg;
+  @extend %col-1-of-4;
+}
+
+.col-1-of-5 {
+  @extend %dg;
+  @extend %col-1-of-5;
+}
+
+.row-1-of-2 {
+  @extend %dg;
+  @extend %row-1-of-2;
+}
+
+.row-1-of-3 {
+  @extend %dg;
+  @extend %row-1-of-3;
+}
+
+.row-1-of-4 {
+  @extend %dg;
+  @extend %row-1-of-4;
+}
+
+.row-1-of-5 {
+  @extend %dg;
+  @extend %row-1-of-5;
+}
+
+.row-20-of-80 {
+  @extend %dg;
+  @extend %row-20-of-80;
+}
+
+.row-30-of-70 {
+  @extend %dg;
+  @extend %row-30-of-70;
+}

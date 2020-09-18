@@ -7,13 +7,14 @@
     display: block;
     width: 33%;
     height: 100%;
-    border: 1px solid rgba($color-grey, .5);
+    border: 1px solid rgba($color-grey, 0.5);
     background: transparent;
     border-radius: 50rem;
     position: relative;
     cursor: pointer;
     transition: $transition-fast;
     margin: 0 auto;
+    z-index: -1;
 
     &::before {
       content: "";
@@ -26,11 +27,11 @@
       height: 1rem;
       background-color: $color-grey-light;
       border: none;
-      animation: scrolldown 1.5s linear .2s infinite backwards;
+      animation: scrolldown 1.5s linear 0.2s infinite backwards;
     }
 
     &:hover {
-      opacity: .5;
+      opacity: 0.5;
     }
   }
 }

@@ -75,6 +75,11 @@
   src: url("../fonts/Nunito-ExtraLight.ttf");
 }
 
+.title {
+  @include flexcenter;
+  padding: 5rem 0;
+}
+
 .heading {
   display: inline-block;
   &-primary {
