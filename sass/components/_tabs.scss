@@ -1,9 +1,20 @@
 .tabs {
   width: 100%;
+  height: 7rem;
+  overflow: hidden;
+  position: relative;
   @include flexeven;
+
+  li {
+    position: absolute;
+    top: 0;
+    display: inline-block;
+    transition: $transition-faster;
+  }
 }
 
 .tab {
+  display: inline-block;
   font: $prozaLibre-regular;
   font-size: 1.4rem;
   border: 1px solid rgba($accent-color, 0.75);
@@ -11,6 +22,19 @@
   text-transform: uppercase;
   cursor: pointer;
   color: $accent-color;
+  transition: $transition-faster;
+
+  &-left {
+    left: 10%;
+  }
+
+  &-current {
+    left: 50;
+  }
+
+  &-right {
+    right: 10%;
+  }
 
   &-active {
     background-color: $accent-color;

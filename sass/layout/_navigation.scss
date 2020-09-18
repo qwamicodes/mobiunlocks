@@ -7,6 +7,7 @@
   @include flexcenter;
   background-color: transparent;
   transition: $transition-faster;
+  z-index: 100;
 
   &__brand {
     flex: 0 0 40%;
@@ -47,5 +48,10 @@
       font: $nunito-light;
       font-size: $small-size;
     }
+  }
+
+  &__scrolled {
+    box-shadow: 0 1px 20px 10px rgba($color-grey-light, 0.2);
+    background-color: $color-white;
   }
 }

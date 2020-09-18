@@ -19,9 +19,34 @@ export const headerSVG = () => {
 };
 
 export const changeNavWhite = () => {
-  document.querySelector(elements.nav).style.setProperty('background-color', '#fff');
+  document.querySelector(elements.nav).classList.add('nav__scrolled');
 };
 
 export const changeNavTrans = () => {
-  document.querySelector(elements.nav).style.setProperty('background-color', 'transparent');
+  document.querySelector(elements.nav).classList.remove('nav__scrolled');
 };
+
+export const setActiveTab = tab => {
+  tab.classList.add('tab-active');
+};
+
+export const removeActiveTab = () => {
+  document.querySelectorAll(elements.tab).forEach(tab => {
+    tab.classList.remove('tab-active');
+  })
+};
+
+
+export const changeForm = loc => {
+  switch (loc) {
+    case '#/carrier':
+        document.querySelector(elements.formHolder).style.setProperty('transform', 'translateX(0)')
+      break;
+    case '#/imei':
+        document.querySelector(elements.formHolder).style.setProperty('transform', 'translateX(-33.33%)')
+      break;
+    case '#/unlocking':
+        document.querySelector(elements.formHolder).style.setProperty('transform', 'translateX(-66.66%)')
+      break;
+  }
+}

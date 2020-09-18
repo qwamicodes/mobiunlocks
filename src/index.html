@@ -62,7 +62,10 @@
               <a class="nav__links--item" href="#section-tracking">tracking</a>
             </li>
             <li>
-              <a class="btn btn-primary" href="#section-unlock">unlock</a>
+              <a class="btn btn-primary" href="#section-unlock">
+                unlock
+                <ion-icon name="lock-open-outline"></ion-icon>
+              </a>
             </li>
           </ul>
         </div>
@@ -514,17 +517,57 @@
       <div class="title">
         <h4 class="heading heading-secondary">what we can help you with</h4>
       </div>
-      <div class="tabs">
-        <div class="tab">carrier unlocking</div>
-        <div class="tab tab-active">imei checker</div>
-        <div class="tab">icloud unlocking</div>
-      </div>
+      <ul class="tabs">
+        <li class="tab-left">
+          <a href="#/carrier" class="tab">carrier unlocking</a>
+        </li>
+        <li class="tab-current">
+          <a href="#/imei" class="tab tab-active">imei checker</a>
+        </li>
+        <li class="tab-right">
+          <a href="#/unlocking" class="tab">icloud unclocking</a>
+        </li>
+      </ul>
       <div class="services__container">
-        <div class="services__selections"></div>
-        <div class="services__image"></div>
+        <div class="services__holder">
+          <form method="POST" class="form form-left form__unlocking" id="form-unlocking">
+            <div class="form__selections">
+              <!-- statement to show the checking of the imei -->
+              <!-- input for the selection of the carrier checker -->
+              <!-- input to enter the imei code  -->
+              <!-- checkout btn -->
+            </div>
+            <div class="form__image">
+              <img src="./assets/img/icloud-activation.webp" alt="IMEI Checker image">
+            </div>
+          </form>
+          <form method="POST" class="form form-current form__imei" id="form-imei">
+            <div class="form__selections">
+              <!-- statement to show the checking of the imei -->
+              <!-- input for the selection of the carrier checker -->
+              <!-- input to enter the imei code  -->
+              <!-- checkout btn -->
+            </div>
+            <div class="form__image">
+              <img src="./assets/img/iphone-imei.webp" alt="IMEI Checker image">
+            </div>
+          </form>
+          <form method="POST" class="form form-right form__carrier" id="form-carrier">
+            <div class="form__selections">
+              <!-- statement to show the checking of the imei -->
+              <!-- input for the selection of the carrier checker -->
+              <!-- input to enter the imei code  -->
+              <!-- checkout btn -->
+            </div>
+            <div class="form__image">
+              <img src="./assets/img/iphone-carrier.webp" alt="IMEI Checker image">
+            </div>
+          </form>
+        </div>
       </div>
     </section>
     <section id="section-phones" class="phones"></section>
     <section id="section-unlock" class="unlock"></section>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
   </body>
 </html>

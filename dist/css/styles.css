@@ -1,16 +1,16 @@
-.u-flex-center, .title, .tabs, .header, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .features__title, .services__container {
+.u-flex-center, .title, .btn, .form, .tabs, .header, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .features__title, .services__container {
   display: flex; }
 
-.u-flex-center, .title, .nav, .services__container {
+.u-flex-center, .title, .form, .nav {
   justify-content: center; }
 
-.tabs, .nav__brand, .nav__brand--container, .nav__links ul, .features__title {
+.btn, .tabs, .nav__brand, .nav__brand--container, .nav__links ul, .features__title {
   justify-content: space-evenly; }
 
-.u-flex-center, .title, .tabs, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .features__title, .services__container {
+.u-flex-center, .title, .btn, .form, .tabs, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .features__title {
   align-items: center; }
 
-.col-1-of-2, .col-1-of-3, .col-1-of-4, .col-1-of-5, .row-1-of-2, .row-1-of-3, .row-1-of-4, .row-1-of-5, .row-20-of-80, .row-30-of-70, .top, .features__container {
+.col-1-of-2, .col-1-of-3, .col-1-of-4, .col-1-of-5, .row-1-of-2, .row-1-of-3, .row-1-of-4, .row-1-of-5, .row-20-of-80, .row-30-of-70, .top, .features__container, .services__holder {
   display: grid; }
 
 .row-1-of-2 {
@@ -34,7 +34,7 @@
 .col-1-of-2 {
   grid-template-columns: repeat(2, 1fr); }
 
-.col-1-of-3, .features__container {
+.col-1-of-3, .features__container, .services__holder {
   grid-template-columns: repeat(3, 1fr); }
 
 .col-1-of-4 {
@@ -332,6 +332,17 @@ button:focus {
     width: 30rem;
     height: 30rem; }
 
+.form {
+  min-width: 100%;
+  transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+  .form__selections {
+    flex: 0 0 50%; }
+  .form__image {
+    flex: 1; }
+    .form__image img {
+      width: 100%;
+      height: 100%; }
+
 .scroll {
   width: 10rem;
   height: 100%;
@@ -372,16 +383,32 @@ button:focus {
     opacity: 0; } }
 
 .tabs {
-  width: 100%; }
+  width: 100%;
+  height: 7rem;
+  overflow: hidden;
+  position: relative; }
+  .tabs li {
+    position: absolute;
+    top: 0;
+    display: inline-block;
+    transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
 
 .tab {
+  display: inline-block;
   font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
   font-size: 1.4rem;
   border: 1px solid rgba(60, 67, 90, 0.75);
   padding: 1.5rem 2rem;
   text-transform: uppercase;
   cursor: pointer;
-  color: #3c435a; }
+  color: #3c435a;
+  transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+  .tab-left {
+    left: 10%; }
+  .tab-current {
+    left: 50; }
+  .tab-right {
+    right: 10%; }
   .tab-active {
     background-color: #3c435a;
     color: rgba(255, 255, 255, 0.75); }
@@ -454,7 +481,8 @@ g {
   width: 100%;
   height: 6.5rem;
   background-color: transparent;
-  transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+  transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67);
+  z-index: 100; }
   .nav__brand {
     flex: 0 0 40%;
     height: 100%;
@@ -478,6 +506,9 @@ g {
       color: #3c435a;
       font: 2rem/1 "Nunito Light", Fallback, sans-serif;
       font-size: 1.8rem; }
+  .nav__scrolled {
+    box-shadow: 0 1px 20px 10px rgba(161, 161, 161, 0.2);
+    background-color: #fff; }
 
 section {
   padding-top: 5rem;
@@ -523,6 +554,16 @@ section {
   font-size: 1.8rem;
   margin: auto 0;
   line-height: 1.5; }
+
+.services__container {
+  margin: 5rem 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+
+.services__holder {
+  min-width: 300%;
+  transform: translateX(-33.33%);
+  transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
 
 .svg-background {
   position: absolute;

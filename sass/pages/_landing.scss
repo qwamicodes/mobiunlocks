@@ -65,7 +65,18 @@ section {
 //Styles for the services section
 .services {
   &__container {
-    @include flexcenter;
+    margin: 5rem 0;
+    @extend %df;
+    overflow: hidden;
+    transition: $transition-faster;
+  }
+
+  &__holder {
+    min-width: 300%;
+    @extend %dg;
+    @extend %col-1-of-3;
+    transform: translateX(-33.33%);
+    transition: $transition-faster;
   }
 }
 
