@@ -65,7 +65,6 @@ section {
 //Styles for the services section
 .services {
   &__container {
-    margin: 5rem 0;
     @extend %df;
     overflow: hidden;
     transition: $transition-faster;

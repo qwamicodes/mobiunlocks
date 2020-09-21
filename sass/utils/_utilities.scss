@@ -103,6 +103,14 @@
   @include flexcenter;
 }
 
+.u-flex-even {
+  @include flexeven;
+}
+
+.u-flex-bottom {
+  @include flexbottom;
+}
+
 .col-1-of-2 {
   @extend %dg;
   @extend %col-1-of-2;

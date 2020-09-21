@@ -41,3 +41,21 @@
     color: rgba($color-white, 0.75);
   }
 }
+
+.tablet {
+  display: inline-block;
+  font: $prozaLibre-regular;
+  font-size: $small-size;
+  border: 1px solid rgba($alternate-color, 0.25);
+  padding: 1.5rem 4rem;
+  cursor: pointer;
+  color: darken($alternate-color, 25%);
+  transition: $transition-faster;
+  border-radius: 10rem;
+  letter-spacing: 1.5px;
+
+  &-active {
+    background-color: $alternate-color;
+    color: $color-white;
+  }
+}

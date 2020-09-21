@@ -41,4 +41,13 @@
       box-shadow: 0px 10px 30px 5px rgba($primary-color, 0.5);
     }
   }
+
+  &-checkout {
+    padding: 1.5rem 3rem;
+    font: $prozaLibre-regular;
+    font-size: 1.5rem;
+    color: $color-white;
+    background-color: $success-color;
+    border: 0;
+  }
 }

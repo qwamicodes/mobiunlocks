@@ -1,14 +1,17 @@
-.u-flex-center, .title, .btn, .form, .tabs, .header, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .features__title, .services__container {
+.u-flex-center, .u-flex-even, .u-flex-bottom, .title, .btn, .form, .form__group, .tabs, .header, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .features__title, .services__container {
   display: flex; }
 
-.u-flex-center, .title, .form, .nav {
+.u-flex-center, .u-flex-bottom, .title, .form, .nav {
   justify-content: center; }
 
-.btn, .tabs, .nav__brand, .nav__brand--container, .nav__links ul, .features__title {
+.u-flex-even, .btn, .tabs, .nav__brand, .nav__brand--container, .nav__links ul, .features__title {
   justify-content: space-evenly; }
 
-.u-flex-center, .title, .btn, .form, .tabs, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .features__title {
+.u-flex-center, .u-flex-even, .u-flex-bottom, .title, .btn, .form, .form__group, .tabs, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .features__title {
   align-items: center; }
+
+.u-flex-bottom {
+  flex-direction: column; }
 
 .col-1-of-2, .col-1-of-3, .col-1-of-4, .col-1-of-5, .row-1-of-2, .row-1-of-3, .row-1-of-4, .row-1-of-5, .row-20-of-80, .row-30-of-70, .top, .features__container, .services__holder {
   display: grid; }
@@ -211,8 +214,23 @@ ul {
   list-style-type: none; }
 
 input:focus,
-button:focus {
+button:focus,
+select:focus {
   outline: 0; }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: none; }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
 
 @font-face {
   font-family: "ProzaLibre Italic";
@@ -322,6 +340,13 @@ button:focus {
     .btn-secondary:focus {
       transform: translateY(1px);
       box-shadow: 0px 10px 30px 5px rgba(255, 154, 0, 0.5); }
+  .btn-checkout {
+    padding: 1.5rem 3rem;
+    font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: #3af766;
+    border: 0; }
 
 .card {
   border: 1px solid rgba(60, 67, 90, 0.5);
@@ -334,9 +359,40 @@ button:focus {
 
 .form {
   min-width: 100%;
+  height: 90%;
   transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
   .form__selections {
-    flex: 0 0 50%; }
+    flex: 0 0 50%;
+    height: 70%; }
+  .form__group {
+    width: 60%;
+    margin: 0 auto; }
+    .form__group span {
+      font: 2rem/1 "Nunito Light", Fallback, sans-serif;
+      font-size: 1.2rem; }
+      .form__group span em {
+        color: #ff9a00;
+        font-weight: 600;
+        letter-spacing: 2px; }
+  .form__input {
+    padding: 1.5rem 3rem;
+    border: 1px solid rgba(161, 161, 161, 0.5);
+    color: #333;
+    width: 100%;
+    transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+    .form__input:focus {
+      border-color: #9cfbb2; }
+    .form__input--number {
+      font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
+      font-size: 1.5rem; }
+    .form__input::placeholder {
+      color: #333; }
+  .form__select {
+    font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
+    font-size: 1.5rem; }
+    .form__select--option {
+      padding: 1rem;
+      border: 0; }
   .form__image {
     flex: 1; }
     .form__image img {
@@ -412,6 +468,21 @@ button:focus {
   .tab-active {
     background-color: #3c435a;
     color: rgba(255, 255, 255, 0.75); }
+
+.tablet {
+  display: inline-block;
+  font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
+  font-size: 1.8rem;
+  border: 1px solid rgba(90, 171, 233, 0.25);
+  padding: 1.5rem 4rem;
+  cursor: pointer;
+  color: #176cad;
+  transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67);
+  border-radius: 10rem;
+  letter-spacing: 1.5px; }
+  .tablet-active {
+    background-color: #5aabe9;
+    color: #fff; }
 
 .header {
   grid-area: 1 / 1 / 2 / 2;
@@ -556,7 +627,6 @@ section {
   line-height: 1.5; }
 
 .services__container {
-  margin: 5rem 0;
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
 
