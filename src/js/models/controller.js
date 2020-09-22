@@ -64,9 +64,14 @@ export const checkHashChange = () => {
 
 export const tabletSel = tablet => {
     document.querySelectorAll(elements.tablet).forEach(tab => {
-        if(tab.classList.contains('tablet-active')) {
-            UICtrl.removeActiveTab('tablet');
-        }
+        if(tab.getAttribute('aria-sel') === 'true') {
+            UICtrl.selElement(tablet);
+        } else if(tab.getAttribute('aria-sel') === 'false') {
+            UICtrl.unselAllElement('tablet');
+            UICtrl.selElement(tablet);
+        } else {
+            UICtrl.unselAllElement('tablet');
+            UICtrl.selElement(tablet);
+        };
     });
-    UICtrl.setActiveTab(tablet, 'tablet');
 };

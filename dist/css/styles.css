@@ -480,7 +480,7 @@ select {
   transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67);
   border-radius: 10rem;
   letter-spacing: 1.5px; }
-  .tablet-active {
+  .tablet[aria-sel="true"] {
     background-color: #5aabe9;
     color: #fff; }
 

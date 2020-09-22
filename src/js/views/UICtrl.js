@@ -36,6 +36,15 @@ export const removeActiveTab = el => {
   })
 };
 
+export const unselAllElement = el => {
+  document.querySelectorAll(`.${el}`).forEach(tab => {
+    tab.setAttribute('aria-sel', 'false');
+  });
+};
+
+export const selElement = el => {
+  el.setAttribute('aria-sel', 'true');
+};
 
 export const changeForm = loc => {
   switch (loc) {

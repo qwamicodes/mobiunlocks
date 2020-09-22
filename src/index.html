@@ -533,44 +533,48 @@
           <form method="POST" class="form form-right form__carrier" id="form-carrier">
             <div class="form__selections row-1-of-5">
               <div class="form__group u-flex-even">
-                <span class="tablet">iPhone</span>
-                <span class="tablet">iPad</span>
+                <span data-select="carrier-phone" class="tablet">iPhone</span>
+                <span data-select="carrier-phone" class="tablet">iPad</span>
               </div>
               <div class="form__group">
-                <select class="form__input form__select">
+                <select class="form__input form__select" id="carrier-model">
                   <option name="model" value="" class="form__select--option">Select phone model</option>
-                  <option name="model" value="iphone4" class="form__select--option">iPhone 4</option>
-                  <option name="model" value="iphone4s" class="form__select--option">iPhone 4s</option>
-                  <option name="model" value="iphone5" class="form__select--option">iPhone 5</option>
-                  <option name="model" value="iphone5c" class="form__select--option">iPhone 5c</option>
-                  <option name="model" value="iphone5s" class="form__select--option">iPhone 5s</option>
-                  <option name="model" value="iphoneSE1" class="form__select--option">iPhone SE (1st Gen)</option>
-                  <option name="model" value="iphone6" class="form__select--option">iPhone 6</option>
-                  <option name="model" value="iphone6s" class="form__select--option">iPhone 6s</option>
-                  <option name="model" value="iphone6+" class="form__select--option">iPhone 6 Plus</option>
-                  <option name="model" value="iphone6s+" class="form__select--option">iPhone 6s Plus</option>
-                  <option name="model" value="iphone7" class="form__select--option">iPhone 7</option>
-                  <option name="model" value="iphone7+" class="form__select--option">iPhone 7 Plus</option>
-                  <option name="model" value="iphone8" class="form__select--option">iPhone 8</option>
-                  <option name="model" value="iphone8+" class="form__select--option">iPhone 8 Plus</option>
-                  <option name="model" value="iphonex" class="form__select--option">iPhone X</option>
-                  <option name="model" value="iphonexr" class="form__select--option">iPhone XR</option>
-                  <option name="model" value="iphonexs" class="form__select--option">iPhone XS</option>
-                  <option name="model" value="iphonexsmax" class="form__select--option">iPhone XS MAX</option>
-                  <option name="model" value="iphone11" class="form__select--option">iPhone 11</option>
-                  <option name="model" value="iphone11pro" class="form__select--option">iPhone 11 PRO</option>
-                  <option name="model" value="iphone11promax" class="form__select--option">iPhone 11 PRO MAX</option>
-                  <option name="model" value="iphoneSE2" class="form__select--option">iPhone SE (2nd Gen)</option>
+                  <div class="form__select--iphone">
+                    <option name="model" value="iphone4" class="form__select--option">iPhone 4</option>
+                    <option name="model" value="iphone4s" class="form__select--option">iPhone 4s</option>
+                    <option name="model" value="iphone5" class="form__select--option">iPhone 5</option>
+                    <option name="model" value="iphone5c" class="form__select--option">iPhone 5c</option>
+                    <option name="model" value="iphone5s" class="form__select--option">iPhone 5s</option>
+                    <option name="model" value="iphoneSE1" class="form__select--option">iPhone SE (1st Gen)</option>
+                    <option name="model" value="iphone6" class="form__select--option">iPhone 6</option>
+                    <option name="model" value="iphone6s" class="form__select--option">iPhone 6s</option>
+                    <option name="model" value="iphone6+" class="form__select--option">iPhone 6 Plus</option>
+                    <option name="model" value="iphone6s+" class="form__select--option">iPhone 6s Plus</option>
+                    <option name="model" value="iphone7" class="form__select--option">iPhone 7</option>
+                    <option name="model" value="iphone7+" class="form__select--option">iPhone 7 Plus</option>
+                    <option name="model" value="iphone8" class="form__select--option">iPhone 8</option>
+                    <option name="model" value="iphone8+" class="form__select--option">iPhone 8 Plus</option>
+                    <option name="model" value="iphonex" class="form__select--option">iPhone X</option>
+                    <option name="model" value="iphonexr" class="form__select--option">iPhone XR</option>
+                    <option name="model" value="iphonexs" class="form__select--option">iPhone XS</option>
+                    <option name="model" value="iphonexsmax" class="form__select--option">iPhone XS MAX</option>
+                    <option name="model" value="iphone11" class="form__select--option">iPhone 11</option>
+                    <option name="model" value="iphone11pro" class="form__select--option">iPhone 11 PRO</option>
+                    <option name="model" value="iphone11promax" class="form__select--option">iPhone 11 PRO MAX</option>
+                    <option name="model" value="iphoneSE2" class="form__select--option">iPhone SE (2nd Gen)</option>
+                  </div>
                 </select>
               </div>
               <div class="form__group">
-                <select class="form__input form__select">
+                <select class="form__input form__select" id="carrier-network">
                   <option name="carrier" value="" class="form__select--option">Choose phone carrier network</option>
-                  <option name="carrier" value="at&t" class="form__select--option">AT&T</option>
-                  <option name="carrier" value="sprint" class="form__select--option">SPRINT</option>
-                  <option name="carrier" value="tesco-uk" class="form__select--option">TESCO-UK</option>
-                  <option name="carrier" value="t-mobile" class="form__select--option">T-MOBILE</option>
-                  <option name="carrier" value="verizon" class="form__select--option">VERIZON</option>
+                  <option name="carrier" value="at&t" class="form__select--option">AT&T-USA</option>
+                  <option name="carrier" value="sprint" class="form__select--option">SPRINT-USA</option>
+                  <option name="carrier" value="metropcs" class="form__select--option">METRO PCS-USA</option>
+                  <option name="carrier" value="tmobile" class="form__select--option">T-MOBILE-USA</option>
+                  <option name="carrier" value="verizon" class="form__select--option">VERIZON-USA</option>
+                  <option name="carrier" value="o2" class="form__select--option">O2-UK</option>
+                  <option name="carrier" value="tesco" class="form__select--option">TESCO-UK</option>
                 </select>
               </div>
               <div class="form__group">
@@ -590,13 +594,15 @@
                 <span>Check your IMEI number - <em>*#06#</em></span>
               </div>
               <div class="form__group">
-                <select class="form__input form__select">
+                <select class="form__input form__select" id="imei-network">
                   <option name="carrier" value="" class="form__select--option">Choose phone carrier network</option>
-                  <option name="carrier" value="at&t" class="form__select--option">AT&T</option>
-                  <option name="carrier" value="sprint" class="form__select--option">SPRINT</option>
-                  <option name="carrier" value="tesco-uk" class="form__select--option">TESCO-UK</option>
-                  <option name="carrier" value="t-mobile" class="form__select--option">T-MOBILE</option>
-                  <option name="carrier" value="verizon" class="form__select--option">VERIZON</option>
+                  <option name="carrier" value="at&t" class="form__select--option">AT&T-USA</option>
+                  <option name="carrier" value="sprint" class="form__select--option">SPRINT-USA</option>
+                  <option name="carrier" value="metropcs" class="form__select--option">METRO PCS-USA</option>
+                  <option name="carrier" value="tmobile" class="form__select--option">T-MOBILE-USA</option>
+                  <option name="carrier" value="verizon" class="form__select--option">VERIZON-USA</option>
+                  <option name="carrier" value="o2" class="form__select--option">O2-UK</option>
+                  <option name="carrier" value="tesco" class="form__select--option">TESCO-UK</option>
                 </select>
               </div>
               <div class="form__group">
@@ -613,34 +619,36 @@
           <form method="POST" class="form form-left form__unlocking" id="form-unlocking">
             <div class="form__selections row-1-of-4">
               <div class="form__group u-flex-even">
-                <span class="tablet">iPhone</span>
-                <span class="tablet">iPad</span>
+                <span data-select="unlocking-phone" class="tablet">iPhone</span>
+                <span data-select="unlocking-phone" class="tablet">iPad</span>
               </div>
               <div class="form__group">
-                <select class="form__input form__select">
+                <select class="form__input form__select" id="unlocking-model">
                   <option name="model" value="" class="form__select--option">Select phone model</option>
-                  <option name="model" value="iphone4" class="form__select--option">iPhone 4</option>
-                  <option name="model" value="iphone4s" class="form__select--option">iPhone 4s</option>
-                  <option name="model" value="iphone5" class="form__select--option">iPhone 5</option>
-                  <option name="model" value="iphone5c" class="form__select--option">iPhone 5c</option>
-                  <option name="model" value="iphone5s" class="form__select--option">iPhone 5s</option>
-                  <option name="model" value="iphoneSE1" class="form__select--option">iPhone SE (1st Gen)</option>
-                  <option name="model" value="iphone6" class="form__select--option">iPhone 6</option>
-                  <option name="model" value="iphone6s" class="form__select--option">iPhone 6s</option>
-                  <option name="model" value="iphone6+" class="form__select--option">iPhone 6 Plus</option>
-                  <option name="model" value="iphone6s+" class="form__select--option">iPhone 6s Plus</option>
-                  <option name="model" value="iphone7" class="form__select--option">iPhone 7</option>
-                  <option name="model" value="iphone7+" class="form__select--option">iPhone 7 Plus</option>
-                  <option name="model" value="iphone8" class="form__select--option">iPhone 8</option>
-                  <option name="model" value="iphone8+" class="form__select--option">iPhone 8 Plus</option>
-                  <option name="model" value="iphonex" class="form__select--option">iPhone X</option>
-                  <option name="model" value="iphonexr" class="form__select--option">iPhone XR</option>
-                  <option name="model" value="iphonexs" class="form__select--option">iPhone XS</option>
-                  <option name="model" value="iphonexsmax" class="form__select--option">iPhone XS MAX</option>
-                  <option name="model" value="iphone11" class="form__select--option">iPhone 11</option>
-                  <option name="model" value="iphone11pro" class="form__select--option">iPhone 11 PRO</option>
-                  <option name="model" value="iphone11promax" class="form__select--option">iPhone 11 PRO MAX</option>
-                  <option name="model" value="iphoneSE2" class="form__select--option">iPhone SE (2nd Gen)</option>
+                  <div class="form__select--iphone">
+                    <option name="model" value="iphone4" class="form__select--option">iPhone 4</option>
+                    <option name="model" value="iphone4s" class="form__select--option">iPhone 4s</option>
+                    <option name="model" value="iphone5" class="form__select--option">iPhone 5</option>
+                    <option name="model" value="iphone5c" class="form__select--option">iPhone 5c</option>
+                    <option name="model" value="iphone5s" class="form__select--option">iPhone 5s</option>
+                    <option name="model" value="iphoneSE1" class="form__select--option">iPhone SE (1st Gen)</option>
+                    <option name="model" value="iphone6" class="form__select--option">iPhone 6</option>
+                    <option name="model" value="iphone6s" class="form__select--option">iPhone 6s</option>
+                    <option name="model" value="iphone6+" class="form__select--option">iPhone 6 Plus</option>
+                    <option name="model" value="iphone6s+" class="form__select--option">iPhone 6s Plus</option>
+                    <option name="model" value="iphone7" class="form__select--option">iPhone 7</option>
+                    <option name="model" value="iphone7+" class="form__select--option">iPhone 7 Plus</option>
+                    <option name="model" value="iphone8" class="form__select--option">iPhone 8</option>
+                    <option name="model" value="iphone8+" class="form__select--option">iPhone 8 Plus</option>
+                    <option name="model" value="iphonex" class="form__select--option">iPhone X</option>
+                    <option name="model" value="iphonexr" class="form__select--option">iPhone XR</option>
+                    <option name="model" value="iphonexs" class="form__select--option">iPhone XS</option>
+                    <option name="model" value="iphonexsmax" class="form__select--option">iPhone XS MAX</option>
+                    <option name="model" value="iphone11" class="form__select--option">iPhone 11</option>
+                    <option name="model" value="iphone11pro" class="form__select--option">iPhone 11 PRO</option>
+                    <option name="model" value="iphone11promax" class="form__select--option">iPhone 11 PRO MAX</option>
+                    <option name="model" value="iphoneSE2" class="form__select--option">iPhone SE (2nd Gen)</option>
+                  </div>
                 </select>
               </div>
               <div class="form__group">

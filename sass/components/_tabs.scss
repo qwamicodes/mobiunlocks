@@ -54,7 +54,7 @@
   border-radius: 10rem;
   letter-spacing: 1.5px;
 
-  &-active {
+  &[aria-sel="true"] {
     background-color: $alternate-color;
     color: $color-white;
   }
