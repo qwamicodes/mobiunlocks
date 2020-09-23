@@ -49,5 +49,10 @@
     color: $color-white;
     background-color: $success-color;
     border: 0;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
 }

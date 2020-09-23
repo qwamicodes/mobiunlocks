@@ -63,15 +63,37 @@ export const checkHashChange = () => {
 }
 
 export const tabletSel = tablet => {
-    document.querySelectorAll(elements.tablet).forEach(tab => {
-        if(tab.getAttribute('aria-sel') === 'true') {
-            UICtrl.selElement(tablet);
-        } else if(tab.getAttribute('aria-sel') === 'false') {
-            UICtrl.unselAllElement('tablet');
-            UICtrl.selElement(tablet);
-        } else {
-            UICtrl.unselAllElement('tablet');
-            UICtrl.selElement(tablet);
-        };
-    });
+    //checking if the tablet is selected or vice-versa
+    if(tablet.getAttribute('aria-sel') === 'true') {
+        UICtrl.selElement(tablet);
+        checkFields(tablet.parentElement.parentElement.parentElement);
+    } else if(tablet.getAttribute('aria-sel') === 'false') {
+        //Unselect all the elements
+        UICtrl.unselAllElement('tablet');
+        //select the element
+        UICtrl.selElement(tablet);
+        //check if the fields are enabled
+        checkFields(tablet.parentElement.parentElement.parentElement);
+    } else {
+        //Unselect all the elements
+        UICtrl.unselAllElement('tablet');
+        //select the element
+        UICtrl.selElement(tablet);
+        //check if the fields are enabled
+        checkFields(tablet.parentElement.parentElement.parentElement);
+    };
+};
+
+export const checkFields = (form, next) => {
+    
+}
+
+const disableFields = fields => {
+    fields.forEach(field => {
+        field.disabled = true;
+    })
+};
+
+const enableField = field => {
+    field.disabled = false;
 };

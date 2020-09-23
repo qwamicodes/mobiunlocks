@@ -44,7 +44,7 @@
               alt="Brand Logo"
               class="nav__brand--logo"
             />
-            <h4 class="nav__brand--title">mobiunlocks</h4>
+            <a href="./index.html" class="nav__brand--title">mobiunlocks</a>
           </div>
         </div>
         <div class="nav__links">
@@ -273,7 +273,7 @@
             Welcome to a new big family.
           </div>
           <div class="header__intro--cta">
-            <a href="#section-unlock" class="btn btn-secondary"
+            <a href="#section-services" class="btn btn-secondary"
               >start unclocking</a
             >
           </div>
@@ -533,11 +533,13 @@
           <form method="POST" class="form form-right form__carrier" id="form-carrier">
             <div class="form__selections row-1-of-5">
               <div class="form__group u-flex-even">
-                <span data-select="carrier-phone" class="tablet">iPhone</span>
-                <span data-select="carrier-phone" class="tablet">iPad</span>
+                <label for="carrier-iphone" data-select="carrier-phone" class="carrier-phone tablet">iPhone</label>
+                <input type="radio" name="car-phone" id="carrier-iphone" class="carrier-phone u-display-none">
+                <label for="carrier-ipad" data-select="carrier-phone" class="carrier-phone tablet">iPad</label>
+                <input type="radio" name="car-phone" id="carrier-ipad" class="carrier-phone u-display-none">
               </div>
               <div class="form__group">
-                <select class="form__input form__select" id="carrier-model">
+                <select class="form__input form__select" id="carrier-model" disabled>
                   <option name="model" value="" class="form__select--option">Select phone model</option>
                   <div class="form__select--iphone">
                     <option name="model" value="iphone4" class="form__select--option">iPhone 4</option>
@@ -566,7 +568,7 @@
                 </select>
               </div>
               <div class="form__group">
-                <select class="form__input form__select" id="carrier-network">
+                <select class="form__input form__select" id="carrier-network" disabled>
                   <option name="carrier" value="" class="form__select--option">Choose phone carrier network</option>
                   <option name="carrier" value="at&t" class="form__select--option">AT&T-USA</option>
                   <option name="carrier" value="sprint" class="form__select--option">SPRINT-USA</option>
@@ -578,10 +580,10 @@
                 </select>
               </div>
               <div class="form__group">
-                <input type="number" placeholder="Enter IMEI/SN" name="imei" id="imei-code" class="form__input form__input--number">
+                <input type="number" placeholder="Enter IMEI/SN" id="carrier-imei" class="form__input form__input--number" disabled>
               </div>
               <div class="form__group">
-                <button type="submit" class="btn btn-checkout">checkout</button>
+                <button type="submit" class="btn btn-checkout" disabled>checkout</button>
               </div>
             </div>
             <div class="form__image">
@@ -606,10 +608,10 @@
                 </select>
               </div>
               <div class="form__group">
-                <input type="number" placeholder="Enter IMEI/SN" name="imei" id="imei-code" class="form__input form__input--number">
+                <input type="number" placeholder="Enter IMEI/SN" id="imei-imei" class="form__input form__input--number" disabled>
               </div>
               <div class="form__group">
-                <button type="submit" class="btn btn-checkout">checkout</button>
+                <button type="submit" class="btn btn-checkout" disabled>checkout</button>
               </div>
             </div>
             <div class="form__image">
@@ -619,11 +621,13 @@
           <form method="POST" class="form form-left form__unlocking" id="form-unlocking">
             <div class="form__selections row-1-of-4">
               <div class="form__group u-flex-even">
-                <span data-select="unlocking-phone" class="tablet">iPhone</span>
-                <span data-select="unlocking-phone" class="tablet">iPad</span>
+                <label for="unlocking-iphone" data-select="unlocking-phone" class="unlocking-phone tablet">iPhone</label>
+                <input type="radio" name="unlock-phone" id="unlocking-iphone" class="unlocking-phone u-display-none">
+                <label for="unlocking-ipad" data-select="unlocking-phone" class="unlocking-phone tablet">iPad</label>
+                <input type="radio" name="unlock-phone" id="unlocking-ipad" class="unlocking-phone u-display-none">
               </div>
               <div class="form__group">
-                <select class="form__input form__select" id="unlocking-model">
+                <select class="form__input form__select" id="unlocking-model" disabled>
                   <option name="model" value="" class="form__select--option">Select phone model</option>
                   <div class="form__select--iphone">
                     <option name="model" value="iphone4" class="form__select--option">iPhone 4</option>
@@ -652,10 +656,10 @@
                 </select>
               </div>
               <div class="form__group">
-                <input type="number" placeholder="Enter IMEI/SN" name="imei" id="imei-code" class="form__input form__input--number">
+                <input type="number" placeholder="Enter IMEI/SN" id="unlocking-imei" class="form__input form__input--number" disabled>
               </div>
               <div class="form__group">
-                <button type="submit" class="btn btn-checkout">checkout</button>
+                <button type="submit" class="btn btn-checkout" disabled>checkout</button>
               </div>
             </div>
             <div class="form__image">
