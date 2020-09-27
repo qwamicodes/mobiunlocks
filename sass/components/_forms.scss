@@ -72,3 +72,17 @@
     }
   }
 }
+
+.carrier-phone {
+  &:checked ~ label {
+    background-color: $alternate-color;
+    color: $color-white;
+  }
+}
+
+.unlocking-phone {
+  &:checked ~ label {
+    background-color: $alternate-color;
+    color: $color-white;
+  }
+}

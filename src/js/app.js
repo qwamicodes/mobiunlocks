@@ -18,13 +18,6 @@ document.querySelectorAll(elements.tab).forEach(tab => {
     });
 });
 
-//Functionality for the tablets
-document.querySelectorAll(elements.tablet).forEach(tablet => {
-    tablet.addEventListener('click', () => {
-        // controller.tabletSel(tablet);
-    });
-});
-
 //Functionality for the forms
 [document.querySelectorAll(elements.carrierForm, elements.imeiForm, elements.unlockingForm)].forEach(form => {
     
