@@ -7,7 +7,6 @@ document.onload = UICtrl.headerSVG();
 document.onload = controller.checkNav();
 document.onload = controller.tabSel(null, location.hash); 
 
-
 //Onscroll function to trigger the background
 document.addEventListener('scroll', controller.checkNav);
 
@@ -19,6 +18,10 @@ document.querySelectorAll(elements.tab).forEach(tab => {
 });
 
 //Functionality for the forms
-[document.querySelectorAll(elements.carrierForm, elements.imeiForm, elements.unlockingForm)].forEach(form => {
-    
+document.querySelectorAll(`${elements.carrierForm}, ${elements.imeiForm}, ${elements.unlockingForm}`).forEach(form => {
+    form.addEventListener('click', e => {
+        if(e.target.tagName === 'LABEL') {
+            
+        }
+    });
 });

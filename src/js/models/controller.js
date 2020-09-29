@@ -60,7 +60,11 @@ export const checkHashChange = () => {
     window.addEventListener('hashchange', e => {
         UICtrl.changeForm(location.hash);
     });
-}
+};
+
+export const checkForm = id => {
+    
+};
 
 const disableFields = fields => {
     fields.forEach(field => {
