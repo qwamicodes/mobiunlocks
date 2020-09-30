@@ -79,6 +79,39 @@ section {
   }
 }
 
+//Styles for the payment section
+.payment {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 45%;
+  height: 100%;
+  z-index: 1000;
+  visibility: visible;
+  background-color: lighten($color-light-black, 5%);
+  opacity: 1;
+
+  &__caution {
+    width: 100%;
+    background-color: lighten($danger-color, 9%);
+    color: $color-white;
+    font: $nunito-light;
+    font-size: 1.5rem;
+
+    ol {
+      @extend %df;
+      @extend %dc;
+      @extend %dai;
+
+      li {
+        width: 70%;
+        margin: 0 auto;
+        padding: 0.5rem 0;
+      }
+    }
+  }
+}
+
 //Styles for the header svg background
 .svg-background {
   position: absolute;

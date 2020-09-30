@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="./css/styles.css" />
-    <title>Mobi Unlocks</title>
+    <title>Mobi Tech Unlocks</title>
   </head>
   <body>
-    <section class="top">
+    <section class="top" id="top">
       <svg
         class="svg-background"
         viewBox="0 0 608 710"
@@ -44,7 +44,7 @@
               alt="Brand Logo"
               class="nav__brand--logo"
             />
-            <a href="./index.html" class="nav__brand--title">mobiunlocks</a>
+            <a href="#top" class="nav__brand--title">mobi tech unlocks</a>
           </div>
         </div>
         <div class="nav__links">
@@ -269,7 +269,7 @@
           </div>
           <div class="header__intro--sub">
             Check and unlock all Apple products, being it carrier or icloud,
-            Mobiunlocks is right here for you. <br />
+            Mobi Tech Unlocks is right here for you. <br />
             Welcome to a new big family.
           </div>
           <div class="header__intro--cta">
@@ -538,12 +538,12 @@
                   <label for="carrier-iphone" data-select="carrier-phone" class="carrier-phone tablet">iPhone</label>
                 </div>
                 <div>
-                  <input type="radio" name="car-phone" id="carrier-ipad" class="carrier-phone u-display-none">                  
+                  <input type="radio" name="car-phone" id="carrier-ipad" class="carrier-phone u-display-none" >                  
                   <label for="carrier-ipad" data-select="carrier-phone" class="carrier-phone tablet">iPad</label>
                 </div>
               </div>
               <div class="form__group">
-                <select class="form__input form__select" id="carrier-model" disabled>
+                <select class="form__input form__select" id="carrier-model" required>
                   <option name="model" value="" class="form__select--option">Select phone model</option>
                   <div class="form__select--iphone">
                     <option name="model" value="iphone4" class="form__select--option">iPhone 4</option>
@@ -572,7 +572,7 @@
                 </select>
               </div>
               <div class="form__group">
-                <select class="form__input form__select" id="carrier-network" disabled>
+                <select class="form__input form__select" id="carrier-network" required>
                   <option name="carrier" value="" class="form__select--option">Choose phone carrier network</option>
                   <option name="carrier" value="at&t" class="form__select--option">AT&T-USA</option>
                   <option name="carrier" value="sprint" class="form__select--option">SPRINT-USA</option>
@@ -584,7 +584,7 @@
                 </select>
               </div>
               <div class="form__group">
-                <input type="number" placeholder="Enter IMEI/SN" id="carrier-imei" class="form__input form__input--number" disabled>
+                <input type="number" maxlength="15" placeholder="Enter IMEI/SN" id="carrier-imei" class="form__input form__input--number" required>
               </div>
               <div class="form__group">
                 <button type="submit" class="btn btn-checkout" disabled>checkout</button>
@@ -595,12 +595,12 @@
             </div>
           </form>
           <form method="POST" class="form form-current form__imei" id="form-imei">
-            <div class="form__selections row-1-of-3" style="height: 50%;">
+            <div class="form__selections row-1-of-3" style="height: 65%;">
               <div class="form__group">
                 <span>Check your IMEI number - <em>*#06#</em></span>
               </div>
               <div class="form__group">
-                <select class="form__input form__select" id="imei-network">
+                <select class="form__input form__select" id="imei-network" required>
                   <option name="carrier" value="" class="form__select--option">Choose phone carrier network</option>
                   <option name="carrier" value="at&t" class="form__select--option">AT&T-USA</option>
                   <option name="carrier" value="sprint" class="form__select--option">SPRINT-USA</option>
@@ -612,7 +612,7 @@
                 </select>
               </div>
               <div class="form__group">
-                <input type="number" placeholder="Enter IMEI/SN" id="imei-imei" class="form__input form__input--number" disabled>
+                <input type="number" maxlength="15" placeholder="Enter IMEI/SN" id="imei-imei" class="form__input form__input--number" required>
               </div>
               <div class="form__group">
                 <button type="submit" class="btn btn-checkout" disabled>checkout</button>
@@ -626,7 +626,7 @@
             <div class="form__selections row-1-of-4">
               <div class="form__group u-flex-even">
                 <div>
-                  <input type="radio" name="unlock-phone" id="unlocking-iphone" class="unlocking-phone u-display-none">                  
+                  <input type="radio" name="unlock-phone" id="unlocking-iphone" class="unlocking-phone u-display-none" >                  
                   <label for="unlocking-iphone" data-select="unlocking-phone" class="unlocking-phone tablet">iPhone</label>
                 </div>
                 <div>
@@ -635,7 +635,7 @@
                 </div>
               </div>
               <div class="form__group">
-                <select class="form__input form__select" id="unlocking-model" disabled>
+                <select class="form__input form__select" id="unlocking-model" required>
                   <option name="model" value="" class="form__select--option">Select phone model</option>
                   <div class="form__select--iphone">
                     <option name="model" value="iphone4" class="form__select--option">iPhone 4</option>
@@ -664,7 +664,7 @@
                 </select>
               </div>
               <div class="form__group">
-                <input type="number" placeholder="Enter IMEI/SN" id="unlocking-imei" class="form__input form__input--number" disabled>
+                <input type="number" maxlength="15" placeholder="Enter IMEI/SN" id="unlocking-imei" class="form__input form__input--number" required>
               </div>
               <div class="form__group">
                 <button type="submit" class="btn btn-checkout" disabled>checkout</button>
@@ -675,6 +675,19 @@
             </div>
           </form>
         </div>
+      </div>
+    </section>
+    <section class="payment" id="section-payment">
+      <!-- 
+        show thw information provided form the form
+        input field for full name
+        input field for email address
+       -->
+      <div class="payment__caution">
+        <ol>
+          <li>Only valid information about the device should be provided before making any payment</li>
+          <li>If any wrong information is provided, there won't be any refund</li>
+        </ol>
       </div>
     </section>
     <section id="section-phones" class="phones"></section>

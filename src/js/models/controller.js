@@ -62,16 +62,10 @@ export const checkHashChange = () => {
     });
 };
 
-export const checkForm = id => {
-    
-};
-
-const disableFields = fields => {
-    fields.forEach(field => {
-        field.disabled = true;
-    })
-};
-
-const enableField = field => {
+export const enableField = field => {
     field.disabled = false;
+};
+
+export const disableField = field => {
+    field.disabled = true;
 };
