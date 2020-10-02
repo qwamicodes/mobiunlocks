@@ -68,4 +68,10 @@ export const enableField = field => {
 
 export const disableField = field => {
     field.disabled = true;
-};
+}
+
+export const showPay = () => {
+    const pay = document.querySelector(elements.payment);
+
+    pay.classList.add('payment-show');
+}

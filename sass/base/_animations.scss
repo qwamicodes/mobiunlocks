@@ -36,3 +36,25 @@
     transform: translatey(-2rem);
   }
 }
+
+@keyframes slidein {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

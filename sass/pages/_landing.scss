@@ -84,30 +84,197 @@ section {
   position: fixed;
   top: 0;
   right: 0;
-  width: 45%;
+  width: 30%;
   height: 100%;
-  z-index: 1000;
-  visibility: visible;
-  background-color: lighten($color-light-black, 5%);
-  opacity: 1;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(10rem, 0);
+  transition: $transition-faster;
 
-  &__caution {
-    width: 100%;
-    background-color: lighten($danger-color, 9%);
+  &-show {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    z-index: 1000;
+    visibility: visible;
+    opacity: 1;
+    transform: translate(0);
+    background-color: $color-white;
+    box-shadow: 0 1px 1px lighten($color-grey-light, 20%),
+      0 2px 2px lighten($color-grey-light, 20%),
+      0 4px 4px lighten($color-grey-light, 20%),
+      0 6px 8px lighten($color-grey-light, 20%),
+      0 8px 16px lighten($color-grey-light, 20%);
+  }
+
+  &-show &__form &__fields {
+    animation: slidein 0.5s ease-in 0.2s backwards;
+  }
+
+  &-show &__form &__info &__info--container {
+    animation: fadein 1s ease-in 0.9s backwards;
+  }
+
+  &-show &__form &__cta {
+    animation: slidein 0.5s ease-in 1s backwards;
+  }
+
+  h3 {
+    font: $prozaLibre-regular;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: $alternate-color;
+    margin-top: 2rem;
+    padding: 0 2rem;
+  }
+
+  &__form {
+    flex: 0 0 85%;
+    @extend %dg;
+    grid-template-rows: 10% 25% 55% 10%;
+    margin-top: 2.5rem;
+  }
+
+  &__fields {
+    width: 90%;
+    margin: 0 auto;
+    box-shadow: $box-shadow-soft;
+    border-radius: 1rem;
+    overflow: hidden;
+
+    &--container {
+      position: relative;
+      @include flexcenter;
+    }
+
+    &--label {
+      position: absolute;
+      top: 43%;
+      left: 13%;
+      font: $prozaLibre-regular;
+      font-size: 1.2rem;
+      transform: translateY(-23px);
+      transition: $transition-faster;
+    }
+
+    &--input {
+      width: 80%;
+      padding: 0.5rem 1rem;
+      font: $prozaLibre-regular;
+      font-size: 1.5rem;
+      color: $color-grey;
+      margin: 0 auto;
+      display: inline-block;
+      border: 0;
+      border-bottom: 1px solid $alternate-color;
+      transition: $transition-faster;
+
+      &:focus {
+        border-bottom: 1px solid $alternate-color;
+      }
+
+      &:valid {
+        border-bottom: 1px solid $success-color;
+      }
+    }
+
+    &--input:placeholder-shown ~ &--label {
+      transform: translateY(0%);
+      opacity: 0;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__info {
+    @include flexcenter;
+
+    &--container {
+      width: 90%;
+      box-shadow: $box-shadow-soft;
+      margin: 0 auto;
+      background-color: $alternate-color;
+      height: 95%;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+  }
+
+  &__pricing {
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
     color: $color-white;
-    font: $nunito-light;
-    font-size: 1.5rem;
+    @extend %df;
+    @extend %dc;
+    border: 0;
+    border-bottom: 1px solid $color-light-black;
+    border-style: dashed;
 
-    ol {
+    &--top {
+      flex: 0 0 30%;
+      @extend %df;
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+
+    &--bottom {
+      @extend %df;
+      align-items: center;
+      justify-content: flex-start;
+      flex: 1;
+    }
+
+    &--title {
+      font: $prozaLibre-regular;
+      font-size: 1.4rem;
+    }
+  }
+
+  &__items {
+    width: 100%;
+    height: 100%;
+    color: $color-light-black;
+    font: $nunito-light;
+    width: 70%;
+    margin: 0 auto;
+
+    &--item {
       @extend %df;
       @extend %dc;
-      @extend %dai;
+      padding: 0.5rem 0;
+    }
 
-      li {
-        width: 70%;
-        margin: 0 auto;
-        padding: 0.5rem 0;
-      }
+    &--main {
+      text-transform: capitalize;
+      font-size: 1.4rem;
+      padding: 0.25rem 0;
+    }
+
+    &--sub {
+      color: $color-white;
+      font: $prozaLibre-regular;
+      font-size: 1.7rem;
+    }
+  }
+
+  &__cta {
+    width: 85%;
+    margin: 0 auto;
+    @extend %df;
+    @extend %dai;
+    justify-content: space-between;
+  }
+
+  &-price {
+    font: $prozaLibre-bold;
+
+    &-big {
+      font-size: 4rem;
+    }
+
+    &-small {
+      font-size: 1.3rem;
+      margin-top: 1.5rem;
     }
   }
 }

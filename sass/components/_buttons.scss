@@ -42,6 +42,14 @@
     }
   }
 
+  &-cancel {
+    background-color: transparent;
+    font: $nunito-light;
+    font-size: 1.3rem;
+    border: none;
+    color: $color-grey-light;
+  }
+
   &-checkout {
     padding: 1.5rem 3rem;
     font: $prozaLibre-regular;

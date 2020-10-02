@@ -66,9 +66,14 @@ document.querySelectorAll(elements.tab).forEach(tab => {
     });
 });
 
-[elements.carrierForm, elements.imeiForm, elements.unlockingForm].forEach(form => {
-    form.addEventListener('submit', e => {
+[elements.carrierForm, elements.imeiForm, elements.unlockingForm].forEach(el => {
+    const form = document.querySelector(el).addEventListener('submit', e => {
         e.preventDefault();
+        //TODO:
+        //grab the values of the form
         
+        //calculate the price 
+        //show the payment section
+        controller.showPay();
     });
 });

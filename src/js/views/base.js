@@ -19,5 +19,7 @@
   unlockingPhone: '.unlocking-phone',
   unlockingModel: '.unlocking-model',
   unlockingNetwork: '.unlocking-network',
-  unlockingImei: '#unlocking-imei',  
+  unlockingImei: '#unlocking-imei',
+  payment: '.payment',
+  paymentPrice: '.payment-price',
 };

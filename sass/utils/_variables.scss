@@ -3,7 +3,7 @@ $primary-color: #ff9a00;
 $secondary-color: #ff5700;
 $accent-color: #3c435a;
 
-$success-color: #3af766;
+$success-color: #10dc60;
 $danger-color: #ff3d51;
 $alternate-color: #5aabe9;
 $basis-color: #f1cf79;
@@ -40,17 +40,17 @@ $big-size: 5rem;
   box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
 }
 
-$box-shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
-  0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
-  0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+$box-shadow-soft: 0 1px 2px rgba(#a1a1a1, 0.07), 0 2px 4px rgba(#a1a1a1, 0.07),
+  0 4px 8px rgba(#a1a1a1, 0.07), 0 8px 16px rgba(#a1a1a1, 0.07),
+  0 16px 32px rgba(#a1a1a1, 0.07), 0 32px 64px rgba(#a1a1a1, 0.07);
 
-$box-shadow-short: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
-  0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11),
-  0 8px 16px rgba(0, 0, 0, 0.11);
+$box-shadow-short: 0 1px 1px rgba(#a1a1a1, 0.07), 0 2px 2px rgba(#a1a1a1, 0.07),
+  0 4px 4px rgba(#a1a1a1, 0.07), 0 6px 8px rgba(#a1a1a1, 0.07),
+  0 8px 16px rgba(#a1a1a1, 0.07);
 
-$box-shadow-long: 0 2px 1px rgba(0, 0, 0, 0.09), 0 4px 2px rgba(0, 0, 0, 0.09),
-  0 8px 4px rgba(0, 0, 0, 0.09), 0 16px 8px rgba(0, 0, 0, 0.09),
-  0 32px 16px rgba(0, 0, 0, 0.09);
+$box-shadow-long: 0 2px 1px rgba(#a1a1a1, 0.07), 0 4px 2px rgba(#a1a1a1, 0.07),
+  0 8px 4px rgba(#a1a1a1, 0.07), 0 16px 8px rgba(#a1a1a1, 0.07),
+  0 32px 16px rgba(#a1a1a1, 0.07);
 
 //Fonts
 $prozaLibre-bold: 2rem/1 "ProzaLibre Bold", Fallback, sans-serif;
