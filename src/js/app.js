@@ -17,6 +17,10 @@ document.querySelectorAll(elements.tab).forEach(tab => {
     });
 });
 
+document.querySelector(elements.cancelPayment).addEventListener('click', () => {
+    controller.hidePay();
+});
+
 //functionality for the various forms
 ['change', 'keyup'].forEach(env => {
     document.querySelector(elements.carrierForm).addEventListener(env, e => {
@@ -67,13 +71,10 @@ document.querySelectorAll(elements.tab).forEach(tab => {
 });
 
 [elements.carrierForm, elements.imeiForm, elements.unlockingForm].forEach(el => {
-    const form = document.querySelector(el).addEventListener('submit', e => {
+    document.querySelector(el).addEventListener('submit', e => {
         e.preventDefault();
         //TODO:
-        //grab the values of the form
-        
-        //calculate the price 
-        //show the payment section
+        //grab the values form the form
         controller.showPay();
     });
 });

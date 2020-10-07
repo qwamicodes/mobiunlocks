@@ -68,10 +68,30 @@ export const enableField = field => {
 
 export const disableField = field => {
     field.disabled = true;
-}
+};
 
 export const showPay = () => {
     const pay = document.querySelector(elements.payment);
 
     pay.classList.add('payment-show');
+};
+
+export const hidePay = () => {
+    const pay = document.querySelector(elements.payment);
+
+    pay.classList.remove('payment-show');
+};
+
+export class Pay {
+    constructor(type, model, network, imei) {
+        this.type = type,
+        this.model = model,
+        this.network = network,
+        this.imei = imei
+    }
+
+    calcPrice () {
+
+        return this;
+    }
 }

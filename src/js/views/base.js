@@ -21,5 +21,6 @@
   unlockingNetwork: '.unlocking-network',
   unlockingImei: '#unlocking-imei',
   payment: '.payment',
+  cancelPayment: '.btn-cancel',
   paymentPrice: '.payment-price',
 };
