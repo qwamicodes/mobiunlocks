@@ -402,11 +402,12 @@ select {
     border: 1px solid rgba(161, 161, 161, 0.5);
     color: #333;
     width: 100%;
-    transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+    transition: all 0.25s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
     .form__input:disabled {
       opacity: 0.5; }
     .form__input:focus {
-      border-color: #5ff399; }
+      border: 1px solid #5aabe9;
+      box-shadow: 0 0 5px #5aabe9; }
     .form__input--number {
       font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
       font-size: 1.5rem; }
@@ -776,6 +777,8 @@ section {
     margin: 0 auto; }
     .payment__items--item {
       padding: 0.5rem 0; }
+      .payment__items--item:first-child > *, .payment__items--item:nth-child(3) > * {
+        text-transform: capitalize; }
     .payment__items--main {
       text-transform: capitalize;
       font-size: 1.4rem;

@@ -32,14 +32,15 @@
     border: 1px solid rgba($color-grey-light, 0.5);
     color: $color-grey-dark;
     width: 100%;
-    transition: $transition-faster;
+    transition: $transition-fastest;
 
     &:disabled {
       opacity: 0.5;
     }
 
     &:focus {
-      border-color: lighten($success-color, 20%);
+      border: 1px solid rgba($alternate-color, 1);
+      box-shadow: 0 0 5px rgba($alternate-color, 1);
     }
 
     &--number {
