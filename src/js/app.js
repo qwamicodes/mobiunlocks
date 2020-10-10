@@ -17,11 +17,12 @@ document.querySelectorAll(elements.tab).forEach(tab => {
     });
 });
 
+//Functionality to terminate the payment process
 document.querySelector(elements.cancelPayment).addEventListener('click', () => {
     controller.hidePay();
 });
 
-//functionality for the various forms
+//Functionality for the changes that happens on the carrier form
 ['change', 'keyup'].forEach(env => {
     document.querySelector(elements.carrierForm).addEventListener(env, e => {
 
@@ -56,7 +57,7 @@ document.querySelector(elements.cancelPayment).addEventListener('click', () => {
     });
 });
 
-
+//Functionality for the changes that happens on the imei form
 ['change', 'keyup'].forEach(env => {
     document.querySelector(elements.imeiForm).addEventListener(env, e => {
 
@@ -73,7 +74,7 @@ document.querySelector(elements.cancelPayment).addEventListener('click', () => {
     });
 });
 
-
+//Functionality for the changes that happens on the unlock form
 ['change', 'keyup'].forEach(env => {
     document.querySelector(elements.unlockingForm).addEventListener(env, e => {
 
@@ -107,6 +108,7 @@ document.querySelector(elements.cancelPayment).addEventListener('click', () => {
     });
 });
 
+//Functionalites for the submit on all the services forms
 [elements.carrierForm, elements.imeiForm, elements.unlockingForm].forEach(el => {
     document.querySelector(el).addEventListener('submit', e => {
         e.preventDefault();
@@ -142,4 +144,19 @@ document.querySelector(elements.cancelPayment).addEventListener('click', () => {
         controller.showPay();
         e.target.reset();
     });
+});
+
+//Functionalities for the payment submit form
+document.querySelector(elements.paymentForm).addEventListener('submit', e => {
+    e.preventDefault();
+
+    //getting the details the form
+    const fullname = e.target.fullname.value;
+    const email = e.target.email.value;
+    const amount = e.target.amount.value;
+    
+    // parse it to the payment starter function
+    controller.preparePayment(fullname, email, amount);
+    //reseting the form
+    e.target.reset();
 });

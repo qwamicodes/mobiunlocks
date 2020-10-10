@@ -1,5 +1,10 @@
 import * as UICtrl from '../views/UICtrl';
 import { elements } from '../views/base';
+import { Payment } from './payment';
+
+export const Data = {
+    invoices : []
+}
 
 export const checkNav = () => {
     window.pageYOffset >= 50 ?
@@ -158,15 +163,42 @@ export class Pay {
             `;
             document.querySelector(elements.paymentItems).innerHTML = html;
         } else if(this.type === 'unlocking') {
-
         } 
    
         document.querySelectorAll(elements.paymentPrice).forEach(el => {
             el.innerHTML = `GHC ${this.price}`;
         });
 
+        document.querySelector('#amount').value = this.price;
+
         const price = this.price.split('.');
         document.querySelector('.payment-price-big').innerHTML = `${price[0]}`;
         document.querySelector('.payment-price-small').innerHTML = `.${price[1]} GHC`;
     }
 }
+
+export const preparePayment = (fullname, email, amount) => {
+    let firstName, lastName;
+
+    //function to split the fullname into first and last name
+    const split = name => {
+        const splited = name.split(' ');
+        if(splited.length <= 2) {
+            firstName = splited[0];
+            if(splited[1]) {
+                lastName = splited[1];
+            } else {
+                lastName = '';
+            }
+        } else {
+            firstName = splited[0];
+            lastName = `${splited[1]} ${splited[2]}`;
+        };
+        return firstName, lastName;
+    };
+
+    split(fullname);
+    
+    //parsing the details into the payment class
+    new Payment(email, amount, firstName, lastName).storeInv().makePayment();
+};

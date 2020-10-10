@@ -25,7 +25,9 @@
   unlockingNetwork: '.unlocking-network',
   unlockingImei: '#unlocking-imei',
   payment: '.payment',
+  paymentForm: '#payment-form',
   cancelPayment: '.btn-cancel',
   paymentPrice: '.payment__price',
-  paymentItems: '.payment__items'
+  paymentItems: '.payment__items',
+  paymentBtn: '#payment-checkout',
 };

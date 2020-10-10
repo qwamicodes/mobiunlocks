@@ -79,6 +79,40 @@ section {
   }
 }
 
+.rules {
+  &__container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  ul {
+    list-style-type: disc;
+
+    > * {
+      display: block;
+    }
+
+    li {
+      font: $nunito-light;
+      font-size: 1.8rem;
+      color: $danger-color;
+      padding: 0.5rem 0;
+    }
+  }
+
+  &__header {
+    font: $prozaLibre-regular;
+    font-size: 1.7rem;
+  }
+
+  &__sub {
+    font: $nunito-light;
+    font-size: 2rem;
+    padding: 1rem 0;
+  }
+}
+
 //Styles for the payment section
 .payment {
   position: fixed;
@@ -283,6 +317,10 @@ section {
       font-size: 1.3rem;
       margin-top: 1.5rem;
     }
+  }
+
+  &-caution {
+    flex: 1;
   }
 }
 

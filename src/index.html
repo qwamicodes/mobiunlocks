@@ -518,6 +518,21 @@
         <div class="title">
           <h4 class="heading heading-secondary">rules we have</h4>
         </div>
+        <div class="rules__container">
+          <ul>
+            <span class="rules__sub">Phone features we support</span>
+            <li>Phones that are clean and active</li>
+            <li>Phones with inactive IMEIs</li>
+            <span class="rules__sub">Phone features we do not support</span>
+            <li>Phones with unpaid bills on it</li>
+            <li>Phones that have been reported as lost or stolen</li>
+            <span class="rules__sub">Note:</span>
+            <li>No refund for wrong model</li>
+            <li>No refund for wrong network</li>
+            <li>No refund for invalid IMEI or Serial number</li>
+            <li>If order been placed or processed, then it can't be canceled</li>
+          </ul>
+        </div>
       </section>
       <section id="section-services" class="services">
         <div class="title">
@@ -721,6 +736,7 @@
           </div>
           <div class="payment__fields--container">
             <input type="email" placeholder="Email address" name="email" id="email" class="payment__fields--input" required>
+            <input type="hidden name="amount" class="u-display-none" id="amount">
             <label for="email" class="payment__fields--label">Email address</label>
           </div>
         </div>
@@ -762,5 +778,8 @@
       </form>
     </section>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script> 
   </body>
 </html>
