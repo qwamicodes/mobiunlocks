@@ -72,7 +72,7 @@ export const popupAlert = (message, type) => {
       const svg = `<ion-icon name="close-outline" size="small"></ion-icon>`;
       return svg;
     } else {
-      const svg = `<ion-icon name="alert-outline" size="small"></ion-icon>`;
+      const svg = `<ion-icon name="information-outline" size="small"></ion-icon>`;
       return svg;
     };
   }
