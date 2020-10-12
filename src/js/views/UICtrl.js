@@ -58,4 +58,42 @@ export const changeForm = loc => {
         document.querySelector(elements.formHolder).style.setProperty('transform', 'translateX(-66.66%)')
       break;
   }
+};
+
+export const popupAlert = (message, type) => {
+  const checkSVG = type => {
+    if(type === 'success') {
+      const svg = `<ion-icon name="checkmark-outline" size="small"></ion-icon>`;
+      return svg;
+    } else if(type === 'warning') {
+      const svg = `<ion-icon name="alert-outline" size="small"></ion-icon>`;
+      return svg;
+    } else if(type === 'error') {
+      const svg = `<ion-icon name="close-outline" size="small"></ion-icon>`;
+      return svg;
+    } else {
+      const svg = `<ion-icon name="alert-outline" size="small"></ion-icon>`;
+      return svg;
+    };
+  }
+  const svg = checkSVG(type);
+
+  let html = `
+    <div class="alert alert-${type}">
+      <div class="alert__top">
+        ${svg}
+        <span>${type}</span>
+      </div>
+      <div class="alert__bottom">${message}</div>
+    </div>
+  `;
+
+  document.querySelector('#main').insertAdjacentHTML('beforeend', html);
+  setTimeout(() => {
+    removePopup();
+  }, 3000);
+};
+
+const removePopup = () => {
+  document.querySelector('.alert').remove();
 }

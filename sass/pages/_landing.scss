@@ -142,7 +142,7 @@ section {
   }
 
   &-show &__form &__fields {
-    animation: slidein 0.5s ease-in 0.2s backwards;
+    animation: slideInLeft 0.5s ease-in 0.2s backwards;
   }
 
   &-show &__form &__info &__info--container {
@@ -150,7 +150,7 @@ section {
   }
 
   &-show &__form &__cta {
-    animation: slidein 0.5s ease-in 1s backwards;
+    animation: slideInLeft 0.5s ease-in 1s backwards;
   }
 
   h3 {
@@ -319,8 +319,24 @@ section {
     }
   }
 
-  &-caution {
+  &__caution {
     flex: 1;
+    background-color: $danger-color;
+    @include flexcenter;
+
+    ul {
+      width: 80%;
+      margin: 0 auto;
+      font: $prozaLibre-regular;
+      color: $color-light-black;
+      font-size: 1.7rem;
+
+      li {
+        font: $nunito-light;
+        font-size: 1.5rem;
+        padding: 0.5rem 0;
+      }
+    }
   }
 }
 

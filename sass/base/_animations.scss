@@ -37,7 +37,7 @@
   }
 }
 
-@keyframes slidein {
+@keyframes slideInLeft {
   0% {
     opacity: 0;
     transform: translateX(10rem);
@@ -46,6 +46,18 @@
   100% {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes slideInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

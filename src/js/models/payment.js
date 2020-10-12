@@ -1,4 +1,5 @@
 import * as controller from './controller';
+import * as UICtrl from '../views/UICtrl';
 import { Data } from './controller';
 
 
@@ -72,16 +73,16 @@ export class Payment {
       ref: this.invoiceID,
       currency: 'GHS',
       onClose: function () {
-        // controller.popupAlert('Window closed.', 'danger', 'portal');
+        UICtrl.popupAlert(`Payment not completed. Please try again`, 'error');
       },
       callback: function (response) {
         // make fetch call to db to create user upon payment
-        // controller.popupAlert(`Payment complete! Reference: ${response.reference}`, 'success', 'portal');
+        UICtrl.popupAlert(`Payment completed! Your payment invoice/reference ID: ${response.reference}`, 'success');
         // controller.checkPayment(response.reference);
       }
     });
 
-    // handler.openIframe();
+    handler.openIframe();
 
     return this;
   }

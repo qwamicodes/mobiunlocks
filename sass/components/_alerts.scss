@@ -1,0 +1,73 @@
+@mixin alertFunc($color) {
+  box-shadow: 0 1px 3px 1px rgba($color, 0.4);
+
+  & > div {
+    ion-icon {
+      border: 0;
+      border-radius: 50%;
+      padding: 1rem;
+      background-color: lighten($color, 20%);
+      color: darken($color, 15%);
+      --ionicon-stroke-width: 7.5rem;
+    }
+
+    span {
+      color: $color;
+      font: $prozaLibre-regular;
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+  }
+}
+
+.alert {
+  position: fixed;
+  top: 15%;
+  right: 2%;
+  z-index: 2000;
+  width: 30rem;
+  height: 13rem;
+  @extend %df;
+  @extend %dc;
+  background-color: $color-white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  animation: slideInTop 0.5s ease-in;
+
+  & > * {
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  &__top {
+    flex: 0 0 40%;
+    @include flexeven;
+    width: 70%;
+    margin: 0 0 0 0.5rem;
+  }
+
+  &__bottom {
+    flex: 1;
+    font: $prozaLibre-regular;
+    font-size: 1.5rem;
+    color: $color-grey-light;
+    @include flexcenter;
+  }
+
+  &-success {
+    @include alertFunc($success-color);
+  }
+
+  &-warning {
+    @include alertFunc($basis-color);
+  }
+
+  &-information {
+    @include alertFunc($alternate-color);
+  }
+
+  &-error {
+    @include alertFunc($danger-color);
+  }
+}
