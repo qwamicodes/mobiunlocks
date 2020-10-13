@@ -931,16 +931,16 @@ section {
         font-size: 1.5rem;
         padding: 0.5rem 0; }
 
-.devices {
-  padding: 0; }
-  .devices__grid {
-    grid-gap: 2rem; }
-  .devices__img img {
-    height: 30rem; }
-  .devices__info h2 {
-    font: 2rem/1 "Nunito Regular", Fallback, sans-serif;
-    font-size: 2rem;
-    margin-top: 1rem; }
+.devices__grid {
+  grid-gap: 2rem; }
+
+.devices__img img {
+  height: 30rem; }
+
+.devices__info h2 {
+  font: 2rem/1 "Nunito Regular", Fallback, sans-serif;
+  font-size: 2rem;
+  margin-top: 1rem; }
 
 .network {
   padding: 0; }

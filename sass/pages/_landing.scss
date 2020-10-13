@@ -342,8 +342,6 @@ section {
 
 //Styles for the phones section
 .devices {
-  padding: 0;
-
   &__grid {
     @extend %dg;
     @extend %col-1-of-4;
