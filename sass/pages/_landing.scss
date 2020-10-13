@@ -340,6 +340,51 @@ section {
   }
 }
 
+//Styles for the phones section
+.devices {
+  padding: 0;
+
+  &__grid {
+    @extend %dg;
+    @extend %col-1-of-4;
+    @extend %row-1-of-2;
+    grid-gap: 2rem;
+  }
+
+  &__container {
+    @include flexcenter;
+    @extend %dc;
+  }
+
+  &__img {
+    img {
+      height: 30rem;
+    }
+  }
+
+  &__info {
+    h2 {
+      font: $nunito-regular;
+      font-size: 2rem;
+      margin-top: 1rem;
+    }
+  }
+}
+
+//Styles for the network section
+.network {
+  padding: 0;
+
+  &__container {
+    @include flexeven;
+    flex-wrap: wrap;
+
+    img {
+      width: 20%;
+    }
+  }
+}
+
 //Styles for the header svg background
 .svg-background {
   position: absolute;
