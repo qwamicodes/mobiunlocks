@@ -111,17 +111,46 @@ export class Pay {
                         this.price =  (470).toFixed(2);
                     };
                 } else if(this.network === 'sprint') {
+                    if(this.model >= 101 && this.model <= 109 ) {
+                        this.price =  (250).toFixed(2);
+                    } else if(this.model >= 110 && this.model <= 113) {
+                        this.price =  (350).toFixed(2);
+                    } else if(this.model >= 114 && this.model <= 118) {
+                        this.price =  (450).toFixed(2);
+                    } else if(this.model >= 119 && this.model <= 122) {
+                        this.price =  (550).toFixed(2);
+                    };
                 } else if(this.network === 'tmobile') {
-                } else if(this.network === '02' || this.network === 'tesco') {
+                } else if(this.network === 'o2' || this.network === 'tesco') {
+                    if(this.model >= 101 && this.model <= 109 ) {
+                        this.price =  (170).toFixed(2);
+                    } else if(this.model >= 110 && this.model <= 113) {
+                        this.price =  (270).toFixed(2);
+                    } else if(this.model >= 114 && this.model <= 118) {
+                        this.price =  (370).toFixed(2);
+                    } else if(this.model >= 119 && this.model <= 122) {
+                        this.price =  (470).toFixed(2);
+                    };
+                } else if(this.network === 'metropcs') {
+                    if(this.model >= 101 && this.model <= 113 ) {
+                        this.price =  (700).toFixed(2);
+                    } else if(this.model >= 114 && this.model <= 122) {
+                        this.price =  (1000).toFixed(2);
+                    };
                 };
-
                 break;
             case 'imei':
                 this.price = (25).toFixed(2);
                 break;
             case 'unlocking':
+                if(this.model >= 106 && this.model <= 115) {
+                    this.price = (800).toFixed(2);
+                } else if(this.model >= 116 && this.model <= 122) {
+                    this.price = (1200).toFixed(2);
+                }
                 break;
         };
+
         return this;
     }
 

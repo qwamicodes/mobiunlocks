@@ -457,7 +457,7 @@ select {
     font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
     font-size: 1.5rem;
     color: #fff;
-    background-color: #009218;
+    background-color: #00c520;
     border: 0; }
     .btn-checkout:disabled {
       opacity: 0.5;
