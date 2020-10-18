@@ -6,6 +6,8 @@
     <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="./css/styles.css" />
     <title>Mobi Tech Unlocks</title>
+    <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
   </head>
   <body>
     <main id="main">
@@ -868,8 +870,79 @@
         </ul>
       </div>
     </section>
-    <section class="footer" id="section-footer"></section>
-    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <section class="footer" id="section-footer">
+      <div class="footer__grid">
+        <div class="footer__form">
+          <div class="footer__title">
+            <h3>want to tell us something</h3>
+          </div>
+          <form method="POST" class="footer__form--container" id="form-footer">
+             <div class="footer__form--group">
+               <input placeholder="Email Address" type="email" name="email" id="footer-email">
+             </div>
+            <div class="footer__form--group">
+              <textarea placeholder="Type a message for the admin..." name="message" id="footer-message"></textarea>
+            </div>
+            <div class="footer__form--group">
+              <button class="btn btn-checkout" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+        <div class="footer__container">
+          <div class="footer__contact">
+            <div class="footer__contact--call">
+              <div class="footer__title">
+                <h3>contact us</h3>
+              </div>
+              <a target="_blank" class="u-margin-top-medium" href="tel:+233203804551">+233 20 380 4551</a>
+            </div>
+            <div class="footer__contact--address">
+              <div class="footer__title">
+                <h3>Locate Us</h3>
+              </div>
+              <a target="_blank" class="u-margin-top-medium" href="https://maps.google.com/maps?q=5.7086710929870605%2C-0.16370800137519836&z=17&hl=en"> Adenta SNIT Flat, Block 9</a>
+              <span data-type="Digital address">GD-009-5964</span>
+            </div>
+          </div>
+          <div class="footer__social">
+            <ul>
+              <li>
+                <a href="#" class="footer__social--btn" type="facebook">
+                  <ion-icon name="logo-facebook" size="small"></ion-icon>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="footer__social--btn" type="whatsapp">
+                  <ion-icon name="logo-whatsapp" size="small"></ion-icon>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="footer__social--btn" type="instagram">
+                  <ion-icon name="logo-instagram" size="small"></ion-icon>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="footer__social--btn" type="twitter">
+                  <ion-icon name="logo-twitter" size="small"></ion-icon>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="footer__social--btn" type="google">
+                  <ion-icon name="logo-google" size="small"></ion-icon>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__copy">
+        <span class=" u-flex-center">2020 &copy; All Rights Reserved</span>
+        <a href="#" class="u-flex-center">privacy policy</a>
+        <a href="#" class="u-flex-center">terms of use</a>
+        <a href="#" class="u-flex-center">cookies</a>
+        <a href="#" class="u-flex-center">Developed by Developers Zone</a>
+      </div>
+    </section>
     <script src="https://js.paystack.co/v1/inline.js"></script> 
   </body>
 </html>

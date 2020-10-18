@@ -1,19 +1,19 @@
-.u-flex-center, .u-flex-even, .u-flex-bottom, .title, .alert, .alert__top, .alert__bottom, .btn, .form, .form__group, .tabs, .header, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .features__title, .services__container, .payment__fields--container, .payment__info, .payment__pricing, .payment__pricing--top, .payment__pricing--bottom, .payment__items--item, .payment__cta, .payment__caution, .devices__container, .network__container {
+.u-flex-center, .u-flex-even, .u-flex-bottom, .title, .alert, .alert__top, .alert__bottom, .btn, .form, .form__group, .tabs, .footer, .footer__container, .footer__contact--call, .footer__contact--address, .footer__social ul, .footer__social--btn, .header, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .features__title, .services__container, .payment__fields--container, .payment__info, .payment__pricing, .payment__pricing--top, .payment__pricing--bottom, .payment__items--item, .payment__cta, .payment__caution, .devices__container, .network__container {
   display: flex; }
 
-.u-flex-center, .u-flex-bottom, .title, .alert__bottom, .form, .nav, .payment__fields--container, .payment__info, .payment__caution, .devices__container {
+.u-flex-center, .u-flex-bottom, .title, .alert__bottom, .form, .footer__social--btn, .nav, .payment__fields--container, .payment__info, .payment__caution, .devices__container {
   justify-content: center; }
 
-.u-flex-even, .alert__top, .btn, .tabs, .nav__brand, .nav__brand--container, .nav__links ul, .features__title, .network__container {
+.u-flex-even, .alert__top, .btn, .tabs, .footer__social ul, .nav__brand, .nav__brand--container, .nav__links ul, .features__title, .network__container {
   justify-content: space-evenly; }
 
-.u-flex-center, .u-flex-even, .u-flex-bottom, .title, .alert__top, .alert__bottom, .btn, .form, .form__group, .tabs, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .features__title, .payment__fields--container, .payment__info, .payment__cta, .payment__caution, .devices__container, .network__container {
+.u-flex-center, .u-flex-even, .u-flex-bottom, .title, .alert__top, .alert__bottom, .btn, .form, .form__group, .tabs, .footer__contact--call, .footer__contact--address, .footer__social ul, .footer__social--btn, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .features__title, .payment__fields--container, .payment__info, .payment__cta, .payment__caution, .devices__container, .network__container {
   align-items: center; }
 
-.u-flex-bottom, .alert, .payment__pricing, .payment__items--item, .devices__container {
+.u-flex-bottom, .alert, .footer, .footer__container, .footer__contact--call, .footer__contact--address, .payment__pricing, .payment__items--item, .devices__container {
   flex-direction: column; }
 
-.col-1-of-2, .col-1-of-3, .col-1-of-4, .col-1-of-5, .row-1-of-2, .row-1-of-3, .row-1-of-4, .row-1-of-5, .row-20-of-80, .row-30-of-70, .top, .features__container, .services__holder, .payment__form, .devices__grid {
+.col-1-of-2, .col-1-of-3, .col-1-of-4, .col-1-of-5, .row-1-of-2, .row-1-of-3, .row-1-of-4, .row-1-of-5, .row-20-of-80, .row-30-of-70, .footer__grid, .footer__form, .footer__contact, .footer__copy, .top, .features__container, .services__holder, .payment__form, .devices__grid {
   display: grid; }
 
 .row-1-of-2, .devices__grid {
@@ -34,7 +34,7 @@
 .row-30-of-70 {
   grid-template-rows: 30% 70%; }
 
-.col-1-of-2 {
+.col-1-of-2, .footer__grid, .footer__contact {
   grid-template-columns: repeat(2, 1fr); }
 
 .col-1-of-3, .features__container, .services__holder {
@@ -612,6 +612,106 @@ select {
   .tablet[aria-sel="true"] {
     background-color: #5aabe9;
     color: #fff; }
+
+.footer {
+  margin-top: 10rem;
+  width: 100%;
+  height: 40rem;
+  background-color: #3c435a; }
+  .footer__title h3 {
+    font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
+    font-size: 2rem;
+    text-transform: capitalize;
+    color: #fff; }
+  .footer__grid {
+    width: 80%;
+    margin: 0 auto;
+    flex: 0 0 85%; }
+  .footer__container {
+    grid-area: 1 / 2 / -1 / -1; }
+  .footer__form {
+    grid-area: 1 / 1 / -1 / 2;
+    grid-template-rows: 20% 80%; }
+    .footer__form--group input {
+      border: 0;
+      background-color: rgba(255, 255, 255, 0.8);
+      font: 2rem/1 "Nunito Regular", Fallback, sans-serif;
+      font-size: 1.7rem;
+      padding: 1rem;
+      width: 35rem;
+      color: #666;
+      margin-bottom: 0.5rem; }
+    .footer__form--group textarea {
+      font: 2rem/1 "Nunito Regular", Fallback, sans-serif;
+      font-size: 1.7rem;
+      color: #666;
+      width: 35rem;
+      height: 12rem;
+      padding: 1rem;
+      border: 0;
+      background-color: rgba(255, 255, 255, 0.8); }
+      .footer__form--group textarea:focus {
+        outline: 0; }
+  .footer__contact {
+    flex: 0 0 60%; }
+    .footer__contact--call a,
+    .footer__contact--call span {
+      font: 2rem/1 "Nunito Light", Fallback, sans-serif;
+      font-size: 1.4rem;
+      color: rgba(255, 255, 255, 0.5);
+      padding: 1rem; }
+    .footer__contact--address a,
+    .footer__contact--address span {
+      font: 2rem/1 "Nunito Light", Fallback, sans-serif;
+      font-size: 1.4rem;
+      color: rgba(255, 255, 255, 0.5);
+      padding: 1rem; }
+  .footer__social {
+    flex: 1; }
+    .footer__social ul li a {
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+      .footer__social ul li a ion-icon {
+        transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+      .footer__social ul li a:hover {
+        background-color: currentColor;
+        border: 1px solid transparent; }
+        .footer__social ul li a:hover ion-icon {
+          color: #fff !important; }
+    .footer__social ul li a[type="facebook"] {
+      color: #3b5998; }
+      .footer__social ul li a[type="facebook"] ion-icon {
+        color: currentColor; }
+    .footer__social ul li a[type="whatsapp"] {
+      color: #25d366; }
+      .footer__social ul li a[type="whatsapp"] ion-icon {
+        color: currentColor; }
+    .footer__social ul li a[type="instagram"] {
+      color: #e1306c; }
+      .footer__social ul li a[type="instagram"] ion-icon {
+        color: currentColor; }
+    .footer__social ul li a[type="twitter"] {
+      color: #1da1f2; }
+      .footer__social ul li a[type="twitter"] ion-icon {
+        color: currentColor; }
+    .footer__social ul li a[type="google"] {
+      color: #db4437; }
+      .footer__social ul li a[type="google"] ion-icon {
+        color: currentColor; }
+    .footer__social--btn {
+      padding: 2rem;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.5); }
+  .footer__copy {
+    background-color: #3c435a;
+    flex: 1;
+    grid-template-columns: 35% 10% 10% 10% 35%;
+    font: 2rem/1 "Nunito Light", Fallback, sans-serif;
+    font-size: 1.2rem;
+    color: #fff; }
+    .footer__copy a {
+      text-transform: capitalize;
+      color: #fff; }
 
 .header {
   grid-area: 1 / 1 / 2 / 2;

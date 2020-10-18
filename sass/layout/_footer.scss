@@ -1,0 +1,189 @@
+.footer {
+  margin-top: 10rem;
+  width: 100%;
+  @extend %df;
+  @extend %dc;
+  height: 40rem;
+  background-color: $accent-color;
+
+  &__title {
+    h3 {
+      font: $prozaLibre-regular;
+      font-size: 2rem;
+      text-transform: capitalize;
+      color: $color-white;
+    }
+  }
+
+  &__grid {
+    width: 80%;
+    margin: 0 auto;
+    flex: 0 0 85%;
+    @extend %dg;
+    @extend %col-1-of-2;
+  }
+
+  &__container {
+    grid-area: 1 / 2 / -1 / -1;
+    @extend %df;
+    @extend %dc;
+  }
+
+  &__form {
+    grid-area: 1 / 1 / -1 / 2;
+    @extend %dg;
+    grid-template-rows: 20% 80%;
+
+    &--group {
+      input {
+        border: 0;
+        background-color: rgba($color-white, 0.8);
+        font: $nunito-regular;
+        font-size: 1.7rem;
+        padding: 1rem;
+        width: 35rem;
+        color: $color-grey;
+        margin-bottom: 0.5rem;
+      }
+
+      textarea {
+        font: $nunito-regular;
+        font-size: 1.7rem;
+        color: $color-grey;
+        width: 35rem;
+        height: 12rem;
+        padding: 1rem;
+        border: 0;
+        background-color: rgba($color-white, 0.8);
+
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+  }
+
+  &__contact {
+    flex: 0 0 60%;
+    @extend %dg;
+    @extend %col-1-of-2;
+
+    &--call {
+      @extend %df;
+      @extend %dc;
+      @extend %dai;
+
+      a,
+      span {
+        font: $nunito-light;
+        font-size: 1.4rem;
+        color: rgba($color-white, 0.5);
+        padding: 1rem;
+      }
+    }
+
+    &--address {
+      @extend %df;
+      @extend %dc;
+      @extend %dai;
+
+      a,
+      span {
+        font: $nunito-light;
+        font-size: 1.4rem;
+        color: rgba($color-white, 0.5);
+        padding: 1rem;
+      }
+    }
+  }
+
+  &__social {
+    flex: 1;
+
+    ul {
+      @include flexeven;
+
+      li {
+        a {
+          border: 1px solid rgba($color-white, 0.5);
+          transition: $transition-faster;
+
+          ion-icon {
+            transition: $transition-faster;
+          }
+
+          &:hover {
+            background-color: currentColor;
+            border: 1px solid transparent;
+
+            ion-icon {
+              color: $color-white !important;
+            }
+          }
+        }
+
+        a[type="facebook"] {
+          color: $facebook-color;
+
+          ion-icon {
+            color: currentColor;
+          }
+        }
+
+        a[type="whatsapp"] {
+          color: $whatsapp-color;
+
+          ion-icon {
+            color: currentColor;
+          }
+        }
+
+        a[type="instagram"] {
+          color: $instagram-color;
+
+          ion-icon {
+            color: currentColor;
+          }
+        }
+
+        a[type="twitter"] {
+          color: $twitter-color;
+
+          ion-icon {
+            color: currentColor;
+          }
+        }
+
+        a[type="google"] {
+          color: $google-color;
+
+          ion-icon {
+            color: currentColor;
+          }
+        }
+      }
+    }
+
+    &--btn {
+      padding: 2rem;
+      border-radius: 50%;
+      border: 1px solid rgba($color-white, 0.5);
+      @include flexcenter;
+    }
+  }
+
+  &__copy {
+    background-color: $accent-color;
+    flex: 1;
+    @extend %dg;
+    grid-template-columns: 35% 10% 10% 10% 35%;
+    font: $nunito-light;
+    font-size: 1.2rem;
+    color: $color-white;
+
+    a {
+      text-transform: capitalize;
+      color: $color-white;
+    }
+  }
+}
