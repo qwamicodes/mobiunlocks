@@ -147,7 +147,7 @@ export class Pay {
                     this.price = (800).toFixed(2);
                 } else if(this.model >= 116 && this.model <= 122) {
                     this.price = (1200).toFixed(2);
-                }
+                };
                 break;
         };
 
