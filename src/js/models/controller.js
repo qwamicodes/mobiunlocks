@@ -191,8 +191,7 @@ export class Pay {
                 </div>
             `;
             document.querySelector(elements.paymentItems).innerHTML = html;
-        } else if(this.type === 'unlocking') {
-        } 
+        };
    
         document.querySelectorAll(elements.paymentPrice).forEach(el => {
             el.innerHTML = `GHC ${this.price}`;
@@ -214,11 +213,13 @@ export const preparePayment = (fullname, email, amount) => {
         const splited = name.split(' ');
         if(splited.length <= 2) {
             firstName = splited[0];
+
             if(splited[1]) {
                 lastName = splited[1];
             } else {
                 lastName = '';
-            }
+            };
+            
         } else {
             firstName = splited[0];
             lastName = `${splited[1]} ${splited[2]}`;

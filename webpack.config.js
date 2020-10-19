@@ -22,6 +22,16 @@ module.exports = {
       filename: 'index.html',
       template: './src/index.html',
     }),
+    new HtmlWebpackPlugin({
+      chunks: ['tracking'],
+      filename: './public/tracking.html',
+      template: './src/tracking.html',
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['dashboard'],
+      filename: './public/dashboard.html',
+      template: './src/dashboard.html',
+    }),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['**/*', '!assets/**', '!fonts/**', '!css/**']
     })
