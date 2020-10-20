@@ -6,12 +6,14 @@ export const Data = {
     invoices : []
 }
 
+//funtion to run when to check if the page height is reach the limit 
 export const checkNav = () => {
     window.pageYOffset >= 50 ?
         UICtrl.changeNavWhite() :
         UICtrl.changeNavTrans();
 };
 
+//funtion to the selection of the tabs 
 export const tabSel = (tab, hash = null) => {
     //TODO:
     //check if hash exists and use the controller
@@ -61,32 +63,38 @@ export const tabSel = (tab, hash = null) => {
     };
 };
 
+//function to chect if there is a hash change
 export const checkHashChange = () => {
     window.addEventListener('hashchange', e => {
         UICtrl.changeForm(location.hash);
     });
 };
 
+//function to enable a field if been passed as a parameter
 export const enableField = field => {
     field.disabled = false;
 };
 
+//function to disenable a field if been passed as a parameter
 export const disableField = field => {
     field.disabled = true;
 };
 
+//function that shows the payment section that pulls from the right side of the page
 export const showPay = () => {
     const pay = document.querySelector(elements.payment);
 
     pay.classList.add('payment-show');
 };
 
+//function that hides the payment section that pulls from the right side of the page
 export const hidePay = () => {
     const pay = document.querySelector(elements.payment);
 
     pay.classList.remove('payment-show');
 };
 
+//The class that take care of the price calc and showing the price on the UI  
 export class Pay {
     constructor(type, model, modelName, network, imei) {
         this.type = type,
@@ -95,8 +103,9 @@ export class Pay {
         this.network = network,
         this.imei = imei
         this.price = (0).toFixed(2);
-    }
-
+    };
+    
+    //Method that takes care of the price calculation
     calcPrice () {
         switch (this.type) {
             case 'carrier':
@@ -152,8 +161,9 @@ export class Pay {
         };
 
         return this;
-    }
+    };
 
+    //Method that takes care of the inserting the price after been calc
     insertPay ()  {
         if(this.type === 'carrier') {
             let html = `
@@ -202,9 +212,10 @@ export class Pay {
         const price = this.price.split('.');
         document.querySelector('.payment-price-big').innerHTML = `${price[0]}`;
         document.querySelector('.payment-price-small').innerHTML = `.${price[1]} GHC`;
-    }
-}
+    };
+};
 
+//function that passes the information neccessary for triggering the paystack payment 
 export const preparePayment = (fullname, email, amount) => {
     let firstName, lastName;
 

@@ -70,3 +70,25 @@
     opacity: 1;
   }
 }
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-1rem);
+  }
+
+  50% {
+    transform: translateY(0em);
+  }
+
+  75% {
+    transform: translateY(1em);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

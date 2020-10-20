@@ -1,0 +1,126 @@
+.tracking {
+  @extend %dg;
+  grid-template-rows: 10% 10% 80%;
+  height: 65.5rem;
+
+  &__back {
+    @include flexeven;
+    background-color: $accent-color;
+    color: $color-white;
+    width: 12rem;
+    height: 5rem;
+    margin: 1rem 0 0 5%;
+    border-radius: 10rem;
+
+    ion-icon {
+    }
+
+    span {
+      text-transform: uppercase;
+      font: $prozaLibre-regular;
+      font-size: 1.7rem;
+    }
+  }
+
+  &__search {
+    width: 60%;
+    @include flexcenter;
+    margin: 0 auto;
+    position: relative;
+    transform: translateY(2rem);
+
+    input {
+      width: 100%;
+      font: $nunito-regular;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      color: $accent-color;
+      padding: 2rem 1.5rem;
+      border: 0;
+      border-radius: 1rem;
+      box-shadow: 0 1px 20px 3px rgba($color-grey, 0.2);
+    }
+  }
+
+  &__demo {
+    background-color: $secondary-color;
+    width: 100%;
+  }
+
+  &__tiles {
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+    @extend %dg;
+    @extend %col-1-of-3;
+  }
+
+  &__tile {
+    border: 0;
+    border-radius: 0.5rem;
+    margin: auto auto;
+    width: 30rem;
+    height: 40rem;
+    overflow: hidden;
+    background-color: $color-white;
+    @extend %dg;
+    grid-template-rows: 60% 10% 20% 10%;
+
+    &:first-child {
+      animation: jump 7.5s ease infinite backwards alternate;
+    }
+
+    &:nth-child(2) {
+      animation: jump 7.5s ease 0.3s infinite backwards alternate;
+    }
+
+    &:last-child {
+      animation: jump 7.5s ease 0.6s infinite backwards alternate;
+    }
+
+    &--heading {
+      text-align: center;
+      font: $prozaLibre-regular;
+      font-size: 1.7rem;
+      color: $accent-color;
+    }
+
+    &--info {
+      text-align: center;
+      font: $nunito-light;
+      font-size: 1.5rem;
+      color: $color-grey;
+      padding: 0 1rem;
+      line-height: 2rem;
+    }
+
+    &--dots {
+      width: 25%;
+      margin: 0 auto;
+      @include flexeven;
+    }
+
+    &--dot {
+      width: 1rem;
+      height: 1rem;
+      border: 1px solid rgba($accent-color, 0.75);
+      border-radius: 50%;
+
+      &-active {
+        background-color: $secondary-color;
+        border-color: $secondary-color;
+      }
+    }
+  }
+
+  &__svg {
+    @include flexcenter;
+
+    &--item {
+      width: 80%;
+
+      svg {
+      }
+    }
+  }
+}

@@ -36,7 +36,7 @@ export const invoiceParser = () => {
 
 export class Payment {
   constructor(email, amount, firstName, lastName) {
-    this.liveKey = '';
+    this.liveKey = 'pk_live_e2c8b27dc18adf75c80952eb1e810baee9771bdc';
     this.invoiceID = invoiceParser();
     this.date = new Date().toLocaleString();
     this.email = email;
@@ -45,7 +45,7 @@ export class Payment {
     this.firstName = firstName;
   }
 
-  //Function to store the invoice
+  //Function to store the invoice with other neccessary infos
   storeInv() {
     Data.invoices.push({
       invoiceID: this.invoiceID,
@@ -58,7 +58,7 @@ export class Payment {
     return this;
   }
 
-  //Function to make payment
+  //Function to make payment to paystack
   makePayment() {
 
     console.log('Payment Class', this);

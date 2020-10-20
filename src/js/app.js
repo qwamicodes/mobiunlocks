@@ -112,8 +112,8 @@ document.querySelector(elements.cancelPayment).addEventListener('click', () => {
 [elements.carrierForm, elements.imeiForm, elements.unlockingForm].forEach(el => {
     document.querySelector(el).addEventListener('submit', e => {
         e.preventDefault();
-        //TODO:
-        //grab the values form the form
+        
+        //grabing the values form the form
         switch (e.target.id) {
             case 'form-carrier':
                 const phoneModel = e.target['carrier-model'].value;
@@ -121,6 +121,7 @@ document.querySelector(elements.cancelPayment).addEventListener('click', () => {
                 const carNetwork = e.target['carrier-network'].value;
                 const carImei = e.target['carrier-imei'].value;
 
+                //parsing the values into the a class that take care of the price and showing to UI
                 new controller.Pay('carrier', phoneModel, modelName, carNetwork, carImei).calcPrice().insertPay();
                 
                 break;
@@ -128,6 +129,7 @@ document.querySelector(elements.cancelPayment).addEventListener('click', () => {
                 const imeiNetwork = e.target['imei-network'].value;
                 const imeiImei = e.target['imei-imei'].value;
 
+                //parsing the values into the a class that take care of the price and showing to UI
                 new controller.Pay('imei', null, null, imeiNetwork, imeiImei).calcPrice().insertPay();
                 
                 break;
@@ -136,12 +138,16 @@ document.querySelector(elements.cancelPayment).addEventListener('click', () => {
                 const modName = e.target['unlocking-model'][e.target['unlocking-model'].selectedIndex].innerText;
                 const unlockingImei = e.target['unlocking-imei'].value;
 
+                //parsing the values into the a class that take care of the price and showing to UI
                 new controller.Pay('unlocking', unlockingModel, modName, null, unlockingImei).calcPrice().insertPay();
                 
             break;
-        }
+        };
 
+        //function to show the payment section 
         controller.showPay();
+
+        //funtion to erase the form data
         e.target.reset();
     });
 });
