@@ -1112,7 +1112,8 @@ section {
     height: 40rem;
     overflow: hidden;
     background-color: #fff;
-    grid-template-rows: 60% 10% 20% 10%; }
+    grid-template-rows: 60% 10% 20% 10%;
+    box-shadow: 0 1px 20px 5px rgba(18, 18, 18, 0.25); }
     .tracking__tile:first-child {
       animation: jump 7.5s ease infinite backwards alternate; }
     .tracking__tile:nth-child(2) {

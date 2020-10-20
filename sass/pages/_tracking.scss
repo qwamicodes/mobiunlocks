@@ -65,6 +65,7 @@
     background-color: $color-white;
     @extend %dg;
     grid-template-rows: 60% 10% 20% 10%;
+    box-shadow: 0 1px 20px 5px rgba($color-dark, 0.25);
 
     &:first-child {
       animation: jump 7.5s ease infinite backwards alternate;
