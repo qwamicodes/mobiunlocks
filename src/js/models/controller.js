@@ -242,4 +242,6 @@ export const preparePayment = (fullname, email, amount) => {
     
     //parsing the details into the payment class
     new Payment(email, amount, firstName, lastName).storeInv().makePayment();
+
+    // adding the task details to the Data
 };

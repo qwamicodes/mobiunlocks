@@ -47,6 +47,10 @@ export class Payment {
 
   //Function to store the invoice with other neccessary infos
   storeInv() {
+    // ! first remove previous invoices from the Data object if any
+    Data.invoices = []; // ? reset invoice
+    // console.log("cleared previous invoice data")
+
     Data.invoices.push({
       invoiceID: this.invoiceID,
       date: this.date,
@@ -78,6 +82,7 @@ export class Payment {
       callback: function (response) {
         // make fetch call to db to create user upon payment
         UICtrl.popupAlert(`Payment completed! Your payment invoice/reference ID: ${response.reference}`, 'success');
+        // ! API CALL TO BACKEND WITH TASK DETAILS STORED IN THE `Data` object.
         // controller.checkPayment(response.reference);
       }
     });
