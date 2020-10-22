@@ -67,7 +67,7 @@ export class Payment {
 
     console.log('Payment Class', this);
     console.log('Invoice', Data.invoices);
-    console.log('Task Detail', Data.taskDetails);
+    console.log('Task Detail', Data.taskDetail);
 
     let handler = PaystackPop.setup({
       key: this.liveKey,

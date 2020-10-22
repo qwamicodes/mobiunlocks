@@ -4,7 +4,7 @@ import { Payment } from './payment';
 
 export const Data = {
     invoices : [],
-    taskDetails : {},
+    taskDetail : {},
 }
 
 //funtion to run when to check if the page height is reach the limit 
@@ -219,15 +219,15 @@ export class Pay {
 
     // ! Method that stores the task details to the Data object
     storeTaskDetails () {
-        Data.taskDetails = {}; // ? reset task details
+        Data.taskDetail = {}; // ? reset task details
 
         // ? insert task details
-        Data.taskDetails.type = this.type;
-        Data.taskDetails.model = this.model;
-        Data.taskDetails.modelName = this.modelName;
-        Data.taskDetails.network = this.network;
-        Data.taskDetails.imei = this.imei;
-        Data.taskDetails.price = this.price;
+        Data.taskDetail.type = this.type;
+        Data.taskDetail.model = this.model;
+        Data.taskDetail.modelName = this.modelName;
+        Data.taskDetail.network = this.network;
+        Data.taskDetail.imei = this.imei;
+        Data.taskDetail.price = this.price;
     };
 };
 
