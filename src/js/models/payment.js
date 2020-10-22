@@ -47,7 +47,7 @@ export class Payment {
 
   //Function to store the invoice with other neccessary infos
   storeInv() {
-    // ! first remove previous invoices from the Data object if any
+    // * first remove previous invoices from the Data object if any
     Data.invoices = []; // ? reset invoice
     // console.log("cleared previous invoice data")
 
@@ -66,7 +66,8 @@ export class Payment {
   makePayment() {
 
     console.log('Payment Class', this);
-    console.log('Data', Data.invoices);
+    console.log('Invoice', Data.invoices);
+    console.log('Task Detail', Data.taskDetails);
 
     let handler = PaystackPop.setup({
       key: this.liveKey,

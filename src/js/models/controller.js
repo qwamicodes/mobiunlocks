@@ -3,7 +3,8 @@ import { elements } from '../views/base';
 import { Payment } from './payment';
 
 export const Data = {
-    invoices : []
+    invoices : [],
+    taskDetails : {},
 }
 
 //funtion to run when to check if the page height is reach the limit 
@@ -212,6 +213,21 @@ export class Pay {
         const price = this.price.split('.');
         document.querySelector('.payment-price-big').innerHTML = `${price[0]}`;
         document.querySelector('.payment-price-small').innerHTML = `.${price[1]} GHC`;
+
+        return this;
+    };
+
+    // ! Method that stores the task details to the Data object
+    storeTaskDetails () {
+        Data.taskDetails = {}; // ? reset task details
+
+        // ? insert task details
+        Data.taskDetails.type = this.type;
+        Data.taskDetails.model = this.model;
+        Data.taskDetails.modelName = this.modelName;
+        Data.taskDetails.network = this.network;
+        Data.taskDetails.imei = this.imei;
+        Data.taskDetails.price = this.price;
     };
 };
 
@@ -243,5 +259,5 @@ export const preparePayment = (fullname, email, amount) => {
     //parsing the details into the payment class
     new Payment(email, amount, firstName, lastName).storeInv().makePayment();
 
-    // adding the task details to the Data
+    // adding the task details to the Data 
 };

@@ -122,7 +122,7 @@ document.querySelector(elements.cancelPayment).addEventListener('click', () => {
                 const carImei = e.target['carrier-imei'].value;
 
                 //parsing the values into the a class that take care of the price and showing to UI
-                new controller.Pay('carrier', phoneModel, modelName, carNetwork, carImei).calcPrice().insertPay();
+                new controller.Pay('carrier', phoneModel, modelName, carNetwork, carImei).calcPrice().insertPay().storeTaskDetails();
                 
                 break;
             case 'form-imei':
@@ -130,7 +130,7 @@ document.querySelector(elements.cancelPayment).addEventListener('click', () => {
                 const imeiImei = e.target['imei-imei'].value;
 
                 //parsing the values into the a class that take care of the price and showing to UI
-                new controller.Pay('imei', null, null, imeiNetwork, imeiImei).calcPrice().insertPay();
+                new controller.Pay('imei', null, null, imeiNetwork, imeiImei).calcPrice().insertPay().storeTaskDetails();
                 
                 break;
             case 'form-unlocking':
@@ -139,7 +139,7 @@ document.querySelector(elements.cancelPayment).addEventListener('click', () => {
                 const unlockingImei = e.target['unlocking-imei'].value;
 
                 //parsing the values into the a class that take care of the price and showing to UI
-                new controller.Pay('unlocking', unlockingModel, modName, null, unlockingImei).calcPrice().insertPay();
+                new controller.Pay('unlocking', unlockingModel, modName, null, unlockingImei).calcPrice().insertPay().storeTaskDetails();
                 
             break;
         };
