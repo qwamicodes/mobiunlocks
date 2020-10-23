@@ -157,7 +157,6 @@ export class Pay {
                 } else if(this.model >= 116 && this.model <= 122) {
                     this.price = (1200).toFixed(2);
                 };
-                ;
                 break;
         };
 
@@ -200,21 +199,6 @@ export class Pay {
                     <span class="payment__items--main">IMEI</span>
                     <span class="payment__items--sub">${this.imei}</span>
                 </div>
-            `;
-            document.querySelector(elements.paymentItems).innerHTML = html;
-        } else if(this.type === 'unlocking' && this.model >= 123) {
-            let html = `
-            <div class="payment__items--item">
-                <span class="payment__items--sub">For iPad iCloud unlocking</span>
-            </div>
-            <div class="payment__items--item">
-                <span class="payment__items--sub">Contact our Admin</span>
-            </div>
-            <div class="payment__items--item">
-                <span class="payment__items--sub">
-                    <a target="_blank" style="color: green" href="tel:+233203804551">+233 20 380 4551</a>
-                </span>
-            </div>
             `;
             document.querySelector(elements.paymentItems).innerHTML = html;
         };
