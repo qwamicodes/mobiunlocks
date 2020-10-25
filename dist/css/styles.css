@@ -1,4 +1,4 @@
-.u-flex-center, .u-flex-even, .u-flex-bottom, .title, .alert, .alert__top, .alert__bottom, .btn, .form, .form__group, .tabs, .footer, .footer__container, .footer__contact--call, .footer__contact--address, .footer__social ul, .footer__social--btn, .header, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .features__title, .services__container, .payment__fields--container, .payment__info, .payment__pricing, .payment__pricing--top, .payment__pricing--bottom, .payment__items--item, .payment__cta, .payment__caution, .devices__container, .network__container, .tracking__back, .tracking__search, .tracking__tile--dots, .tracking__svg {
+.u-flex-center, .u-flex-even, .u-flex-bottom, .title, .alert, .alert__top, .alert__bottom, .btn, .form, .form__group, .tabs, .footer, .footer__container, .footer__contact--call, .footer__contact--address, .footer__social ul, .footer__social--btn, .header, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav, .features__title, .services__container, .payment__fields--container, .payment__info, .payment__pricing, .payment__pricing--top, .payment__pricing--bottom, .payment__items--item, .payment__cta, .payment__caution, .devices__container, .network__container, .tracking__back, .tracking__search, .tracking__tile--dots, .tracking__svg {
   display: flex; }
 
 .u-flex-center, .u-flex-bottom, .title, .alert__bottom, .form, .footer__social--btn, .nav, .payment__fields--container, .payment__info, .payment__caution, .devices__container, .tracking__search, .tracking__svg {
@@ -13,7 +13,7 @@
 .u-flex-bottom, .alert, .footer, .footer__container, .footer__contact--call, .footer__contact--address, .payment__pricing, .payment__items--item, .devices__container {
   flex-direction: column; }
 
-.col-1-of-2, .col-1-of-3, .col-1-of-4, .col-1-of-5, .row-1-of-2, .row-1-of-3, .row-1-of-4, .row-1-of-5, .row-20-of-80, .row-30-of-70, .footer__grid, .footer__form, .footer__contact, .footer__copy, .top, .features__container, .services__holder, .payment__form, .devices__grid, .tracking, .tracking__tiles, .tracking__tile {
+.col-1-of-2, .col-1-of-3, .col-1-of-4, .col-1-of-5, .row-1-of-2, .row-1-of-3, .row-1-of-4, .row-1-of-5, .row-20-of-80, .row-30-of-70, .footer__grid, .footer__form, .footer__contact, .footer__copy, .dashboard, .top, .features__container, .services__holder, .payment__form, .devices__grid, .tracking, .tracking__tiles, .tracking__tile {
   display: grid; }
 
 .row-1-of-2, .devices__grid {
@@ -821,6 +821,24 @@ g {
   .nav__scrolled {
     box-shadow: 0 1px 20px 10px rgba(161, 161, 161, 0.2);
     background-color: #fff; }
+
+.dashboard {
+  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr); }
+  .dashboard__nav {
+    grid-area: 1 / 2 / 2 / -1; }
+  .dashboard__aside {
+    background-color: #121212;
+    grid-area: 1 / 1 / -1 / 2; }
+  .dashboard__main {
+    background-color: #f0b41e;
+    grid-area: 2 / 2 / -1 / 10; }
+  .dashboard__account {
+    background-color: #009218;
+    grid-area: 2 / 10 / -1 / -1; }
 
 section {
   padding-top: 5rem;

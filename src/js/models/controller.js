@@ -201,6 +201,39 @@ export class Pay {
                 </div>
             `;
             document.querySelector(elements.paymentItems).innerHTML = html;
+        } else if(this.type === 'unlocking') {
+            if(this.model >= 123) {
+                let html = `
+                    <div class="payment__items--item">
+                        <span class="payment__items--sub">For All iPad iCloud unlocking</span>
+                    </div>
+                    <div class="payment__items--item">
+                        <span class="payment__items--sub">Please contact Admin</span>
+                    </div>
+                    <div class="payment__items--item">
+                        <span class="payment__items--sub">
+                            <a target="_blank" style="color: brown" href="tel:+233203804551">+233 20 380 4551</a>
+                        </span>
+                    </div>
+                `;
+                document.querySelector(elements.paymentItems).innerHTML = html;
+            } else {
+                let html = `
+                    <div class="payment__items--item">
+                        <span class="payment__items--main">type</span>
+                        <span class="payment__items--sub">${this.type}</span>
+                    </div>
+                    <div class="payment__items--item">
+                        <span class="payment__items--main">carrier</span>
+                        <span class="payment__items--sub">${this.modelName}</span>
+                    </div>
+                    <div class="payment__items--item">
+                        <span class="payment__items--main">IMEI</span>
+                        <span class="payment__items--sub">${this.imei}</span>
+                    </div>
+                `;
+                document.querySelector(elements.paymentItems).innerHTML = html;
+            };
         };
    
         document.querySelectorAll(elements.paymentPrice).forEach(el => {

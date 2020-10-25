@@ -1,2 +1,42 @@
 .dashboard {
+  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
+  @extend %dg;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+
+  &__nav {
+    grid-area: 1 / 2 / 2 / -1;
+    @extend %df;
+
+    &__title {
+      h3 {
+      }
+    }
+
+    &__icons {
+      &--container {
+      }
+
+      &--search,
+      &--notification {
+      }
+    }
+  }
+
+  &__aside {
+    background-color: $color-dark;
+    grid-area: 1 / 1 / -1 / 2;
+  }
+
+  &__main {
+    background-color: $basis-color;
+    grid-area: 2 / 2 / -1 / 10;
+  }
+
+  &__account {
+    background-color: $success-color;
+    grid-area: 2 / 10 / -1 / -1;
+  }
 }
