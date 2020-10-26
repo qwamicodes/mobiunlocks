@@ -81,10 +81,10 @@ export class Payment {
         UICtrl.popupAlert(`Payment not completed. Please try again`, 'error');
       },
       callback: function (response) {
-        // make fetch call to db to create user upon payment
+        // controller.checkPayment(response.reference);
         UICtrl.popupAlert(`Payment completed! Your payment invoice/reference ID: ${response.reference}`, 'success');
         // ! API CALL TO BACKEND WITH TASK DETAILS STORED IN THE `Data` object.
-        // controller.checkPayment(response.reference);
+        
       }
     });
 
