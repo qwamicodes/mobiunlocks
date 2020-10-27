@@ -1,6 +1,1 @@
-<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g id="search">
-        <circle id="Ellipse 1" cx="5" cy="5" r="4.5" stroke="black"/>
-        <line id="Line 1" x1="8.35355" y1="8.64645" x2="11.3536" y2="11.6464" stroke="black"/>
-    </g>
-</svg>
+<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><title>Search</title><path d='M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z' fill='none' stroke='currentColor' stroke-miterlimit='10' stroke-width='32'/><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-miterlimit='10' stroke-width='32' d='M338.29 338.29L448 448'/></svg>
