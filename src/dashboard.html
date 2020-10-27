@@ -33,18 +33,41 @@
           <img src="../assets/img/logo.webp" alt="Brand Logo">
         </div>
         <div class="dashboard__aside--icons">
-          <svg class="dashboard__aside--icons-dashboard" width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g id="dashboard">
-              <circle id="Ellipse 1" cx="3.5" cy="4.5" r="2" stroke="black"/>
-              <circle id="Ellipse 4" cx="12.5" cy="12.5" r="2" stroke="black"/>
-              <circle id="Ellipse 2" cx="4" cy="13" r="3.5" stroke="black"/>
-              <circle id="Ellipse 3" cx="12" cy="4" r="3.5" stroke="black"/>
-            </g>
-          </svg>
+          <div class="dashboard__aside--icons-dashboard dashboard__aside--icons-active">
+            <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="dashboard">
+                <circle id="Ellipse 1" cx="3.5" cy="4.5" r="2" stroke="currentColor"/>
+                <circle id="Ellipse 4" cx="12.5" cy="12.5" r="2" stroke="currentColor"/>
+                <circle id="Ellipse 2" cx="4" cy="13" r="3.5" stroke="currentColor"/>
+                <circle id="Ellipse 3" cx="12" cy="4" r="3.5" stroke="currentColor"/>
+              </g>
+            </svg>
+          </div>
+          <div class='dashboard__aside--icons-task'>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+            <path d='M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/>
+            <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M48 256h112l48-96 48 160 48-96 32 64h128'/>
+            </svg>
+          </div>
+          <div class='dashboard__aside--icons-wallet'>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+              <rect x='48' y='144' width='416' height='288' rx='48' ry='48' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='32'/>
+              <path d='M411.36 144v-30A50 50 0 00352 64.9L88.64 109.85A50 50 0 0048 159v49' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='32'/>
+              <path d='M368 320a32 32 0 1132-32 32 32 0 01-32 32z'/>
+            </svg>
+          </div>
         </div>
       </div>
       <div class="dashboard__main"></div>
-      <div class="dashboard__account"></div> 
+      <div class="dashboard__account">
+        <div class="dashboard__account--profile">
+          <div class="dashboard__account--profile-name">
+            <span>Hello,</span><br>
+            <h3>Tony Ocran</h3>
+          </div>
+          <img src="./assets/img/avatar.webp" alt="Avatar" class="dashboard__account--img">
+        </div>
+      </div> 
     </main>
   </body>
 </html>

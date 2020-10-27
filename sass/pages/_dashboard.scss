@@ -51,14 +51,38 @@
   &__aside {
     grid-area: 1 / 1 / -1 / 2;
     @extend %dg;
-    grid-template-rows: 20% 50%;
+    grid-template-rows: 20% 10% 30%;
 
     &--img {
       grid-row: 1 / 2;
       @include flexcenter;
 
       img {
-        width: 80%;
+        width: 60%;
+      }
+    }
+
+    &--icons {
+      grid-area: 3 / 1 / 4 / 2;
+      width: 100%;
+      height: 100%;
+      @include flexbottom;
+
+      div {
+        margin: 2rem 0;
+        cursor: pointer;
+
+        &[class="dashboard__aside--icons-active"] {
+          svg {
+            color: $accent-color;
+          }
+        }
+
+        svg {
+          color: $color-grey;
+          width: 3rem;
+          height: 3rem;
+        }
       }
     }
   }
@@ -69,7 +93,20 @@
   }
 
   &__account {
-    background-color: $success-color;
     grid-area: 2 / 10 / -1 / -1;
+    @extend %dg;
+    grid-template-rows: 20% 30% 10%;
+
+    &--profile {
+      background-color: $alternate-color;
+    }
+
+    &--details {
+      background-color: $secondary-color;
+    }
+
+    &--logout {
+      background-color: $color-grey-light;
+    }
   }
 }
