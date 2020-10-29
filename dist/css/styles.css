@@ -1,22 +1,22 @@
-.u-flex-center, .u-flex-even, .u-flex-bottom, .title, .alert, .alert__top, .alert__bottom, .btn, .form, .form__group, .tabs, .footer, .footer__container, .footer__contact--call, .footer__contact--address, .footer__social ul, .footer__social--btn, .header, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav--title, .dashboard__nav--icons, .dashboard__nav--icons-container, .dashboard__aside--img, .features__title, .services__container, .payment__fields--container, .payment__info, .payment__pricing, .payment__pricing--top, .payment__pricing--bottom, .payment__items--item, .payment__cta, .payment__caution, .devices__container, .network__container, .tracking__back, .tracking__search, .tracking__tile--dots, .tracking__svg {
+.u-flex-center, .u-flex-even, .u-flex-bottom, .title, .alert, .alert__top, .alert__bottom, .btn, .form, .form__group, .tabs, .footer, .footer__container, .footer__contact--call, .footer__contact--address, .footer__social ul, .footer__social--btn, .header, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav--title, .dashboard__nav--icons, .dashboard__nav--icons-container, .dashboard__aside--img, .dashboard__aside--icons, .dashboard__account--profile, .dashboard__account--profile-name, .dashboard__account--profile-img, .dashboard__account--details *, .dashboard__account--logout, .dashboard__card *, .dashboard__tasks--heading ul, .dashboard__tasks--heading, .features__title, .services__container, .payment__fields--container, .payment__info, .payment__pricing, .payment__pricing--top, .payment__pricing--bottom, .payment__items--item, .payment__cta, .payment__caution, .devices__container, .network__container, .tracking__back, .tracking__search, .tracking__tile--dots, .tracking__svg {
   display: flex; }
 
-.u-flex-center, .u-flex-bottom, .title, .alert__bottom, .form, .footer__social--btn, .nav, .dashboard__nav--icons-container, .dashboard__aside--img, .payment__fields--container, .payment__info, .payment__caution, .devices__container, .tracking__search, .tracking__svg {
+.u-flex-center, .u-flex-bottom, .title, .alert__bottom, .form, .footer__social--btn, .nav, .dashboard__nav--icons-container, .dashboard__aside--img, .dashboard__aside--icons, .dashboard__account--profile, .dashboard__account--profile-name, .dashboard__account--profile-img, .dashboard__card *, .payment__fields--container, .payment__info, .payment__caution, .devices__container, .tracking__search, .tracking__svg {
   justify-content: center; }
 
-.u-flex-even, .alert__top, .btn, .tabs, .footer__social ul, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav--icons, .features__title, .network__container, .tracking__back, .tracking__tile--dots {
+.u-flex-even, .alert__top, .btn, .tabs, .footer__social ul, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav--icons, .dashboard__account--logout, .dashboard__tasks--heading ul, .dashboard__tasks--heading, .features__title, .network__container, .tracking__back, .tracking__tile--dots {
   justify-content: space-evenly; }
 
-.u-flex-center, .u-flex-even, .u-flex-bottom, .title, .alert__top, .alert__bottom, .btn, .form, .form__group, .tabs, .footer__contact--call, .footer__contact--address, .footer__social ul, .footer__social--btn, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav--title, .dashboard__nav--icons, .dashboard__nav--icons-container, .dashboard__aside--img, .features__title, .payment__fields--container, .payment__info, .payment__cta, .payment__caution, .devices__container, .network__container, .tracking__back, .tracking__search, .tracking__tile--dots, .tracking__svg {
+.u-flex-center, .u-flex-even, .u-flex-bottom, .title, .alert__top, .alert__bottom, .btn, .form, .form__group, .tabs, .footer__contact--call, .footer__contact--address, .footer__social ul, .footer__social--btn, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav--title, .dashboard__nav--icons, .dashboard__nav--icons-container, .dashboard__aside--img, .dashboard__aside--icons, .dashboard__account--profile, .dashboard__account--profile-img, .dashboard__account--logout, .dashboard__card *, .dashboard__tasks--heading ul, .dashboard__tasks--heading, .features__title, .payment__fields--container, .payment__info, .payment__cta, .payment__caution, .devices__container, .network__container, .tracking__back, .tracking__search, .tracking__tile--dots, .tracking__svg {
   align-items: center; }
 
-.u-flex-bottom, .alert, .footer, .footer__container, .footer__contact--call, .footer__contact--address, .payment__pricing, .payment__items--item, .devices__container {
+.u-flex-bottom, .alert, .footer, .footer__container, .footer__contact--call, .footer__contact--address, .dashboard__aside--icons, .dashboard__account--profile-name, .dashboard__account--details *, .payment__pricing, .payment__items--item, .devices__container {
   flex-direction: column; }
 
-.col-1-of-2, .col-1-of-3, .col-1-of-4, .col-1-of-5, .row-1-of-2, .row-1-of-3, .row-1-of-4, .row-1-of-5, .row-20-of-80, .row-30-of-70, .footer__grid, .footer__form, .footer__contact, .footer__copy, .dashboard, .dashboard__nav, .dashboard__aside, .top, .features__container, .services__holder, .payment__form, .devices__grid, .tracking, .tracking__tiles, .tracking__tile {
+.col-1-of-2, .col-1-of-3, .col-1-of-4, .col-1-of-5, .row-1-of-2, .row-1-of-3, .row-1-of-4, .row-1-of-5, .row-20-of-80, .row-30-of-70, .footer__grid, .footer__form, .footer__contact, .footer__copy, .dashboard, .dashboard__nav, .dashboard__aside, .dashboard__dashboard, .dashboard__account, .dashboard__account--details, .dashboard__card, .dashboard__tasks, .dashboard__tasks--value-heading, .dashboard__tasks--item, .top, .features__container, .services__holder, .payment__form, .devices__grid, .tracking, .tracking__tiles, .tracking__tile {
   display: grid; }
 
-.row-1-of-2, .devices__grid {
+.row-1-of-2, .dashboard__dashboard, .dashboard__account--details, .devices__grid {
   grid-template-rows: repeat(2, 1fr); }
 
 .row-1-of-3 {
@@ -34,7 +34,7 @@
 .row-30-of-70 {
   grid-template-rows: 30% 70%; }
 
-.col-1-of-2, .footer__grid, .footer__contact {
+.col-1-of-2, .footer__grid, .footer__contact, .dashboard__dashboard, .dashboard__account--details, .dashboard__card {
   grid-template-columns: repeat(2, 1fr); }
 
 .col-1-of-3, .features__container, .services__holder, .tracking__tiles {
@@ -474,6 +474,13 @@ select {
     .btn-checkout:disabled {
       opacity: 0.5;
       cursor: not-allowed; }
+  .btn-view {
+    background-color: #f0b41e;
+    color: #fff !important;
+    font-size: 1.5rem !important;
+    border: 0;
+    border-radius: 5px;
+    padding: 1rem 2rem; }
 
 .card {
   border: 1px solid rgba(60, 67, 90, 0.5);
@@ -854,17 +861,223 @@ g {
         color: #a1a1a1; }
   .dashboard__aside {
     grid-area: 1 / 1 / -1 / 2;
-    grid-template-rows: 20% 50%; }
+    grid-template-rows: 20% 10% 30%; }
     .dashboard__aside--img {
       grid-row: 1 / 2; }
       .dashboard__aside--img img {
-        width: 80%; }
+        width: 60%; }
+    .dashboard__aside--icons {
+      grid-area: 3 / 1 / 4 / 2;
+      width: 100%;
+      height: 100%; }
+      .dashboard__aside--icons div {
+        margin: 2rem 0;
+        cursor: pointer; }
+        .dashboard__aside--icons div[class="dashboard__aside--icons-active"] svg {
+          color: #3c435a; }
+        .dashboard__aside--icons div svg {
+          color: #666;
+          width: 3rem;
+          height: 3rem; }
   .dashboard__main {
-    background-color: #f0b41e;
+    width: 100%;
+    height: 100%;
+    background-color: #fafafa;
+    border-radius: 1rem;
     grid-area: 2 / 2 / -1 / 10; }
+  .dashboard__dashboard {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    grid-gap: 2rem; }
   .dashboard__account {
-    background-color: #009218;
-    grid-area: 2 / 10 / -1 / -1; }
+    grid-area: 2 / 10 / -1 / -1;
+    grid-template-rows: 35% 35% 10%; }
+    .dashboard__account--profile {
+      width: 100%; }
+      .dashboard__account--profile-name {
+        flex: 0 0 60%; }
+        .dashboard__account--profile-name * {
+          margin-left: 10%; }
+        .dashboard__account--profile-name span {
+          font: 2rem/1 "Nunito Light", Fallback, sans-serif;
+          font-size: 2.3rem; }
+        .dashboard__account--profile-name h3 {
+          font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
+          font-size: 2.5rem;
+          font-weight: 500;
+          color: #3c435a; }
+      .dashboard__account--profile-img {
+        flex: 1;
+        width: 100%;
+        height: 100%; }
+        .dashboard__account--profile-img img {
+          width: 80%;
+          border-radius: 50%; }
+    .dashboard__account--details * {
+      width: 90%;
+      height: 100%;
+      margin: 0 auto; }
+      .dashboard__account--details * h3 {
+        font: 2rem/1 "Nunito Light", Fallback, sans-serif;
+        font-size: 1.6rem;
+        text-transform: capitalize;
+        color: #a1a1a1; }
+      .dashboard__account--details * span {
+        font: 2rem/1 "ProzaLibre Semi Bold", Fallback, sans-serif;
+        font-size: 3rem;
+        color: #3c435a;
+        align-self: center;
+        width: 50%; }
+    .dashboard__account--details-total {
+      position: relative; }
+      .dashboard__account--details-total span:before {
+        color: #882a88;
+        content: "";
+        display: inline-block;
+        position: absolute;
+        left: 20%;
+        top: 50%;
+        height: 25%;
+        width: 2px;
+        background-color: currentColor; }
+    .dashboard__account--details-completed {
+      position: relative; }
+      .dashboard__account--details-completed span:before {
+        color: #009218;
+        content: "";
+        display: inline-block;
+        position: absolute;
+        left: 20%;
+        top: 50%;
+        height: 25%;
+        width: 2px;
+        background-color: currentColor; }
+    .dashboard__account--details-pending {
+      position: relative; }
+      .dashboard__account--details-pending span:before {
+        color: #f0b41e;
+        content: "";
+        display: inline-block;
+        position: absolute;
+        left: 20%;
+        top: 50%;
+        height: 25%;
+        width: 2px;
+        background-color: currentColor; }
+    .dashboard__account--details-errors {
+      position: relative; }
+      .dashboard__account--details-errors span:before {
+        color: #ff3d51;
+        content: "";
+        display: inline-block;
+        position: absolute;
+        left: 20%;
+        top: 50%;
+        height: 25%;
+        width: 2px;
+        background-color: currentColor; }
+    .dashboard__account--logout {
+      font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
+      font-size: 1.6rem;
+      color: #3c435a;
+      text-transform: capitalize;
+      cursor: pointer;
+      width: 40%;
+      margin: 0 auto;
+      letter-spacing: 1.5px; }
+      .dashboard__account--logout svg {
+        width: 3rem;
+        height: 3rem; }
+  .dashboard__card {
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(161, 161, 161, 0.07), 0 2px 2px rgba(161, 161, 161, 0.07), 0 4px 4px rgba(161, 161, 161, 0.07), 0 6px 8px rgba(161, 161, 161, 0.07), 0 8px 16px rgba(161, 161, 161, 0.07);
+    border-radius: 1rem;
+    overflow: hidden;
+    width: 80%;
+    height: 90%;
+    margin: auto auto;
+    grid-template-rows: 30% 50% 20%; }
+    .dashboard__card * {
+      font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif; }
+    .dashboard__card--value {
+      color: #3c435a;
+      font-size: 6rem;
+      grid-area: 1 / 1 / -1 / 2; }
+    .dashboard__card--title {
+      color: #f0b41e;
+      font-size: 1.8rem;
+      grid-area: 1 / 2 / 2 / -1; }
+    .dashboard__card--description {
+      color: #5aabe9;
+      font-size: 1.8rem;
+      grid-area: 2 / 2 / 3 / -1;
+      width: 80%;
+      margin: 0 auto;
+      line-height: 2.2rem;
+      text-align: center; }
+    .dashboard__card--cta {
+      font-size: 1.2rem;
+      color: #5aabe9 !important;
+      grid-area: 3 / 2 / -1 / -1; }
+  .dashboard__tasks {
+    width: 100%;
+    height: 100%;
+    grid-template-rows: 10% 90%; }
+    .dashboard__tasks--heading {
+      width: 100%;
+      height: 100%;
+      grid-area: 1 / 1 / 2 / 2; }
+      .dashboard__tasks--heading ul {
+        width: 100%;
+        height: 100%; }
+    .dashboard__tasks--tab {
+      text-transform: uppercase;
+      font: 2rem/1 "Nunito Light", Fallback, sans-serif;
+      font-size: 1.8rem;
+      padding: 1rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      border: 1px solid rgba(60, 67, 90, 0.4); }
+      .dashboard__tasks--tab-active {
+        background-color: #3c435a;
+        color: #fff; }
+    .dashboard__tasks--value {
+      grid-area: 2 / 1 / 3 / 2;
+      width: 100%;
+      height: 100%;
+      max-height: 100%;
+      margin-top: 5%; }
+      .dashboard__tasks--value ul {
+        width: 95%;
+        height: 100%;
+        margin: 0 auto; }
+      .dashboard__tasks--value-li {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid rgba(102, 102, 102, 0.47); }
+      .dashboard__tasks--value-heading {
+        width: 100%;
+        grid-template-columns: 15% 15% 15% 20% 15% 10%;
+        font: 2rem/1 "Nunito Light", Fallback, sans-serif;
+        font-size: 1.5rem; }
+    .dashboard__tasks--heading {
+      width: 100%;
+      font: 2rem/1 "Nunito Light", Fallback, sans-serif;
+      font: 1.6rem;
+      color: #a1a1a1; }
+    .dashboard__tasks--item {
+      grid-template-columns: 15% 15% 15% 30% 15% 10%;
+      cursor: pointer; }
+      .dashboard__tasks--item li {
+        font: 2rem/1 "ProzaLibre Italic", Fallback, sans-serif;
+        font-size: 1.6rem;
+        color: #3c435a;
+        width: 100%;
+        height: 100%; }
+        .dashboard__tasks--item li[data-type="pending"] {
+          color: #f0b41e; }
+        .dashboard__tasks--item li[data-type="completed"] {
+          color: #009218; }
 
 section {
   padding-top: 5rem;

@@ -51,25 +51,356 @@
   &__aside {
     grid-area: 1 / 1 / -1 / 2;
     @extend %dg;
-    grid-template-rows: 20% 50%;
+    grid-template-rows: 20% 10% 30%;
 
     &--img {
       grid-row: 1 / 2;
       @include flexcenter;
 
       img {
-        width: 80%;
+        width: 60%;
+      }
+    }
+
+    &--icons {
+      grid-area: 3 / 1 / 4 / 2;
+      width: 100%;
+      height: 100%;
+      @include flexbottom;
+
+      div {
+        margin: 2rem 0;
+        cursor: pointer;
+
+        &[class="dashboard__aside--icons-active"] {
+          svg {
+            color: $accent-color;
+          }
+        }
+
+        svg {
+          color: $color-grey;
+          width: 3rem;
+          height: 3rem;
+        }
       }
     }
   }
 
   &__main {
-    background-color: $basis-color;
+    width: 100%;
+    height: 100%;
+    background-color: lighten($color-grey-light, 35%);
+    border-radius: 1rem;
     grid-area: 2 / 2 / -1 / 10;
   }
 
+  &__dashboard {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    @extend %dg;
+    @extend %col-1-of-2;
+    @extend %row-1-of-2;
+    grid-gap: 2rem;
+  }
+
   &__account {
-    background-color: $success-color;
     grid-area: 2 / 10 / -1 / -1;
+    @extend %dg;
+    grid-template-rows: 35% 35% 10%;
+
+    &--profile {
+      @include flexcenter;
+      width: 100%;
+
+      &-name {
+        flex: 0 0 60%;
+        @extend %df;
+        @extend %djc;
+        @extend %dc;
+
+        * {
+          margin-left: 10%;
+        }
+
+        span {
+          font: $nunito-light;
+          font-size: 2.3rem;
+        }
+
+        h3 {
+          font: $prozaLibre-regular;
+          font-size: 2.5rem;
+          font-weight: 500;
+          color: $accent-color;
+        }
+      }
+
+      &-img {
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        @include flexcenter;
+
+        img {
+          width: 80%;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    &--details {
+      @extend %dg;
+      @extend %col-1-of-2;
+      @extend %row-1-of-2;
+
+      * {
+        width: 90%;
+        height: 100%;
+        @extend %df;
+        @extend %dc;
+        margin: 0 auto;
+
+        h3 {
+          font: $nunito-light;
+          font-size: 1.6rem;
+          text-transform: capitalize;
+          color: $color-grey-light;
+        }
+
+        span {
+          font: $prozaLibre-semibold;
+          font-size: 3rem;
+          color: $accent-color;
+          align-self: center;
+          width: 50%;
+        }
+      }
+
+      &-total {
+        position: relative;
+
+        span:before {
+          color: #882a88;
+          content: "";
+          display: inline-block;
+          position: absolute;
+          left: 20%;
+          top: 50%;
+          height: 25%;
+          width: 2px;
+          background-color: currentColor;
+        }
+      }
+
+      &-completed {
+        position: relative;
+
+        span:before {
+          color: $success-color;
+          content: "";
+          display: inline-block;
+          position: absolute;
+          left: 20%;
+          top: 50%;
+          height: 25%;
+          width: 2px;
+          background-color: currentColor;
+        }
+      }
+
+      &-pending {
+        position: relative;
+
+        span:before {
+          color: $basis-color;
+          content: "";
+          display: inline-block;
+          position: absolute;
+          left: 20%;
+          top: 50%;
+          height: 25%;
+          width: 2px;
+          background-color: currentColor;
+        }
+      }
+
+      &-errors {
+        position: relative;
+
+        span:before {
+          color: $danger-color;
+          content: "";
+          display: inline-block;
+          position: absolute;
+          left: 20%;
+          top: 50%;
+          height: 25%;
+          width: 2px;
+          background-color: currentColor;
+        }
+      }
+    }
+
+    &--logout {
+      @include flexeven;
+      font: $prozaLibre-regular;
+      font-size: 1.6rem;
+      color: $accent-color;
+      text-transform: capitalize;
+      cursor: pointer;
+      width: 40%;
+      margin: 0 auto;
+      letter-spacing: 1.5px;
+
+      svg {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+  }
+
+  &__card {
+    background-color: $color-white;
+    box-shadow: $box-shadow-short;
+    border-radius: 1rem;
+    overflow: hidden;
+    width: 80%;
+    height: 90%;
+    margin: auto auto;
+    @extend %dg;
+    @extend %col-1-of-2;
+    grid-template-rows: 30% 50% 20%;
+
+    * {
+      font: $prozaLibre-regular;
+      @include flexcenter;
+    }
+
+    &--value {
+      color: $accent-color;
+      font-size: 6rem;
+      grid-area: 1 / 1 / -1 / 2;
+    }
+
+    &--title {
+      color: $basis-color;
+      font-size: 1.8rem;
+      grid-area: 1 / 2 / 2 / -1;
+    }
+
+    &--description {
+      color: $alternate-color;
+      font-size: 1.8rem;
+      grid-area: 2 / 2 / 3 / -1;
+      width: 80%;
+      margin: 0 auto;
+      line-height: 2.2rem;
+      text-align: center;
+    }
+
+    &--cta {
+      font-size: 1.2rem;
+      color: $alternate-color !important;
+      grid-area: 3 / 2 / -1 / -1;
+    }
+  }
+
+  &__tasks {
+    width: 100%;
+    height: 100%;
+    @extend %dg;
+    grid-template-rows: 10% 90%;
+
+    &--heading {
+      width: 100%;
+      height: 100%;
+      grid-area: 1 / 1 / 2 / 2;
+
+      ul {
+        @include flexeven;
+        width: 100%;
+        height: 100%;
+
+        li {
+        }
+      }
+    }
+
+    &--tab {
+      text-transform: uppercase;
+      font: $nunito-light;
+      font-size: 1.8rem;
+      padding: 1rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      border: 1px solid rgba($accent-color, 0.4);
+
+      &-active {
+        background-color: $accent-color;
+        color: $color-white;
+      }
+    }
+
+    &--value {
+      grid-area: 2 / 1 / 3 / 2;
+      width: 100%;
+      height: 100%;
+      max-height: 100%;
+      margin-top: 5%;
+
+      ul {
+        width: 95%;
+        height: 100%;
+        margin: 0 auto;
+      }
+
+      &-li {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid rgba($color-grey, 0.47);
+      }
+
+      &-heading {
+        width: 100%;
+        @extend %dg;
+        grid-template-columns: 15% 15% 15% 20% 15% 10%;
+        font: $nunito-light;
+        font-size: 1.5rem;
+      }
+    }
+
+    &--heading {
+      width: 100%;
+      @include flexeven;
+      font: $nunito-light;
+      font: 1.6rem;
+      color: $color-grey-light;
+    }
+
+    &--item {
+      @extend %dg;
+      grid-template-columns: 15% 15% 15% 30% 15% 10%;
+      cursor: pointer;
+
+      li {
+        font: $prozaLibre-italic;
+        font-size: 1.6rem;
+        color: $accent-color;
+        width: 100%;
+        height: 100%;
+
+        &[data-type="pending"] {
+          color: $basis-color;
+        }
+
+        &[data-type="completed"] {
+          color: $success-color;
+        }
+      }
+    }
+  }
+
+  &__revenue {
   }
 }
