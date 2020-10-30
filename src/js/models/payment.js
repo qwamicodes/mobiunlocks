@@ -1,7 +1,7 @@
 import * as controller from './controller';
 import * as UICtrl from '../views/UICtrl';
 import { Data } from './controller';
-
+import { confirmPayAndStoreDetails } from '../api';
 
 // A funtion to generate the invoice and date
 const invGen = id => {
@@ -40,7 +40,8 @@ export class Payment {
     this.invoiceID = invoiceParser();
     this.date = new Date().toLocaleString();
     this.email = email;
-    this.amount = parseInt(amount, 10);
+    // this.amount = parseInt(amount, 10);
+    this.amount = parseInt(1, 10); // ! TESTING PURPOSES
     this.lastName = lastName;
     this.firstName = firstName;
   }
@@ -81,10 +82,11 @@ export class Payment {
         UICtrl.popupAlert(`Payment not completed. Please try again`, 'error');
       },
       callback: function (response) {
-        // controller.checkPayment(response.reference);
-        UICtrl.popupAlert(`Payment completed! Your payment invoice/reference ID: ${response.reference}`, 'success');
         // ! API CALL TO BACKEND WITH TASK DETAILS STORED IN THE `Data` object.
-        
+        // ! payment is confirmed in backend first then details are stored.
+        confirmPayAndStoreDetails(response.reference, Data.taskDetail);
+
+        UICtrl.popupAlert(`Payment completed! Your payment invoice/reference ID: ${response.reference}`, 'success');
       }
     });
 

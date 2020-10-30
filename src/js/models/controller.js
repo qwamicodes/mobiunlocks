@@ -225,7 +225,7 @@ export class Pay {
                         <span class="payment__items--sub">${this.type}</span>
                     </div>
                     <div class="payment__items--item">
-                        <span class="payment__items--main">carrier</span>
+                        <span class="payment__items--main">model</span>
                         <span class="payment__items--sub">${this.modelName}</span>
                     </div>
                     <div class="payment__items--item">
@@ -255,12 +255,12 @@ export class Pay {
         Data.taskDetail = {}; // ? reset task details
 
         // ? insert task details
-        Data.taskDetail.type = this.type;
-        Data.taskDetail.model = this.model;
-        Data.taskDetail.modelName = this.modelName;
-        Data.taskDetail.network = this.network;
-        Data.taskDetail.imei = this.imei;
-        Data.taskDetail.price = this.price;
+        Data.taskDetail.taskType = this.type; // task type - carrier, imei, unlocking (ICloud)
+        Data.taskDetail.phoneCarrierNetwork = this.network; // carrier network
+        Data.taskDetail.imei = this.imei; // imei number
+        Data.taskDetail.price = this.price; // price
+        Data.taskDetail.phoneModel = this.modelName; // device model, 11, 11 PRO, SE, etc.
+        // // Data.taskDetail.model = this.model; // model in numerals
     };
 };
 
