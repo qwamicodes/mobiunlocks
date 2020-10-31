@@ -30,4 +30,10 @@
   paymentPrice: '.payment__price',
   paymentItems: '.payment__items',
   paymentBtn: '#payment-checkout',
+  modal: '.modal-container',
+  modalClose: '.modal-close',
+  taskArea: '.dashboard__tasks--value',
+  taskList: '.dashboard__tasks--value-li',
+  taskItem: '.dashboard__tasks--item',
+  taskItemLi: '.dashboard__tasks--item li',
 };
