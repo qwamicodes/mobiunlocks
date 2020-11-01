@@ -98,6 +98,25 @@ const removePopup = () => {
   document.querySelector('.alert').remove();
 }
 
+//function template for the task addition
+export const addTask = (id, type, modelName, imei, carrier, status = 'pending') => {
+  let html = `
+      <li class="dashboard__tasks--value-li">
+        <ul class="dashboard__tasks--item">
+          <li>${id}</li>
+          <li>${type}</li>
+          <li>${modelName}</li>
+          <li>${imei}</li>
+          <li>${carrier}</li>
+          <li data-type="${status}">${status}</li>
+        </ul>
+      </li>
+  `;
+
+  document.querySelector(elements.taskList).insertAdjacentHTML('afterend', html);
+};
+
+//function template for the modal popup
 export const showModal = (id, type, modelName, imei, carrier) => {
   document.querySelector(elements.modal).classList.add('modal-show');
 
@@ -119,8 +138,8 @@ export const showModal = (id, type, modelName, imei, carrier) => {
             <span>${modelName}</span>
           </li>
           <li class="u-flex-between">
-            <span>${imei}</span>
-            <div class="modal-svg">
+            <span class="modal-copier">${imei}</span>
+            <div class="modal-svg modal-copy">
               <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
                 <rect x='128' y='128' width='336' height='336' rx='57' ry='57' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='32'/>
                 <path d='M383.5 128l.5-24a56.16 56.16 0 00-56-56H112a64.19 64.19 0 00-64 64v216a56.16 56.16 0 0056 56h24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/>

@@ -32,6 +32,8 @@
   paymentBtn: '#payment-checkout',
   modal: '.modal-container',
   modalClose: '.modal-close',
+  modalCopy: '.modal-copy',
+  modalCopier: '.modal-copier',
   taskArea: '.dashboard__tasks--value',
   taskList: '.dashboard__tasks--value-li',
   taskItem: '.dashboard__tasks--item',

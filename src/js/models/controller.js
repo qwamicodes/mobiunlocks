@@ -276,3 +276,35 @@ export const preparePayment = (fullname, email, amount) => {
     //parsing the details into the payment class
     new Payment(email, amount, firstName, lastName).storeInv().makePayment();
 };
+
+//Function that receives the list elements and parses it into the modal
+export const modalList = lists => {
+    
+    UICtrl.showModal(...lists);
+
+};
+
+//Function to copy the text from the UI
+export const copyText = ele => {
+
+    //creating a new textArea element in the DOM
+    const textArea = document.createElement("textarea");
+
+    //set the value of the new element as the content in the real element
+    textArea.value = ele.textContent;
+
+    //inserting the element into the DOM
+    document.body.appendChild(textArea);
+
+    //method to select the text in the element
+    textArea.select();
+
+    //comand to run the copy 
+    document.execCommand("Copy");
+
+    //removing the created element
+    textArea.remove();
+    
+    //alerting the user that text has been successfully copied
+    alert('copied text');
+};
