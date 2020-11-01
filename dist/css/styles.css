@@ -1100,6 +1100,11 @@ g {
       padding-top: 5%;
       overflow-y: scroll;
       overflow-x: hidden; }
+      .dashboard__tasks--value::-webkit-scrollbar {
+        width: 2px; }
+      .dashboard__tasks--value::-webkit-scrollbar-thumb {
+        background-color: #3c435a;
+        border-radius: 0.2rem; }
       .dashboard__tasks--value ul {
         width: 95%;
         height: 100%;
@@ -1109,16 +1114,16 @@ g {
         border-bottom: 1px solid rgba(102, 102, 102, 0.47); }
       .dashboard__tasks--value-heading {
         width: 100%;
-        grid-template-columns: 15% 15% 15% 20% 15% 10%;
+        grid-template-columns: 18% 18% 18% 24% 15% 10%;
         font: 2rem/1 "Nunito Light", Fallback, sans-serif;
-        font-size: 1.5rem; }
+        font-size: 1.6rem; }
     .dashboard__tasks--heading {
       width: 100%;
       font: 2rem/1 "Nunito Light", Fallback, sans-serif;
       font: 1.6rem;
       color: #a1a1a1; }
     .dashboard__tasks--item {
-      grid-template-columns: 15% 15% 15% 30% 15% 10%;
+      grid-template-columns: 18% 18% 18% 24% 15% 10%;
       cursor: pointer; }
       .dashboard__tasks--item li {
         font: 2rem/1 "ProzaLibre Italic", Fallback, sans-serif;

@@ -32,3 +32,5 @@ document.querySelector(elements.modal).addEventListener('click', (e) => {
         controller.copyText(e.target.closest(elements.modalCopy).previousElementSibling);
     };
 });
+
+//**** Sorting Event listners ****//

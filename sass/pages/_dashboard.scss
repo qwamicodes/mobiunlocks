@@ -353,6 +353,15 @@
       overflow-y: scroll;
       overflow-x: hidden;
 
+      &::-webkit-scrollbar {
+        width: 2px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $accent-color;
+        border-radius: 0.2rem;
+      }
+
       ul {
         width: 95%;
         height: 100%;
@@ -367,9 +376,9 @@
       &-heading {
         width: 100%;
         @extend %dg;
-        grid-template-columns: 15% 15% 15% 20% 15% 10%;
+        grid-template-columns: 18% 18% 18% 24% 15% 10%;
         font: $nunito-light;
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
     }
 
@@ -383,7 +392,7 @@
 
     &--item {
       @extend %dg;
-      grid-template-columns: 15% 15% 15% 30% 15% 10%;
+      grid-template-columns: 18% 18% 18% 24% 15% 10%;
       cursor: pointer;
 
       li {
