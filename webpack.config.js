@@ -29,6 +29,11 @@ module.exports = {
       template: './src/tracking.html',
     }),
     new HtmlWebpackPlugin({
+      chunks: ['login'],
+      filename: './public/login.html',
+      template: './src/login.html',
+    }),
+    new HtmlWebpackPlugin({
       chunks: ['dashboard'],
       filename: './public/dashboard.html',
       template: './src/dashboard.html',
