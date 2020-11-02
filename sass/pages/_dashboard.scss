@@ -9,7 +9,7 @@
   &__nav {
     grid-area: 1 / 2 / 2 / -1;
     @extend %dg;
-    grid-template-columns: 75% 10%;
+    grid-template-columns: 65% 10% 25%;
     width: 100%;
     height: 100%;
 
@@ -20,7 +20,7 @@
       margin-left: 10%;
 
       h3 {
-        font: $prozaLibre-semibold;
+        font: $nunito-regular;
         font-size: $default-size;
         color: $color-grey-dark;
         text-transform: capitalize;
@@ -44,6 +44,25 @@
         width: 1.5rem;
         height: 1.5rem;
         color: $color-grey-light;
+      }
+    }
+
+    &--account {
+      grid-column: 3 / 4;
+      @include flexeven;
+
+      &-name {
+        font: $nunito-regular;
+        font-size: 1.7rem;
+        text-transform: capitalize;
+        color: $accent-color;
+      }
+
+      &-avatar {
+        img {
+          width: 4rem;
+          border-radius: 50%;
+        }
       }
     }
   }
@@ -92,7 +111,7 @@
     height: 100%;
     background-color: lighten($color-grey-light, 35%);
     border-radius: 1rem;
-    grid-area: 2 / 2 / -1 / 10;
+    grid-area: 2 / 2 / -1 / -1;
   }
 
   &__dashboard {
@@ -105,213 +124,11 @@
     grid-gap: 2rem;
   }
 
-  &__account {
-    grid-area: 2 / 10 / -1 / -1;
-    @extend %dg;
-    grid-template-rows: 35% 35% 10%;
-
-    &--profile {
-      @include flexcenter;
-      width: 100%;
-
-      &-name {
-        flex: 0 0 60%;
-        @extend %df;
-        @extend %djc;
-        @extend %dc;
-
-        * {
-          margin-left: 10%;
-        }
-
-        span {
-          font: $nunito-light;
-          font-size: 2.3rem;
-        }
-
-        h3 {
-          font: $prozaLibre-regular;
-          font-size: 2.5rem;
-          font-weight: 500;
-          color: $accent-color;
-        }
-      }
-
-      &-img {
-        flex: 1;
-        width: 100%;
-        height: 100%;
-        @include flexcenter;
-
-        img {
-          width: 80%;
-          border-radius: 50%;
-        }
-      }
-    }
-
-    &--details {
-      @extend %dg;
-      @extend %col-1-of-2;
-      @extend %row-1-of-2;
-
-      * {
-        width: 90%;
-        height: 100%;
-        @extend %df;
-        @extend %dc;
-        margin: 0 auto;
-
-        h3 {
-          font: $nunito-light;
-          font-size: 1.6rem;
-          text-transform: capitalize;
-          color: $color-grey-light;
-        }
-
-        span {
-          font: $prozaLibre-semibold;
-          font-size: 3rem;
-          color: $accent-color;
-          align-self: center;
-          width: 50%;
-        }
-      }
-
-      &-total {
-        position: relative;
-
-        span:before {
-          color: #882a88;
-          content: "";
-          display: inline-block;
-          position: absolute;
-          left: 20%;
-          top: 50%;
-          height: 25%;
-          width: 2px;
-          background-color: currentColor;
-        }
-      }
-
-      &-completed {
-        position: relative;
-
-        span:before {
-          color: $success-color;
-          content: "";
-          display: inline-block;
-          position: absolute;
-          left: 20%;
-          top: 50%;
-          height: 25%;
-          width: 2px;
-          background-color: currentColor;
-        }
-      }
-
-      &-pending {
-        position: relative;
-
-        span:before {
-          color: $basis-color;
-          content: "";
-          display: inline-block;
-          position: absolute;
-          left: 20%;
-          top: 50%;
-          height: 25%;
-          width: 2px;
-          background-color: currentColor;
-        }
-      }
-
-      &-errors {
-        position: relative;
-
-        span:before {
-          color: $danger-color;
-          content: "";
-          display: inline-block;
-          position: absolute;
-          left: 20%;
-          top: 50%;
-          height: 25%;
-          width: 2px;
-          background-color: currentColor;
-        }
-      }
-    }
-
-    &--logout {
-      @include flexeven;
-      font: $prozaLibre-regular;
-      font-size: 1.6rem;
-      color: $accent-color;
-      text-transform: capitalize;
-      cursor: pointer;
-      width: 40%;
-      margin: 0 auto;
-      letter-spacing: 1.5px;
-
-      svg {
-        width: 3rem;
-        height: 3rem;
-      }
-    }
-  }
-
-  &__card {
-    background-color: $color-white;
-    box-shadow: $box-shadow-short;
-    border-radius: 1rem;
-    overflow: hidden;
-    width: 80%;
-    height: 90%;
-    margin: auto auto;
-    @extend %dg;
-    @extend %col-1-of-2;
-    grid-template-rows: 30% 50% 20%;
-
-    * {
-      font: $prozaLibre-regular;
-      @include flexcenter;
-    }
-
-    &--value {
-      color: $accent-color;
-      font-size: 6rem;
-      grid-area: 1 / 1 / -1 / 2;
-    }
-
-    &--title {
-      color: $basis-color;
-      font-size: 1.8rem;
-      grid-area: 1 / 2 / 2 / -1;
-    }
-
-    &--description {
-      color: $alternate-color;
-      font-size: 1.8rem;
-      grid-area: 2 / 2 / 3 / -1;
-      width: 80%;
-      margin: 0 auto;
-      line-height: 2.2rem;
-      text-align: center;
-    }
-
-    &--cta {
-      font-size: 1.2rem;
-      color: $alternate-color !important;
-      grid-area: 3 / 2 / -1 / -1;
-    }
-  }
-
   &__tasks {
     width: 100%;
     height: 100%;
     @extend %dg;
-    grid-template-rows: 10% 90%;
+    grid-template-rows: 10% 10% 80%;
     position: relative;
 
     &--heading {
@@ -321,7 +138,7 @@
 
       ul {
         @include flexeven;
-        width: 100%;
+        width: 70%;
         height: 100%;
 
         li {
@@ -329,27 +146,29 @@
       }
     }
 
-    &--tab {
-      text-transform: uppercase;
-      font: $nunito-light;
-      font-size: 1.8rem;
-      padding: 1rem 1.5rem;
-      border-radius: 5px;
-      cursor: pointer;
-      border: 1px solid rgba($accent-color, 0.4);
+    &--count {
+      border-radius: 50%;
+      font-size: 1.4rem;
+    }
 
-      &-active {
-        background-color: $accent-color;
-        color: $color-white;
+    &--title {
+      grid-area: 2 / 1 / 3 / 2;
+      width: 100%;
+      @extend %df;
+      justify-content: center;
+      align-items: flex-end;
+
+      ul {
+        width: 95%;
+        margin: 0 auto;
       }
     }
 
     &--value {
-      grid-area: 2 / 1 / 3 / 2;
+      grid-area: 3 / 1 / 4 / 2;
       width: 100%;
       height: 100%;
       max-height: 50rem;
-      padding-top: 5%;
       overflow-y: scroll;
       overflow-x: hidden;
 
@@ -374,7 +193,7 @@
       }
 
       &-heading {
-        width: 100%;
+        width: 80%;
         @extend %dg;
         grid-template-columns: 18% 18% 18% 24% 15% 10%;
         font: $nunito-light;
@@ -413,6 +232,19 @@
     }
   }
 
-  &__revenue {
+  &__tab {
+    text-transform: uppercase;
+    font: $nunito-light;
+    font-size: 1.6rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid rgba($accent-color, 0.4);
+    transition: $transition-fastest;
+
+    &-active {
+      background-color: $accent-color;
+      color: $color-white;
+    }
   }
 }

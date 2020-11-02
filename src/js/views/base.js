@@ -38,4 +38,5 @@
   taskList: '.dashboard__tasks--value-li',
   taskItem: '.dashboard__tasks--item',
   taskItemLi: '.dashboard__tasks--item li',
+  taskTab: '.dashboard__tab',
 };

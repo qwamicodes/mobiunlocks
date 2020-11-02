@@ -30,10 +30,10 @@ export const setActiveTab = (el, name) => {
   el.classList.add(`${name}-active`);
 };
 
-export const removeActiveTab = el => {
-  document.querySelectorAll(`.${el}`).forEach(tab => {
-    tab.classList.remove(`${el}-active`);
-  })
+export const removeActiveTab = (name) => {
+  document.querySelectorAll(`.${name}`).forEach(tab => {
+    tab.classList.remove(`${name}-active`);
+  });
 };
 
 export const unselAllElement = el => {
@@ -46,6 +46,7 @@ export const selElement = el => {
   el.setAttribute('aria-sel', 'true');
 };
 
+//function to change the form elements in the services part
 export const changeForm = loc => {
   switch (loc) {
     case '#/carrier':
@@ -60,6 +61,7 @@ export const changeForm = loc => {
   }
 };
 
+//function to popup the alert to thre user
 export const popupAlert = (message, type) => {
   const checkSVG = type => {
     if(type === 'success') {
@@ -163,8 +165,16 @@ export const showModal = (id, type, modelName, imei, carrier) => {
   document.querySelector(elements.modal).innerHTML = html;
 };
 
+//function to hide the modal
 export const hideModal = () => {
   document.querySelector(elements.modalClose).remove();
 
   document.querySelector(elements.modal).classList.remove('modal-show');
+};
+
+//function to replace the list value with the list provided
+export const removeList = lists => {
+  lists.forEach(list => {
+      list.parentElement.classList.add('u-display-none');
+  });
 };

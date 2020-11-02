@@ -308,3 +308,33 @@ export const copyText = ele => {
     //alerting the user that text has been successfully copied
     alert('copied text');
 };
+
+//function to sort out the list
+export const filterList = tab => {
+   // TODO:
+   //set the tab selected as active
+   UICtrl.removeActiveTab('dashboard__tab')
+   UICtrl.setActiveTab(tab, 'dashboard__tab');
+
+   //query all the list
+   const items = Array.from(document.querySelectorAll(elements.taskItem));
+
+   //internal function to remove the display none calss
+    const addList = () => { 
+        items.forEach(item => {
+            item.parentElement.classList.remove('u-display-none');
+        });  
+    };
+
+    //calling it whenever the tab is clicked
+    addList();
+   
+   //sort them in removing the unneeded
+    if(tab.getAttribute('data-value') === 'all') {
+        addList();
+    } else {
+        // filtering the list using from the status
+        const lists = items.filter(item => item.lastElementChild.getAttribute('data-type') !== tab.getAttribute('data-value'));
+        UICtrl.removeList(lists);
+    };
+};

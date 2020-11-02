@@ -34,3 +34,8 @@ document.querySelector(elements.modal).addEventListener('click', (e) => {
 });
 
 //**** Sorting Event listners ****//
+document.querySelectorAll(elements.taskTab).forEach(tab => {
+    tab.addEventListener('click', () => {
+        controller.filterList(tab);
+    });
+});
