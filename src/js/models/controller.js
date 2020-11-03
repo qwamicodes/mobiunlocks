@@ -1,6 +1,7 @@
 import * as UICtrl from '../views/UICtrl';
 import { elements } from '../views/base';
 import { Payment } from './payment';
+import { testStoreDetails } from "../api"; // !!!!!!!!!!!!!!
 
 export const Data = {
     invoices : [],
@@ -256,11 +257,24 @@ export class Pay {
 
         // ? insert task details
         Data.taskDetail.taskType = this.type; // task type - carrier, imei, unlocking (ICloud)
-        Data.taskDetail.phoneCarrierNetwork = this.network; // carrier network
         Data.taskDetail.imei = this.imei; // imei number
         Data.taskDetail.price = this.price; // price
-        Data.taskDetail.phoneModel = this.modelName; // device model, 11, 11 PRO, SE, etc.
+        Data.taskDetail.phone_model = this.modelName; // device model, 11, 11 PRO, SE, etc.
         // // Data.taskDetail.model = this.model; // model in numerals
+        if (this.model >= 101 && this.model <= 122){
+            Data.taskDetail.device_type = "iphone";
+        } else if (this.model >= 123 && this.model <= 134) {
+            Data.taskDetail.device_type = "ipad";
+        }
+        
+        if (this.type == "imei"){
+            let details = this.network.split('|');
+            Data.taskDetail.details =  details; // checking details
+        } else{
+            Data.taskDetail.phone_carrier_network = this.network; // carrier network
+        }
+        
+
     };
 };
 
@@ -290,7 +304,11 @@ export const preparePayment = (fullname, email, amount) => {
     split(fullname);
     
     //parsing the details into the payment class
-    new Payment(email, amount, firstName, lastName).storeInv().makePayment();
+    // !! new Payment(email, amount, firstName, lastName).storeInv().makePayment(); UNCOMMENT AFTER TESTING
+    new Payment(email, amount, firstName, lastName).storeInv();
+    
+    testStoreDetails(Data.taskDetail);
+
 };
 
 //Function that receives the list elements and parses it into the modal
