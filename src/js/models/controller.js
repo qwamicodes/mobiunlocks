@@ -292,3 +292,65 @@ export const preparePayment = (fullname, email, amount) => {
     //parsing the details into the payment class
     new Payment(email, amount, firstName, lastName).storeInv().makePayment();
 };
+
+//Function that receives the list elements and parses it into the modal
+export const modalList = lists => {
+    
+    UICtrl.showModal(...lists);
+
+};
+
+//Function to copy the text from the UI
+export const copyText = ele => {
+
+    //creating a new textArea element in the DOM
+    const textArea = document.createElement("textarea");
+
+    //set the value of the new element as the content in the real element
+    textArea.value = ele.textContent;
+
+    //inserting the element into the DOM
+    document.body.appendChild(textArea);
+
+    //method to select the text in the element
+    textArea.select();
+
+    //comand to run the copy 
+    document.execCommand("Copy");
+
+    //removing the created element
+    textArea.remove();
+    
+    //alerting the user that text has been successfully copied
+    UICtrl.popupAlert('copied text');
+};
+
+//function to sort out the list
+export const filterList = tab => {
+   // TODO:
+   //set the tab selected as active
+   UICtrl.removeActiveTab('dashboard__tab')
+   UICtrl.setActiveTab(tab, 'dashboard__tab');
+
+   //query all the list
+   const items = Array.from(document.querySelectorAll(elements.taskItem));
+
+   //internal function to remove the display none calss
+    const addList = () => { 
+        items.forEach(item => {
+            item.parentElement.classList.remove('u-display-none');
+        });  
+    };
+
+    //calling it whenever the tab is clicked
+    addList();
+   
+   //sort them in removing the unneeded
+    if(tab.getAttribute('data-value') === 'all') {
+        addList();
+    } else {
+        // filtering the list using from the status
+        const lists = items.filter(item => item.lastElementChild.getAttribute('data-type') !== tab.getAttribute('data-value'));
+        UICtrl.removeList(lists);
+    };
+};

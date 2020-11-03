@@ -1,0 +1,62 @@
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $color-white;
+  width: 35rem;
+  height: 40rem;
+  box-shadow: $box-shadow-long;
+
+  &-container {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(2px);
+  }
+
+  &-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  &-show {
+    display: block;
+  }
+
+  &-svg {
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+  }
+
+  ul {
+    width: 100%;
+    height: 100%;
+    @extend %dg;
+    grid-template-rows: repeat(7, 1fr);
+
+    li {
+      font: $prozaLibre-regular;
+      font-size: 1.8rem;
+      color: $accent-color;
+      @extend %df;
+      @extend %dai;
+      width: 80%;
+      margin: 0 auto;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid rgba($color-grey-light, 0.8);
+      }
+
+      select {
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        font: inherit;
+        font-size: inherit;
+      }
+    }
+  }
+}

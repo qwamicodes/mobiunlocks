@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   entry: {
     app: ['@babel/polyfill','./src/js/app.js'],
-    // api: ['@babel/polyfill','./src/js/api.js'],
+    dashboard: ['@babel/polyfill','./src/js/dashboard.js'],
 },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -24,9 +24,14 @@ module.exports = {
       template: './src/index.html',
     }),
     new HtmlWebpackPlugin({
-      chunks: ['tracking'],
+      chunks: ['app'],
       filename: './public/tracking.html',
       template: './src/tracking.html',
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['login'],
+      filename: './public/login.html',
+      template: './src/login.html',
     }),
     new HtmlWebpackPlugin({
       chunks: ['dashboard'],

@@ -2,27 +2,37 @@ import * as UICtrl from './views/UICtrl';
 import * as controller from './models/controller';
 import { elements } from  './views/base';
 
+//**** ON page load Event listners ****/
+
 //Onload page function that starts the svg magic 
 document.onload = UICtrl.headerSVG();
 document.onload = controller.checkNav();
 document.onload = controller.tabSel(null, location.hash); 
 
+//**** On scroll Event listners ****/
+
 //Onscroll function to trigger the background
 document.addEventListener('scroll', controller.checkNav);
 
-//Functionality for the tabs
+//**** Tabs Event listners ****/
+
+//Event listner for the tabs
 document.querySelectorAll(elements.tab).forEach(tab => {
     tab.addEventListener('click', () => {
         controller.tabSel(tab);
     });
 });
 
-//Functionality to terminate the payment process
+//**** Payment modal Event listners ****/
+
+//Event listner to terminate the payment process
 document.querySelector(elements.cancelPayment).addEventListener('click', () => {
     controller.hidePay();
 });
 
-//Functionality for the changes that happens on the carrier form
+//**** Form Event listners ****/
+
+//Event listner for the changes that happens on the carrier form
 ['change', 'keyup'].forEach(env => {
     document.querySelector(elements.carrierForm).addEventListener(env, e => {
 
@@ -57,7 +67,7 @@ document.querySelector(elements.cancelPayment).addEventListener('click', () => {
     });
 });
 
-//Functionality for the changes that happens on the imei form
+//Event listner for the changes that happens on the imei form
 ['change', 'keyup'].forEach(env => {
     document.querySelector(elements.imeiForm).addEventListener(env, e => {
 
@@ -74,7 +84,7 @@ document.querySelector(elements.cancelPayment).addEventListener('click', () => {
     });
 });
 
-//Functionality for the changes that happens on the unlock form
+//Event listner for the changes that happens on the unlock form
 ['change', 'keyup'].forEach(env => {
     document.querySelector(elements.unlockingForm).addEventListener(env, e => {
 
@@ -152,7 +162,7 @@ document.querySelector(elements.cancelPayment).addEventListener('click', () => {
     });
 });
 
-//Functionalities for the payment submit form
+//Event listner for the payment submit form
 document.querySelector(elements.paymentForm).addEventListener('submit', e => {
     e.preventDefault();
 

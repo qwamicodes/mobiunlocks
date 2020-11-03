@@ -17,6 +17,7 @@
 @import "./components/dropdown";
 @import "./components/forms";
 @import "./components/scroll";
+@import "./components/modal";
 @import "./components/tabs";
 
 //layout files
@@ -27,4 +28,5 @@
 //pages files
 @import "./pages/dashboard";
 @import "./pages/landing";
+@import "./pages/login";
 @import "./pages/tracking";

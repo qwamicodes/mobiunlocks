@@ -5,13 +5,13 @@
 */ 
 
 
-import * as controller from './models/controller';
-import * as elements from './views/base';
+// import * as controller from './models/controller';
+// import * as elements from './views/base';
 
-const baseBackendURL = "http://127.0.0.1:8080/";
-const baseBackendAPIURL = "http://127.0.0.1:8080/api/v1/";
-// const baseBackendURL = "https://api.mobitechunclocks.com/";
-// const baseBackendAPIURL = "https://api.mobitechunclocks.com/api/v1/";
+const baseBackendURL = "http://127.0.0.1:8080";
+const baseBackendAPIURL = "http://127.0.0.1:8080/api/v1";
+// const baseBackendURL = "https://api.mobitechunclocks.com";
+// const baseBackendAPIURL = "https://api.mobitechunclocks.com/api/v1";
 
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~FORM DATA COLLECTION~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -22,7 +22,7 @@ export const confirmPayAndStoreDetails = (paymentReference, taskDetails) => {
     to store the task details. the endpoint to hit is determined by the `taskDetails` 
     */
 
-    const confirmPaymentEndpoint = `${baseBackendAPIURL}payments/confirm/?reference=${paymentReference}`;
+    const confirmPaymentEndpoint = `${baseBackendAPIURL}/payments/confirm/?reference=${paymentReference}`;
 
     fetch(confirmPaymentEndpoint, {
         method: 'GET',
@@ -33,7 +33,7 @@ export const confirmPayAndStoreDetails = (paymentReference, taskDetails) => {
             const paymentData = await response.json(); 
             // if payment was made, then
             if (paymentData.payment_made === true){
-                // send requests to create tasks in DB depending on task type
+                // send requests to API endpoints to create tasks in DB depending on task type
                 switch (taskDetails.taskType) {
                     // IMEI Checking task
                     case "imei":
@@ -61,7 +61,7 @@ export const confirmPayAndStoreDetails = (paymentReference, taskDetails) => {
 }
 
 const submitCarrierUnlockTask = (paymentDetails, taskDetails) => {
-    const carrierUnlockTaskEndpoint = `${baseBackendAPIURL}tasks/carrier/`;
+    const carrierUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/carrier/`;
     
     fetch(carrierUnlockTaskEndpoint, {
         method: 'POST',
@@ -81,7 +81,7 @@ const submitCarrierUnlockTask = (paymentDetails, taskDetails) => {
 }
 
 const submitICloudUnlockTask = (paymentDetails, taskDetails) => {
-    const icloudUnlockTaskEndpoint = `${baseBackendAPIURL}tasks/icloud/`;
+    const icloudUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/icloud/`;
     
     fetch(icloudUnlockTaskEndpoint, {
         method: 'POST',
@@ -101,7 +101,7 @@ const submitICloudUnlockTask = (paymentDetails, taskDetails) => {
 }
 
 const submitIMEICheckTask = (paymentDetails, taskDetails) => {
-    const imeiCheckTaskEndpoint = `${baseBackendAPIURL}tasks/imei/`;
+    const imeiCheckTaskEndpoint = `${baseBackendAPIURL}/tasks/imei/`;
     
     fetch(imeiCheckTaskEndpoint, {
         method: 'POST',

@@ -107,6 +107,14 @@
   @include flexeven;
 }
 
+.u-flex-around {
+  @include flexaround;
+}
+
+.u-flex-between {
+  @include flexbetween;
+}
+
 .u-flex-bottom {
   @include flexbottom;
 }

@@ -1,25 +1,31 @@
-.u-flex-center, .u-flex-even, .u-flex-bottom, .title, .alert, .alert__top, .alert__bottom, .btn, .form, .form__group, .tabs, .footer, .footer__container, .footer__contact--call, .footer__contact--address, .footer__social ul, .footer__social--btn, .header, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav--title, .dashboard__nav--icons, .dashboard__nav--icons-container, .dashboard__aside--img, .dashboard__aside--icons, .dashboard__account--profile, .dashboard__account--profile-name, .dashboard__account--profile-img, .dashboard__account--details *, .dashboard__account--logout, .dashboard__card *, .dashboard__tasks--heading ul, .dashboard__tasks--heading, .features__title, .services__container, .payment__fields--container, .payment__info, .payment__pricing, .payment__pricing--top, .payment__pricing--bottom, .payment__items--item, .payment__cta, .payment__caution, .devices__container, .network__container, .tracking__back, .tracking__search, .tracking__tile--dots, .tracking__svg {
+.u-flex-center, .u-flex-even, .u-flex-around, .u-flex-between, .u-flex-bottom, .title, .alert, .alert__top, .alert__bottom, .btn, .form, .form__group, .modal ul li, .tabs, .footer, .footer__container, .footer__contact--call, .footer__contact--address, .footer__social ul, .footer__social--btn, .header, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav--title, .dashboard__nav--icons, .dashboard__nav--icons-container, .dashboard__nav--account, .dashboard__aside--img, .dashboard__aside--icons, .dashboard__tasks--heading ul, .dashboard__tasks--title, .dashboard__tasks--heading, .features__title, .services__container, .payment__fields--container, .payment__info, .payment__pricing, .payment__pricing--top, .payment__pricing--bottom, .payment__items--item, .payment__cta, .payment__caution, .devices__container, .network__container, .login, .login__group:not(:last-child), .login__group:last-child, .tracking__back, .tracking__search, .tracking__tile--dots, .tracking__svg {
   display: flex; }
 
-.u-flex-center, .u-flex-bottom, .title, .alert__bottom, .form, .footer__social--btn, .nav, .dashboard__nav--icons-container, .dashboard__aside--img, .dashboard__aside--icons, .dashboard__account--profile, .dashboard__account--profile-name, .dashboard__account--profile-img, .dashboard__card *, .payment__fields--container, .payment__info, .payment__caution, .devices__container, .tracking__search, .tracking__svg {
+.u-flex-center, .u-flex-bottom, .title, .alert__bottom, .form, .footer__social--btn, .nav, .dashboard__nav--icons-container, .dashboard__aside--img, .dashboard__aside--icons, .payment__fields--container, .payment__info, .payment__caution, .devices__container, .login, .login__group:not(:last-child), .login__group:last-child, .tracking__search, .tracking__svg {
   justify-content: center; }
 
-.u-flex-even, .alert__top, .btn, .tabs, .footer__social ul, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav--icons, .dashboard__account--logout, .dashboard__tasks--heading ul, .dashboard__tasks--heading, .features__title, .network__container, .tracking__back, .tracking__tile--dots {
+.u-flex-even, .alert__top, .btn, .tabs, .footer__social ul, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav--icons, .dashboard__nav--account, .dashboard__tasks--heading ul, .dashboard__tasks--heading, .features__title, .network__container, .tracking__back, .tracking__tile--dots {
   justify-content: space-evenly; }
 
-.u-flex-center, .u-flex-even, .u-flex-bottom, .title, .alert__top, .alert__bottom, .btn, .form, .form__group, .tabs, .footer__contact--call, .footer__contact--address, .footer__social ul, .footer__social--btn, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav--title, .dashboard__nav--icons, .dashboard__nav--icons-container, .dashboard__aside--img, .dashboard__aside--icons, .dashboard__account--profile, .dashboard__account--profile-img, .dashboard__account--logout, .dashboard__card *, .dashboard__tasks--heading ul, .dashboard__tasks--heading, .features__title, .payment__fields--container, .payment__info, .payment__cta, .payment__caution, .devices__container, .network__container, .tracking__back, .tracking__search, .tracking__tile--dots, .tracking__svg {
+.u-flex-center, .u-flex-even, .u-flex-around, .u-flex-between, .u-flex-bottom, .title, .alert__top, .alert__bottom, .btn, .form, .form__group, .modal ul li, .tabs, .footer__contact--call, .footer__contact--address, .footer__social ul, .footer__social--btn, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav--title, .dashboard__nav--icons, .dashboard__nav--icons-container, .dashboard__nav--account, .dashboard__aside--img, .dashboard__aside--icons, .dashboard__tasks--heading ul, .dashboard__tasks--heading, .features__title, .payment__fields--container, .payment__info, .payment__cta, .payment__caution, .devices__container, .network__container, .login, .login__group:last-child, .tracking__back, .tracking__search, .tracking__tile--dots, .tracking__svg {
   align-items: center; }
 
-.u-flex-bottom, .alert, .footer, .footer__container, .footer__contact--call, .footer__contact--address, .dashboard__aside--icons, .dashboard__account--profile-name, .dashboard__account--details *, .payment__pricing, .payment__items--item, .devices__container {
+.u-flex-bottom, .alert, .footer, .footer__container, .footer__contact--call, .footer__contact--address, .dashboard__aside--icons, .payment__pricing, .payment__items--item, .devices__container, .login__group:not(:last-child) {
   flex-direction: column; }
 
-.col-1-of-2, .col-1-of-3, .col-1-of-4, .col-1-of-5, .row-1-of-2, .row-1-of-3, .row-1-of-4, .row-1-of-5, .row-20-of-80, .row-30-of-70, .footer__grid, .footer__form, .footer__contact, .footer__copy, .dashboard, .dashboard__nav, .dashboard__aside, .dashboard__dashboard, .dashboard__account, .dashboard__account--details, .dashboard__card, .dashboard__tasks, .dashboard__tasks--value-heading, .dashboard__tasks--item, .top, .features__container, .services__holder, .payment__form, .devices__grid, .tracking, .tracking__tiles, .tracking__tile {
+.u-flex-between {
+  justify-content: space-between; }
+
+.u-flex-around {
+  justify-content: space-around; }
+
+.col-1-of-2, .col-1-of-3, .col-1-of-4, .col-1-of-5, .row-1-of-2, .row-1-of-3, .row-1-of-4, .row-1-of-5, .row-20-of-80, .row-30-of-70, .modal ul, .footer__grid, .footer__form, .footer__contact, .footer__copy, .dashboard, .dashboard__nav, .dashboard__aside, .dashboard__dashboard, .dashboard__tasks, .dashboard__tasks--value-heading, .dashboard__tasks--item, .top, .features__container, .services__holder, .payment__form, .devices__grid, .login__container, .tracking, .tracking__tiles, .tracking__tile {
   display: grid; }
 
-.row-1-of-2, .dashboard__dashboard, .dashboard__account--details, .devices__grid {
+.row-1-of-2, .dashboard__dashboard, .devices__grid {
   grid-template-rows: repeat(2, 1fr); }
 
-.row-1-of-3 {
+.row-1-of-3, .login__container {
   grid-template-rows: repeat(3, 1fr); }
 
 .row-1-of-4 {
@@ -34,7 +40,7 @@
 .row-30-of-70 {
   grid-template-rows: 30% 70%; }
 
-.col-1-of-2, .footer__grid, .footer__contact, .dashboard__dashboard, .dashboard__account--details, .dashboard__card {
+.col-1-of-2, .footer__grid, .footer__contact, .dashboard__dashboard {
   grid-template-columns: repeat(2, 1fr); }
 
 .col-1-of-3, .features__container, .services__holder, .tracking__tiles {
@@ -586,6 +592,49 @@ select {
     top: 90%;
     opacity: 0; } }
 
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  width: 35rem;
+  height: 40rem;
+  box-shadow: 0 2px 1px rgba(161, 161, 161, 0.07), 0 4px 2px rgba(161, 161, 161, 0.07), 0 8px 4px rgba(161, 161, 161, 0.07), 0 16px 8px rgba(161, 161, 161, 0.07), 0 32px 16px rgba(161, 161, 161, 0.07); }
+  .modal-container {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(2px); }
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem; }
+  .modal-show {
+    display: block; }
+  .modal-svg {
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer; }
+  .modal ul {
+    width: 100%;
+    height: 100%;
+    grid-template-rows: repeat(7, 1fr); }
+    .modal ul li {
+      font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
+      font-size: 1.8rem;
+      color: #3c435a;
+      width: 80%;
+      margin: 0 auto; }
+      .modal ul li:not(:last-child) {
+        border-bottom: 1px solid rgba(161, 161, 161, 0.8); }
+      .modal ul li select {
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        font: inherit;
+        font-size: inherit; }
+
 .tabs {
   width: 100%;
   height: 7rem;
@@ -837,14 +886,14 @@ g {
   grid-template-rows: repeat(12, 1fr); }
   .dashboard__nav {
     grid-area: 1 / 2 / 2 / -1;
-    grid-template-columns: 75% 10%;
+    grid-template-columns: 65% 10% 25%;
     width: 100%;
     height: 100%; }
     .dashboard__nav--title {
       grid-column: 1 / 2;
       margin-left: 10%; }
       .dashboard__nav--title h3 {
-        font: 2rem/1 "ProzaLibre Semi Bold", Fallback, sans-serif;
+        font: 2rem/1 "Nunito Regular", Fallback, sans-serif;
         font-size: 2.2rem;
         color: #333;
         text-transform: capitalize; }
@@ -859,6 +908,16 @@ g {
         width: 1.5rem;
         height: 1.5rem;
         color: #a1a1a1; }
+    .dashboard__nav--account {
+      grid-column: 3 / 4; }
+      .dashboard__nav--account-name {
+        font: 2rem/1 "Nunito Regular", Fallback, sans-serif;
+        font-size: 1.7rem;
+        text-transform: capitalize;
+        color: #3c435a; }
+      .dashboard__nav--account-avatar img {
+        width: 4rem;
+        border-radius: 50%; }
   .dashboard__aside {
     grid-area: 1 / 1 / -1 / 2;
     grid-template-rows: 20% 10% 30%; }
@@ -884,170 +943,47 @@ g {
     height: 100%;
     background-color: #fafafa;
     border-radius: 1rem;
-    grid-area: 2 / 2 / -1 / 10; }
+    grid-area: 2 / 2 / -1 / -1; }
   .dashboard__dashboard {
     width: 100%;
     height: 100%;
     overflow: hidden;
     grid-gap: 2rem; }
-  .dashboard__account {
-    grid-area: 2 / 10 / -1 / -1;
-    grid-template-rows: 35% 35% 10%; }
-    .dashboard__account--profile {
-      width: 100%; }
-      .dashboard__account--profile-name {
-        flex: 0 0 60%; }
-        .dashboard__account--profile-name * {
-          margin-left: 10%; }
-        .dashboard__account--profile-name span {
-          font: 2rem/1 "Nunito Light", Fallback, sans-serif;
-          font-size: 2.3rem; }
-        .dashboard__account--profile-name h3 {
-          font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
-          font-size: 2.5rem;
-          font-weight: 500;
-          color: #3c435a; }
-      .dashboard__account--profile-img {
-        flex: 1;
-        width: 100%;
-        height: 100%; }
-        .dashboard__account--profile-img img {
-          width: 80%;
-          border-radius: 50%; }
-    .dashboard__account--details * {
-      width: 90%;
-      height: 100%;
-      margin: 0 auto; }
-      .dashboard__account--details * h3 {
-        font: 2rem/1 "Nunito Light", Fallback, sans-serif;
-        font-size: 1.6rem;
-        text-transform: capitalize;
-        color: #a1a1a1; }
-      .dashboard__account--details * span {
-        font: 2rem/1 "ProzaLibre Semi Bold", Fallback, sans-serif;
-        font-size: 3rem;
-        color: #3c435a;
-        align-self: center;
-        width: 50%; }
-    .dashboard__account--details-total {
-      position: relative; }
-      .dashboard__account--details-total span:before {
-        color: #882a88;
-        content: "";
-        display: inline-block;
-        position: absolute;
-        left: 20%;
-        top: 50%;
-        height: 25%;
-        width: 2px;
-        background-color: currentColor; }
-    .dashboard__account--details-completed {
-      position: relative; }
-      .dashboard__account--details-completed span:before {
-        color: #009218;
-        content: "";
-        display: inline-block;
-        position: absolute;
-        left: 20%;
-        top: 50%;
-        height: 25%;
-        width: 2px;
-        background-color: currentColor; }
-    .dashboard__account--details-pending {
-      position: relative; }
-      .dashboard__account--details-pending span:before {
-        color: #f0b41e;
-        content: "";
-        display: inline-block;
-        position: absolute;
-        left: 20%;
-        top: 50%;
-        height: 25%;
-        width: 2px;
-        background-color: currentColor; }
-    .dashboard__account--details-errors {
-      position: relative; }
-      .dashboard__account--details-errors span:before {
-        color: #ff3d51;
-        content: "";
-        display: inline-block;
-        position: absolute;
-        left: 20%;
-        top: 50%;
-        height: 25%;
-        width: 2px;
-        background-color: currentColor; }
-    .dashboard__account--logout {
-      font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
-      font-size: 1.6rem;
-      color: #3c435a;
-      text-transform: capitalize;
-      cursor: pointer;
-      width: 40%;
-      margin: 0 auto;
-      letter-spacing: 1.5px; }
-      .dashboard__account--logout svg {
-        width: 3rem;
-        height: 3rem; }
-  .dashboard__card {
-    background-color: #fff;
-    box-shadow: 0 1px 1px rgba(161, 161, 161, 0.07), 0 2px 2px rgba(161, 161, 161, 0.07), 0 4px 4px rgba(161, 161, 161, 0.07), 0 6px 8px rgba(161, 161, 161, 0.07), 0 8px 16px rgba(161, 161, 161, 0.07);
-    border-radius: 1rem;
-    overflow: hidden;
-    width: 80%;
-    height: 90%;
-    margin: auto auto;
-    grid-template-rows: 30% 50% 20%; }
-    .dashboard__card * {
-      font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif; }
-    .dashboard__card--value {
-      color: #3c435a;
-      font-size: 6rem;
-      grid-area: 1 / 1 / -1 / 2; }
-    .dashboard__card--title {
-      color: #f0b41e;
-      font-size: 1.8rem;
-      grid-area: 1 / 2 / 2 / -1; }
-    .dashboard__card--description {
-      color: #5aabe9;
-      font-size: 1.8rem;
-      grid-area: 2 / 2 / 3 / -1;
-      width: 80%;
-      margin: 0 auto;
-      line-height: 2.2rem;
-      text-align: center; }
-    .dashboard__card--cta {
-      font-size: 1.2rem;
-      color: #5aabe9 !important;
-      grid-area: 3 / 2 / -1 / -1; }
   .dashboard__tasks {
     width: 100%;
     height: 100%;
-    grid-template-rows: 10% 90%; }
+    grid-template-rows: 10% 10% 80%;
+    position: relative; }
     .dashboard__tasks--heading {
       width: 100%;
       height: 100%;
       grid-area: 1 / 1 / 2 / 2; }
       .dashboard__tasks--heading ul {
-        width: 100%;
+        width: 70%;
         height: 100%; }
-    .dashboard__tasks--tab {
-      text-transform: uppercase;
-      font: 2rem/1 "Nunito Light", Fallback, sans-serif;
-      font-size: 1.8rem;
-      padding: 1rem 1.5rem;
-      border-radius: 5px;
-      cursor: pointer;
-      border: 1px solid rgba(60, 67, 90, 0.4); }
-      .dashboard__tasks--tab-active {
-        background-color: #3c435a;
-        color: #fff; }
-    .dashboard__tasks--value {
+    .dashboard__tasks--count {
+      border-radius: 50%;
+      font-size: 1.4rem; }
+    .dashboard__tasks--title {
       grid-area: 2 / 1 / 3 / 2;
       width: 100%;
+      justify-content: center;
+      align-items: flex-end; }
+      .dashboard__tasks--title ul {
+        width: 95%;
+        margin: 0 auto; }
+    .dashboard__tasks--value {
+      grid-area: 3 / 1 / 4 / 2;
+      width: 100%;
       height: 100%;
-      max-height: 100%;
-      margin-top: 5%; }
+      max-height: 50rem;
+      overflow-y: scroll;
+      overflow-x: hidden; }
+      .dashboard__tasks--value::-webkit-scrollbar {
+        width: 2px; }
+      .dashboard__tasks--value::-webkit-scrollbar-thumb {
+        background-color: #3c435a;
+        border-radius: 0.2rem; }
       .dashboard__tasks--value ul {
         width: 95%;
         height: 100%;
@@ -1056,17 +992,17 @@ g {
         padding: 1.5rem 0;
         border-bottom: 1px solid rgba(102, 102, 102, 0.47); }
       .dashboard__tasks--value-heading {
-        width: 100%;
-        grid-template-columns: 15% 15% 15% 20% 15% 10%;
+        width: 80%;
+        grid-template-columns: 18% 18% 18% 24% 15% 10%;
         font: 2rem/1 "Nunito Light", Fallback, sans-serif;
-        font-size: 1.5rem; }
+        font-size: 1.6rem; }
     .dashboard__tasks--heading {
       width: 100%;
       font: 2rem/1 "Nunito Light", Fallback, sans-serif;
       font: 1.6rem;
       color: #a1a1a1; }
     .dashboard__tasks--item {
-      grid-template-columns: 15% 15% 15% 30% 15% 10%;
+      grid-template-columns: 18% 18% 18% 24% 15% 10%;
       cursor: pointer; }
       .dashboard__tasks--item li {
         font: 2rem/1 "ProzaLibre Italic", Fallback, sans-serif;
@@ -1078,6 +1014,18 @@ g {
           color: #f0b41e; }
         .dashboard__tasks--item li[data-type="completed"] {
           color: #009218; }
+  .dashboard__tab {
+    text-transform: uppercase;
+    font: 2rem/1 "Nunito Light", Fallback, sans-serif;
+    font-size: 1.6rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid rgba(60, 67, 90, 0.4);
+    transition: all 0.25s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+    .dashboard__tab-active {
+      background-color: #3c435a;
+      color: #fff; }
 
 section {
   padding-top: 5rem;
@@ -1324,6 +1272,27 @@ section {
   right: 0;
   height: 100%;
   z-index: -1; }
+
+.login {
+  width: 100%;
+  max-height: 100vh;
+  height: 100vh; }
+  .login__container {
+    box-shadow: 0 2px 1px rgba(161, 161, 161, 0.07), 0 4px 2px rgba(161, 161, 161, 0.07), 0 8px 4px rgba(161, 161, 161, 0.07), 0 16px 8px rgba(161, 161, 161, 0.07), 0 32px 16px rgba(161, 161, 161, 0.07);
+    width: 35rem;
+    height: 30rem; }
+  .login__group {
+    width: 90%;
+    margin: 0 auto;
+    font: 2rem/1 "Nunito Light", Fallback, sans-serif; }
+    .login__group label {
+      font-size: 1.6rem;
+      color: #a1a1a1; }
+    .login__group input {
+      border: 1px solid rgba(102, 102, 102, 0.2);
+      font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
+      font-size: 1.8rem;
+      padding: 0.5rem 1rem; }
 
 .tracking {
   grid-template-rows: 10% 10% 78%;
