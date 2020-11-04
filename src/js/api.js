@@ -110,7 +110,7 @@ const submitCarrierUnlockTask = (paymentDetails, taskDetails) => {
         .then(async response => {
             if (response.ok) {
                 const data = response.json();
-                alert(data);
+                console.log(data);
             } else {
                 console.log(response)
             }
@@ -133,7 +133,7 @@ const submitICloudUnlockTask = (paymentDetails, taskDetails) => {
         .then(async response => {
             if (response.ok) {
                 const data = response.json();
-                alert(data);
+                console.log(data);
             } else {
                 console.log(response)
             }
@@ -156,7 +156,7 @@ const submitIMEICheckTask = (paymentDetails, taskDetails) => {
         .then(async response => {
             if (response.ok) {
                 const data = response.json();
-                alert(data);
+                console.log(data);
             } else {
                 console.log(response)
             }

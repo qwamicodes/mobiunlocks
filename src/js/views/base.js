@@ -39,4 +39,5 @@
   taskItem: '.dashboard__tasks--item',
   taskItemLi: '.dashboard__tasks--item li',
   taskTab: '.dashboard__tab',
+  trackingForm: '#tracking-form',
 };
