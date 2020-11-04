@@ -1,7 +1,7 @@
 import * as UICtrl from '../views/UICtrl';
 import { elements } from '../views/base';
 import { Payment } from './payment';
-import { testStoreDetails } from "../api"; // !!!!!!!!!!!!!!
+// import { testStoreDetails } from "../api"; // !! uncomment when testing task detail storage
 
 export const Data = {
     invoices : [],
@@ -251,7 +251,7 @@ export class Pay {
         return this;
     };
 
-    // ! Method that stores the task details to the Data object
+    // TODO Method that stores the task details to the Data object
     storeTaskDetails () {
         Data.taskDetail = {}; // ? reset task details
 
@@ -260,13 +260,15 @@ export class Pay {
         Data.taskDetail.imei = this.imei; // imei number
         Data.taskDetail.price = this.price; // price
         Data.taskDetail.phone_model = this.modelName; // device model, 11, 11 PRO, SE, etc.
-        // // Data.taskDetail.model = this.model; // model in numerals
+        
+        // * setting device type
         if (this.model >= 101 && this.model <= 122){
             Data.taskDetail.device_type = "iphone";
         } else if (this.model >= 123 && this.model <= 134) {
             Data.taskDetail.device_type = "ipad";
         }
         
+        // * setting carrier network / imei checking details
         if (this.type == "imei"){
             let details = this.network.split('|');
             Data.taskDetail.details =  details; // checking details
@@ -304,10 +306,12 @@ export const preparePayment = (fullname, email, amount) => {
     split(fullname);
     
     //parsing the details into the payment class
-    // !! new Payment(email, amount, firstName, lastName).storeInv().makePayment(); UNCOMMENT AFTER TESTING
-    new Payment(email, amount, firstName, lastName).storeInv();
+    // ! When testing without payments, comment this line below and
+    new Payment(email, amount, firstName, lastName).storeInv().makePayment();
     
-    testStoreDetails(Data.taskDetail);
+    // ! When testing without payments, uncomment these two lines below
+    // new Payment(email, amount, firstName, lastName).storeInv();
+    // testStoreDetails(Data.taskDetail);
 
 };
 
