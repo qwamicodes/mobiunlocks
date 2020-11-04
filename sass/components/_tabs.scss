@@ -34,6 +34,10 @@
   color: $accent-color;
   transition: $transition-faster;
 
+  @include respond(mobile-small) {
+    padding: 1rem 1.5rem;
+  }
+
   &-left {
     left: 10%;
   }

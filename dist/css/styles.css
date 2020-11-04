@@ -689,6 +689,9 @@ select {
   cursor: pointer;
   color: #3c435a;
   transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+  @media only screen and (max-width: 20em) {
+    .tab {
+      padding: 1rem 1.5rem; } }
   .tab-left {
     left: 10%; }
   .tab-current {
