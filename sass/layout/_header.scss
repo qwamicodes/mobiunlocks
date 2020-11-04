@@ -6,6 +6,14 @@
   @extend %df;
   align-self: flex-end;
 
+  @include respond(mobile-big) {
+    width: 90%;
+  }
+
+  @include respond(mobile) {
+    width: 95%;
+  }
+
   &__herobox {
     width: 100%;
     height: 100%;
@@ -14,12 +22,20 @@
       flex: 0 0 60%;
       display: grid;
       grid-template-rows: 60% 20% 20%;
+
+      @include respond(mobile-big) {
+        flex: 0 0 100%;
+      }
     }
 
     &--right {
       flex: 1;
       position: relative;
       overflow: hidden;
+
+      @include respond(mobile-big) {
+        display: none;
+      }
 
       svg {
         position: absolute;
@@ -34,26 +50,47 @@
 
   &__intro {
     &--main {
+      @include flexcenter;
+
+      svg {
+        @include respond(mobile-big) {
+          width: 100%;
+          margin: 9% 0 0 10%;
+        }
+      }
     }
 
     &--sub {
       font: $nunito-light;
       width: 85%;
       margin: 0 auto;
+
+      @include respond(mobile-big) {
+        text-align: center;
+        line-height: 3rem;
+      }
     }
 
     &--cta {
       width: 85%;
       margin: 0 auto;
+
+      @include respond(mobile-big) {
+        text-align: center;
+      }
     }
   }
 }
 
 .filled-text {
   text-transform: capitalize;
-  font: $prozaLibre-regular;
+  // font: $prozaLibre-regular;
   font-size: 7.5rem;
   font-weight: 600;
+
+  @include respond(mobile-big) {
+    font-size: 9rem;
+  }
 }
 
 #background .bg-path {

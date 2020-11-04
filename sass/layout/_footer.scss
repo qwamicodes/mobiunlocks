@@ -6,7 +6,20 @@
   height: 40rem;
   background-color: $accent-color;
 
+  @include respond(mobile-big) {
+    height: 55rem;
+  }
+
+  @include respond(mobile) {
+    height: 65rem;
+  }
+
   &__title {
+    @include respond(mobile) {
+      width: 95%;
+      text-align: center;
+    }
+
     h3 {
       font: $prozaLibre-regular;
       font-size: 2rem;
@@ -21,20 +34,82 @@
     flex: 0 0 85%;
     @extend %dg;
     @extend %col-1-of-2;
+
+    @include respond(tab-port) {
+      width: 90%;
+    }
+
+    @include respond(mobile-big) {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      width: 95%;
+    }
   }
 
   &__container {
     grid-area: 1 / 2 / -1 / -1;
     @extend %df;
     @extend %dc;
+
+    @include respond(mobile-big) {
+      grid-area: 2 / 1 / 3 / -1;
+    }
   }
 
   &__form {
-    grid-area: 1 / 1 / -1 / 2;
+    grid-area: 1 / 1 / 2 / 2;
     @extend %dg;
     grid-template-rows: 20% 80%;
 
+    @include respond(mobile-big) {
+      grid-area: 1 / 1 / 2 / -1;
+      height: 100%;
+    }
+
+    @include respond(mobile) {
+      grid-template-rows: 15% 85%;
+    }
+
+    &--container {
+      @include respond(mobile-big) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+      }
+
+      @include respond(mobile) {
+        grid-template-rows: 20% 65% 15%;
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+
     &--group {
+      @include respond(mobile-big) {
+        display: inline-block;
+      }
+
+      @include respond(mobile) {
+        grid-area: auto;
+        margin: 0 auto;
+        width: fit-content;
+      }
+
+      &:nth-child(2) {
+        @include respond(mobile-big) {
+          grid-area: 1 / 2 / -1 / -1;
+        }
+
+        @include respond(mobile) {
+          grid-area: auto;
+        }
+      }
+
+      &:last-child {
+        @include respond(mobile-big) {
+          @include flexcenter;
+        }
+      }
+
       input {
         border: 0;
         background-color: rgba($color-white, 0.8);
@@ -55,6 +130,10 @@
         padding: 1rem;
         border: 0;
         background-color: rgba($color-white, 0.8);
+
+        @include respond(mobile-big) {
+          height: 90%;
+        }
 
         &:focus {
           outline: 0;
@@ -102,6 +181,12 @@
 
     ul {
       @include flexeven;
+      flex-wrap: wrap;
+
+      @include respond(mobile-big) {
+        width: 90%;
+        margin: 0 auto;
+      }
 
       li {
         a {
@@ -169,6 +254,14 @@
       border-radius: 50%;
       border: 1px solid rgba($color-white, 0.5);
       @include flexcenter;
+
+      @include respond(mobile-big) {
+        padding: 1.5rem;
+      }
+
+      @include respond(mobile) {
+        padding: 1.2rem;
+      }
     }
   }
 
@@ -182,6 +275,7 @@
     color: $color-white;
 
     a {
+      text-align: center;
       text-transform: capitalize;
       color: $color-white;
     }

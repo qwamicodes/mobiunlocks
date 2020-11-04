@@ -78,6 +78,20 @@
 .title {
   @include flexcenter;
   padding: 5rem 0;
+
+  @include respond(mobile-big) {
+    text-align: center;
+  }
+
+  h4 {
+    @include respond(mobile-big) {
+      line-height: 4.5rem;
+    }
+
+    @include respond(mobile) {
+      width: 90%;
+    }
+  }
 }
 
 .heading {

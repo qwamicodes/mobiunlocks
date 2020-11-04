@@ -5,11 +5,21 @@
   position: relative;
   @include flexeven;
 
+  @include respond(mobile) {
+    flex-direction: column;
+    overflow: visible;
+    height: 10rem;
+  }
+
   li {
     position: absolute;
     top: 0;
     display: inline-block;
     transition: $transition-faster;
+
+    @include respond(mobile) {
+      transform: rotate(45deg) translate(20%, 60%);
+    }
   }
 }
 
