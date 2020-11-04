@@ -16,7 +16,7 @@ const baseBackendAPIURL = "http://127.0.0.1:8080/api/v1";
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CONFIRM PAYMENT AND STORE TASK DETAILS IN DATABASE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-// send requests to API endpoints to create tasks in DB depending on task type
+// !! TESTING send requests to API endpoints to create tasks in DB depending on task type
 export const testStoreDetails = taskDetails => {
     let paymentDetails = {
         "customer_name": "Jay",
@@ -48,6 +48,7 @@ export const testStoreDetails = taskDetails => {
     }
 
 };
+// !! 
 
 export const confirmPayAndStoreDetails = (paymentReference, taskDetails) => {
     /*
@@ -162,3 +163,6 @@ const submitIMEICheckTask = (paymentDetails, taskDetails) => {
             }
         })
 }
+
+// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ RETRIEVE TASK DETAIL USING TRACKING NUMBER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
