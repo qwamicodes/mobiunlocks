@@ -724,7 +724,7 @@ select {
       height: 55rem; } }
   @media only screen and (max-width: 30em) {
     .footer {
-      height: 65rem; } }
+      height: 85rem; } }
   @media only screen and (max-width: 30em) {
     .footer__title {
       width: 95%;
@@ -746,6 +746,9 @@ select {
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(2, 1fr);
         width: 95%; } }
+    @media only screen and (max-width: 30em) {
+      .footer__grid {
+        grid-template-rows: 45% 55%; } }
   .footer__container {
     grid-area: 1 / 2 / -1 / -1; }
     @media only screen and (max-width: 37.5em) {
@@ -809,12 +812,27 @@ select {
         outline: 0; }
   .footer__contact {
     flex: 0 0 60%; }
+    @media only screen and (max-width: 30em) {
+      .footer__contact {
+        flex: 0 0 85%; } }
+    @media only screen and (max-width: 23.4375em) {
+      .footer__contact {
+        grid-template-columns: auto;
+        grid-template-rows: repeat(2, 1fr); } }
+    @media only screen and (max-width: 30em) {
+      .footer__contact--call {
+        height: 50%;
+        margin: auto; } }
     .footer__contact--call a,
     .footer__contact--call span {
       font: 2rem/1 "Nunito Light", Fallback, sans-serif;
       font-size: 1.4rem;
       color: rgba(255, 255, 255, 0.5);
       padding: 1rem; }
+    @media only screen and (max-width: 30em) {
+      .footer__contact--address {
+        margin: auto;
+        height: 60%; } }
     .footer__contact--address a,
     .footer__contact--address span {
       font: 2rem/1 "Nunito Light", Fallback, sans-serif;
@@ -829,6 +847,9 @@ select {
         .footer__social ul {
           width: 90%;
           margin: 0 auto; } }
+      @media only screen and (max-width: 30em) {
+        .footer__social ul {
+          width: 100%; } }
       .footer__social ul li a {
         border: 1px solid rgba(255, 255, 255, 0.5);
         transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
@@ -875,9 +896,13 @@ select {
     grid-template-columns: 35% 10% 10% 10% 35%;
     font: 2rem/1 "Nunito Light", Fallback, sans-serif;
     font-size: 1.2rem;
-    color: #fff; }
+    color: #fff;
+    text-align: center; }
+    @media only screen and (max-width: 30em) {
+      .footer__copy {
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr); } }
     .footer__copy a {
-      text-align: center;
       text-transform: capitalize;
       color: #fff; }
 
@@ -893,6 +918,9 @@ select {
   @media only screen and (max-width: 30em) {
     .header {
       width: 95%; } }
+  @media only screen and (max-width: 20em) {
+    .header {
+      height: 100%; } }
   .header__herobox {
     width: 100%;
     height: 100%; }
@@ -903,6 +931,12 @@ select {
       @media only screen and (max-width: 37.5em) {
         .header__herobox--left {
           flex: 0 0 100%; } }
+      @media only screen and (max-width: 30em) {
+        .header__herobox--left {
+          grid-template-rows: 52% 28% 20%; } }
+      @media only screen and (max-width: 20em) {
+        .header__herobox--left {
+          grid-template-rows: 50% 30% 20%; } }
     .header__herobox--right {
       flex: 1;
       position: relative;

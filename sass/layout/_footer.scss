@@ -11,7 +11,11 @@
   }
 
   @include respond(mobile) {
-    height: 65rem;
+    height: 85rem;
+  }
+
+  @include respond(mobile-small) {
+    // height: 80rem;
   }
 
   &__title {
@@ -43,6 +47,10 @@
       grid-template-columns: repeat(1, 1fr);
       grid-template-rows: repeat(2, 1fr);
       width: 95%;
+    }
+
+    @include respond(mobile) {
+      grid-template-rows: 45% 55%;
     }
   }
 
@@ -147,10 +155,24 @@
     @extend %dg;
     @extend %col-1-of-2;
 
+    @include respond(mobile) {
+      flex: 0 0 85%;
+    }
+
+    @media only screen and (max-width: 23.4375em) {
+      grid-template-columns: auto;
+      grid-template-rows: repeat(2, 1fr);
+    }
+
     &--call {
       @extend %df;
       @extend %dc;
       @extend %dai;
+
+      @include respond(mobile) {
+        height: 50%;
+        margin: auto;
+      }
 
       a,
       span {
@@ -165,6 +187,11 @@
       @extend %df;
       @extend %dc;
       @extend %dai;
+
+      @include respond(mobile) {
+        margin: auto;
+        height: 60%;
+      }
 
       a,
       span {
@@ -186,6 +213,10 @@
       @include respond(mobile-big) {
         width: 90%;
         margin: 0 auto;
+      }
+
+      @include respond(mobile) {
+        width: 100%;
       }
 
       li {
@@ -273,9 +304,14 @@
     font: $nunito-light;
     font-size: 1.2rem;
     color: $color-white;
+    text-align: center;
+
+    @include respond(mobile) {
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+    }
 
     a {
-      text-align: center;
       text-transform: capitalize;
       color: $color-white;
     }
