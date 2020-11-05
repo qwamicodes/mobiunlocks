@@ -110,7 +110,7 @@ const submitCarrierUnlockTask = (paymentDetails, taskDetails) => {
     })
         .then(async response => {
             if (response.ok) {
-                const data = response.json();
+                const data = await response.json();
                 console.log(data);
             } else {
                 console.log(response)
@@ -133,7 +133,7 @@ const submitICloudUnlockTask = (paymentDetails, taskDetails) => {
     })
         .then(async response => {
             if (response.ok) {
-                const data = response.json();
+                const data = await response.json();
                 console.log(data);
             } else {
                 console.log(response)
@@ -156,7 +156,7 @@ const submitIMEICheckTask = (paymentDetails, taskDetails) => {
     })
         .then(async response => {
             if (response.ok) {
-                const data = response.json();
+                const data = await response.json();
                 console.log(data);
             } else {
                 console.log(response)
@@ -178,9 +178,12 @@ export const searchTaskByTracking = trackingID => {
     })
         .then(async response => {
             if (response.ok) {
-                data = response.json();
+                const data = await response.json();
+                // console.log(data); return
+
                 // if task was found then get details
                 const taskDetail = data['task_detail'];
+                
                 // if task was found and has been completed without error
                 if (taskDetail['completed'] && !taskDetail['error']) {
                     alert(taskDetail['results']);
@@ -197,6 +200,10 @@ export const searchTaskByTracking = trackingID => {
                 } else if (!taskDetail['complete']) {
                     alert('Task incomplete');
                 }
+            
+            // if task is not found
+            } else if (response.status === 404) {
+                alert("Task Not Found");
             }
         })
 
