@@ -165,4 +165,39 @@ const submitIMEICheckTask = (paymentDetails, taskDetails) => {
 }
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ RETRIEVE TASK DETAIL USING TRACKING NUMBER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/* 
+The tracking id entered by the user is sent to an API endpoint
+*/
 
+export const searchTaskByTracking = trackingID => {
+
+    const taskSearchEndpoint = `${baseBackendAPIURL}/tasks/search/?tracking_id=${trackingID}`;
+
+    fetch(taskSearchEndpoint, {
+        method: 'GET',
+    })
+        .then(async response => {
+            if (response.ok) {
+                data = response.json();
+                // if task was found then get details
+                const taskDetail = data['task_detail'];
+                // if task was found and has been completed without error
+                if (taskDetail['completed'] && !taskDetail['error']) {
+                    alert(taskDetail['results']);
+                    // switch (taskDetail['task_type']) {
+                    //     case "imei":
+                    //         alert(taskDetail['results']);
+                    //         break;
+
+                    //     default:
+                    //         break;
+                    // }
+                } else if (taskDetail['error']) {
+                    alert('Task error');
+                } else if (!taskDetail['complete']) {
+                    alert('Task incomplete');
+                }
+            }
+        })
+
+}

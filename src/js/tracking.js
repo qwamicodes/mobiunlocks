@@ -1,7 +1,7 @@
 import * as UICtrl from './views/UICtrl';
 import * as controller from './models/controller';
 import { elements } from  './views/base';
-
+import { searchTaskByTracking } from './api';
 
 //Event listner for the tracking search form
 document.querySelector(elements.trackingForm).addEventListener('submit', e => {
@@ -9,7 +9,7 @@ document.querySelector(elements.trackingForm).addEventListener('submit', e => {
 
     const formData = new FormData(e.target);
     const trackingNumber = formData.get('tracking-number');
-    
-    
+
+    searchTaskByTracking(trackingNumber);
 
 })
