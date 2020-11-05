@@ -40,4 +40,5 @@
   taskItemLi: '.dashboard__tasks--item li',
   taskTab: '.dashboard__tab',
   trackingForm: '#tracking-form',
+  allTasksListElement: '#dashboard__tasks--list',
 };

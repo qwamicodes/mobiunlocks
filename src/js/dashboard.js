@@ -2,6 +2,10 @@ import * as UICtrl from './views/UICtrl';
 import * as controller from './models/controller';
 import { elements } from  './views/base';
 
+//**** On Page Load Event listners ****//
+document.onload = controller.populatePage();
+
+
 //**** Modal Event listners ****//
 
 //Event listner to show the modal
@@ -39,3 +43,5 @@ document.querySelectorAll(elements.taskTab).forEach(tab => {
         controller.filterList(tab);
     });
 });
+
+//**** Page Population Event listners ****//

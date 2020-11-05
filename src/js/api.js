@@ -5,9 +5,6 @@
 */
 
 
-// import * as controller from './models/controller';
-// import * as elements from './views/base';
-
 const baseBackendURL = "http://127.0.0.1:8080";
 const baseBackendAPIURL = "http://127.0.0.1:8080/api/v1";
 // const baseBackendURL = "https://api.mobitechunclocks.com";
@@ -168,7 +165,6 @@ const submitIMEICheckTask = (paymentDetails, taskDetails) => {
 /* 
 The tracking id entered by the user is sent to an API endpoint
 */
-
 export const searchTaskByTracking = trackingID => {
 
     const taskSearchEndpoint = `${baseBackendAPIURL}/tasks/search/?tracking_id=${trackingID}`;
@@ -183,7 +179,7 @@ export const searchTaskByTracking = trackingID => {
 
                 // if task was found then get details
                 const taskDetail = data['task_detail'];
-                
+
                 // if task was found and has been completed without error
                 if (taskDetail['completed'] && !taskDetail['error']) {
                     alert(taskDetail['results']);
@@ -200,11 +196,50 @@ export const searchTaskByTracking = trackingID => {
                 } else if (!taskDetail['complete']) {
                     alert('Task incomplete');
                 }
-            
-            // if task is not found
+
+                // if task is not found
             } else if (response.status === 404) {
                 alert("Task Not Found");
             }
         })
 
+}
+
+// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ RETRIEVE ALL TASKS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+export const getAllTasks = () => {
+    /* 
+    fetches all tasks by calling their respective endpoints
+    stores these in a list of objects which is returned in the allTasks variable
+    */
+
+    // const getAllTasksEndpoint = `${baseBackendAPIURL}/tasks/all/`
+
+    const imeiCheckTaskEndpoint = `${baseBackendAPIURL}/tasks/imei/`;
+    const icloudUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/icloud/`;
+    const carrierUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/carrier/`;
+
+    let allTasks = [];
+
+    // loop over each task endpoint
+    [imeiCheckTaskEndpoint, icloudUnlockTaskEndpoint, carrierUnlockTaskEndpoint].forEach(endpoint => {
+        // perform get request to retrieve all tasks for each task type
+        fetch(endpoint, {
+            method: 'GET'
+        })
+            .then(async response => {
+                if (response.ok){
+                    let tasksArray = await response.json(); // list of tasks
+                    
+                    // push list of tasks to array to be returned 
+                    for (let task of tasksArray){
+                        allTasks.push(task);
+                    }
+                } else {
+                    console.log("error in getting all tasks");
+                }
+                
+            })
+    })
+
+    return allTasks;
 }

@@ -2,10 +2,12 @@ import * as UICtrl from '../views/UICtrl';
 import { elements } from '../views/base';
 import { Payment } from './payment';
 // import { testStoreDetails } from "../api"; // !! uncomment when testing task detail storage
+import { getAllTasks } from "../api";
+
 
 export const Data = {
-    invoices : [],
-    taskDetail : {},
+    invoices: [],
+    taskDetail: {},
 }
 
 //funtion to run when to check if the page height is reach the limit 
@@ -24,14 +26,14 @@ export const checkInput = input => {
 export const tabSel = (tab, hash = null) => {
     //TODO:
     //check if hash exists and use the controller
-    if(hash && hash.includes("#/")) {
+    if (hash && hash.includes("#/")) {
         //remove all active tabs
         UICtrl.removeActiveTab('tab');
         const tabs = document.querySelectorAll(elements.tab);
         switch (hash) {
             case '#/carrier':
                 tabs.forEach(tab => {
-                    if(tab.getAttribute('href') === hash) {
+                    if (tab.getAttribute('href') === hash) {
                         //set the active class to that tab
                         UICtrl.setActiveTab(tab, 'tab');
                         //change the form
@@ -41,7 +43,7 @@ export const tabSel = (tab, hash = null) => {
                 break;
             case '#/imei':
                 tabs.forEach(tab => {
-                    if(tab.getAttribute('href') === hash) {
+                    if (tab.getAttribute('href') === hash) {
                         //set the active class to that tab
                         UICtrl.setActiveTab(tab, 'tab');
                         //change the form
@@ -51,7 +53,7 @@ export const tabSel = (tab, hash = null) => {
                 break;
             case '#/unlocking':
                 tabs.forEach(tab => {
-                    if(tab.getAttribute('href') === hash) {
+                    if (tab.getAttribute('href') === hash) {
                         //set the active class to that tab
                         UICtrl.setActiveTab(tab, 'tab');
                         //change the form
@@ -60,7 +62,7 @@ export const tabSel = (tab, hash = null) => {
                 });
                 break;
         };
-    } else if(hash === null) {
+    } else if (hash === null) {
         //remove all active tabs
         UICtrl.removeActiveTab('tab');
         //set the active class to that tab
@@ -105,53 +107,53 @@ export const hidePay = () => {
 export class Pay {
     constructor(type, model, modelName, network, imei) {
         this.type = type,
-        this.model = parseInt(model, 10),
-        this.modelName = modelName,
-        this.network = network,
-        this.imei = imei
+            this.model = parseInt(model, 10),
+            this.modelName = modelName,
+            this.network = network,
+            this.imei = imei
         this.price = (0).toFixed(2);
     };
-    
+
     //Method that takes care of the price calculation
-    calcPrice () {
+    calcPrice() {
         switch (this.type) {
             case 'carrier':
-                if(this.network === 'at&t' || this.network === 'verizon') {
-                    if(this.model >= 101 && this.model <= 109 ) {
-                        this.price =  (170).toFixed(2);
-                    } else if(this.model >= 110 && this.model <= 113) {
-                        this.price =  (270).toFixed(2);
-                    } else if(this.model >= 114 && this.model <= 118) {
-                        this.price =  (370).toFixed(2);
-                    } else if(this.model >= 119 && this.model <= 122) {
-                        this.price =  (470).toFixed(2);
+                if (this.network === 'at&t' || this.network === 'verizon') {
+                    if (this.model >= 101 && this.model <= 109) {
+                        this.price = (170).toFixed(2);
+                    } else if (this.model >= 110 && this.model <= 113) {
+                        this.price = (270).toFixed(2);
+                    } else if (this.model >= 114 && this.model <= 118) {
+                        this.price = (370).toFixed(2);
+                    } else if (this.model >= 119 && this.model <= 122) {
+                        this.price = (470).toFixed(2);
                     };
-                } else if(this.network === 'sprint') {
-                    if(this.model >= 101 && this.model <= 109 ) {
-                        this.price =  (250).toFixed(2);
-                    } else if(this.model >= 110 && this.model <= 113) {
-                        this.price =  (350).toFixed(2);
-                    } else if(this.model >= 114 && this.model <= 118) {
-                        this.price =  (450).toFixed(2);
-                    } else if(this.model >= 119 && this.model <= 122) {
-                        this.price =  (550).toFixed(2);
+                } else if (this.network === 'sprint') {
+                    if (this.model >= 101 && this.model <= 109) {
+                        this.price = (250).toFixed(2);
+                    } else if (this.model >= 110 && this.model <= 113) {
+                        this.price = (350).toFixed(2);
+                    } else if (this.model >= 114 && this.model <= 118) {
+                        this.price = (450).toFixed(2);
+                    } else if (this.model >= 119 && this.model <= 122) {
+                        this.price = (550).toFixed(2);
                     };
-                } else if(this.network === 'tmobile') {
-                } else if(this.network === 'o2' || this.network === 'tesco') {
-                    if(this.model >= 101 && this.model <= 109 ) {
-                        this.price =  (170).toFixed(2);
-                    } else if(this.model >= 110 && this.model <= 113) {
-                        this.price =  (270).toFixed(2);
-                    } else if(this.model >= 114 && this.model <= 118) {
-                        this.price =  (370).toFixed(2);
-                    } else if(this.model >= 119 && this.model <= 122) {
-                        this.price =  (470).toFixed(2);
+                } else if (this.network === 'tmobile') {
+                } else if (this.network === 'o2' || this.network === 'tesco') {
+                    if (this.model >= 101 && this.model <= 109) {
+                        this.price = (170).toFixed(2);
+                    } else if (this.model >= 110 && this.model <= 113) {
+                        this.price = (270).toFixed(2);
+                    } else if (this.model >= 114 && this.model <= 118) {
+                        this.price = (370).toFixed(2);
+                    } else if (this.model >= 119 && this.model <= 122) {
+                        this.price = (470).toFixed(2);
                     };
-                } else if(this.network === 'metropcs') {
-                    if(this.model >= 101 && this.model <= 113 ) {
-                        this.price =  (700).toFixed(2);
-                    } else if(this.model >= 114 && this.model <= 122) {
-                        this.price =  (1000).toFixed(2);
+                } else if (this.network === 'metropcs') {
+                    if (this.model >= 101 && this.model <= 113) {
+                        this.price = (700).toFixed(2);
+                    } else if (this.model >= 114 && this.model <= 122) {
+                        this.price = (1000).toFixed(2);
                     };
                 };
                 break;
@@ -159,9 +161,9 @@ export class Pay {
                 this.price = (25).toFixed(2);
                 break;
             case 'unlocking':
-                if(this.model >= 106 && this.model <= 115) {
+                if (this.model >= 106 && this.model <= 115) {
                     this.price = (800).toFixed(2);
-                } else if(this.model >= 116 && this.model <= 122) {
+                } else if (this.model >= 116 && this.model <= 122) {
                     this.price = (1200).toFixed(2);
                 };
                 break;
@@ -171,8 +173,8 @@ export class Pay {
     };
 
     //Method that takes care of the inserting the price after been calc
-    insertPay ()  {
-        if(this.type === 'carrier') {
+    insertPay() {
+        if (this.type === 'carrier') {
             let html = `
                 <div class="payment__items--item">
                 <span class="payment__items--main">type</span>
@@ -192,7 +194,7 @@ export class Pay {
                 </div>
             `;
             document.querySelector(elements.paymentItems).innerHTML = html;
-        } else if(this.type === 'imei') {
+        } else if (this.type === 'imei') {
             let html = `
                 <div class="payment__items--item">
                     <span class="payment__items--main">type</span>
@@ -208,8 +210,8 @@ export class Pay {
                 </div>
             `;
             document.querySelector(elements.paymentItems).innerHTML = html;
-        } else if(this.type === 'unlocking') {
-            if(this.model >= 123) {
+        } else if (this.type === 'unlocking') {
+            if (this.model >= 123) {
                 let html = `
                     <div class="payment__items--item">
                         <span class="payment__items--sub">For All iPad iCloud unlocking</span>
@@ -242,7 +244,7 @@ export class Pay {
                 document.querySelector(elements.paymentItems).innerHTML = html;
             };
         };
-   
+
         document.querySelectorAll(elements.paymentPrice).forEach(el => {
             el.innerHTML = `GHC ${this.price}`;
         });
@@ -257,7 +259,7 @@ export class Pay {
     };
 
     // TODO Method that stores the task details to the Data object
-    storeTaskDetails () {
+    storeTaskDetails() {
         Data.taskDetail = {}; // ? reset task details
 
         // ? insert task details
@@ -265,22 +267,22 @@ export class Pay {
         Data.taskDetail.imei = this.imei; // imei number
         Data.taskDetail.price = this.price; // price
         Data.taskDetail.phone_model = this.modelName; // device model, 11, 11 PRO, SE, etc.
-        
+
         // * setting device type
-        if (this.model >= 101 && this.model <= 122){
+        if (this.model >= 101 && this.model <= 122) {
             Data.taskDetail.device_type = "iphone";
         } else if (this.model >= 123 && this.model <= 134) {
             Data.taskDetail.device_type = "ipad";
         }
-        
+
         // * setting carrier network / imei checking details
-        if (this.type == "imei"){
+        if (this.type == "imei") {
             let details = this.network.split('|');
-            Data.taskDetail.details =  details; // checking details
-        } else{
+            Data.taskDetail.details = details; // checking details
+        } else {
             Data.taskDetail.phone_carrier_network = this.network; // carrier network
         }
-        
+
 
     };
 };
@@ -292,15 +294,15 @@ export const preparePayment = (fullname, email, amount) => {
     //function to split the fullname into first and last name
     const split = name => {
         const splited = name.split(' ');
-        if(splited.length <= 2) {
+        if (splited.length <= 2) {
             firstName = splited[0];
 
-            if(splited[1]) {
+            if (splited[1]) {
                 lastName = splited[1];
             } else {
                 lastName = '';
             };
-            
+
         } else {
             firstName = splited[0];
             lastName = `${splited[1]} ${splited[2]}`;
@@ -309,11 +311,11 @@ export const preparePayment = (fullname, email, amount) => {
     };
 
     split(fullname);
-    
+
     //parsing the details into the payment class
     // ! When testing without payments, comment this line below and
     new Payment(email, amount, firstName, lastName).storeInv().makePayment();
-    
+
     // ! When testing without payments, uncomment these two lines below
     // new Payment(email, amount, firstName, lastName).storeInv();
     // testStoreDetails(Data.taskDetail);
@@ -322,7 +324,7 @@ export const preparePayment = (fullname, email, amount) => {
 
 //Function that receives the list elements and parses it into the modal
 export const modalList = lists => {
-    
+
     UICtrl.showModal(...lists);
 
 };
@@ -347,33 +349,33 @@ export const copyText = ele => {
 
     //removing the created element
     textArea.remove();
-    
+
     //alerting the user that text has been successfully copied
     UICtrl.popupAlert('copied text');
 };
 
 //function to sort out the list
 export const filterList = tab => {
-   // TODO:
-   //set the tab selected as active
-   UICtrl.removeActiveTab('dashboard__tab')
-   UICtrl.setActiveTab(tab, 'dashboard__tab');
+    // TODO:
+    //set the tab selected as active
+    UICtrl.removeActiveTab('dashboard__tab')
+    UICtrl.setActiveTab(tab, 'dashboard__tab');
 
-   //query all the list
-   const items = Array.from(document.querySelectorAll(elements.taskItem));
+    //query all the list
+    const items = Array.from(document.querySelectorAll(elements.taskItem));
 
-   //internal function to remove the display none calss
-    const addList = () => { 
+    //internal function to remove the display none calss
+    const addList = () => {
         items.forEach(item => {
             item.parentElement.classList.remove('u-display-none');
-        });  
+        });
     };
 
     //calling it whenever the tab is clicked
     addList();
-   
-   //sort them in removing the unneeded
-    if(tab.getAttribute('data-value') === 'all') {
+
+    //sort them in removing the unneeded
+    if (tab.getAttribute('data-value') === 'all') {
         addList();
     } else {
         // filtering the list using from the status
@@ -382,4 +384,42 @@ export const filterList = tab => {
     };
 };
 
-// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TRACKING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DASHBOARD ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+export const populatePage = () => {
+    let tasks = getAllTasks();
+    console.log(tasks);
+    
+    // HTML <ul> Element for holding individual <li> elements for each task 
+    let allTasksListElement = document.querySelector(elements.allTasksListElement);
+    console.log(allTasksListElement);
+    
+    // loop over each element
+    tasks.forEach(task => {
+        
+        // creating individual HTML elements for each task, populating it with data from the database
+        let singleTask = document.createElement("li");
+        singleTask.classList.add("dashboard__tasks--value-li");
+        singleTask.innerHTML =
+            `
+            <ul class="dashboard__tasks--item">
+                <li>${task.tracking_id}</li>
+                <li>${task.task_type}</li>
+                <li>${task.phone_model}</li>
+                <li>${task.imei}</li>
+                <li>${task.carrier}</li>
+                <li data-type="${task.completed? "completed" : "pending"}">
+                    ${task.completed? "Completed" : "Pending"}
+                </li>
+            </ul>
+            `;
+
+        console.log("jasdfs");
+        
+        console.log(singleTask);
+
+        // add single task element to all tasks list element
+        allTasksListElement.appendChild(singleTask);
+    })
+
+
+}
