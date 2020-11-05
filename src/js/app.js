@@ -8,6 +8,7 @@ import { elements } from  './views/base';
 document.onload = UICtrl.headerSVG();
 document.onload = controller.checkNav();
 document.onload = controller.tabSel(null, location.hash); 
+document.onload = controller.checkInput(document.querySelector('#carrier-iphone'));
 
 //**** On scroll Event listners ****/
 
@@ -38,26 +39,8 @@ document.querySelector(elements.cancelPayment).addEventListener('click', () => {
 
         const form = document.querySelector(elements.carrierForm);
         const checkPhone = form['car-phone'];
-        const phoneModel = form['carrier-model'];
-        const carNetwork = form['carrier-network'];
         const carImei = form['carrier-imei'];
         const btn = form.elements[`${form.elements.length - 1}`];
-
-        if(form.elements[0].checked) {
-            document.querySelectorAll(elements.ipadCarrier).forEach(el => {
-                el.style.display = 'none'; 
-            });
-            document.querySelectorAll(elements.iphoneCarrier).forEach(el => {
-                el.style.display = 'block'; 
-            });
-        } else if(form.elements[1].checked) {
-            document.querySelectorAll(elements.iphoneCarrier).forEach(el => {
-                el.style.display = 'none'; 
-            });
-            document.querySelectorAll(elements.ipadCarrier).forEach(el => {
-                el.style.display = 'block'; 
-            });
-        };
         
         if(checkPhone.value === 'on' && carImei.value.length >= 15 && form.checkValidity()) {
             controller.enableField(btn);
@@ -72,7 +55,6 @@ document.querySelector(elements.cancelPayment).addEventListener('click', () => {
     document.querySelector(elements.imeiForm).addEventListener(env, e => {
 
         const form = document.querySelector(elements.imeiForm);
-        const imeiNetwork = form['imei-network'];
         const carImei = form['imei-imei'];
         const btn = form.elements[`${form.elements.length - 1}`];
         
@@ -90,7 +72,6 @@ document.querySelector(elements.cancelPayment).addEventListener('click', () => {
 
         const form = document.querySelector(elements.unlockingForm);
         const checkPhone = form['unlock-phone'];
-        const phoneModel = form['unlocking-model'];
         const carImei = form['unlocking-imei'];
         const btn = form.elements[`${form.elements.length - 1}`];
 

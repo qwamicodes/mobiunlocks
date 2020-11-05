@@ -9,6 +9,216 @@
   transition: $transition-faster;
   z-index: 100;
 
+  @include respond(tab) {
+    display: none;
+  }
+
+  &__mobile {
+    display: none;
+
+    @include respond(tab) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 7rem;
+      display: flex;
+      z-index: 99;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &--brand {
+      flex: 0 0 20%;
+      height: 100%;
+
+      img {
+        height: 80%;
+        margin-left: 50%;
+      }
+    }
+
+    &--toggle {
+      width: 7rem;
+      height: 7rem;
+      align-self: stretch;
+      position: relative;
+      margin-right: 5%;
+
+      & input {
+        display: none;
+      }
+
+      label {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        cursor: pointer;
+        z-index: 2000;
+        border-radius: 50%;
+        overflow: hidden;
+        transition: $transition-fastest;
+
+        span {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 50%;
+          transform: translate(-50%, -50%);
+          height: 3px;
+          background: linear-gradient(
+            to right,
+            $primary-color,
+            $secondary-color
+          );
+          transition: $transition-fastest;
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: -1rem;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+              to right,
+              $primary-color,
+              $secondary-color
+            );
+            transition: $transition-fastest;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+              to right,
+              $primary-color,
+              $secondary-color
+            );
+            transition: $transition-fastest;
+          }
+        }
+      }
+
+      & label:hover span::before {
+        top: -1.5rem;
+        left: 0;
+      }
+
+      & label:hover span::after {
+        bottom: -1.5rem;
+        left: 0;
+      }
+
+      & input:checked + label {
+        background-color: $color-white;
+        box-shadow: $box-shadow-short;
+      }
+
+      & input:checked + label span {
+        background: transparent;
+      }
+
+      & input:checked + label span::before {
+        transform: rotate(135deg);
+        top: 0;
+      }
+
+      & input:checked + label span::after {
+        top: 0;
+        transform: rotate(-135deg);
+      }
+    }
+
+    &--background {
+      width: 100%;
+      height: 100%;
+      background-color: $color-grey-light;
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      opacity: 0.5;
+    }
+
+    &--aside {
+      background: linear-gradient(
+        to right top,
+        $primary-color,
+        $secondary-color
+      );
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 100;
+      height: 100vh;
+      width: 0;
+      overflow: hidden;
+      transition: $transition-faster;
+
+      @include respond(tab) {
+        @include flexcenter;
+      }
+
+      ul {
+        opacity: 0;
+        width: 80%;
+        height: 80%;
+        @include flexbottom;
+        transition: $transition-fast;
+
+        li {
+          padding: 4rem 0;
+          position: relative;
+
+          &::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            transform: translate(-100%, -50%);
+            height: 2px;
+            width: 100%;
+            background-color: $accent-color;
+            opacity: 0;
+            transition: $transition-faster;
+          }
+
+          &:hover::before {
+            opacity: 1;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+    }
+
+    &--link {
+      font: $nunito-light;
+      font-size: 4rem;
+      text-transform: uppercase;
+      color: $color-white;
+    }
+
+    &--toggle input:checked ~ &--background {
+      display: block;
+    }
+
+    &--toggle input:checked ~ &--aside {
+      width: 90%;
+    }
+
+    &--toggle input:checked ~ &--aside ul {
+      opacity: 1;
+    }
+  }
+
   &__brand {
     flex: 0 0 40%;
     height: 100%;
@@ -20,11 +230,20 @@
       @include flexeven;
       margin-right: 20%;
       align-self: stretch;
+
+      @include respond(tab-land) {
+        margin-right: 10%;
+        width: 90%;
+      }
     }
 
     &--logo {
       width: 10%;
       margin-left: 20%;
+
+      @include respond(tab-land) {
+        margin-left: 5%;
+      }
     }
 
     &--title {
@@ -37,6 +256,10 @@
 
   &__links {
     flex: 0 0 50%;
+
+    @include respond(tab-land) {
+      flex: 0 0 60%;
+    }
 
     ul {
       @include flexeven;
