@@ -4,9 +4,22 @@
   @include flexcenter;
   transition: $transition-faster;
 
+  @include respond(mobile-big) {
+    height: 40rem;
+  }
+
+  @include respond(mobile) {
+    height: 45rem;
+  }
+
   &__selections {
     flex: 0 0 50%;
     height: 70%;
+
+    @include respond(mobile-big) {
+      height: 80%;
+      flex: 0 0 65%;
+    }
   }
 
   &__group {
@@ -14,6 +27,10 @@
     margin: 0 auto;
     @extend %df;
     @extend %dai;
+
+    @include respond(mobile) {
+      width: 80%;
+    }
 
     span {
       font: $nunito-light;
@@ -66,14 +83,16 @@
   &__image {
     flex: 1;
 
+    @include respond(mobile-big) {
+      display: none;
+    }
+
     img {
       width: 100%;
       height: 100%;
     }
   }
 
-  &__carrier--iphone,
-  &__carrier--ipad,
   &__unlock--iphone,
   &__unlock--ipad {
     display: none;

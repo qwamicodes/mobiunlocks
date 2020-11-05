@@ -1,16 +1,16 @@
-.u-flex-center, .u-flex-even, .u-flex-around, .u-flex-between, .u-flex-bottom, .title, .alert, .alert__top, .alert__bottom, .btn, .form, .form__group, .modal ul li, .tabs, .footer, .footer__container, .footer__contact--call, .footer__contact--address, .footer__social ul, .footer__social--btn, .header, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav--title, .dashboard__nav--icons, .dashboard__nav--icons-container, .dashboard__nav--account, .dashboard__aside--img, .dashboard__aside--icons, .dashboard__tasks--heading ul, .dashboard__tasks--title, .dashboard__tasks--heading, .features__title, .services__container, .payment__fields--container, .payment__info, .payment__pricing, .payment__pricing--top, .payment__pricing--bottom, .payment__items--item, .payment__cta, .payment__caution, .devices__container, .network__container, .login, .login__group:not(:last-child), .login__group:last-child, .tracking__back, .tracking__search, .tracking__tile--dots, .tracking__svg {
+.u-flex-center, .u-flex-even, .u-flex-around, .u-flex-between, .u-flex-bottom, .title, .alert, .alert__top, .alert__bottom, .btn, .form, .form__group, .modal ul li, .tabs, .footer, .footer__container, .footer__form--group:last-child, .footer__contact--call, .footer__contact--address, .footer__social ul, .footer__social--btn, .header, .header__intro--main, .nav, .nav__mobile--aside, .nav__mobile--aside ul, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav--title, .dashboard__nav--icons, .dashboard__nav--icons-container, .dashboard__nav--account, .dashboard__aside--img, .dashboard__aside--icons, .dashboard__tasks--heading ul, .dashboard__tasks--title, .dashboard__tasks--heading, .features__title, .services__container, .payment__fields--container, .payment__info, .payment__pricing, .payment__pricing--top, .payment__pricing--bottom, .payment__items--item, .payment__cta, .payment__caution, .devices__container, .network__container, .login, .login__group:not(:last-child), .login__group:last-child, .tracking__back, .tracking__search, .tracking__tile--dots, .tracking__svg {
   display: flex; }
 
-.u-flex-center, .u-flex-bottom, .title, .alert__bottom, .form, .footer__social--btn, .nav, .dashboard__nav--icons-container, .dashboard__aside--img, .dashboard__aside--icons, .payment__fields--container, .payment__info, .payment__caution, .devices__container, .login, .login__group:not(:last-child), .login__group:last-child, .tracking__search, .tracking__svg {
+.u-flex-center, .u-flex-bottom, .title, .alert__bottom, .form, .footer__form--group:last-child, .footer__social--btn, .header__intro--main, .nav, .nav__mobile--aside, .nav__mobile--aside ul, .dashboard__nav--icons-container, .dashboard__aside--img, .dashboard__aside--icons, .payment__fields--container, .payment__info, .payment__caution, .devices__container, .login, .login__group:not(:last-child), .login__group:last-child, .tracking__search, .tracking__svg {
   justify-content: center; }
 
 .u-flex-even, .alert__top, .btn, .tabs, .footer__social ul, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav--icons, .dashboard__nav--account, .dashboard__tasks--heading ul, .dashboard__tasks--heading, .features__title, .network__container, .tracking__back, .tracking__tile--dots {
   justify-content: space-evenly; }
 
-.u-flex-center, .u-flex-even, .u-flex-around, .u-flex-between, .u-flex-bottom, .title, .alert__top, .alert__bottom, .btn, .form, .form__group, .modal ul li, .tabs, .footer__contact--call, .footer__contact--address, .footer__social ul, .footer__social--btn, .nav, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav--title, .dashboard__nav--icons, .dashboard__nav--icons-container, .dashboard__nav--account, .dashboard__aside--img, .dashboard__aside--icons, .dashboard__tasks--heading ul, .dashboard__tasks--heading, .features__title, .payment__fields--container, .payment__info, .payment__cta, .payment__caution, .devices__container, .network__container, .login, .login__group:last-child, .tracking__back, .tracking__search, .tracking__tile--dots, .tracking__svg {
+.u-flex-center, .u-flex-even, .u-flex-around, .u-flex-between, .u-flex-bottom, .title, .alert__top, .alert__bottom, .btn, .form, .form__group, .modal ul li, .tabs, .footer__form--group:last-child, .footer__contact--call, .footer__contact--address, .footer__social ul, .footer__social--btn, .header__intro--main, .nav, .nav__mobile--aside, .nav__mobile--aside ul, .nav__brand, .nav__brand--container, .nav__links ul, .dashboard__nav--title, .dashboard__nav--icons, .dashboard__nav--icons-container, .dashboard__nav--account, .dashboard__aside--img, .dashboard__aside--icons, .dashboard__tasks--heading ul, .dashboard__tasks--heading, .features__title, .payment__fields--container, .payment__info, .payment__cta, .payment__caution, .devices__container, .network__container, .login, .login__group:last-child, .tracking__back, .tracking__search, .tracking__tile--dots, .tracking__svg {
   align-items: center; }
 
-.u-flex-bottom, .alert, .footer, .footer__container, .footer__contact--call, .footer__contact--address, .dashboard__aside--icons, .payment__pricing, .payment__items--item, .devices__container, .login__group:not(:last-child) {
+.u-flex-bottom, .alert, .footer, .footer__container, .footer__contact--call, .footer__contact--address, .nav__mobile--aside ul, .dashboard__aside--icons, .payment__pricing, .payment__items--item, .devices__container, .login__group:not(:last-child) {
   flex-direction: column; }
 
 .u-flex-between {
@@ -334,6 +334,15 @@ select {
 
 .title {
   padding: 5rem 0; }
+  @media only screen and (max-width: 37.5em) {
+    .title {
+      text-align: center; } }
+  @media only screen and (max-width: 37.5em) {
+    .title h4 {
+      line-height: 4.5rem; } }
+  @media only screen and (max-width: 30em) {
+    .title h4 {
+      width: 90%; } }
 
 .heading {
   display: inline-block; }
@@ -501,12 +510,25 @@ select {
   min-width: 100%;
   height: 90%;
   transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+  @media only screen and (max-width: 37.5em) {
+    .form {
+      height: 40rem; } }
+  @media only screen and (max-width: 30em) {
+    .form {
+      height: 45rem; } }
   .form__selections {
     flex: 0 0 50%;
     height: 70%; }
+    @media only screen and (max-width: 37.5em) {
+      .form__selections {
+        height: 80%;
+        flex: 0 0 65%; } }
   .form__group {
     width: 60%;
     margin: 0 auto; }
+    @media only screen and (max-width: 30em) {
+      .form__group {
+        width: 80%; } }
     .form__group span {
       font: 2rem/1 "Nunito Light", Fallback, sans-serif;
       font-size: 1.2rem; }
@@ -538,10 +560,13 @@ select {
       border: 0; }
   .form__image {
     flex: 1; }
+    @media only screen and (max-width: 37.5em) {
+      .form__image {
+        display: none; } }
     .form__image img {
       width: 100%;
       height: 100%; }
-  .form__carrier--iphone, .form__carrier--ipad, .form__unlock--iphone, .form__unlock--ipad {
+  .form__unlock--iphone, .form__unlock--ipad {
     display: none; }
 
 .carrier-phone:checked ~ label {
@@ -556,7 +581,7 @@ select {
   width: 10rem;
   height: 100%;
   margin: 0 auto;
-  z-index: 100; }
+  z-index: 50; }
   .scroll a {
     display: block;
     width: 33%;
@@ -640,11 +665,19 @@ select {
   height: 7rem;
   overflow: hidden;
   position: relative; }
+  @media only screen and (max-width: 30em) {
+    .tabs {
+      flex-direction: column;
+      overflow: visible;
+      height: 10rem; } }
   .tabs li {
     position: absolute;
     top: 0;
     display: inline-block;
     transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+    @media only screen and (max-width: 30em) {
+      .tabs li {
+        transform: rotate(45deg) translate(20%, 60%); } }
 
 .tab {
   display: inline-block;
@@ -656,6 +689,9 @@ select {
   cursor: pointer;
   color: #3c435a;
   transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+  @media only screen and (max-width: 20em) {
+    .tab {
+      padding: 1rem 1.5rem; } }
   .tab-left {
     left: 10%; }
   .tab-current {
@@ -686,6 +722,16 @@ select {
   width: 100%;
   height: 40rem;
   background-color: #3c435a; }
+  @media only screen and (max-width: 37.5em) {
+    .footer {
+      height: 55rem; } }
+  @media only screen and (max-width: 30em) {
+    .footer {
+      height: 85rem; } }
+  @media only screen and (max-width: 30em) {
+    .footer__title {
+      width: 95%;
+      text-align: center; } }
   .footer__title h3 {
     font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
     font-size: 2rem;
@@ -695,11 +741,55 @@ select {
     width: 80%;
     margin: 0 auto;
     flex: 0 0 85%; }
+    @media only screen and (max-width: 48em) {
+      .footer__grid {
+        width: 90%; } }
+    @media only screen and (max-width: 37.5em) {
+      .footer__grid {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        width: 95%; } }
+    @media only screen and (max-width: 30em) {
+      .footer__grid {
+        grid-template-rows: 45% 55%; } }
   .footer__container {
     grid-area: 1 / 2 / -1 / -1; }
+    @media only screen and (max-width: 37.5em) {
+      .footer__container {
+        grid-area: 2 / 1 / 3 / -1; } }
   .footer__form {
-    grid-area: 1 / 1 / -1 / 2;
+    grid-area: 1 / 1 / 2 / 2;
     grid-template-rows: 20% 80%; }
+    @media only screen and (max-width: 37.5em) {
+      .footer__form {
+        grid-area: 1 / 1 / 2 / -1;
+        height: 100%; } }
+    @media only screen and (max-width: 30em) {
+      .footer__form {
+        grid-template-rows: 15% 85%; } }
+    @media only screen and (max-width: 37.5em) {
+      .footer__form--container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr); } }
+    @media only screen and (max-width: 30em) {
+      .footer__form--container {
+        grid-template-rows: 20% 65% 15%;
+        grid-template-columns: repeat(1, 1fr); } }
+    @media only screen and (max-width: 37.5em) {
+      .footer__form--group {
+        display: inline-block; } }
+    @media only screen and (max-width: 30em) {
+      .footer__form--group {
+        grid-area: auto;
+        margin: 0 auto;
+        width: fit-content; } }
+    @media only screen and (max-width: 37.5em) {
+      .footer__form--group:nth-child(2) {
+        grid-area: 1 / 2 / -1 / -1; } }
+    @media only screen and (max-width: 30em) {
+      .footer__form--group:nth-child(2) {
+        grid-area: auto; } }
     .footer__form--group input {
       border: 0;
       background-color: rgba(255, 255, 255, 0.8);
@@ -718,16 +808,34 @@ select {
       padding: 1rem;
       border: 0;
       background-color: rgba(255, 255, 255, 0.8); }
+      @media only screen and (max-width: 37.5em) {
+        .footer__form--group textarea {
+          height: 90%; } }
       .footer__form--group textarea:focus {
         outline: 0; }
   .footer__contact {
     flex: 0 0 60%; }
+    @media only screen and (max-width: 30em) {
+      .footer__contact {
+        flex: 0 0 85%; } }
+    @media only screen and (max-width: 23.4375em) {
+      .footer__contact {
+        grid-template-columns: auto;
+        grid-template-rows: repeat(2, 1fr); } }
+    @media only screen and (max-width: 30em) {
+      .footer__contact--call {
+        height: 50%;
+        margin: auto; } }
     .footer__contact--call a,
     .footer__contact--call span {
       font: 2rem/1 "Nunito Light", Fallback, sans-serif;
       font-size: 1.4rem;
       color: rgba(255, 255, 255, 0.5);
       padding: 1rem; }
+    @media only screen and (max-width: 30em) {
+      .footer__contact--address {
+        margin: auto;
+        height: 60%; } }
     .footer__contact--address a,
     .footer__contact--address span {
       font: 2rem/1 "Nunito Light", Fallback, sans-serif;
@@ -736,47 +844,67 @@ select {
       padding: 1rem; }
   .footer__social {
     flex: 1; }
-    .footer__social ul li a {
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
-      .footer__social ul li a ion-icon {
+    .footer__social ul {
+      flex-wrap: wrap; }
+      @media only screen and (max-width: 37.5em) {
+        .footer__social ul {
+          width: 90%;
+          margin: 0 auto; } }
+      @media only screen and (max-width: 30em) {
+        .footer__social ul {
+          width: 100%; } }
+      .footer__social ul li a {
+        border: 1px solid rgba(255, 255, 255, 0.5);
         transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
-      .footer__social ul li a:hover {
-        background-color: currentColor;
-        border: 1px solid transparent; }
-        .footer__social ul li a:hover ion-icon {
-          color: #fff !important; }
-    .footer__social ul li a[type="facebook"] {
-      color: #3b5998; }
-      .footer__social ul li a[type="facebook"] ion-icon {
-        color: currentColor; }
-    .footer__social ul li a[type="whatsapp"] {
-      color: #25d366; }
-      .footer__social ul li a[type="whatsapp"] ion-icon {
-        color: currentColor; }
-    .footer__social ul li a[type="instagram"] {
-      color: #e1306c; }
-      .footer__social ul li a[type="instagram"] ion-icon {
-        color: currentColor; }
-    .footer__social ul li a[type="twitter"] {
-      color: #1da1f2; }
-      .footer__social ul li a[type="twitter"] ion-icon {
-        color: currentColor; }
-    .footer__social ul li a[type="google"] {
-      color: #db4437; }
-      .footer__social ul li a[type="google"] ion-icon {
-        color: currentColor; }
+        .footer__social ul li a ion-icon {
+          transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+        .footer__social ul li a:hover {
+          background-color: currentColor;
+          border: 1px solid transparent; }
+          .footer__social ul li a:hover ion-icon {
+            color: #fff !important; }
+      .footer__social ul li a[type="facebook"] {
+        color: #3b5998; }
+        .footer__social ul li a[type="facebook"] ion-icon {
+          color: currentColor; }
+      .footer__social ul li a[type="whatsapp"] {
+        color: #25d366; }
+        .footer__social ul li a[type="whatsapp"] ion-icon {
+          color: currentColor; }
+      .footer__social ul li a[type="instagram"] {
+        color: #e1306c; }
+        .footer__social ul li a[type="instagram"] ion-icon {
+          color: currentColor; }
+      .footer__social ul li a[type="twitter"] {
+        color: #1da1f2; }
+        .footer__social ul li a[type="twitter"] ion-icon {
+          color: currentColor; }
+      .footer__social ul li a[type="google"] {
+        color: #db4437; }
+        .footer__social ul li a[type="google"] ion-icon {
+          color: currentColor; }
     .footer__social--btn {
       padding: 2rem;
       border-radius: 50%;
       border: 1px solid rgba(255, 255, 255, 0.5); }
+      @media only screen and (max-width: 37.5em) {
+        .footer__social--btn {
+          padding: 1.5rem; } }
+      @media only screen and (max-width: 30em) {
+        .footer__social--btn {
+          padding: 1.2rem; } }
   .footer__copy {
     background-color: #3c435a;
     flex: 1;
     grid-template-columns: 35% 10% 10% 10% 35%;
     font: 2rem/1 "Nunito Light", Fallback, sans-serif;
     font-size: 1.2rem;
-    color: #fff; }
+    color: #fff;
+    text-align: center; }
+    @media only screen and (max-width: 30em) {
+      .footer__copy {
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr); } }
     .footer__copy a {
       text-transform: capitalize;
       color: #fff; }
@@ -787,6 +915,15 @@ select {
   height: 90%;
   margin: 0 auto;
   align-self: flex-end; }
+  @media only screen and (max-width: 37.5em) {
+    .header {
+      width: 90%; } }
+  @media only screen and (max-width: 30em) {
+    .header {
+      width: 95%; } }
+  @media only screen and (max-width: 20em) {
+    .header {
+      height: 100%; } }
   .header__herobox {
     width: 100%;
     height: 100%; }
@@ -794,10 +931,22 @@ select {
       flex: 0 0 60%;
       display: grid;
       grid-template-rows: 60% 20% 20%; }
+      @media only screen and (max-width: 37.5em) {
+        .header__herobox--left {
+          flex: 0 0 100%; } }
+      @media only screen and (max-width: 30em) {
+        .header__herobox--left {
+          grid-template-rows: 52% 28% 20%; } }
+      @media only screen and (max-width: 20em) {
+        .header__herobox--left {
+          grid-template-rows: 50% 30% 20%; } }
     .header__herobox--right {
       flex: 1;
       position: relative;
       overflow: hidden; }
+      @media only screen and (max-width: 37.5em) {
+        .header__herobox--right {
+          display: none; } }
       .header__herobox--right svg {
         position: absolute;
         height: 90%;
@@ -805,19 +954,32 @@ select {
         left: 75%;
         transform: translate(-50%, -50%);
         z-index: -1; }
+  @media only screen and (max-width: 37.5em) {
+    .header__intro--main svg {
+      width: 100%;
+      margin: 9% 0 0 10%; } }
   .header__intro--sub {
     font: 2rem/1 "Nunito Light", Fallback, sans-serif;
     width: 85%;
     margin: 0 auto; }
+    @media only screen and (max-width: 37.5em) {
+      .header__intro--sub {
+        text-align: center;
+        line-height: 3rem; } }
   .header__intro--cta {
     width: 85%;
     margin: 0 auto; }
+    @media only screen and (max-width: 37.5em) {
+      .header__intro--cta {
+        text-align: center; } }
 
 .filled-text {
   text-transform: capitalize;
-  font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
   font-size: 7.5rem;
   font-weight: 600; }
+  @media only screen and (max-width: 37.5em) {
+    .filled-text {
+      font-size: 9rem; } }
 
 #background .bg-path {
   animation: pulse 4s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
@@ -851,6 +1013,143 @@ g {
   background-color: transparent;
   transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67);
   z-index: 100; }
+  @media only screen and (max-width: 56.25em) {
+    .nav {
+      display: none; } }
+  .nav__mobile {
+    display: none; }
+    @media only screen and (max-width: 56.25em) {
+      .nav__mobile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 7rem;
+        display: flex;
+        z-index: 99;
+        align-items: center;
+        justify-content: space-between; } }
+    .nav__mobile--brand {
+      flex: 0 0 20%;
+      height: 100%; }
+      .nav__mobile--brand img {
+        height: 80%;
+        margin-left: 50%; }
+    .nav__mobile--toggle {
+      width: 7rem;
+      height: 7rem;
+      align-self: stretch;
+      position: relative;
+      margin-right: 5%; }
+      .nav__mobile--toggle input {
+        display: none; }
+      .nav__mobile--toggle label {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        cursor: pointer;
+        z-index: 2000;
+        border-radius: 50%;
+        overflow: hidden;
+        transition: all 0.25s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+        .nav__mobile--toggle label span {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 50%;
+          transform: translate(-50%, -50%);
+          height: 3px;
+          background: linear-gradient(to right, #ff9a00, #ff5700);
+          transition: all 0.25s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+          .nav__mobile--toggle label span::before {
+            content: "";
+            position: absolute;
+            top: -1rem;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, #ff9a00, #ff5700);
+            transition: all 0.25s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+          .nav__mobile--toggle label span::after {
+            content: "";
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, #ff9a00, #ff5700);
+            transition: all 0.25s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+      .nav__mobile--toggle label:hover span::before {
+        top: -1.5rem;
+        left: 0; }
+      .nav__mobile--toggle label:hover span::after {
+        bottom: -1.5rem;
+        left: 0; }
+      .nav__mobile--toggle input:checked + label {
+        background-color: #fff;
+        box-shadow: 0 1px 1px rgba(161, 161, 161, 0.07), 0 2px 2px rgba(161, 161, 161, 0.07), 0 4px 4px rgba(161, 161, 161, 0.07), 0 6px 8px rgba(161, 161, 161, 0.07), 0 8px 16px rgba(161, 161, 161, 0.07); }
+      .nav__mobile--toggle input:checked + label span {
+        background: transparent; }
+      .nav__mobile--toggle input:checked + label span::before {
+        transform: rotate(135deg);
+        top: 0; }
+      .nav__mobile--toggle input:checked + label span::after {
+        top: 0;
+        transform: rotate(-135deg); }
+    .nav__mobile--background {
+      width: 100%;
+      height: 100%;
+      background-color: #a1a1a1;
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      opacity: 0.5; }
+    .nav__mobile--aside {
+      background: linear-gradient(to right top, #ff9a00, #ff5700);
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 100;
+      height: 100vh;
+      width: 0;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+      .nav__mobile--aside ul {
+        opacity: 0;
+        width: 80%;
+        height: 80%;
+        transition: all 0.75s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+        .nav__mobile--aside ul li {
+          padding: 4rem 0;
+          position: relative; }
+          .nav__mobile--aside ul li::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            transform: translate(-100%, -50%);
+            height: 2px;
+            width: 100%;
+            background-color: #3c435a;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
+          .nav__mobile--aside ul li:hover::before {
+            opacity: 1;
+            left: 50%;
+            transform: translate(-50%, -50%); }
+    .nav__mobile--link {
+      font: 2rem/1 "Nunito Light", Fallback, sans-serif;
+      font-size: 4rem;
+      text-transform: uppercase;
+      color: #fff; }
+    .nav__mobile--toggle input:checked ~ .nav__mobile--background {
+      display: block; }
+    .nav__mobile--toggle input:checked ~ .nav__mobile--aside {
+      width: 90%; }
+    .nav__mobile--toggle input:checked ~ .nav__mobile--aside ul {
+      opacity: 1; }
   .nav__brand {
     flex: 0 0 40%;
     height: 100%;
@@ -859,9 +1158,16 @@ g {
       width: 70%;
       margin-right: 20%;
       align-self: stretch; }
+      @media only screen and (max-width: 64em) {
+        .nav__brand--container {
+          margin-right: 10%;
+          width: 90%; } }
     .nav__brand--logo {
       width: 10%;
       margin-left: 20%; }
+      @media only screen and (max-width: 64em) {
+        .nav__brand--logo {
+          margin-left: 5%; } }
     .nav__brand--title {
       font: 2rem/1 "Nunito Regular", Fallback, sans-serif;
       font-size: 2rem;
@@ -869,6 +1175,9 @@ g {
       text-transform: uppercase; }
   .nav__links {
     flex: 0 0 50%; }
+    @media only screen and (max-width: 64em) {
+      .nav__links {
+        flex: 0 0 60%; } }
     .nav__links--item {
       text-transform: capitalize;
       color: #3c435a;
@@ -1032,6 +1341,9 @@ section {
   width: 80%;
   margin: 0 auto;
   height: auto; }
+  @media only screen and (max-width: 64em) {
+    section {
+      width: 95%; } }
 
 .top {
   width: 100%;
@@ -1042,6 +1354,26 @@ section {
 
 .features__container {
   padding: 5rem 0; }
+  @media only screen and (max-width: 48em) {
+    .features__container .card:last-child {
+      grid-column: 1 / 3; } }
+  @media only screen and (max-width: 37.5em) {
+    .features__container .card:last-child {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4; } }
+  @media only screen and (max-width: 48em) {
+    .features__container {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-row-gap: 2rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .features__container {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(3, 1fr); } }
+
+@media only screen and (max-width: 48em) {
+  .features__title {
+    width: 100%; } }
 
 .features__title--no {
   position: relative;
@@ -1250,9 +1582,26 @@ section {
 
 .devices__grid {
   grid-gap: 2rem; }
+  @media only screen and (max-width: 48em) {
+    .devices__grid {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr); } }
+  @media only screen and (max-width: 37.5em) {
+    .devices__grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr); } }
 
-.devices__img img {
-  height: 30rem; }
+.devices__img {
+  height: 100%;
+  width: 100%; }
+  @media only screen and (max-width: 37.5em) {
+    .devices__img {
+      width: 90%; } }
+  .devices__img img {
+    width: 90%; }
+    @media only screen and (max-width: 37.5em) {
+      .devices__img img {
+        width: 80%; } }
 
 .devices__info h2 {
   font: 2rem/1 "Nunito Regular", Fallback, sans-serif;
@@ -1263,8 +1612,18 @@ section {
   padding: 0; }
   .network__container {
     flex-wrap: wrap; }
+    @media only screen and (max-width: 56.25em) {
+      .network__container {
+        width: 90%;
+        margin: 0 auto; } }
     .network__container img {
       width: 20%; }
+      @media only screen and (max-width: 48em) {
+        .network__container img {
+          width: 12rem; } }
+      @media only screen and (max-width: 56.25em) {
+        .network__container img {
+          width: 15rem; } }
 
 .svg-background {
   position: absolute;

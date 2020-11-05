@@ -13,6 +13,11 @@ export const checkNav = () => {
         UICtrl.changeNavTrans();
 };
 
+//function to enable the input when page loads
+export const checkInput = input => {
+    input.checked = true;
+};
+
 //funtion to the selection of the tabs 
 export const tabSel = (tab, hash = null) => {
     //TODO:
