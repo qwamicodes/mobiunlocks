@@ -6,6 +6,7 @@ module.exports = {
   entry: {
     app: ['@babel/polyfill','./src/js/app.js'],
     dashboard: ['@babel/polyfill','./src/js/dashboard.js'],
+    tracking: ['@babel/polyfill','./src/js/tracking.js'],
 },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -24,7 +25,7 @@ module.exports = {
       template: './src/index.html',
     }),
     new HtmlWebpackPlugin({
-      chunks: ['app'],
+      chunks: ['tracking'],
       filename: './public/tracking.html',
       template: './src/tracking.html',
     }),
