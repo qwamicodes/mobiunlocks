@@ -250,13 +250,16 @@ export const getAllTasks = async () => {
             To access it, a variable to hold it must be passed as an argument to a `then` function called of `getAllTasks` itself.  
         */    
         Promise.all(apiRequests) // ? concurrently make requests to task endpoints stored in the array which is passed in as the argument
+            
             //? loop through the returned array recursively to retrieve and push all individual tasks to the finally resolved array
-            .then(taskTypes => {
+            .then(taskTypes => { 
                 taskTypes.forEach(taskType => {
                     taskType.forEach(task => allTasks.push(task));
                 })
             })
-            .then(() => resolve(allTasks)) // resolve Promise into array of all tasks
+                
+                // resolve Promise into array of all tasks
+                .then(() => resolve(allTasks)) 
     })
 }
 
