@@ -386,40 +386,44 @@ export const filterList = tab => {
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DASHBOARD ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 export const populatePage = () => {
-    let tasks = getAllTasks();
-    console.log(tasks);
-    
-    // HTML <ul> Element for holding individual <li> elements for each task 
     let allTasksListElement = document.querySelector(elements.allTasksListElement);
+
+    // HTML <ul> Element for holding individual <li> elements for each task 
     console.log(allTasksListElement);
-    
-    // loop over each element
-    tasks.forEach(task => {
-        
-        // creating individual HTML elements for each task, populating it with data from the database
-        let singleTask = document.createElement("li");
-        singleTask.classList.add("dashboard__tasks--value-li");
-        singleTask.innerHTML =
-            `
+
+    // get AllTasks
+    getAllTasks().then(tasks => {
+        // loop over each element
+        tasks.forEach(task => {
+            // creating individual HTML elements for each task, populating it with data from the database
+            let singleTask = document.createElement("li");
+            singleTask.classList.add("dashboard__tasks--value-li");
+            singleTask.innerHTML =
+                `
             <ul class="dashboard__tasks--item">
                 <li>${task.tracking_id}</li>
                 <li>${task.task_type}</li>
                 <li>${task.phone_model}</li>
                 <li>${task.imei}</li>
                 <li>${task.carrier}</li>
-                <li data-type="${task.completed? "completed" : "pending"}">
-                    ${task.completed? "Completed" : "Pending"}
+                <li data-type="${task.completed ? "completed" : "pending"}">
+                    ${task.completed ? "Completed" : "Pending"}
                 </li>
             </ul>
             `;
 
-        console.log("jasdfs");
-        
-        console.log(singleTask);
+            console.log("jasdfs");
 
-        // add single task element to all tasks list element
-        allTasksListElement.appendChild(singleTask);
-    })
+            console.log(singleTask);
+
+            // add single task element to all tasks list element
+            allTasksListElement.appendChild(singleTask);
+            console.log(2);
+
+        })
+    });
+
+
 
 
 }

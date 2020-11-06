@@ -206,7 +206,7 @@ export const searchTaskByTracking = trackingID => {
 }
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ RETRIEVE ALL TASKS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-export const getAllTasks = () => {
+export const getAllTasks = async () => {
     /* 
     fetches all tasks by calling their respective endpoints
     stores these in a list of objects which is returned in the allTasks variable
@@ -219,27 +219,82 @@ export const getAllTasks = () => {
     const carrierUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/carrier/`;
 
     let allTasks = [];
+    let apiRequests = [];
 
     // loop over each task endpoint
     [imeiCheckTaskEndpoint, icloudUnlockTaskEndpoint, carrierUnlockTaskEndpoint].forEach(endpoint => {
         // perform get request to retrieve all tasks for each task type
-        fetch(endpoint, {
-            method: 'GET'
-        })
-            .then(async response => {
-                if (response.ok){
-                    let tasksArray = await response.json(); // list of tasks
-                    
-                    // push list of tasks to array to be returned 
-                    for (let task of tasksArray){
-                        allTasks.push(task);
-                    }
-                } else {
-                    console.log("error in getting all tasks");
-                }
-                
-            })
+        const prom = fetch(endpoint).then(response => response.json());
+        apiRequests.push(prom);
     })
 
-    return allTasks;
+    return new Promise(resolve => {
+        Promise.all(apiRequests) // make the api requests and returns an array of results of the three api requests
+            .then(taskTypes => {
+                taskTypes.forEach(taskType => {
+                    taskType.forEach(task => allTasks.push(task));
+                }) // push individual tasks to allTasks array.
+            })
+                .then(() => resolve(allTasks)) // return array of all tasks
+    })
+    
+}
+
+
+const getIMEICheckTasks = () => {
+    const imeiCheckTaskEndpoint = `${baseBackendAPIURL}/tasks/imei/`;
+
+    fetch(imeiCheckTaskEndpoint, {
+        method: 'GET'
+    })
+        .then(async response => {
+            if (response.ok) {
+                return response.json(); // return task list
+            } else {
+                alert("error")
+            }
+        })
+}
+
+
+const getICloudUnlockTasks = () => {
+    const ICloudUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/icloud/`;
+
+    fetch(ICloudUnlockTaskEndpoint, {
+        method: 'GET'
+    })
+        .then(async response => {
+            if (response.ok) {
+                return response.json(); // return task list
+            } else {
+                alert("error")
+            }
+        })
+}
+
+
+const getCarrierUnlockTasks = async () => {
+    const CarrierUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/carrier/`;
+
+    let ta = []
+
+    fetch(CarrierUnlockTaskEndpoint, {
+        method: 'GET'
+    })
+        .then(async response => {
+            if (response.ok) {
+                // console.log(response.json())
+                return await response.json(); // return task list
+            } else {
+                alert("error")
+            }
+        })
+            .then(async data => {
+                // console.log(data);
+                for (a in data){
+                    ta.push(a);
+                }
+                return ta;
+            })
+    console.log(ta.length)
 }
