@@ -725,9 +725,15 @@ select {
   @media only screen and (max-width: 37.5em) {
     .footer {
       height: 55rem; } }
+  @media only screen and (max-width: 33.75em) {
+    .footer {
+      height: 82rem; } }
   @media only screen and (max-width: 30em) {
     .footer {
       height: 85rem; } }
+  @media only screen and (max-width: 33.75em) {
+    .footer__title {
+      text-align: center; } }
   @media only screen and (max-width: 30em) {
     .footer__title {
       width: 95%;
@@ -748,7 +754,10 @@ select {
       .footer__grid {
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(2, 1fr);
-        width: 95%; } }
+        width: 100%; } }
+    @media only screen and (max-width: 33.75em) {
+      .footer__grid {
+        width: 100%; } }
     @media only screen and (max-width: 30em) {
       .footer__grid {
         grid-template-rows: 45% 55%; } }
@@ -764,6 +773,9 @@ select {
       .footer__form {
         grid-area: 1 / 1 / 2 / -1;
         height: 100%; } }
+    @media only screen and (max-width: 33.75em) {
+      .footer__form {
+        grid-template-rows: 15% 85%; } }
     @media only screen and (max-width: 30em) {
       .footer__form {
         grid-template-rows: 15% 85%; } }
@@ -772,6 +784,10 @@ select {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr); } }
+    @media only screen and (max-width: 33.75em) {
+      .footer__form--container {
+        grid-template-rows: 20% 65% 15%;
+        grid-template-columns: repeat(1, 1fr); } }
     @media only screen and (max-width: 30em) {
       .footer__form--container {
         grid-template-rows: 20% 65% 15%;
@@ -779,6 +795,9 @@ select {
     @media only screen and (max-width: 37.5em) {
       .footer__form--group {
         display: inline-block; } }
+    @media only screen and (max-width: 33.75em) {
+      .footer__form--group {
+        margin: 0 auto; } }
     @media only screen and (max-width: 30em) {
       .footer__form--group {
         grid-area: auto;
@@ -787,6 +806,9 @@ select {
     @media only screen and (max-width: 37.5em) {
       .footer__form--group:nth-child(2) {
         grid-area: 1 / 2 / -1 / -1; } }
+    @media only screen and (max-width: 33.75em) {
+      .footer__form--group:nth-child(2) {
+        grid-area: auto; } }
     @media only screen and (max-width: 30em) {
       .footer__form--group:nth-child(2) {
         grid-area: auto; } }
@@ -954,10 +976,18 @@ select {
         left: 75%;
         transform: translate(-50%, -50%);
         z-index: -1; }
-  @media only screen and (max-width: 37.5em) {
-    .header__intro--main svg {
-      width: 100%;
-      margin: 9% 0 0 10%; } }
+  .header__intro--main svg {
+    width: 100%; }
+    @media only screen and (max-height: 41.1em) {
+      .header__intro--main svg {
+        width: 85%; } }
+    @media only screen and (max-width: 90em) {
+      .header__intro--main svg {
+        width: 85%; } }
+    @media only screen and (max-width: 37.5em) {
+      .header__intro--main svg {
+        width: 100%;
+        margin: 9% 0 0 10%; } }
   .header__intro--sub {
     font: 2rem/1 "Nunito Light", Fallback, sans-serif;
     width: 85%;
@@ -1442,14 +1472,54 @@ section {
   top: 0;
   right: 0;
   width: 30%;
+  max-height: 100%;
   height: 100%;
   opacity: 0;
   visibility: hidden;
   transform: translate(10rem, 0);
-  transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
-  .payment-show {
+  transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  flex-direction: column; }
+  .payment::-webkit-scrollbar {
+    width: 2px; }
+  .payment::-webkit-scrollbar-thumb {
+    background-color: #3c435a; }
+  @media only screen and (max-height: 32.5em) {
+    .payment {
+      justify-content: stretch; } }
+  @media only screen and (max-width: 64em) {
+    .payment {
+      width: 40%; } }
+  @media only screen and (max-width: 37.5em) {
+    .payment {
+      width: 50%; } }
+  @media only screen and (max-width: 30em) {
+    .payment {
+      width: 70%; } }
+  @media only screen and (max-width: 26.875em) {
+    .payment {
+      width: 72%; } }
+  @media only screen and (max-width: 23.4375em) {
+    .payment {
+      width: 75%; } }
+  @media only screen and (max-width: 21.875em) {
+    .payment {
+      width: 82%; } }
+  @media only screen and (max-width: 20em) {
+    .payment {
+      width: 90%; } }
+  @media only screen and (max-width: 21.875em) {
+    .payment {
+      width: 95%; } }
+  .payment .payment__container {
+    height: 70em;
+    max-height: 70em;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; }
+  .payment-show {
     padding: 0;
     z-index: 1000;
     visibility: visible;

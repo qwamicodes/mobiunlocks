@@ -901,44 +901,46 @@
       </section>
     </main>
     <section class="payment" id="section-payment">
-      <form class="payment__form" id="payment-form">
-        <h3>payment details</h3>
-        <div class="row-1-of-2 payment__fields">
-          <div class="payment__fields--container">
-            <input type="text" placeholder="Full name" name="fullname" id="fullname" class="payment__fields--input" required>
-            <label for="fullname" class="payment__fields--label">Full name</label>
-          </div>
-          <div class="payment__fields--container">
-            <input type="email" placeholder="Email address" name="email" id="email" class="payment__fields--input" required>
-            <input type="hidden" name="amount" class="u-display-none" id="amount">
-            <label for="email" class="payment__fields--label">Email address</label>
-          </div>
-        </div>
-        <div class="payment__info">
-          <div class="row-30-of-70 payment__info--container">
-            <div class="payment__pricing">
-              <div class="payment__pricing--top">
-                <span class="payment__pricing--title">You have to pay</span>
-              </div>
-              <div class="payment__pricing--bottom">
-                <span class="payment-price payment-price-big">550</span>
-                <span class="payment-price payment-price-small">.00 GHC</span>
-              </div>
+      <div class="payment__container">
+        <form class="payment__form" id="payment-form">
+          <h3>payment details</h3>
+          <div class="row-1-of-2 payment__fields">
+            <div class="payment__fields--container">
+              <input type="text" placeholder="Full name" name="fullname" id="fullname" class="payment__fields--input" required>
+              <label for="fullname" class="payment__fields--label">Full name</label>
             </div>
-            <div class="payment__items">
+            <div class="payment__fields--container">
+              <input type="email" placeholder="Email address" name="email" id="email" class="payment__fields--input" required>
+              <input type="hidden" name="amount" class="u-display-none" id="amount">
+              <label for="email" class="payment__fields--label">Email address</label>
             </div>
           </div>
+          <div class="payment__info">
+            <div class="row-30-of-70 payment__info--container">
+              <div class="payment__pricing">
+                <div class="payment__pricing--top">
+                  <span class="payment__pricing--title">You have to pay</span>
+                </div>
+                <div class="payment__pricing--bottom">
+                  <span class="payment-price payment-price-big">550</span>
+                  <span class="payment-price payment-price-small">.00 GHC</span>
+                </div>
+              </div>
+              <div class="payment__items">
+              </div>
+            </div>
+          </div>
+          <div class="payment__cta">
+            <button type="reset" class="btn btn-cancel">Cancel Payment</button>
+            <button type="submit" class="btn btn-checkout">Pay <span class="payment__price">550.00 GHC</span></button>
+          </div>
+        </form>
+        <div class="payment__caution">
+          <ul>
+            Caution:
+            <li>Please read the rules before making any payment. Thank you.</li>
+          </ul>
         </div>
-        <div class="payment__cta">
-          <button type="reset" class="btn btn-cancel">Cancel Payment</button>
-          <button type="submit" class="btn btn-checkout">Pay <span class="payment__price">550.00 GHC</span></button>
-        </div>
-      </form>
-      <div class="payment__caution">
-        <ul>
-          Caution:
-          <li>Please read the rules before making any payment. Thank you.</li>
-        </ul>
       </div>
     </section>
     <script src="https://js.paystack.co/v1/inline.js"></script> 

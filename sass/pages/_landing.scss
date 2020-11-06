@@ -149,15 +149,76 @@ section {
   top: 0;
   right: 0;
   width: 30%;
+  max-height: 100%;
   height: 100%;
   opacity: 0;
   visibility: hidden;
   transform: translate(10rem, 0);
   transition: $transition-faster;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 
-  &-show {
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $accent-color;
+  }
+
+  @media only screen and (max-height: 32.5em) {
+    justify-content: stretch;
+  }
+
+  @include respond(tab-land) {
+    width: 40%;
+  }
+
+  @include respond(tab) {
+  }
+
+  @include respond(tab-port) {
+  }
+
+  @include respond(mobile-big) {
+    width: 50%;
+  }
+
+  @include respond(mobile) {
+    width: 70%;
+  }
+
+  @media only screen and (max-width: 26.875em) {
+    width: 72%;
+  }
+
+  @media only screen and (max-width: 23.4375em) {
+    width: 75%;
+  }
+
+  @media only screen and (max-width: 21.875em) {
+    width: 82%;
+  }
+
+  @include respond(mobile-small) {
+    width: 90%;
+  }
+
+  @media only screen and (max-width: 21.875em) {
+    width: 95%;
+  }
+
+  & &__container {
+    height: 70em;
+    max-height: 70em;
     display: flex;
     flex-direction: column;
+  }
+
+  &-show {
     padding: 0;
     z-index: 1000;
     visibility: visible;
