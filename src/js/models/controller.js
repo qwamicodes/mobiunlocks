@@ -343,3 +343,10 @@ export const filterList = tab => {
         UICtrl.removeList(lists);
     };
 };
+
+//function to 
+export const mobileNav = () => {
+    setTimeout(() => {
+        UICtrl.collapseNav();
+    }, 250);
+}

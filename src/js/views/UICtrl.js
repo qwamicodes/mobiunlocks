@@ -178,3 +178,8 @@ export const removeList = lists => {
       list.parentElement.classList.add('u-display-none');
   });
 };
+
+//function to collapse the nav bar
+export const collapseNav = () => {
+  document.querySelector(elements.navInput).checked = false;
+}
