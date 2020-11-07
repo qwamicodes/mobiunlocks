@@ -386,10 +386,8 @@ export const filterList = tab => {
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DASHBOARD ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 export const populatePage = () => {
-    let allTasksListElement = document.querySelector(elements.allTasksListElement);
-
     // HTML <ul> Element for holding individual <li> elements for each task 
-    console.log(allTasksListElement);
+    let allTasksListElement = document.querySelector(elements.allTasksListElement);
 
     // get AllTasks
     getAllTasks().then(tasks => {
@@ -412,13 +410,21 @@ export const populatePage = () => {
             </ul>
             `;
 
-            console.log("jasdfs");
-
-            console.log(singleTask);
-
             // add single task element to all tasks list element
             allTasksListElement.appendChild(singleTask);
-            console.log(2);
+
+            // ! adding the eventlistener to show the modal
+            singleTask.addEventListener('click', e => {
+                if(e.target.tagName === "LI") {
+                    //converting the htmlcollections (li's) form the DOM into an array
+                    const lists = [];
+                    Array.prototype.slice.call(e.target.parentElement.children).forEach(li => {
+                        lists.push(li.innerHTML);
+                    });
+                    
+                    modalList(lists);
+                };
+            });
 
         })
     });
