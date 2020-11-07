@@ -7,6 +7,10 @@
     height: 90rem;
   }
 
+  @media only screen and (max-width: 33.75em) {
+    height: 150rem;
+  }
+
   @include respond(mobile) {
     height: 130rem;
   }
@@ -105,6 +109,11 @@
     @extend %dg;
     grid-template-rows: 60% 10% 20% 10%;
     box-shadow: 0 1px 20px 5px rgba($color-dark, 0.25);
+
+    @media only screen and (max-width: 45em) {
+      width: 28rem;
+      height: 35rem;
+    }
 
     @include respond(mobile-big) {
       width: 28rem;

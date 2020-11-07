@@ -1729,6 +1729,9 @@ section {
   @media only screen and (max-width: 37.5em) {
     .tracking {
       height: 90rem; } }
+  @media only screen and (max-width: 33.75em) {
+    .tracking {
+      height: 150rem; } }
   @media only screen and (max-width: 30em) {
     .tracking {
       height: 130rem; } }
@@ -1799,6 +1802,10 @@ section {
     background-color: #fff;
     grid-template-rows: 60% 10% 20% 10%;
     box-shadow: 0 1px 20px 5px rgba(18, 18, 18, 0.25); }
+    @media only screen and (max-width: 45em) {
+      .tracking__tile {
+        width: 28rem;
+        height: 35rem; } }
     @media only screen and (max-width: 37.5em) {
       .tracking__tile {
         width: 28rem;
