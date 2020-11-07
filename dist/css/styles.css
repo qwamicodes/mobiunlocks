@@ -1724,8 +1724,14 @@ section {
       padding: 0.5rem 1rem; }
 
 .tracking {
-  grid-template-rows: 10% 10% 78%;
+  grid-template-rows: 10% 10% 80%;
   height: 65.5rem; }
+  @media only screen and (max-width: 37.5em) {
+    .tracking {
+      height: 90rem; } }
+  @media only screen and (max-width: 30em) {
+    .tracking {
+      height: 130rem; } }
   .tracking__back {
     background-color: #3c435a;
     color: #fff;
@@ -1742,6 +1748,16 @@ section {
     margin: 0 auto;
     position: relative;
     transform: translateY(2rem); }
+    @media only screen and (max-width: 37.5em) {
+      .tracking__search {
+        width: 80%; } }
+    @media only screen and (max-width: 30em) {
+      .tracking__search {
+        width: 90%;
+        transform: translateY(0.5rem); } }
+    @media only screen and (max-width: 23.4375em) {
+      .tracking__search {
+        width: 95%; } }
     .tracking__search input {
       width: 100%;
       font: 2rem/1 "Nunito Regular", Fallback, sans-serif;
@@ -1759,6 +1775,20 @@ section {
     height: 100%;
     width: 80%;
     margin: 0 auto; }
+    @media only screen and (max-width: 64em) {
+      .tracking__tiles {
+        width: 90%; } }
+    @media only screen and (max-width: 48em) {
+      .tracking__tiles {
+        width: 100%; } }
+    @media only screen and (max-width: 37.5em) {
+      .tracking__tiles {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr); } }
+    @media only screen and (max-width: 37.5em) {
+      .tracking__tiles {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(3, 1fr); } }
   .tracking__tile {
     border: 0;
     border-radius: 0.5rem;
@@ -1769,12 +1799,22 @@ section {
     background-color: #fff;
     grid-template-rows: 60% 10% 20% 10%;
     box-shadow: 0 1px 20px 5px rgba(18, 18, 18, 0.25); }
+    @media only screen and (max-width: 37.5em) {
+      .tracking__tile {
+        width: 28rem;
+        height: 32rem; } }
     .tracking__tile:first-child {
       animation: jump 7.5s ease infinite backwards alternate; }
     .tracking__tile:nth-child(2) {
       animation: jump 7.5s ease 0.3s infinite backwards alternate; }
     .tracking__tile:last-child {
       animation: jump 7.5s ease 0.6s infinite backwards alternate; }
+      @media only screen and (max-width: 37.5em) {
+        .tracking__tile:last-child {
+          grid-column: 1 / -1; } }
+      @media only screen and (max-width: 30em) {
+        .tracking__tile:last-child {
+          grid-column: auto; } }
     .tracking__tile--heading {
       text-align: center;
       font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
