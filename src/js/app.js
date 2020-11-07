@@ -157,3 +157,10 @@ document.querySelector(elements.paymentForm).addEventListener('submit', e => {
     //reseting the form
     e.target.reset();
 });
+
+//Event handler for the mobile nav aside to collapse
+document.querySelector(elements.navAside).addEventListener('click', e => {
+    if(e.target.tagName === "LI" || e.target.tagName === "A") {
+        controller.mobileNav();
+    }
+});

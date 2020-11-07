@@ -422,8 +422,14 @@ export const populatePage = () => {
 
         })
     });
+}
+// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END DASHBOARD ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
-
+//function to 
+export const mobileNav = () => {
+    setTimeout(() => {
+        UICtrl.collapseNav();
+    }, 250);
 }

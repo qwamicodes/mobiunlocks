@@ -1,6 +1,8 @@
  export const elements = {
   svgPath:  '.bg-path',
   nav: '.nav',
+  navAside: '.nav__mobile--aside',
+  navInput: '#nav-btn',
   tabHolder: '.tabs',
   tabItems: '.tabs li',
   tab: '.tab',

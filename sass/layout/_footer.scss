@@ -10,6 +10,10 @@
     height: 55rem;
   }
 
+  @media only screen and (max-width: 33.75em) {
+    height: 82rem;
+  }
+
   @include respond(mobile) {
     height: 85rem;
   }
@@ -19,6 +23,10 @@
   }
 
   &__title {
+    @media only screen and (max-width: 33.75em) {
+      text-align: center;
+    }
+
     @include respond(mobile) {
       width: 95%;
       text-align: center;
@@ -46,7 +54,11 @@
     @include respond(mobile-big) {
       grid-template-columns: repeat(1, 1fr);
       grid-template-rows: repeat(2, 1fr);
-      width: 95%;
+      width: 100%;
+    }
+
+    @media only screen and (max-width: 33.75em) {
+      width: 100%;
     }
 
     @include respond(mobile) {
@@ -74,6 +86,10 @@
       height: 100%;
     }
 
+    @media only screen and (max-width: 33.75em) {
+      grid-template-rows: 15% 85%;
+    }
+
     @include respond(mobile) {
       grid-template-rows: 15% 85%;
     }
@@ -83,6 +99,11 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
+      }
+
+      @media only screen and (max-width: 33.75em) {
+        grid-template-rows: 20% 65% 15%;
+        grid-template-columns: repeat(1, 1fr);
       }
 
       @include respond(mobile) {
@@ -96,6 +117,10 @@
         display: inline-block;
       }
 
+      @media only screen and (max-width: 33.75em) {
+        margin: 0 auto;
+      }
+
       @include respond(mobile) {
         grid-area: auto;
         margin: 0 auto;
@@ -105,6 +130,10 @@
       &:nth-child(2) {
         @include respond(mobile-big) {
           grid-area: 1 / 2 / -1 / -1;
+        }
+
+        @media only screen and (max-width: 33.75em) {
+          grid-area: auto;
         }
 
         @include respond(mobile) {
