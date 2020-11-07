@@ -399,11 +399,11 @@ export const populatePage = () => {
             singleTask.innerHTML =
                 `
             <ul class="dashboard__tasks--item">
-                <li>${task.tracking_id}</li>
+                <li>#${task.tracking_id}</li>
                 <li>${task.task_type}</li>
                 <li>${task.phone_model}</li>
                 <li>${task.imei}</li>
-                <li>${task.carrier}</li>
+                <li>${task.phone_carrier_network ? task.phone_carrier_network : task.details? task.details : "---"}</li>
                 <li data-type="${task.completed ? "completed" : "pending"}">
                     ${task.completed ? "Completed" : "Pending"}
                 </li>
@@ -414,16 +414,19 @@ export const populatePage = () => {
             allTasksListElement.appendChild(singleTask);
 
             // ! adding the eventlistener to show the modal
-            singleTask.addEventListener('click', e => {
-                if(e.target.tagName === "LI") {
-                    //converting the htmlcollections (li's) form the DOM into an array
-                    const lists = [];
-                    Array.prototype.slice.call(e.target.parentElement.children).forEach(li => {
-                        lists.push(li.innerHTML);
-                    });
-                    
-                    modalList(lists);
-                };
+            //converting the htmlcollections (li's) form the DOM into an array
+            Array.prototype.slice.call(singleTask.getElementsByTagName("li")).forEach(item => {
+                item.addEventListener('click', e => {
+                    if(e.target.tagName === "LI") {
+                        //converting the htmlcollections (li's) form the DOM into an array
+                        const lists = [];
+                        Array.prototype.slice.call(e.target.parentElement.children).forEach(li => {
+                            lists.push(li.innerHTML);
+                        });
+            
+                        modalList(lists);
+                    };
+                });
             });
 
         })
