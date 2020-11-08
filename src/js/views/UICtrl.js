@@ -119,13 +119,14 @@ export const addTask = (id, type, modelName, imei, carrier, status = 'pending') 
 };
 
 //function template for the modal popup
-export const showModal = (id, type, modelName, imei, carrier, cusName, page = 'dashboard') => {
+export const showModal = (task, page = 'dashboard') => {
   document.querySelector(elements.modal).classList.add('modal-show');
-
+  console.log(task);
+  // return
   // search results modal for tracking page
   if(page === 'tracking') {
     // if result is for IMEI Checking task
-    if(type.includes('IMEI')) {
+    if(task.task_type.includes('IMEI')) {
       let html = `
           <div class="modal">
             <div class="modal__preview">
@@ -137,10 +138,10 @@ export const showModal = (id, type, modelName, imei, carrier, cusName, page = 'd
             <ul>
                 <li>
                     <div class="modal__preview--info">
-                        Order/Tracking No of <span>${id}</span> 
-                          with customer name <span>${cusName}</span>
-                          with phone model <span>${modelName}</span> and carrier of <span>${carrier}</span>
-                          with service type <span>${type}</span> has a status of <span data-type="pending">pending</span>
+                        Order/Tracking No of <span>${task.tracking_id}</span> 
+                          with customer name <span>${task.customer}</span>
+                          with phone model <span>${task.phone_model}</span> and carrier of <span>${task.phone_carrier_network}</span>
+                          with service type <span>${task.task_type}</span> has a status of <span data-type="pending">pending</span>
                       </div>
                   </li>
                   <li>
@@ -194,10 +195,10 @@ export const showModal = (id, type, modelName, imei, carrier, cusName, page = 'd
             <ul>
                 <li>
                     <div class="modal__preview--info">
-                        Order/Tracking No of <span>${id}</span> 
-                          with customer name <span>${cusName}</span>
-                          with phone model <span>${modelName}</span> and carrier of <span>${carrier}</span>
-                          with service type <span>${type}</span> has a status of <span data-type="pending">pending</span>
+                        Order/Tracking No of <span>${task.tracking_id}</span> 
+                          with customer name <span>${task.customer}</span>
+                          with phone model <span>${task.phone_model}</span> and carrier of <span>${task.phone_carrier_network}</span>
+                          with service type <span>${task.task_type}</span> has a status of <span data-type="pending">pending</span>
                       </div>
                   </li>
                 </ul>
@@ -210,7 +211,7 @@ export const showModal = (id, type, modelName, imei, carrier, cusName, page = 'd
   } else {
     // ? modals for dashboard task detail
     // modal for IMEI Checking task
-    if(type.includes('IMEI')) {
+    if(task.task_type.includes('IMEI')) {
       let html = `
       <div class="modal">
         <form class="modal__form task__detail--modal-form">
@@ -221,16 +222,16 @@ export const showModal = (id, type, modelName, imei, carrier, cusName, page = 'd
           </div>
           <ul>
             <li>
-              <span data-task_property="tracking_id">${id}</span>
+              <span data-task_property="tracking_id">${task.tracking_id}</span>
             </li>
             <li>
-              <span data-task_property="task_type">${type}</span>                  
+              <span data-task_property="task_type">${task.task_type}</span>                  
             </li>
             <li>
-              <span data-task_property="phone_model">${modelName}</span>
+              <span data-task_property="phone_model">${task.phone_model}</span>
             </li>
             <li class="u-flex-between">
-              <span class="modal-copier" data-task_property="imei">${imei}</span>
+              <span class="modal-copier" data-task_property="imei">${task.imei}</span>
               <div class="modal-svg modal-copy">
                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
                   <rect x='128' y='128' width='336' height='336' rx='57' ry='57' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='32'/>
@@ -239,10 +240,12 @@ export const showModal = (id, type, modelName, imei, carrier, cusName, page = 'd
               </div>
             </li>
             <li>
-              <span data-task_property="carrier">${carrier}</span>
+              <span data-task_property="carrier">${task.phone_carrier_network}</span>
             </li>
             <li>
-              <textarea class="modal__form--textarea" id="task-details" name="results" placeholder="Place results of checking here..."></textarea>
+              <textarea class="modal__form--textarea" id="task-details" name="results" placeholder="Place results of checking here...">
+
+              </textarea>
             </li>
             <li>
               <select class="modal__form--select" name="status" id="task-modal">
@@ -270,16 +273,16 @@ export const showModal = (id, type, modelName, imei, carrier, cusName, page = 'd
               </div>
               <ul>
                 <li>
-                  <span data-task_property="tracking_id">${id}</span>
+                  <span data-task_property="tracking_id">${task.tracking_id}</span>
                 </li>
                 <li>
-                  <span data-task_property="task_type">${type}</span>                  
+                  <span data-task_property="task_type">${task.task_type}</span>                  
                 </li>
                 <li>
-                  <span data-task_property="phone_model">${modelName}</span>
+                  <span data-task_property="phone_model">${task.phone_model}</span>
                 </li>
                 <li class="u-flex-between">
-                  <span class="modal-copier" data-task_property="imei">${imei}</span>
+                  <span class="modal-copier" data-task_property="imei">${task.imei}</span>
                   <div class="modal-svg modal-copy">
                     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
                       <rect x='128' y='128' width='336' height='336' rx='57' ry='57' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='32'/>
@@ -288,7 +291,7 @@ export const showModal = (id, type, modelName, imei, carrier, cusName, page = 'd
                   </div>
                 </li>
                 <li>
-                  <span data-task_property="carrier">${carrier}</span>
+                  <span data-task_property="carrier">${task.phone_carrier_network}</span>
                 </li>
                 <li>
                   <select name="status" class="modal__form--select" id="task-modal">

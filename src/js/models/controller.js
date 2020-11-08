@@ -323,9 +323,9 @@ export const preparePayment = (fullname, email, amount) => {
 };
 
 //Function that receives the list elements and parses it into the modal
-export const modalList = lists => {
+export const modalList = task => {
 
-    UICtrl.showModal(...lists);
+    UICtrl.showModal(task);
 
     // add event listener to submit modal form
     document.querySelector(elements.taskDetailModalForm).addEventListener('submit', updateTaskDetails);
@@ -394,7 +394,7 @@ export const populatePage = () => {
 
     // ? get AllTasks
     getAllTasks().then(tasks => {
-       
+
         // TODO listing tasks in dashboard
         // loop over each element
         tasks.forEach(task => {
@@ -409,7 +409,7 @@ export const populatePage = () => {
                 <li data-task_property="task_type">${task.task_type}</li>
                 <li data-task_property="phone_model">${task.phone_model ? task.phone_model : "---"}</li>
                 <li data-task_property="imei">${task.imei}</li>
-                <li data-task_property="carrier">${task.phone_carrier_network ? task.phone_carrier_network : task.details? task.details : "---"}</li>
+                <li data-task_property="carrier">${task.phone_carrier_network ? task.phone_carrier_network : task.details ? task.details : "---"}</li>
                 <li data-task_property="status" data-type="${task.completed ? "completed" : "pending"}">
                     ${task.completed ? "Completed" : "Pending"}
                 </li>
@@ -423,26 +423,18 @@ export const populatePage = () => {
             //converting the htmlcollections (li's) form the DOM into an array
             Array.prototype.slice.call(singleTask.getElementsByTagName("li")).forEach(item => {
                 item.addEventListener('click', e => {
-                    if(e.target.tagName === "LI") {
-                        //converting the htmlcollections (li's) form the DOM into an array
-                        const lists = [];
-                        Array.prototype.slice.call(e.target.parentElement.children).forEach(li => {
-                            lists.push(li.innerHTML);
-                        });
-            
-                        modalList(lists);
-                    };
-                });
+                    modalList(task);
             });
+        });
 
-        })
-        
-        // TODO Task count
-        document.querySelector(elements.allTasksCount).innerHTML = tasks.length; // all tasks
-        document.querySelector(elements.pendingTasksCount).innerHTML = countPendingTasks(tasks); // pending tasks
-        document.querySelector(elements.completedTasksCount).innerHTML = countCompletedTasks(tasks); // completed tasks
+    })
 
-    });
+    // TODO Task count
+    document.querySelector(elements.allTasksCount).innerHTML = tasks.length; // all tasks
+    document.querySelector(elements.pendingTasksCount).innerHTML = countPendingTasks(tasks); // pending tasks
+    document.querySelector(elements.completedTasksCount).innerHTML = countCompletedTasks(tasks); // completed tasks
+
+});
 }
 
 // function to count pending tasks
@@ -472,18 +464,18 @@ export const updateTaskDetails = async e => {
     e.preventDefault();
 
     // get tracking id and remove the prepended hash symbol
-    const trackingID = e.target.querySelector('span[data-task_property="tracking_id"]').innerText.slice(1); 
-    const imei = e.target.querySelector('span[data-task_property="imei"]').innerText; 
+    const trackingID = e.target.querySelector('span[data-task_property="tracking_id"]').innerText.slice(1);
+    const imei = e.target.querySelector('span[data-task_property="imei"]').innerText;
     const completed = e.target.elements.status.value === "completed" ? true : false;
     const results = e.target.elements.results.value;
     const task_type = e.target.querySelector('span[data-task_property="task_type"]').innerText.toLowerCase();
-    
+
     let formData = new FormData();
     formData.append('completed', completed);
     formData.append('results', results);
     formData.append('imei', imei);
-    
-    switch (task_type){
+
+    switch (task_type) {
         case "icloud unlocking":
             updateICloudUnlockTask(trackingID, formData)
                 .then(updatedTask => {
@@ -495,7 +487,7 @@ export const updateTaskDetails = async e => {
                         <li data-task_property="task_type">${updatedTask.task_type}</li>
                         <li data-task_property="phone_model">${updatedTask.phone_model ? updatedTask.phone_model : "---"}</li>
                         <li data-task_property="imei">${updatedTask.imei}</li>
-                        <li data-task_property="carrier">${updatedTask.phone_carrier_network ? updatedTask.phone_carrier_network : updatedTask.details? updatedTask.details : "---"}</li>
+                        <li data-task_property="carrier">${updatedTask.phone_carrier_network ? updatedTask.phone_carrier_network : updatedTask.details ? updatedTask.details : "---"}</li>
                         <li data-task_property="status" data-type="${updatedTask.completed ? "completed" : "pending"}">
                             ${updatedTask.completed ? "Completed" : "Pending"}
                         </li>
@@ -516,7 +508,7 @@ export const updateTaskDetails = async e => {
                         <li data-task_property="task_type">${updatedTask.task_type}</li>
                         <li data-task_property="phone_model">${updatedTask.phone_model ? updatedTask.phone_model : "---"}</li>
                         <li data-task_property="imei">${updatedTask.imei}</li>
-                        <li data-task_property="carrier">${updatedTask.phone_carrier_network ? updatedTask.phone_carrier_network : updatedTask.details? updatedTask.details : "---"}</li>
+                        <li data-task_property="carrier">${updatedTask.phone_carrier_network ? updatedTask.phone_carrier_network : updatedTask.details ? updatedTask.details : "---"}</li>
                         <li data-task_property="status" data-type="${updatedTask.completed ? "completed" : "pending"}">
                             ${updatedTask.completed ? "Completed" : "Pending"}
                         </li>
@@ -525,7 +517,7 @@ export const updateTaskDetails = async e => {
 
                 })
             break;
-        
+
         case "imei checking":
             updateIMEICheckTask(trackingID, formData)
                 .then(updatedTask => {
@@ -537,7 +529,7 @@ export const updateTaskDetails = async e => {
                         <li data-task_property="task_type">${updatedTask.task_type}</li>
                         <li data-task_property="phone_model">${updatedTask.phone_model ? updatedTask.phone_model : "---"}</li>
                         <li data-task_property="imei">${updatedTask.imei}</li>
-                        <li data-task_property="carrier">${updatedTask.phone_carrier_network ? updatedTask.phone_carrier_network : updatedTask.details? updatedTask.details : "---"}</li>
+                        <li data-task_property="carrier">${updatedTask.phone_carrier_network ? updatedTask.phone_carrier_network : updatedTask.details ? updatedTask.details : "---"}</li>
                         <li data-task_property="status" data-type="${updatedTask.completed ? "completed" : "pending"}">
                             ${updatedTask.completed ? "Completed" : "Pending"}
                         </li>
@@ -547,8 +539,8 @@ export const updateTaskDetails = async e => {
                 })
             break;
     }
-    
-    
+
+
 
 }
 
