@@ -141,7 +141,7 @@ export const showModal = (task, page = 'dashboard') => {
                         Order/Tracking No of <span>${task.tracking_id}</span> 
                           with customer name <span>${task.customer}</span>
                           with phone model <span>${task.phone_model}</span> and carrier of <span>${task.phone_carrier_network}</span>
-                          with service type <span>${task.task_type}</span> has a status of <span data-type="pending">pending</span>
+                          with service type <span>${task.task_type}</span> has a status of <span data-type="pending">${task.completed ? "completed" : "pending"}</span>
                       </div>
                   </li>
                   <li>
@@ -240,12 +240,10 @@ export const showModal = (task, page = 'dashboard') => {
               </div>
             </li>
             <li>
-              <span data-task_property="carrier">${task.phone_carrier_network}</span>
+              <span data-task_property="carrier">${task.details}</span>
             </li>
             <li>
-              <textarea class="modal__form--textarea" id="task-details" name="results" placeholder="Place results of checking here...">
-
-              </textarea>
+              <textarea class="modal__form--textarea" id="task-details" name="results" placeholder="Place results of checking here...">${task.results}</textarea>
             </li>
             <li>
               <select class="modal__form--select" name="status" id="task-modal">
