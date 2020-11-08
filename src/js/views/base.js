@@ -43,4 +43,7 @@
   taskTab: '.dashboard__tab',
   trackingForm: '#tracking-form',
   allTasksListElement: '#dashboard__tasks--list',
+  allTasksCount: '#all-tasks-count',
+  pendingTasksCount: '#pending-tasks-count',
+  completedTasksCount: '#completed-tasks-count',
 };

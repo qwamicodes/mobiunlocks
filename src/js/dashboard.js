@@ -44,4 +44,3 @@ document.querySelectorAll(elements.taskTab).forEach(tab => {
     });
 });
 
-//**** Page Population Event listners ****//

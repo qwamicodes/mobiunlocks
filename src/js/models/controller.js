@@ -389,8 +389,10 @@ export const populatePage = () => {
     // HTML <ul> Element for holding individual <li> elements for each task 
     let allTasksListElement = document.querySelector(elements.allTasksListElement);
 
-    // get AllTasks
+    // ? get AllTasks
     getAllTasks().then(tasks => {
+       
+        // TODO listing tasks in dashboard
         // loop over each element
         tasks.forEach(task => {
             // creating individual HTML elements for each task, populating it with data from the database
@@ -401,7 +403,7 @@ export const populatePage = () => {
             <ul class="dashboard__tasks--item">
                 <li>#${task.tracking_id}</li>
                 <li>${task.task_type}</li>
-                <li>${task.phone_model}</li>
+                <li>${task.phone_model ? task.phone_model : "---"}</li>
                 <li>${task.imei}</li>
                 <li>${task.phone_carrier_network ? task.phone_carrier_network : task.details? task.details : "---"}</li>
                 <li data-type="${task.completed ? "completed" : "pending"}">
@@ -430,8 +432,37 @@ export const populatePage = () => {
             });
 
         })
+        
+        // TODO Task count
+        document.querySelector(elements.allTasksCount).innerHTML = tasks.length; // all tasks
+        document.querySelector(elements.pendingTasksCount).innerHTML = countPendingTasks(tasks); // pending tasks
+        document.querySelector(elements.completedTasksCount).innerHTML = countCompletedTasks(tasks); // completed tasks
+
     });
 }
+
+// function to count pending tasks
+const countPendingTasks = tasksList => {
+    let counter = 0;
+    tasksList.forEach(task => {
+        if (!task.completed) {
+            counter += 1;
+        }
+    })
+    return counter;
+}
+
+// function to count completed tasks
+const countCompletedTasks = tasksList => {
+    let counter = 0;
+    tasksList.forEach(task => {
+        if (task.completed) {
+            counter += 1;
+        }
+    })
+    return counter;
+}
+
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END DASHBOARD ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
