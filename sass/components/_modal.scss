@@ -10,6 +10,20 @@
   box-shadow: $box-shadow-long;
   overflow-y: scroll;
 
+  @include respond(tab) {
+    width: 60%;
+  }
+
+  @include respond(mobile-big) {
+    width: 70%;
+    top: 30%;
+  }
+
+  @include respond(mobile-big) {
+    width: 80%;
+    max-height: 45rem;
+  }
+
   &::-webkit-scrollbar {
     width: 2px;
   }
