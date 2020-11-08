@@ -486,24 +486,30 @@ export const updateTaskDetails = async e => {
     switch (task_type) {
         case "icloud unlocking":
             updateICloudUnlockTask(trackingID, formData)
-                .then(() => {
-                    // repopulate page
+                .then(async () => {
+                    // hide modal and repopulate page
+                    UICtrl.hideModal();
+                    // await new Promise(resolve => setTimeout(resolve, 5000));
                     populatePage();
                 })
             break;
 
         case "carrier unlocking":
             updateCarrierUnlockTask(trackingID, formData)
-                .then(() => {
-                    // repopulate page
+                .then(async () => {
+                    // hide modal and repopulate page
+                    UICtrl.hideModal();
+                    // await new Promise(resolve => setTimeout(resolve, 5000));
                     populatePage();
                 })
             break;
 
         case "imei checking":
             updateIMEICheckTask(trackingID, formData)
-                .then(() => {
-                    // repopulate page
+                .then(async () => {
+                    // hide modal and repopulate page
+                    UICtrl.hideModal();
+                    // await new Promise(resolve => setTimeout(resolve, 5000));
                     populatePage();
                 })
             break;
