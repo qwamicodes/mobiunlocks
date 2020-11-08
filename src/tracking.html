@@ -10,13 +10,18 @@
     <script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
   </head>
   <body>
-      <main class="tracking">
+      <main class="tracking" id="main">
           <a href='../#' class="tracking__back">
               <ion-icon name="arrow-back-outline" size="small"></ion-icon>
               <span>back</span>
           </a>
           <form method="POST" class="tracking__search" id="tracking-form">
               <input type="search" placeholder="Please input tracking or order no..." name="tracking-number" id="search-tracking">
+              <button type="submit">
+                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+                    <path d='M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z' fill='none' stroke='currentColor' stroke-miterlimit='10' stroke-width='32'/><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-miterlimit='10' stroke-width='32' d='M338.29 338.29L448 448'/>
+                </svg>
+              </button>
           </form>
           <div class="tracking__demo">
               <div class="tracking__tiles">
@@ -221,6 +226,7 @@
                   </div>
               </div>
           </div>
+          <div class="modal-container"></div>
       </main>
   </body>
 </html>

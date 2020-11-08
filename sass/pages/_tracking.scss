@@ -1,7 +1,20 @@
 .tracking {
   @extend %dg;
-  grid-template-rows: 10% 10% 78%;
-  height: 65.5rem;
+  grid-template-rows: 10% 10% 80%;
+  height: 64rem;
+  position: relative;
+
+  @include respond(mobile-big) {
+    height: 130rem;
+  }
+
+  @media only screen and (max-width: 33.75em) {
+    height: 150rem;
+  }
+
+  @include respond(mobile) {
+    height: 130rem;
+  }
 
   &__back {
     @include flexeven;
@@ -29,6 +42,19 @@
     position: relative;
     transform: translateY(2rem);
 
+    @include respond(mobile-big) {
+      width: 80%;
+    }
+
+    @include respond(mobile) {
+      width: 90%;
+      transform: translateY(0.5rem);
+    }
+
+    @media only screen and (max-width: 23.4375em) {
+      width: 95%;
+    }
+
     input {
       width: 100%;
       font: $nunito-regular;
@@ -39,6 +65,16 @@
       border: 0;
       border-radius: 1rem;
       box-shadow: 0 1px 20px 3px rgba($color-grey, 0.2);
+    }
+
+    button {
+      width: 3rem;
+      height: 3rem;
+      border: 0;
+      border-radius: 50%;
+      transform: translateX(-4rem);
+      background-color: transparent;
+      cursor: pointer;
     }
   }
 
@@ -53,6 +89,24 @@
     margin: 0 auto;
     @extend %dg;
     @extend %col-1-of-3;
+
+    @include respond(tab-land) {
+      width: 90%;
+    }
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
+
+    @include respond(mobile-big) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+    }
+
+    @include respond(mobile-big) {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+    }
   }
 
   &__tile {
@@ -67,6 +121,16 @@
     grid-template-rows: 60% 10% 20% 10%;
     box-shadow: 0 1px 20px 5px rgba($color-dark, 0.25);
 
+    @media only screen and (max-width: 45em) {
+      width: 28rem;
+      height: 35rem;
+    }
+
+    @include respond(mobile-big) {
+      width: 28rem;
+      height: 32rem;
+    }
+
     &:first-child {
       animation: jump 7.5s ease infinite backwards alternate;
     }
@@ -77,6 +141,14 @@
 
     &:last-child {
       animation: jump 7.5s ease 0.6s infinite backwards alternate;
+
+      @include respond(mobile-big) {
+        grid-column: 1 / -1;
+      }
+
+      @include respond(mobile) {
+        grid-column: auto;
+      }
     }
 
     &--heading {
