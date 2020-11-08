@@ -264,52 +264,72 @@ export const getAllTasks = async () => {
 }
 
 
-export const updateIMEICheckTask = (trackingID, formData) => {
+export const updateIMEICheckTask = async (trackingID, formData) => {
     const imeiCheckTaskEndpoint = `${baseBackendAPIURL}/tasks/imei/${trackingID}/`;
 
-    fetch(imeiCheckTaskEndpoint, {
-        method: 'PUT',
-        body: formData
-    })
-        .then(async response => {
-            if (response.ok) {
-                return response.json(); // return task list
-            } else {
-                console.log(response)
-            }
+    let updatedTask;
+    
+    return new Promise(resolve => {
+        fetch(imeiCheckTaskEndpoint, {
+            method: 'PUT',
+            body: formData
         })
+            .then(async response => {
+                if (response.ok) {
+                    updatedTask = await response.json(); // return task list
+                } else {
+                    console.log(response)
+                }
+            })
+                .then(() => resolve(updatedTask))
+    
+    });
+
+
 }
 
 
-export const updateICloudUnlockTask = (trackingID, formData) => {
+export const updateICloudUnlockTask = async (trackingID, formData) => {
     const ICloudUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/icloud/${trackingID}/`;
 
-    fetch(ICloudUnlockTaskEndpoint, {
-        method: 'PUT',
-        body: formData
-    })
-        .then(async response => {
-            if (response.ok) {
-                return response.json(); // return task list
-            } else {
-                console.log(response)
-            }
+    let updatedTask;
+    
+    return new Promise(resolve => {
+        fetch(ICloudUnlockTaskEndpoint, {
+            method: 'PUT',
+            body: formData
         })
+            .then(async response => {
+                if (response.ok) {
+                    updatedTask = await response.json(); // return task list
+                } else {
+                    console.log(response)
+                }
+            })
+                .then(() => resolve(updatedTask))
+    });
+
 }
 
 
-export const updateCarrierUnlockTask = (trackingID, formData) => {
+export const updateCarrierUnlockTask = async (trackingID, formData) => {
     const CarrierUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/carrier/${trackingID}/`;
+    
+    let updatedTask;
 
-    fetch(CarrierUnlockTaskEndpoint, {
-        method: 'PUT',
-        body: formData
-    })
-        .then(async response => {
-            if (response.ok) {
-                return response.json(); // return task list
-            } else {
-                console.log(response)
-            }
+    return new Promise(resolve => {
+        fetch(CarrierUnlockTaskEndpoint, {
+            method: 'PUT',
+            body: formData
         })
+            .then(async response => {
+                if (response.ok) {
+                    updatedTask = await response.json(); // return task list
+                } else {
+                    console.log(response)
+                }
+            })
+                .then(() => resolve(updatedTask))
+    });
+
 }

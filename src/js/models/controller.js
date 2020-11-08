@@ -400,6 +400,7 @@ export const populatePage = () => {
         tasks.forEach(task => {
             // creating individual HTML elements for each task, populating it with data from the database
             let singleTask = document.createElement("li");
+            singleTask.id = `#${task.tracking_id}`
             singleTask.classList.add("dashboard__tasks--value-li");
             singleTask.innerHTML =
                 `
@@ -467,7 +468,7 @@ const countCompletedTasks = tasksList => {
 }
 
 // * event handler for sending dashboard-updated task details to DB 
-export const updateTaskDetails = e => {
+export const updateTaskDetails = async e => {
     e.preventDefault();
 
     // get tracking id and remove the prepended hash symbol
@@ -475,23 +476,73 @@ export const updateTaskDetails = e => {
     const imei = e.target.querySelector('span[data-task_property="imei"]').innerText; 
     const completed = e.target.elements.status.value === "completed" ? true : false;
     const task_type = e.target.querySelector('span[data-task_property="task_type"]').innerText.toLowerCase();
-    console.log(task_type); 
-
+    
     let formData = new FormData();
     formData.append('completed', completed);
     formData.append('imei', imei);
-
+    
     switch (task_type){
         case "icloud unlocking":
-            updateICloudUnlockTask(trackingID, formData);
+            updateICloudUnlockTask(trackingID, formData)
+                .then(updatedTask => {
+                    // update task in HTML
+                    const taskHTMLElement = document.getElementById(`#${updatedTask.tracking_id}`);
+                    taskHTMLElement.innerHTML = `
+                    <ul class="dashboard__tasks--item">
+                        <li data-task_property="tracking_id">#${updatedTask.tracking_id}</li>
+                        <li data-task_property="task_type">${updatedTask.task_type}</li>
+                        <li data-task_property="phone_model">${updatedTask.phone_model ? updatedTask.phone_model : "---"}</li>
+                        <li data-task_property="imei">${updatedTask.imei}</li>
+                        <li data-task_property="carrier">${updatedTask.phone_carrier_network ? updatedTask.phone_carrier_network : updatedTask.details? updatedTask.details : "---"}</li>
+                        <li data-task_property="status" data-type="${updatedTask.completed ? "completed" : "pending"}">
+                            ${updatedTask.completed ? "Completed" : "Pending"}
+                        </li>
+                    </ul>
+                    `
+
+                })
             break;
 
         case "carrier unlocking":
-            updateCarrierUnlockTask(trackingID, formData);
+            updateCarrierUnlockTask(trackingID, formData)
+                .then(updatedTask => {
+                    // update task in HTML
+                    const taskHTMLElement = document.getElementById(`#${updatedTask.tracking_id}`);
+                    taskHTMLElement.innerHTML = `
+                    <ul class="dashboard__tasks--item">
+                        <li data-task_property="tracking_id">#${updatedTask.tracking_id}</li>
+                        <li data-task_property="task_type">${updatedTask.task_type}</li>
+                        <li data-task_property="phone_model">${updatedTask.phone_model ? updatedTask.phone_model : "---"}</li>
+                        <li data-task_property="imei">${updatedTask.imei}</li>
+                        <li data-task_property="carrier">${updatedTask.phone_carrier_network ? updatedTask.phone_carrier_network : updatedTask.details? updatedTask.details : "---"}</li>
+                        <li data-task_property="status" data-type="${updatedTask.completed ? "completed" : "pending"}">
+                            ${updatedTask.completed ? "Completed" : "Pending"}
+                        </li>
+                    </ul>
+                    `
+
+                })
             break;
         
         case "imei checking":
-            updateIMEICheckTask(trackingID, formData);
+            updateIMEICheckTask(trackingID, formData)
+                .then(updatedTask => {
+                    // update task in HTML
+                    const taskHTMLElement = document.getElementById(`#${updatedTask.tracking_id}`);
+                    taskHTMLElement.innerHTML = `
+                    <ul class="dashboard__tasks--item">
+                        <li data-task_property="tracking_id">#${updatedTask.tracking_id}</li>
+                        <li data-task_property="task_type">${updatedTask.task_type}</li>
+                        <li data-task_property="phone_model">${updatedTask.phone_model ? updatedTask.phone_model : "---"}</li>
+                        <li data-task_property="imei">${updatedTask.imei}</li>
+                        <li data-task_property="carrier">${updatedTask.phone_carrier_network ? updatedTask.phone_carrier_network : updatedTask.details? updatedTask.details : "---"}</li>
+                        <li data-task_property="status" data-type="${updatedTask.completed ? "completed" : "pending"}">
+                            ${updatedTask.completed ? "Completed" : "Pending"}
+                        </li>
+                    </ul>
+                    `
+
+                })
             break;
     }
     
