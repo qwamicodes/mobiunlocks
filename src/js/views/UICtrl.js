@@ -222,13 +222,13 @@ export const showModal = (task, page = 'dashboard') => {
           </div>
           <ul>
             <li>
-              <span data-task_property="tracking_id">${task.tracking_id}</span>
+              <span data-task_property="tracking_id">#${task.tracking_id}</span>
             </li>
             <li>
               <span data-task_property="task_type">${task.task_type}</span>                  
             </li>
             <li>
-              <span data-task_property="phone_model">${task.phone_model}</span>
+              <span data-task_property="phone_model">---</span>
             </li>
             <li class="u-flex-between">
               <span class="modal-copier" data-task_property="imei">${task.imei}</span>
@@ -271,7 +271,7 @@ export const showModal = (task, page = 'dashboard') => {
               </div>
               <ul>
                 <li>
-                  <span data-task_property="tracking_id">${task.tracking_id}</span>
+                  <span data-task_property="tracking_id">#${task.tracking_id}</span>
                 </li>
                 <li>
                   <span data-task_property="task_type">${task.task_type}</span>                  
@@ -289,7 +289,7 @@ export const showModal = (task, page = 'dashboard') => {
                   </div>
                 </li>
                 <li>
-                  <span data-task_property="carrier">${task.phone_carrier_network}</span>
+                  <span data-task_property="carrier">${task.phone_carrier_network ? task.phone_carrier_network : "---"}</span>
                 </li>
                 <li>
                   <select name="status" class="modal__form--select" id="task-modal">
