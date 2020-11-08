@@ -392,6 +392,9 @@ export const populatePage = () => {
     // HTML <ul> Element for holding individual <li> elements for each task 
     let allTasksListElement = document.querySelector(elements.allTasksListElement);
 
+    // clear task list 
+    allTasksListElement.innerHTML = "";
+
     // ? get AllTasks
     getAllTasks().then(tasks => {
 
@@ -424,17 +427,17 @@ export const populatePage = () => {
             Array.prototype.slice.call(singleTask.getElementsByTagName("li")).forEach(item => {
                 item.addEventListener('click', e => {
                     modalList(task);
+                });
             });
-        });
 
-    })
+        })
 
-    // TODO Task count
-    document.querySelector(elements.allTasksCount).innerHTML = tasks.length; // all tasks
-    document.querySelector(elements.pendingTasksCount).innerHTML = countPendingTasks(tasks); // pending tasks
-    document.querySelector(elements.completedTasksCount).innerHTML = countCompletedTasks(tasks); // completed tasks
+        // TODO Task count
+        document.querySelector(elements.allTasksCount).innerHTML = tasks.length; // all tasks
+        document.querySelector(elements.pendingTasksCount).innerHTML = countPendingTasks(tasks); // pending tasks
+        document.querySelector(elements.completedTasksCount).innerHTML = countCompletedTasks(tasks); // completed tasks
 
-});
+    });
 }
 
 // function to count pending tasks
@@ -467,75 +470,41 @@ export const updateTaskDetails = async e => {
     const trackingID = e.target.querySelector('span[data-task_property="tracking_id"]').innerText.slice(1);
     const imei = e.target.querySelector('span[data-task_property="imei"]').innerText;
     const completed = e.target.elements.status.value === "completed" ? true : false;
-    const results = e.target.elements.results.value;
     const task_type = e.target.querySelector('span[data-task_property="task_type"]').innerText.toLowerCase();
 
+    // append details to FormData
     let formData = new FormData();
     formData.append('completed', completed);
-    formData.append('results', results);
     formData.append('imei', imei);
+
+    // add results textarea value to FormData object if task type is IMEI checking
+    if (task_type === "imei checking") {
+        const results = e.target.elements.results.value
+        formData.append('results', results);
+    }
 
     switch (task_type) {
         case "icloud unlocking":
             updateICloudUnlockTask(trackingID, formData)
-                .then(updatedTask => {
-                    // update task in HTML
-                    const taskHTMLElement = document.getElementById(`#${updatedTask.tracking_id}`);
-                    taskHTMLElement.innerHTML = `
-                    <ul class="dashboard__tasks--item">
-                        <li data-task_property="tracking_id">#${updatedTask.tracking_id}</li>
-                        <li data-task_property="task_type">${updatedTask.task_type}</li>
-                        <li data-task_property="phone_model">${updatedTask.phone_model ? updatedTask.phone_model : "---"}</li>
-                        <li data-task_property="imei">${updatedTask.imei}</li>
-                        <li data-task_property="carrier">${updatedTask.phone_carrier_network ? updatedTask.phone_carrier_network : updatedTask.details ? updatedTask.details : "---"}</li>
-                        <li data-task_property="status" data-type="${updatedTask.completed ? "completed" : "pending"}">
-                            ${updatedTask.completed ? "Completed" : "Pending"}
-                        </li>
-                    </ul>
-                    `
-
+                .then(() => {
+                    // repopulate page
+                    populatePage();
                 })
             break;
 
         case "carrier unlocking":
             updateCarrierUnlockTask(trackingID, formData)
-                .then(updatedTask => {
-                    // update task in HTML
-                    const taskHTMLElement = document.getElementById(`#${updatedTask.tracking_id}`);
-                    taskHTMLElement.innerHTML = `
-                    <ul class="dashboard__tasks--item">
-                        <li data-task_property="tracking_id">#${updatedTask.tracking_id}</li>
-                        <li data-task_property="task_type">${updatedTask.task_type}</li>
-                        <li data-task_property="phone_model">${updatedTask.phone_model ? updatedTask.phone_model : "---"}</li>
-                        <li data-task_property="imei">${updatedTask.imei}</li>
-                        <li data-task_property="carrier">${updatedTask.phone_carrier_network ? updatedTask.phone_carrier_network : updatedTask.details ? updatedTask.details : "---"}</li>
-                        <li data-task_property="status" data-type="${updatedTask.completed ? "completed" : "pending"}">
-                            ${updatedTask.completed ? "Completed" : "Pending"}
-                        </li>
-                    </ul>
-                    `
-
+                .then(() => {
+                    // repopulate page
+                    populatePage();
                 })
             break;
 
         case "imei checking":
             updateIMEICheckTask(trackingID, formData)
-                .then(updatedTask => {
-                    // update task in HTML
-                    const taskHTMLElement = document.getElementById(`#${updatedTask.tracking_id}`);
-                    taskHTMLElement.innerHTML = `
-                    <ul class="dashboard__tasks--item">
-                        <li data-task_property="tracking_id">#${updatedTask.tracking_id}</li>
-                        <li data-task_property="task_type">${updatedTask.task_type}</li>
-                        <li data-task_property="phone_model">${updatedTask.phone_model ? updatedTask.phone_model : "---"}</li>
-                        <li data-task_property="imei">${updatedTask.imei}</li>
-                        <li data-task_property="carrier">${updatedTask.phone_carrier_network ? updatedTask.phone_carrier_network : updatedTask.details ? updatedTask.details : "---"}</li>
-                        <li data-task_property="status" data-type="${updatedTask.completed ? "completed" : "pending"}">
-                            ${updatedTask.completed ? "Completed" : "Pending"}
-                        </li>
-                    </ul>
-                    `
-
+                .then(() => {
+                    // repopulate page
+                    populatePage();
                 })
             break;
     }
