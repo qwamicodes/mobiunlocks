@@ -6,7 +6,7 @@
   background-color: $color-white;
   width: 38rem;
   max-height: 40rem;
-  height: 40rem;
+  height: auto;
   box-shadow: $box-shadow-long;
   overflow-y: scroll;
 
@@ -95,6 +95,7 @@
       @include flexbottom;
       width: 90%;
       margin: 0 auto;
+      height: 100%;
 
       li {
         width: 98%;

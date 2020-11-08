@@ -625,7 +625,7 @@ select {
   background-color: #fff;
   width: 38rem;
   max-height: 40rem;
-  height: 40rem;
+  height: auto;
   box-shadow: 0 2px 1px rgba(161, 161, 161, 0.07), 0 4px 2px rgba(161, 161, 161, 0.07), 0 8px 4px rgba(161, 161, 161, 0.07), 0 16px 8px rgba(161, 161, 161, 0.07), 0 32px 16px rgba(161, 161, 161, 0.07);
   overflow-y: scroll; }
   .modal::-webkit-scrollbar {
@@ -681,7 +681,8 @@ select {
     font-size: 1.6rem; }
     .modal__preview ul {
       width: 90%;
-      margin: 0 auto; }
+      margin: 0 auto;
+      height: 100%; }
       .modal__preview ul li {
         width: 98%;
         padding: 1rem 0; }
@@ -1771,7 +1772,7 @@ section {
 
 .tracking {
   grid-template-rows: 10% 10% 80%;
-  height: 65.5rem;
+  height: 64rem;
   position: relative; }
   @media only screen and (max-width: 37.5em) {
     .tracking {
@@ -1818,6 +1819,14 @@ section {
       border: 0;
       border-radius: 1rem;
       box-shadow: 0 1px 20px 3px rgba(102, 102, 102, 0.2); }
+    .tracking__search button {
+      width: 3rem;
+      height: 3rem;
+      border: 0;
+      border-radius: 50%;
+      transform: translateX(-4rem);
+      background-color: transparent;
+      cursor: pointer; }
   .tracking__demo {
     background-color: #ff5700;
     width: 100%; }

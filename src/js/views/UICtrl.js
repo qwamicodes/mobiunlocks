@@ -119,102 +119,186 @@ export const addTask = (id, type, modelName, imei, carrier, status = 'pending') 
 };
 
 //function template for the modal popup
-export const showModal = (id, type, modelName, imei, carrier) => {
+export const showModal = (id, type, modelName, imei, carrier, cusName, page = 'dashboard') => {
   document.querySelector(elements.modal).classList.add('modal-show');
 
-  if(type.includes('IMEI')) {
-    let html = `
-    <div class="modal">
-      <form class="modal__form">
-        <div class="modal-svg modal-close">
-          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
-            <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M368 368L144 144M368 144L144 368'/>
-          </svg>
-        </div>
-        <ul>
-          <li>
-            <span>${id}</span>
-          </li>
-          <li>
-            <span>${type}</span>                  
-          </li>
-          <li>
-            <span>${modelName}</span>
-          </li>
-          <li class="u-flex-between">
-            <span class="modal-copier">${imei}</span>
-            <div class="modal-svg modal-copy">
-              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
-                <rect x='128' y='128' width='336' height='336' rx='57' ry='57' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='32'/>
-                <path d='M383.5 128l.5-24a56.16 56.16 0 00-56-56H112a64.19 64.19 0 00-64 64v216a56.16 56.16 0 0056 56h24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/>
-              </svg>
-            </div>
-          </li>
-          <li>
-            <span>${carrier}</span>
-          </li>
-          <li>
-            <textarea class="modal__form--textarea" id="task-details" placeholder="Put details here..."></textarea>
-          </li>
-          <li>
-            <select class="modal__form--select" name="status" id="task-modal">
-              <option value="pending">Pending</opPion>
-              <option value="completed">Completed</Cption>
-            </select>
-          </li>
-          <li class="u-flex-center"><button class="btn btn-checkout" type="submit">Save</button></li>
-        </ul>
-      </form>
-    </div>
-  `; 
-
-    document.querySelector(elements.modal).innerHTML = html;
-
-  } else {
-    let html = `
-        <div class="modal">
-          <form class="modal__form">
+  if(page === 'tracking') {
+    if(type.includes('IMEI')) {
+      let html = `
+          <div class="modal">
+            <div class="modal__preview">
             <div class="modal-svg modal-close">
-              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
-                <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M368 368L144 144M368 144L144 368'/>
-              </svg>
-            </div>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+              <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M368 368L144 144M368 144L144 368'/>
+            </svg>
+          </div>
             <ul>
-              <li>
-                <span>${id}</span>
-              </li>
-              <li>
-                <span>${type}</span>                  
-              </li>
-              <li>
-                <span>${modelName}</span>
-              </li>
-              <li class="u-flex-between">
-                <span class="modal-copier">${imei}</span>
-                <div class="modal-svg modal-copy">
-                  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
-                    <rect x='128' y='128' width='336' height='336' rx='57' ry='57' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='32'/>
-                    <path d='M383.5 128l.5-24a56.16 56.16 0 00-56-56H112a64.19 64.19 0 00-64 64v216a56.16 56.16 0 0056 56h24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/>
-                  </svg>
-                </div>
-              </li>
-              <li>
-                <span>${carrier}</span>
-              </li>
-              <li>
-                <select name="status" class="modal__form--select" id="task-modal">
-                  <option value="pending">Pending</opPion>
-                  <option value="completed">Completed</Cption>
-                </select>
-              </li>
-              <li class="u-flex-center"><button class="btn btn-checkout" type="submit">Save</button></li>
-            </ul>
-          </form>
+                <li>
+                    <div class="modal__preview--info">
+                        Order/Tracking No of <span>${id}</span> 
+                          with customer name <span>${cusName}</span>
+                          with phone model <span>${modelName}</span> and carrier of <span>${carrier}</span>
+                          with service type <span>${type}</span> has a status of <span data-type="pending">pending</span>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="modal__preview--details">
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet.<br>
+                      </div>
+                  </li>
+              </ul>
+          </div> 
         </div>
-      `; 
+      `;
 
-    document.querySelector(elements.modal).innerHTML = html;
-  };
+      document.querySelector(elements.modal).innerHTML = html;
+    } else {
+      let html = `
+          <div class="modal">
+            <div class="modal__preview">
+            <div class="modal-svg modal-close">
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+              <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M368 368L144 144M368 144L144 368'/>
+            </svg>
+          </div>
+            <ul>
+                <li>
+                    <div class="modal__preview--info">
+                        Order/Tracking No of <span>${id}</span> 
+                          with customer name <span>${cusName}</span>
+                          with phone model <span>${modelName}</span> and carrier of <span>${carrier}</span>
+                          with service type <span>${type}</span> has a status of <span data-type="pending">pending</span>
+                      </div>
+                  </li>
+                </ul>
+            </div> 
+          </div>
+      `;
+
+      document.querySelector(elements.modal).innerHTML = html;
+    }
+  } else {
+    if(type.includes('IMEI')) {
+      let html = `
+      <div class="modal">
+        <form class="modal__form">
+          <div class="modal-svg modal-close">
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+              <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M368 368L144 144M368 144L144 368'/>
+            </svg>
+          </div>
+          <ul>
+            <li>
+              <span>${id}</span>
+            </li>
+            <li>
+              <span>${type}</span>                  
+            </li>
+            <li>
+              <span>${modelName}</span>
+            </li>
+            <li class="u-flex-between">
+              <span class="modal-copier">${imei}</span>
+              <div class="modal-svg modal-copy">
+                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+                  <rect x='128' y='128' width='336' height='336' rx='57' ry='57' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='32'/>
+                  <path d='M383.5 128l.5-24a56.16 56.16 0 00-56-56H112a64.19 64.19 0 00-64 64v216a56.16 56.16 0 0056 56h24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/>
+                </svg>
+              </div>
+            </li>
+            <li>
+              <span>${carrier}</span>
+            </li>
+            <li>
+              <textarea class="modal__form--textarea" id="task-details" placeholder="Put details here..."></textarea>
+            </li>
+            <li>
+              <select class="modal__form--select" name="status" id="task-modal">
+                <option value="pending">Pending</opPion>
+                <option value="completed">Completed</Cption>
+              </select>
+            </li>
+            <li class="u-flex-center"><button class="btn btn-checkout" type="submit">Save</button></li>
+          </ul>
+        </form>
+      </div>
+    `; 
+  
+      document.querySelector(elements.modal).innerHTML = html;
+  
+    } else {
+      let html = `
+          <div class="modal">
+            <form class="modal__form">
+              <div class="modal-svg modal-close">
+                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+                  <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M368 368L144 144M368 144L144 368'/>
+                </svg>
+              </div>
+              <ul>
+                <li>
+                  <span>${id}</span>
+                </li>
+                <li>
+                  <span>${type}</span>                  
+                </li>
+                <li>
+                  <span>${modelName}</span>
+                </li>
+                <li class="u-flex-between">
+                  <span class="modal-copier">${imei}</span>
+                  <div class="modal-svg modal-copy">
+                    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+                      <rect x='128' y='128' width='336' height='336' rx='57' ry='57' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='32'/>
+                      <path d='M383.5 128l.5-24a56.16 56.16 0 00-56-56H112a64.19 64.19 0 00-64 64v216a56.16 56.16 0 0056 56h24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/>
+                    </svg>
+                  </div>
+                </li>
+                <li>
+                  <span>${carrier}</span>
+                </li>
+                <li>
+                  <select name="status" class="modal__form--select" id="task-modal">
+                    <option value="pending">Pending</opPion>
+                    <option value="completed">Completed</Cption>
+                  </select>
+                </li>
+                <li class="u-flex-center"><button class="btn btn-checkout" type="submit">Save</button></li>
+              </ul>
+            </form>
+          </div>
+        `; 
+  
+      document.querySelector(elements.modal).innerHTML = html;
+    };
+  }
 
   
 };
