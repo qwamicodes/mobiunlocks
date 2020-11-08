@@ -248,76 +248,68 @@ export const getAllTasks = async () => {
             Therefore the `allTasks` array where all the individual tasks are put asynchronously, 
             is returned in a promise by the `getAllTasks` function.
             To access it, a variable to hold it must be passed as an argument to a `then` function called of `getAllTasks` itself.  
-        */    
+        */
         Promise.all(apiRequests) // ? concurrently make requests to task endpoints stored in the array which is passed in as the argument
-            
+
             //? loop through the returned array recursively to retrieve and push all individual tasks to the finally resolved array
-            .then(taskTypes => { 
+            .then(taskTypes => {
                 taskTypes.forEach(taskType => {
                     taskType.forEach(task => allTasks.push(task));
                 })
             })
-                
-                // resolve Promise into array of all tasks
-                .then(() => resolve(allTasks)) 
+
+            // resolve Promise into array of all tasks
+            .then(() => resolve(allTasks))
     })
 }
 
 
-const getIMEICheckTasks = () => {
-    const imeiCheckTaskEndpoint = `${baseBackendAPIURL}/tasks/imei/`;
+export const updateIMEICheckTask = (trackingID, formData) => {
+    const imeiCheckTaskEndpoint = `${baseBackendAPIURL}/tasks/imei/${trackingID}/`;
 
     fetch(imeiCheckTaskEndpoint, {
-        method: 'GET'
+        method: 'PUT',
+        body: formData
     })
         .then(async response => {
             if (response.ok) {
                 return response.json(); // return task list
             } else {
-                alert("error")
+                console.log(response)
             }
         })
 }
 
 
-const getICloudUnlockTasks = () => {
-    const ICloudUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/icloud/`;
+export const updateICloudUnlockTask = (trackingID, formData) => {
+    const ICloudUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/icloud/${trackingID}/`;
 
     fetch(ICloudUnlockTaskEndpoint, {
-        method: 'GET'
+        method: 'PUT',
+        body: formData
     })
         .then(async response => {
             if (response.ok) {
                 return response.json(); // return task list
             } else {
-                alert("error")
+                console.log(response)
             }
         })
 }
 
 
-const getCarrierUnlockTasks = async () => {
-    const CarrierUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/carrier/`;
-
-    let ta = []
+export const updateCarrierUnlockTask = (trackingID, formData) => {
+    const CarrierUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/carrier/${trackingID}/`;
 
     fetch(CarrierUnlockTaskEndpoint, {
-        method: 'GET'
+        method: 'PUT',
+        body: formData
     })
         .then(async response => {
             if (response.ok) {
-                // console.log(response.json())
-                return await response.json(); // return task list
+                return response.json(); // return task list
             } else {
-                alert("error")
+                console.log(response)
             }
         })
-        .then(async data => {
-            // console.log(data);
-            for (a in data) {
-                ta.push(a);
-            }
-            return ta;
-        })
-    console.log(ta.length)
 }

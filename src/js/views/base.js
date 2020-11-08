@@ -46,4 +46,5 @@
   allTasksCount: '#all-tasks-count',
   pendingTasksCount: '#pending-tasks-count',
   completedTasksCount: '#completed-tasks-count',
+  taskDetailModalForm: '.task__detail--modal',
 };

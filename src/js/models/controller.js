@@ -2,7 +2,7 @@ import * as UICtrl from '../views/UICtrl';
 import { elements } from '../views/base';
 import { Payment } from './payment';
 // import { testStoreDetails } from "../api"; // !! uncomment when testing task detail storage
-import { getAllTasks } from "../api";
+import { getAllTasks, updateIMEICheckTask, updateICloudUnlockTask, updateCarrierUnlockTask } from "../api";
 
 
 export const Data = {
@@ -327,6 +327,9 @@ export const modalList = lists => {
 
     UICtrl.showModal(...lists);
 
+    // add event listener to submit modal form
+    document.querySelector(elements.taskDetailModalForm).addEventListener('submit', updateTaskDetails);
+
 };
 
 //Function to copy the text from the UI
@@ -401,12 +404,12 @@ export const populatePage = () => {
             singleTask.innerHTML =
                 `
             <ul class="dashboard__tasks--item">
-                <li>#${task.tracking_id}</li>
-                <li>${task.task_type}</li>
-                <li>${task.phone_model ? task.phone_model : "---"}</li>
-                <li>${task.imei}</li>
-                <li>${task.phone_carrier_network ? task.phone_carrier_network : task.details? task.details : "---"}</li>
-                <li data-type="${task.completed ? "completed" : "pending"}">
+                <li data-task_property="tracking_id">#${task.tracking_id}</li>
+                <li data-task_property="task_type">${task.task_type}</li>
+                <li data-task_property="phone_model">${task.phone_model ? task.phone_model : "---"}</li>
+                <li data-task_property="imei">${task.imei}</li>
+                <li data-task_property="carrier">${task.phone_carrier_network ? task.phone_carrier_network : task.details? task.details : "---"}</li>
+                <li data-task_property="status" data-type="${task.completed ? "completed" : "pending"}">
                     ${task.completed ? "Completed" : "Pending"}
                 </li>
             </ul>
@@ -461,6 +464,39 @@ const countCompletedTasks = tasksList => {
         }
     })
     return counter;
+}
+
+// * event handler for sending dashboard-updated task details to DB 
+export const updateTaskDetails = e => {
+    e.preventDefault();
+
+    // get tracking id and remove the prepended hash symbol
+    const trackingID = e.target.querySelector('span[data-task_property="tracking_id"]').innerText.slice(1); 
+    const imei = e.target.querySelector('span[data-task_property="imei"]').innerText; 
+    const completed = e.target.elements.status.value === "completed" ? true : false;
+    const task_type = e.target.querySelector('span[data-task_property="task_type"]').innerText.toLowerCase();
+    console.log(task_type); 
+
+    let formData = new FormData();
+    formData.append('completed', completed);
+    formData.append('imei', imei);
+
+    switch (task_type){
+        case "icloud unlocking":
+            updateICloudUnlockTask(trackingID, formData);
+            break;
+
+        case "carrier unlocking":
+            updateCarrierUnlockTask(trackingID, formData);
+            break;
+        
+        case "imei checking":
+            updateIMEICheckTask(trackingID, formData);
+            break;
+    }
+    
+    
+
 }
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END DASHBOARD ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

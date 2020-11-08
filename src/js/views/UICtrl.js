@@ -123,7 +123,7 @@ export const showModal = (id, type, modelName, imei, carrier) => {
   document.querySelector(elements.modal).classList.add('modal-show');
 
   let html = `
-      <form class="modal">
+      <form class="modal task__detail--modal">
         <div class="modal-svg modal-close">
           <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
             <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M368 368L144 144M368 144L144 368'/>
@@ -131,16 +131,16 @@ export const showModal = (id, type, modelName, imei, carrier) => {
         </div>
         <ul>
           <li>
-            <span>${id}</span>
+            <span data-task_property="tracking_id">${id}</span>
           </li>
           <li>
-            <span>${type}</span>                  
+            <span data-task_property="task_type">${type}</span>                  
           </li>
           <li>
-            <span>${modelName}</span>
+            <span data-task_property="phone_model">${modelName}</span>
           </li>
           <li class="u-flex-between">
-            <span class="modal-copier">${imei}</span>
+            <span class="modal-copier" data-task_property="imei">${imei}</span>
             <div class="modal-svg modal-copy">
               <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
                 <rect x='128' y='128' width='336' height='336' rx='57' ry='57' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='32'/>
@@ -149,7 +149,7 @@ export const showModal = (id, type, modelName, imei, carrier) => {
             </div>
           </li>
           <li>
-            <span>${carrier}</span>
+            <span data-task_property="carrier">${carrier}</span>
           </li>
           <li>
             <select name="status" id="task-modal">
@@ -163,6 +163,7 @@ export const showModal = (id, type, modelName, imei, carrier) => {
   `; 
 
   document.querySelector(elements.modal).innerHTML = html;
+  
 };
 
 //function to hide the modal
