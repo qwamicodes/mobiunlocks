@@ -475,7 +475,7 @@ export const updateTaskDetails = async e => {
     const trackingID = e.target.querySelector('span[data-task_property="tracking_id"]').innerText.slice(1); 
     const imei = e.target.querySelector('span[data-task_property="imei"]').innerText; 
     const completed = e.target.elements.status.value === "completed" ? true : false;
-    const results = e.target.elements.results.value
+    const results = e.target.elements.results.value;
     const task_type = e.target.querySelector('span[data-task_property="task_type"]').innerText.toLowerCase();
     
     let formData = new FormData();
