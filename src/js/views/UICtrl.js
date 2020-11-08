@@ -247,8 +247,8 @@ export const showModal = (task, page = 'dashboard') => {
             </li>
             <li>
               <select class="modal__form--select" name="status" id="task-modal">
-                <option value="pending">Pending</opPion>
-                <option value="completed">Completed</Cption>
+                <option value="pending" ${!task.completed ? "selected" : ""}>Pending</option>
+                <option value="completed" ${task.completed ? "selected" : ""}>Completed</option>
               </select>
             </li>
             <li class="u-flex-center"><button class="btn btn-checkout" type="submit">Save</button></li>
@@ -293,8 +293,8 @@ export const showModal = (task, page = 'dashboard') => {
                 </li>
                 <li>
                   <select name="status" class="modal__form--select" id="task-modal">
-                    <option value="pending">Pending</opPion>
-                    <option value="completed">Completed</Cption>
+                    <option value="pending" ${!task.completed ? "selected" : ""}>Pending</option>
+                    <option value="completed" ${task.completed ? "selected" : ""}>Completed</option>
                   </select>
                 </li>
                 <li class="u-flex-center"><button class="btn btn-checkout" type="submit">Save</button></li>
