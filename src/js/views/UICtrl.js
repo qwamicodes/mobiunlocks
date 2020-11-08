@@ -121,8 +121,8 @@ export const addTask = (id, type, modelName, imei, carrier, status = 'pending') 
 //function template for the modal popup
 export const showModal = (task, page = 'dashboard') => {
   document.querySelector(elements.modal).classList.add('modal-show');
+  console.log(page);
   console.log(task);
-  // return
   // search results modal for tracking page
   if(page === 'tracking') {
     // if result is for IMEI Checking task

@@ -164,45 +164,34 @@ const submitIMEICheckTask = (paymentDetails, taskDetails) => {
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ RETRIEVE TASK DETAIL USING TRACKING NUMBER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /* 
 The tracking id entered by the user is sent to an API endpoint
+If a task is returned, it is returned by the function in a romise
 */
-export const searchTaskByTracking = trackingID => {
+export const searchTaskByTracking = async trackingID => {
 
     const taskSearchEndpoint = `${baseBackendAPIURL}/tasks/search/?tracking_id=${trackingID}`;
+    let taskDetail;
 
-    fetch(taskSearchEndpoint, {
-        method: 'GET',
-    })
-        .then(async response => {
-            if (response.ok) {
-                const data = await response.json();
-                // console.log(data); return
+    return new Promise(resolve => {
 
-                // if task was found then get details
-                const taskDetail = data['task_detail'];
-
-                // if task was found and has been completed without error
-                if (taskDetail['completed'] && !taskDetail['error']) {
-                    alert(taskDetail['results']);
-                    // ! check task type and display results accordingly
-                    // switch (taskDetail['task_type']) {
-                    //     case "imei":
-                    //         alert(taskDetail['results']);
-                    //         break;
-
-                    //     default:
-                    //         break;
-                    // }
-                } else if (taskDetail['error']) {
-                    alert('Task error');
-                } else if (!taskDetail['complete']) {
-                    alert('Task incomplete');
-                }
-
-                // if task is not found
-            } else if (response.status === 404) {
-                alert("Task Not Found");
-            }
+        fetch(taskSearchEndpoint, {
+            method: 'GET',
         })
+            .then(async response => {
+                if (response.ok) {
+                    const data = await response.json();
+
+                    // if task was found then get details
+                    taskDetail = data['task_detail'];
+
+                    // if task is not found
+                } else if (response.status === 404) {
+                    alert("Task Not Found");
+                }
+            })
+            .then(() => resolve(taskDetail))
+
+    })
+
 
 }
 
@@ -268,7 +257,7 @@ export const updateIMEICheckTask = async (trackingID, formData) => {
     const imeiCheckTaskEndpoint = `${baseBackendAPIURL}/tasks/imei/${trackingID}/`;
 
     let updatedTask;
-    
+
     return new Promise(resolve => {
         fetch(imeiCheckTaskEndpoint, {
             method: 'PUT',
@@ -281,8 +270,8 @@ export const updateIMEICheckTask = async (trackingID, formData) => {
                     console.log(response)
                 }
             })
-                .then(() => resolve(updatedTask))
-    
+            .then(() => resolve(updatedTask))
+
     });
 
 
@@ -293,7 +282,7 @@ export const updateICloudUnlockTask = async (trackingID, formData) => {
     const ICloudUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/icloud/${trackingID}/`;
 
     let updatedTask;
-    
+
     return new Promise(resolve => {
         fetch(ICloudUnlockTaskEndpoint, {
             method: 'PUT',
@@ -306,7 +295,7 @@ export const updateICloudUnlockTask = async (trackingID, formData) => {
                     console.log(response)
                 }
             })
-                .then(() => resolve(updatedTask))
+            .then(() => resolve(updatedTask))
     });
 
 }
@@ -314,7 +303,7 @@ export const updateICloudUnlockTask = async (trackingID, formData) => {
 
 export const updateCarrierUnlockTask = async (trackingID, formData) => {
     const CarrierUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/carrier/${trackingID}/`;
-    
+
     let updatedTask;
 
     return new Promise(resolve => {
@@ -329,7 +318,7 @@ export const updateCarrierUnlockTask = async (trackingID, formData) => {
                     console.log(response)
                 }
             })
-                .then(() => resolve(updatedTask))
+            .then(() => resolve(updatedTask))
     });
 
 }

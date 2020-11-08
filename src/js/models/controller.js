@@ -397,7 +397,7 @@ export const populatePage = () => {
 
     // ? get AllTasks
     getAllTasks().then(tasks => {
-
+        allTasksListElement.innerHTML = "";
         // TODO listing tasks in dashboard
         // loop over each element
         tasks.forEach(task => {

@@ -10,9 +10,12 @@ document.querySelector(elements.trackingForm).addEventListener('submit', e => {
     const formData = new FormData(e.target);
     const trackingNumber = formData.get('tracking-number');
 
-    searchTaskByTracking(trackingNumber);
+    searchTaskByTracking(trackingNumber)
+        .then(task => {
+            UICtrl.showModal(task, 'tracking');
+        })
     
-    UICtrl.showModal('#GGI843W42', "IMEI Checking", "iPhone XS Max", "8376327532734232", "Verizon - USA", 'Machele Ahmed', 'tracking');
+    // UICtrl.showModal('#GGI843W42', "IMEI Checking", "iPhone XS Max", "8376327532734232", "Verizon - USA", 'Machele Ahmed', 'tracking');
     
     //please dont forget to reset after submission 
     // e.target.reset()
