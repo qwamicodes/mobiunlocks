@@ -2,6 +2,7 @@
   @extend %dg;
   grid-template-rows: 10% 10% 80%;
   height: 65.5rem;
+  position: relative;
 
   @include respond(mobile-big) {
     height: 90rem;

@@ -4,9 +4,19 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: $color-white;
-  width: 35rem;
+  width: 38rem;
+  max-height: 40rem;
   height: 40rem;
   box-shadow: $box-shadow-long;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $accent-color;
+  }
 
   &-container {
     display: none;
@@ -14,6 +24,50 @@
     width: 100%;
     height: 100%;
     backdrop-filter: blur(2px);
+  }
+
+  &__form {
+    height: auto;
+
+    ul {
+      width: 100%;
+      height: 100%;
+      @extend %dg;
+      grid-template-rows: repeat(7, 1fr);
+
+      li {
+        font: $prozaLibre-regular;
+        font-size: 1.8rem;
+        color: $accent-color;
+        @extend %df;
+        @extend %dai;
+        width: 80%;
+        padding: 2rem 0;
+        margin: 0 auto;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid rgba($color-grey-light, 0.8);
+        }
+      }
+    }
+
+    &--textarea {
+      padding: 1rem;
+      width: 100%;
+      border: 1px solid rgba($color-grey-light, 0.5);
+      height: 10rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &--select {
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      font: inherit;
+      font-size: inherit;
+    }
   }
 
   &-close {
@@ -32,30 +86,49 @@
     cursor: pointer;
   }
 
-  ul {
-    width: 100%;
-    height: 100%;
-    @extend %dg;
-    grid-template-rows: repeat(7, 1fr);
+  &__preview {
+    height: auto;
+    font: $prozaLibre-regular;
+    font-size: 1.6rem;
 
-    li {
-      font: $prozaLibre-regular;
-      font-size: 1.8rem;
-      color: $accent-color;
-      @extend %df;
-      @extend %dai;
-      width: 80%;
+    ul {
+      @include flexbottom;
+      width: 90%;
       margin: 0 auto;
 
-      &:not(:last-child) {
-        border-bottom: 1px solid rgba($color-grey-light, 0.8);
+      li {
+        width: 98%;
+        padding: 1rem 0;
       }
+    }
 
-      select {
-        padding: 1rem 2rem;
-        border-radius: 1rem;
-        font: inherit;
-        font-size: inherit;
+    &--info {
+      height: fit-content;
+      padding: 0.5rem;
+      line-height: 2.5rem;
+
+      span {
+        font: $nunito-bold;
+
+        &[data-type="pending"] {
+          color: $basis-color;
+        }
+
+        &[data-type="completed"] {
+          color: $success-color;
+        }
+      }
+    }
+
+    &--details {
+      border: 1px solid rgba($color-grey-light, 0.3);
+      border-radius: 5px;
+      overflow: hidden;
+      padding: 1rem;
+
+      h3 {
+        font: $nunito-regular;
+        font-size: 1.8;
       }
     }
   }

@@ -311,7 +311,7 @@ export const copyText = ele => {
     textArea.remove();
     
     //alerting the user that text has been successfully copied
-    UICtrl.popupAlert('copied text');
+    UICtrl.popupAlert('Text copied successfully', 'success');
 };
 
 //function to sort out the list
