@@ -635,10 +635,14 @@ select {
     .modal {
       width: 70%;
       top: 30%; } }
-  @media only screen and (max-width: 37.5em) {
+  @media only screen and (max-width: 30em) {
     .modal {
-      width: 80%;
-      max-height: 45rem; } }
+      width: 82%;
+      max-height: 50rem; } }
+  @media only screen and (max-width: 20em) {
+    .modal {
+      width: 95%;
+      max-height: 60rem; } }
   .modal::-webkit-scrollbar {
     width: 2px; }
   .modal::-webkit-scrollbar-thumb {

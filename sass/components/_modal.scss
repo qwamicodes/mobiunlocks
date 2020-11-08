@@ -19,9 +19,14 @@
     top: 30%;
   }
 
-  @include respond(mobile-big) {
-    width: 80%;
-    max-height: 45rem;
+  @include respond(mobile) {
+    width: 82%;
+    max-height: 50rem;
+  }
+
+  @include respond(mobile-small) {
+    width: 95%;
+    max-height: 60rem;
   }
 
   &::-webkit-scrollbar {
