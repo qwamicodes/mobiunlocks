@@ -147,7 +147,7 @@ export const showModal = (task, page = 'dashboard') => {
     }
     
     // ? if result is for IMEI Checking task
-    if (task.task_type.includes('IMEI')) {
+    else if (task.task_type.includes('IMEI')) {
       let html = `
           <div class="modal">
             <div class="modal__preview">
@@ -159,44 +159,20 @@ export const showModal = (task, page = 'dashboard') => {
             <ul>
                 <li>
                     <div class="modal__preview--info">
-                        Order/Tracking No of <span>${task.tracking_id}</span> 
-                          with customer name <span>${task.customer}</span>
-                          with phone model <span>${task.phone_model}</span> and carrier of <span>${task.phone_carrier_network}</span>
-                          with service type <span>${task.task_type}</span> has a status of <span data-type="pending">${task.completed ? "completed" : "pending"}</span>
-                      </div>
-                  </li>
-                  <li>
-                      <div class="modal__preview--details">
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                          Lorem ipsum dolor sit amet.<br>
-                      </div>
-                  </li>
+                          Tracking ID:<br> <span>${task.tracking_id}</span> <br>
+                          Customer:<br> <span>${task.customer_name} - ${task.customer_email}</span> <br>
+                          Service Type:<br> <span>${task.task_type}</span> <br>
+                          Request Date:<br> <span>${task.request_date}</span> <br>
+                          Checking Details:<br> <span>${task.details}</span> <br>
+                          Status:<br> <span data-type="${task.completed ? "completed" : "pending"}">${task.completed ? "completed" : "pending"}</span>
+                    </div>
+                </li>
+                <li>
+                    Results:
+                    <div class="modal__preview--details">
+                      ${task.results? task.results : "awaiting results..."}
+                    </div>
+                </li>
               </ul>
           </div> 
         </div>
