@@ -121,11 +121,11 @@ export const addTask = (id, type, modelName, imei, carrier, status = 'pending') 
 //function template for the modal popup
 export const showModal = (task, page = 'dashboard') => {
   document.querySelector(elements.modal).classList.add('modal-show');
-  
+
   // TODO display search results modal for tracking page
   if (page === 'tracking') {
     // ? if task with mathcing tracking ID is not found in the DB
-    if (! task.task_type){
+    if (!task.task_type) {
 
       let html = `
             <div class="modal">
@@ -143,11 +143,11 @@ export const showModal = (task, page = 'dashboard') => {
             </div> 
           </div>
         `;
-        document.querySelector(elements.modal).innerHTML = html;
+      document.querySelector(elements.modal).innerHTML = html;
     }
-    
+
     // ? if result is for IMEI Checking task
-    else if (task.task_type.includes('IMEI')) {
+    else if (task.task_type === 'IMEI Checking') {
       let html = `
           <div class="modal">
             <div class="modal__preview">
@@ -170,7 +170,7 @@ export const showModal = (task, page = 'dashboard') => {
                 <li>
                     Results:
                     <div class="modal__preview--details">
-                      ${task.results? task.results : "awaiting results..."}
+                      ${task.results ? task.results : "awaiting results..."}
                     </div>
                 </li>
               </ul>
@@ -181,35 +181,67 @@ export const showModal = (task, page = 'dashboard') => {
       document.querySelector(elements.modal).innerHTML = html;
     }
 
-    // if result is not for IMEI Checking task
-    else {
-      let html = `
-          <div class="modal">
-            <div class="modal__preview">
-            <div class="modal-svg modal-close">
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
-              <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M368 368L144 144M368 144L144 368'/>
-            </svg>
-          </div>
-            <ul>
-                <li>
-                    <div class="modal__preview--info">
-                        Order/Tracking No of <span>${task.tracking_id}</span> 
-                          with customer name <span>${task.customer}</span>
-                          with phone model <span>${task.phone_model}</span> and carrier of <span>${task.phone_carrier_network}</span>
-                          with service type <span>${task.task_type}</span> has a status of <span data-type="pending">pending</span>
-                      </div>
-                  </li>
-                </ul>
-            </div> 
-          </div>
+    // ? if result is for ICloud Unlocking task
+    else if (task.task_type === 'ICloud Unlocking') {
+    let html = `
+      <div class="modal">
+       <div class="modal__preview">
+        <div class="modal-svg modal-close">
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+            <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M368 368L144 144M368 144L144 368'/>
+          </svg>
+        </div>
+        <ul>
+          <li>
+              <div class="modal__preview--info">
+                    Tracking ID:<br> <span>${task.tracking_id}</span> <br>
+                    Customer:<br> <span>${task.customer_name} - ${task.customer_email}</span> <br>
+                    Service Type:<br> <span>${task.task_type}</span> <br>
+                    Request Date:<br> <span>${task.request_date}</span> <br>
+                    Phone Model:<br> <span>${task.phone_model}</span> <br>
+                    Status:<br> <span data-type="${task.completed ? "completed" : "pending"}">${task.completed ? "completed" : "pending"}</span>
+              </div>
+          </li>
+        </ul>
+        </div> 
+      </div>
       `;
 
       document.querySelector(elements.modal).innerHTML = html;
     }
 
-  } 
-  
+    // ? if result is for Carrier Unlocking task
+    else if (task.task_type === 'Carrier Unlocking') {
+    let html = `
+      <div class="modal">
+       <div class="modal__preview">
+        <div class="modal-svg modal-close">
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+            <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M368 368L144 144M368 144L144 368'/>
+          </svg>
+        </div>
+        <ul>
+          <li>
+              <div class="modal__preview--info">
+                    Tracking ID:<br> <span>${task.tracking_id}</span> <br>
+                    Customer:<br> <span>${task.customer_name} - ${task.customer_email}</span> <br>
+                    Service Type:<br> <span>${task.task_type}</span> <br>
+                    Request Date:<br> <span>${task.request_date}</span> <br>
+                    Phone Model:<br> <span>${task.phone_model}</span> <br>
+                    Carrier Network:<br> <span>${task.phone_carrier_network}</span> <br>
+                    Status:<br> <span data-type="${task.completed ? "completed" : "pending"}">${task.completed ? "completed" : "pending"}</span>
+              </div>
+          </li>
+        </ul>
+        </div> 
+      </div>
+      `;
+
+      document.querySelector(elements.modal).innerHTML = html;
+    }
+
+  }
+
   // TODO display modals for individual tasks in dashboard
   else {
     // modal for IMEI Checking task
