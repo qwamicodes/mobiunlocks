@@ -169,7 +169,7 @@ If a task is returned, it is returned by the function in a romise
 export const searchTaskByTracking = async trackingID => {
 
     const taskSearchEndpoint = `${baseBackendAPIURL}/tasks/search/?tracking_id=${trackingID}`;
-    let taskDetail;
+    let taskSearchResults;
 
     return new Promise(resolve => {
 
@@ -178,17 +178,15 @@ export const searchTaskByTracking = async trackingID => {
         })
             .then(async response => {
                 if (response.ok) {
-                    const data = await response.json();
-
                     // if task was found then get details
-                    taskDetail = data['task_detail'];
+                    taskSearchResults = await response.json();
 
                     // if task is not found
                 } else if (response.status === 404) {
-                    alert("Task Not Found");
+                    taskSearchResults = await response.json();
                 }
             })
-            .then(() => resolve(taskDetail))
+            .then(() => resolve(taskSearchResults))
 
     })
 

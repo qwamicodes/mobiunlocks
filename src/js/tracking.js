@@ -11,8 +11,15 @@ document.querySelector(elements.trackingForm).addEventListener('submit', e => {
     const trackingNumber = formData.get('tracking-number');
 
     searchTaskByTracking(trackingNumber)
-        .then(task => {
-            UICtrl.showModal(task, 'tracking');
+        .then(taskSearchResults => {
+            // if a task with matching tracking ID is found
+            if (taskSearchResults['task_found']){
+                UICtrl.showModal(taskSearchResults['task_detail'], 'tracking');
+            } else {
+                // if there is no task matching with the tracking ID
+                alert("task not found");
+            }
+
         })
     
     // UICtrl.showModal('#GGI843W42', "IMEI Checking", "iPhone XS Max", "8376327532734232", "Verizon - USA", 'Machele Ahmed', 'tracking');
