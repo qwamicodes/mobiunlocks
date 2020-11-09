@@ -125,24 +125,26 @@ export const showModal = (task, page = 'dashboard') => {
   // TODO display search results modal for tracking page
   if (page === 'tracking') {
     // ? if task with mathcing tracking ID is not found in the DB
-    let html = `
-          <div class="modal">
-            <div class="modal__preview">
-            <div class="modal-svg modal-close">
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
-              <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M368 368L144 144M368 144L144 368'/>
-            </svg>
-          </div>
-            <ul>
-                <li>
-                  <div class="modal__preview--info">Task with <span>TRACKING ID #${task.tracking_id}</span> was not found.<br>If you believe that this might be an error kindly contact the admin on <a href="tel:+233203804551">+233 20 380 4551</a></div>
-                </li>
-              </ul>
-          </div> 
-        </div>
-      `;
+    if (! task.task_type){
 
-      document.querySelector(elements.modal).innerHTML = html;
+      let html = `
+            <div class="modal">
+              <div class="modal__preview">
+              <div class="modal-svg modal-close">
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+                <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M368 368L144 144M368 144L144 368'/>
+              </svg>
+            </div>
+              <ul>
+                  <li>
+                    <div class="modal__preview--info">Task with <span>TRACKING ID #${task.tracking_id}</span> was not found.<br>If you believe that this might be an error kindly contact the admin on <a href="tel:+233203804551">+233 20 380 4551</a></div>
+                  </li>
+                </ul>
+            </div> 
+          </div>
+        `;
+        document.querySelector(elements.modal).innerHTML = html;
+    }
     
     // ? if result is for IMEI Checking task
     if (task.task_type.includes('IMEI')) {
