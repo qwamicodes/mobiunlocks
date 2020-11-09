@@ -3,19 +3,19 @@ import * as controller from '../models/controller';
 
 //Functionality for the header svg 
 export const headerSVG = () => {
-    const colors = ["#ff9a00", "#3c435a", "#5aabe9"];
-    // Select the SVG paths
-    let blobs = document.querySelectorAll(elements.svgPath);
+  const colors = ["#ff9a00", "#3c435a", "#5aabe9"];
+  // Select the SVG paths
+  let blobs = document.querySelectorAll(elements.svgPath);
 
+  blobs.forEach((blob) => {
+    blob.style.fill = colors[Math.floor(Math.random() * colors.length)];
+  });
+  // Randomly apply colors to the SVG fill property
+  setInterval(() => {
     blobs.forEach((blob) => {
       blob.style.fill = colors[Math.floor(Math.random() * colors.length)];
     });
-    // Randomly apply colors to the SVG fill property
-    setInterval(() => {
-      blobs.forEach((blob) => {
-        blob.style.fill = colors[Math.floor(Math.random() * colors.length)];
-      });
-    }, 3990);
+  }, 3990);
 };
 
 export const changeNavWhite = () => {
@@ -50,13 +50,13 @@ export const selElement = el => {
 export const changeForm = loc => {
   switch (loc) {
     case '#/carrier':
-        document.querySelector(elements.formHolder).style.setProperty('transform', 'translateX(0)')
+      document.querySelector(elements.formHolder).style.setProperty('transform', 'translateX(0)')
       break;
     case '#/imei':
-        document.querySelector(elements.formHolder).style.setProperty('transform', 'translateX(-33.33%)')
+      document.querySelector(elements.formHolder).style.setProperty('transform', 'translateX(-33.33%)')
       break;
     case '#/unlocking':
-        document.querySelector(elements.formHolder).style.setProperty('transform', 'translateX(-66.66%)')
+      document.querySelector(elements.formHolder).style.setProperty('transform', 'translateX(-66.66%)')
       break;
   }
 };
@@ -64,13 +64,13 @@ export const changeForm = loc => {
 //function to popup the alert to thre user
 export const popupAlert = (message, type) => {
   const checkSVG = type => {
-    if(type === 'success') {
+    if (type === 'success') {
       const svg = `<ion-icon name="checkmark-outline" size="small"></ion-icon>`;
       return svg;
-    } else if(type === 'warning') {
+    } else if (type === 'warning') {
       const svg = `<ion-icon name="alert-outline" size="small"></ion-icon>`;
       return svg;
-    } else if(type === 'error') {
+    } else if (type === 'error') {
       const svg = `<ion-icon name="close-outline" size="small"></ion-icon>`;
       return svg;
     } else {
@@ -121,12 +121,31 @@ export const addTask = (id, type, modelName, imei, carrier, status = 'pending') 
 //function template for the modal popup
 export const showModal = (task, page = 'dashboard') => {
   document.querySelector(elements.modal).classList.add('modal-show');
-  console.log(page);
-  console.log(task);
-  // search results modal for tracking page
-  if(page === 'tracking') {
-    // if result is for IMEI Checking task
-    if(task.task_type.includes('IMEI')) {
+  
+  // TODO display search results modal for tracking page
+  if (page === 'tracking') {
+    // ? if task with mathcing tracking ID is not found in the DB
+    let html = `
+          <div class="modal">
+            <div class="modal__preview">
+            <div class="modal-svg modal-close">
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+              <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M368 368L144 144M368 144L144 368'/>
+            </svg>
+          </div>
+            <ul>
+                <li>
+                  <div class="modal__preview--info">Task with <span>TRACKING ID #${task.tracking_id}</span> was not found.<br>If you believe that this might be an error kindly contact the admin on <a href="tel:+233203804551">+233 20 380 4551</a></div>
+                </li>
+              </ul>
+          </div> 
+        </div>
+      `;
+
+      document.querySelector(elements.modal).innerHTML = html;
+    
+    // ? if result is for IMEI Checking task
+    if (task.task_type.includes('IMEI')) {
       let html = `
           <div class="modal">
             <div class="modal__preview">
@@ -182,8 +201,10 @@ export const showModal = (task, page = 'dashboard') => {
       `;
 
       document.querySelector(elements.modal).innerHTML = html;
-    } else {
+    }
+
     // if result is not for IMEI Checking task
+    else {
       let html = `
           <div class="modal">
             <div class="modal__preview">
@@ -208,10 +229,13 @@ export const showModal = (task, page = 'dashboard') => {
 
       document.querySelector(elements.modal).innerHTML = html;
     }
-  } else {
-    // ? modals for dashboard task detail
+
+  } 
+  
+  // TODO display modals for individual tasks in dashboard
+  else {
     // modal for IMEI Checking task
-    if(task.task_type.includes('IMEI')) {
+    if (task.task_type.includes('IMEI')) {
       let html = `
       <div class="modal">
         <form class="modal__form task__detail--modal-form">
@@ -255,10 +279,10 @@ export const showModal = (task, page = 'dashboard') => {
           </ul>
         </form>
       </div>
-    `; 
-  
+    `;
+
       document.querySelector(elements.modal).innerHTML = html;
-  
+
     } else {
       // modal for non-IMEI Checking tasks
       let html = `
@@ -301,13 +325,13 @@ export const showModal = (task, page = 'dashboard') => {
               </ul>
             </form>
           </div>
-        `; 
-  
+        `;
+
       document.querySelector(elements.modal).innerHTML = html;
     };
   }
 
-  
+
 };
 
 //function to hide the modal
@@ -320,7 +344,7 @@ export const hideModal = () => {
 //function to replace the list value with the list provided
 export const removeList = lists => {
   lists.forEach(list => {
-      list.parentElement.classList.add('u-display-none');
+    list.parentElement.classList.add('u-display-none');
   });
 };
 

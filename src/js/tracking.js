@@ -17,7 +17,7 @@ document.querySelector(elements.trackingForm).addEventListener('submit', e => {
                 UICtrl.showModal(taskSearchResults['task_detail'], 'tracking');
             } else {
                 // if there is no task matching with the tracking ID
-                alert("task not found");
+                UICtrl.showModal(taskSearchResults['task_detail'], 'tracking');
             }
 
         })
