@@ -244,8 +244,8 @@ export const showModal = (task, page = 'dashboard') => {
 
   // TODO display modals for individual tasks in dashboard
   else {
-    // modal for IMEI Checking task
-    if (task.task_type.includes('IMEI')) {
+    // ? modal for IMEI Checking task detail
+    if (task.task_type === 'IMEI Checking') {
       let html = `
       <div class="modal">
         <form class="modal__form task__detail--modal-form">
@@ -294,7 +294,7 @@ export const showModal = (task, page = 'dashboard') => {
       document.querySelector(elements.modal).innerHTML = html;
 
     } else {
-      // modal for non-IMEI Checking tasks
+      // ? modal for non-IMEI Checking tasks detail
       let html = `
           <div class="modal">
             <form class="modal__form task__detail--modal-form">
@@ -340,7 +340,6 @@ export const showModal = (task, page = 'dashboard') => {
       document.querySelector(elements.modal).innerHTML = html;
     };
   }
-
 
 };
 

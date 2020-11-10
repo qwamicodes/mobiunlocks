@@ -322,16 +322,6 @@ export const preparePayment = (fullname, email, amount) => {
 
 };
 
-//Function that receives the list elements and parses it into the modal
-export const modalList = task => {
-
-    UICtrl.showModal(task);
-
-    // add event listener to submit modal form
-    document.querySelector(elements.taskDetailModalForm).addEventListener('submit', updateTaskDetails);
-
-};
-
 //Function to copy the text from the UI
 export const copyText = ele => {
 
@@ -426,7 +416,12 @@ export const populatePage = () => {
             //converting the htmlcollections (li's) form the DOM into an array
             Array.prototype.slice.call(singleTask.getElementsByTagName("li")).forEach(item => {
                 item.addEventListener('click', e => {
-                    modalList(task);
+                    // create modal out of task object
+                    UICtrl.showModal(task);
+
+                    // add event listener to submit modal form
+                    document.querySelector(elements.taskDetailModalForm).addEventListener('submit', updateTaskDetails);
+
                 });
             });
 
