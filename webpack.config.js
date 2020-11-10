@@ -7,6 +7,7 @@ module.exports = {
     app: ['@babel/polyfill','./src/js/app.js'],
     dashboard: ['@babel/polyfill','./src/js/dashboard.js'],
     tracking: ['@babel/polyfill','./src/js/tracking.js'],
+    login: ['@babel/polyfill','./src/js/login.js'],
 },
   output: {
     path: path.resolve(__dirname, 'dist'),

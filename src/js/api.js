@@ -11,7 +11,7 @@ const baseBackendAPIURL = "http://127.0.0.1:8080/api/v1";
 // const baseBackendAPIURL = "https://api.mobitechunlocks.com/api/v1";
 
 
-// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CONFIRM PAYMENT AND STORE TASK DETAILS IN DATABASE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TASK OPERATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // !! TESTING send requests to API endpoints to create tasks in DB depending on task type
 export const testStoreDetails = taskDetails => {
@@ -47,6 +47,7 @@ export const testStoreDetails = taskDetails => {
 };
 // !! 
 
+// TODO confirm payment and store task details in database
 export const confirmPayAndStoreDetails = (paymentReference, taskDetails) => {
     /*
     This function is a heavy function that first confirms payment by sending a request with the reference
@@ -58,6 +59,7 @@ export const confirmPayAndStoreDetails = (paymentReference, taskDetails) => {
 
     fetch(confirmPaymentEndpoint, {
         method: 'GET',
+        // credentials: 'include',
     })
         .then(async response => {
             // JSON that contains response from payment confirmation,
@@ -92,11 +94,13 @@ export const confirmPayAndStoreDetails = (paymentReference, taskDetails) => {
         })
 };
 
+// TODO send carrier unlock task to database
 const submitCarrierUnlockTask = (paymentDetails, taskDetails) => {
     const carrierUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/carrier/`;
 
     fetch(carrierUnlockTaskEndpoint, {
         method: 'POST',
+        // credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -115,11 +119,13 @@ const submitCarrierUnlockTask = (paymentDetails, taskDetails) => {
         })
 }
 
+// TODO send icloud unlock task to database
 const submitICloudUnlockTask = (paymentDetails, taskDetails) => {
     const icloudUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/icloud/`;
 
     fetch(icloudUnlockTaskEndpoint, {
         method: 'POST',
+        // credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -138,11 +144,13 @@ const submitICloudUnlockTask = (paymentDetails, taskDetails) => {
         })
 }
 
+// TODO send imei checking task to database
 const submitIMEICheckTask = (paymentDetails, taskDetails) => {
     const imeiCheckTaskEndpoint = `${baseBackendAPIURL}/tasks/imei/`;
 
     fetch(imeiCheckTaskEndpoint, {
         method: 'POST',
+        // credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -161,10 +169,11 @@ const submitIMEICheckTask = (paymentDetails, taskDetails) => {
         })
 }
 
-// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ RETRIEVE TASK DETAIL USING TRACKING NUMBER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// TODO Search task using tracking id
 /* 
 The tracking id entered by the user is sent to an API endpoint
-If a task is returned, it is returned by the function in a romise
+If a task is returned, it is returned by the function in a Promise
 */
 export const searchTaskByTracking = async trackingID => {
 
@@ -175,6 +184,7 @@ export const searchTaskByTracking = async trackingID => {
 
         fetch(taskSearchEndpoint, {
             method: 'GET',
+            // credentials: 'include', ! not needed here as this endpoint has no permission restrictions
         })
             .then(async response => {
                 if (response.ok) {
@@ -193,7 +203,7 @@ export const searchTaskByTracking = async trackingID => {
 
 }
 
-// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ RETRIEVE ALL TASKS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// TODO Get all tasks
 export const getAllTasks = async () => {
     /* 
     fetches all tasks by calling their respective endpoints
@@ -251,6 +261,7 @@ export const getAllTasks = async () => {
 }
 
 
+// TODO update imei checking task
 export const updateIMEICheckTask = async (trackingID, formData) => {
     const imeiCheckTaskEndpoint = `${baseBackendAPIURL}/tasks/imei/${trackingID}/`;
 
@@ -259,6 +270,7 @@ export const updateIMEICheckTask = async (trackingID, formData) => {
     return new Promise(resolve => {
         fetch(imeiCheckTaskEndpoint, {
             method: 'PUT',
+            // credentials: 'include',
             body: formData
         })
             .then(async response => {
@@ -276,6 +288,7 @@ export const updateIMEICheckTask = async (trackingID, formData) => {
 }
 
 
+// TODO update icloud unlocking task
 export const updateICloudUnlockTask = async (trackingID, formData) => {
     const ICloudUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/icloud/${trackingID}/`;
 
@@ -284,6 +297,7 @@ export const updateICloudUnlockTask = async (trackingID, formData) => {
     return new Promise(resolve => {
         fetch(ICloudUnlockTaskEndpoint, {
             method: 'PUT',
+            // credentials: 'include',
             body: formData
         })
             .then(async response => {
@@ -299,6 +313,7 @@ export const updateICloudUnlockTask = async (trackingID, formData) => {
 }
 
 
+// TODO update carrier unlocking task
 export const updateCarrierUnlockTask = async (trackingID, formData) => {
     const CarrierUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/carrier/${trackingID}/`;
 
@@ -307,6 +322,7 @@ export const updateCarrierUnlockTask = async (trackingID, formData) => {
     return new Promise(resolve => {
         fetch(CarrierUnlockTaskEndpoint, {
             method: 'PUT',
+            // credentials: 'include',
             body: formData
         })
             .then(async response => {
@@ -318,5 +334,35 @@ export const updateCarrierUnlockTask = async (trackingID, formData) => {
             })
             .then(() => resolve(updatedTask))
     });
+
+}
+
+// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AUTHENTICATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+export const performLogin = async (email, password) => {
+
+    const loginEndpoint = `${baseBackendAPIURL}/auth/token/`;
+    let loginResponse = null;
+
+    return new Promise(resolve => {
+
+        fetch(loginEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "email": email,
+                "password": password,
+            })
+        })
+            .then(async response => {
+                if (response.ok) {
+                    loginResponse = response.json();
+                } else {
+                    console.log(response);
+                }
+            })
+            .then(() => resolve(loginResponse))
+    })
 
 }
