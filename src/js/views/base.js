@@ -48,4 +48,6 @@
   completedTasksCount: '#completed-tasks-count',
   taskDetailModalForm: '.task__detail--modal-form',
   dashboardLoginForm: '#dashboard-login-form',
+  adminUsername: '#admin-username',
+  adminAvatarImage: '#admin-avatar',
 };

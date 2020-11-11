@@ -341,9 +341,8 @@ export const updateCarrierUnlockTask = async (trackingID, formData) => {
 export const performLogin = async (email, password) => {
 
     const loginEndpoint = `${baseBackendAPIURL}/auth/token/`;
-    let loginResponse = null;
 
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
 
         fetch(loginEndpoint, {
             method: 'POST',
@@ -357,12 +356,12 @@ export const performLogin = async (email, password) => {
         })
             .then(async response => {
                 if (response.ok) {
-                    loginResponse = response.json();
+                    resolve(response.json()); // resolve the login response that contains the access token
                 } else {
-                    console.log(response);
+                    reject("Invalid Login Credentials");
                 }
             })
-            .then(() => resolve(loginResponse))
+            .catch(error => reject(`Internal Server Error<br>Kindly contact developer team<br><br>ERROR CODE:<br>${error}`))
     })
 
 }

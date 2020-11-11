@@ -4,7 +4,10 @@ import { Payment } from './payment';
 // import { testStoreDetails } from "../api"; // !! uncomment when testing task detail storage
 import { getAllTasks, updateIMEICheckTask, updateICloudUnlockTask, updateCarrierUnlockTask } from "../api";
 
+// access token
+export const accessToken = null;
 
+// this object stores payment data and task details for a task which a user has requested  
 export const Data = {
     invoices: [],
     taskDetail: {},
@@ -379,6 +382,20 @@ export const filterList = tab => {
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DASHBOARD ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 export const populatePage = () => {
+    // TODO Listing the Tasks 
+    listTasksOnDashboard();
+
+    // TODO Setting admin details
+    setAdminDetailsOnDashboard();
+}
+
+// function to set admin details on dashboard
+export const setAdminDetailsOnDashboard = () => {
+
+}
+
+// function to list all tasks on dashboard
+export const listTasksOnDashboard = () => {
     // HTML <ul> Element for holding individual <li> elements for each task 
     let allTasksListElement = document.querySelector(elements.allTasksListElement);
 
@@ -433,6 +450,8 @@ export const populatePage = () => {
         document.querySelector(elements.completedTasksCount).innerHTML = countCompletedTasks(tasks); // completed tasks
 
     });
+
+
 }
 
 // function to count pending tasks
@@ -485,7 +504,7 @@ export const updateTaskDetails = async e => {
                     // hide modal and repopulate page
                     UICtrl.hideModal();
                     // await new Promise(resolve => setTimeout(resolve, 5000));
-                    populatePage();
+                    listTasksOnDashboard();
                 })
             break;
 
@@ -495,7 +514,7 @@ export const updateTaskDetails = async e => {
                     // hide modal and repopulate page
                     UICtrl.hideModal();
                     // await new Promise(resolve => setTimeout(resolve, 5000));
-                    populatePage();
+                    listTasksOnDashboard();
                 })
             break;
 
@@ -505,7 +524,7 @@ export const updateTaskDetails = async e => {
                     // hide modal and repopulate page
                     UICtrl.hideModal();
                     // await new Promise(resolve => setTimeout(resolve, 5000));
-                    populatePage();
+                    listTasksOnDashboard();
                 })
             break;
     }

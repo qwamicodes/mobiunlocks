@@ -62,7 +62,7 @@ export const changeForm = loc => {
 };
 
 //function to popup the alert to thre user
-export const popupAlert = (message, type) => {
+export const popupAlert = (message, type, timeout=3000) => {
   const checkSVG = type => {
     if (type === 'success') {
       const svg = `<ion-icon name="checkmark-outline" size="small"></ion-icon>`;
@@ -93,7 +93,7 @@ export const popupAlert = (message, type) => {
   document.querySelector('#main').insertAdjacentHTML('beforeend', html);
   setTimeout(() => {
     removePopup();
-  }, 3000);
+  }, timeout);
 };
 
 const removePopup = () => {
