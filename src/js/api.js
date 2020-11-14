@@ -4,11 +4,17 @@
 ? The event listeners that call these functions (for API requests) are also defined here
 */
 
-
 const baseBackendURL = "http://127.0.0.1:8080";
 const baseBackendAPIURL = "http://127.0.0.1:8080/api/v1";
 // const baseBackendURL = "https://api.mobitechunlocks.com";
 // const baseBackendAPIURL = "https://api.mobitechunlocks.com/api/v1";
+
+
+// function to get cookie by name
+const getCookie = cookieName => {
+    var match = document.cookie.match(new RegExp('(^| )' + cookieName + '=([^;]+)'));
+    if (match) return match[2];
+}
 
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TASK OPERATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -59,7 +65,7 @@ export const confirmPayAndStoreDetails = (paymentReference, taskDetails) => {
 
     fetch(confirmPaymentEndpoint, {
         method: 'GET',
-        // credentials: 'include',
+        credentials: 'include',
     })
         .then(async response => {
             // JSON that contains response from payment confirmation,
@@ -100,7 +106,7 @@ const submitCarrierUnlockTask = (paymentDetails, taskDetails) => {
 
     fetch(carrierUnlockTaskEndpoint, {
         method: 'POST',
-        // credentials: 'include',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -125,7 +131,7 @@ const submitICloudUnlockTask = (paymentDetails, taskDetails) => {
 
     fetch(icloudUnlockTaskEndpoint, {
         method: 'POST',
-        // credentials: 'include',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -150,7 +156,7 @@ const submitIMEICheckTask = (paymentDetails, taskDetails) => {
 
     fetch(imeiCheckTaskEndpoint, {
         method: 'POST',
-        // credentials: 'include',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -180,11 +186,11 @@ export const searchTaskByTracking = async trackingID => {
     const taskSearchEndpoint = `${baseBackendAPIURL}/tasks/search/?tracking_id=${trackingID}`;
     let taskSearchResults;
 
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
 
         fetch(taskSearchEndpoint, {
             method: 'GET',
-            // credentials: 'include', ! not needed here as this endpoint has no permission restrictions
+            credentials: "include",
         })
             .then(async response => {
                 if (response.ok) {
@@ -194,6 +200,8 @@ export const searchTaskByTracking = async trackingID => {
                     // if task is not found
                 } else if (response.status === 404) {
                     taskSearchResults = await response.json();
+                } else if (response.status === 401) {
+                    reject("unauthorized");
                 }
             })
             .then(() => resolve(taskSearchResults))
@@ -220,7 +228,17 @@ export const getAllTasks = async () => {
     [imeiCheckTaskEndpoint, icloudUnlockTaskEndpoint, carrierUnlockTaskEndpoint].forEach(taskEndpoint => {
         // assign the Fetch API definition to a variable
         // ! The Fetch API is a Promise and so returns a Promise too. 
-        const requestPromises = fetch(taskEndpoint).then(response => response.json());
+        const requestPromises =
+            fetch(taskEndpoint, {
+                credentials: 'include'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json()
+                    } else if (response.status === 401) {
+                        throw TypeError("Unauthorized")
+                    }
+                });
         // push the Fetch API to the `apiRequests` array
         apiRequests.push(requestPromises);
     })
@@ -229,7 +247,7 @@ export const getAllTasks = async () => {
     ? return a Promise of a function that finally resolves into an Array of all the task objects `allTasks`
     ? The Promise concurrently makes the api requests via which the tasks are retrieved as arrays of tasks of the same type
     */
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         /* 
             This Promise.all concurrently makes the api requests to retrieve the tasks using the Fetch Promises that are in the `apiRequests` array
             and returns an array of the results (which are also arrays of task objects returned from each request) from the three api requests.
@@ -237,14 +255,14 @@ export const getAllTasks = async () => {
             In this case it makes requests to task endpoints which differ by type of task.
             Each of these endpoints returns an array of the tasks of a particular type.
             The returned arrays from each Fetch API request are also stored in an array to which Promise.all resolves - `taskTypes`
-            The array of arrays is accessed by passing it as an argument to the `then` function of the Promise.all() Promise.
+            The array of arrays is refreshed by passing it as an argument to the `then` function of the Promise.all() Promise.
             This array of arrays is looped over and the individual arrays are also looped to retrieve individual tasks.
             Now the individual tasks are pushed to the `allTasks` array which this `getAllTasks` function shall resolve to.
             Finally, the magic that makes the difference is another `then` which is called of the previous one. This one takes no arguments and
             resolves the Promise that is returned by the `getAllTasks` async function into the `allTasks` array. 
             Therefore the `allTasks` array where all the individual tasks are put asynchronously, 
             is returned in a promise by the `getAllTasks` function.
-            To access it, a variable to hold it must be passed as an argument to a `then` function called of `getAllTasks` itself.  
+            To refresh it, a variable to hold it must be passed as an argument to a `then` function called of `getAllTasks` itself.  
         */
         Promise.all(apiRequests) // ? concurrently make requests to task endpoints stored in the array which is passed in as the argument
 
@@ -257,6 +275,7 @@ export const getAllTasks = async () => {
 
             // resolve Promise into array of all tasks
             .then(() => resolve(allTasks))
+            .catch(error => reject(`Internal Server Error<br>${error}<br><br>Kindly contact developer team`))
     })
 }
 
@@ -270,7 +289,7 @@ export const updateIMEICheckTask = async (trackingID, formData) => {
     return new Promise(resolve => {
         fetch(imeiCheckTaskEndpoint, {
             method: 'PUT',
-            // credentials: 'include',
+            credentials: 'include',
             body: formData
         })
             .then(async response => {
@@ -297,7 +316,7 @@ export const updateICloudUnlockTask = async (trackingID, formData) => {
     return new Promise(resolve => {
         fetch(ICloudUnlockTaskEndpoint, {
             method: 'PUT',
-            // credentials: 'include',
+            credentials: 'include',
             body: formData
         })
             .then(async response => {
@@ -322,7 +341,7 @@ export const updateCarrierUnlockTask = async (trackingID, formData) => {
     return new Promise(resolve => {
         fetch(CarrierUnlockTaskEndpoint, {
             method: 'PUT',
-            // credentials: 'include',
+            credentials: 'include',
             body: formData
         })
             .then(async response => {
@@ -349,6 +368,7 @@ export const performLogin = async (email, password) => {
             headers: {
                 'Content-Type': 'application/json'
             },
+            credentials: "include",
             body: JSON.stringify({
                 "email": email,
                 "password": password,
@@ -356,12 +376,18 @@ export const performLogin = async (email, password) => {
         })
             .then(async response => {
                 if (response.ok) {
-                    resolve(response.json()); // resolve the login response that contains the access token
-                } else {
+                    return await response.json();
+                } else if (response.status === 401) {
                     reject("Invalid Login Credentials");
+                } else {
+                    reject(`Internal Server Error<br>${response.status}: ${response.statusText}<br><br>Kindly contact developer team`);
                 }
             })
-            .catch(error => reject(`Internal Server Error<br>Kindly contact developer team<br><br>ERROR CODE:<br>${error}`))
+            .then(response => {
+                const refreshToken = response['refresh']; //store refresh token in variable
+                resolve(refreshToken); // resolve the login response
+            })
+            .catch(error => reject(`Internal Server Error<br>${error}<br><br>Kindly contact developer team`))
     })
 
 }

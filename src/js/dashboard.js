@@ -3,27 +3,11 @@ import * as controller from './models/controller';
 import { elements } from  './views/base';
 
 //**** On Page Load Event listners ****//
+// this function builds the tasj list and fills in the admin details
 document.onload = controller.populatePage();
 
 
 //**** Modal Event listners ****//
-
-// ! THIS EVENT LISTENER IS RATHER TO EACH TASK AS IT IS ADDED TO THE HTML
-// //Event listner to show the modal
-// document.querySelectorAll(elements.taskItem).forEach(item => {
-//     item.addEventListener('click', e => {
-//         if(e.target.tagName === "LI") {
-//             //converting the htmlcollections (li's) form the DOM into an array
-//             const lists = [];
-//             Array.prototype.slice.call(e.target.parentElement.children).forEach(li => {
-//                 lists.push(li.innerHTML);
-//             });
-
-//             controller.modalList(lists);
-//         };
-//     });
-// });
-// ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 document.querySelector(elements.modal).addEventListener('click', (e) => {
     //Event listner to hide the modal 

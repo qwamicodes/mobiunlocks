@@ -2,7 +2,6 @@ import { elements } from "./views/base";
 import { performLogin } from "./api";
 import { popupAlert } from "./views/UICtrl";
 
-export let accessToken = null;
 
 document.querySelector(elements.dashboardLoginForm).addEventListener('submit', e => {
     e.preventDefault();
@@ -12,16 +11,14 @@ document.querySelector(elements.dashboardLoginForm).addEventListener('submit', e
     const password = e.target.elements.password.value;
 
     performLogin(email, password)
-        .then(resp => {
-            // store access token in variable
-            accessToken = resp['access'];
-            
+        .then((refreshToken) => {
             // notify admin of login success via popup alert
-            popupAlert('Login Success', 'success');
-            
+            document.cookie = `refreshtoken=${refreshToken}; path=/`;
+            popupAlert('Login Success', 'success', 10000);
+
             // reset form
             e.target.reset();
-            
+
             // delay page redirect to admin page
             setTimeout(() => {
                 // redirect to admin page

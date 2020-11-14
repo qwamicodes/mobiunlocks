@@ -2,10 +2,8 @@ import * as UICtrl from '../views/UICtrl';
 import { elements } from '../views/base';
 import { Payment } from './payment';
 // import { testStoreDetails } from "../api"; // !! uncomment when testing task detail storage
-import { getAllTasks, updateIMEICheckTask, updateICloudUnlockTask, updateCarrierUnlockTask } from "../api";
+import { getAllTasks, updateIMEICheckTask, updateICloudUnlockTask, updateCarrierUnlockTask, searchTaskByTracking } from "../api";
 
-// access token
-export const accessToken = null;
 
 // this object stores payment data and task details for a task which a user has requested  
 export const Data = {
@@ -391,11 +389,21 @@ export const populatePage = () => {
 
 // function to set admin details on dashboard
 export const setAdminDetailsOnDashboard = () => {
-
+    //
+    console.log("Admin set");
 }
 
 // function to list all tasks on dashboard
 export const listTasksOnDashboard = () => {
+
+    searchTaskByTracking(5839255181)
+        .then(taskDetail => {
+            UICtrl.popupAlert(taskDetail['task_detail']['task_type'], 'success');
+        })
+        .catch(error => UICtrl.popupAlert(error, 'error'))
+
+    return
+
     // HTML <ul> Element for holding individual <li> elements for each task 
     let allTasksListElement = document.querySelector(elements.allTasksListElement);
 
@@ -403,17 +411,18 @@ export const listTasksOnDashboard = () => {
     allTasksListElement.innerHTML = "";
 
     // ? get AllTasks
-    getAllTasks().then(tasks => {
-        allTasksListElement.innerHTML = "";
-        // TODO listing tasks in dashboard
-        // loop over each element
-        tasks.forEach(task => {
-            // creating individual HTML elements for each task, populating it with data from the database
-            let singleTask = document.createElement("li");
-            singleTask.id = `#${task.tracking_id}`
-            singleTask.classList.add("dashboard__tasks--value-li");
-            singleTask.innerHTML =
-                `
+    getAllTasks()
+        .then(tasks => {
+            allTasksListElement.innerHTML = "";
+            // TODO listing tasks in dashboard
+            // loop over each element
+            tasks.forEach(task => {
+                // creating individual HTML elements for each task, populating it with data from the database
+                let singleTask = document.createElement("li");
+                singleTask.id = `#${task.tracking_id}`
+                singleTask.classList.add("dashboard__tasks--value-li");
+                singleTask.innerHTML =
+                    `
             <ul class="dashboard__tasks--item">
                 <li data-task_property="tracking_id">#${task.tracking_id}</li>
                 <li data-task_property="task_type">${task.task_type}</li>
@@ -426,31 +435,31 @@ export const listTasksOnDashboard = () => {
             </ul>
             `;
 
-            // add single task element to all tasks list element
-            allTasksListElement.appendChild(singleTask);
+                // add single task element to all tasks list element
+                allTasksListElement.appendChild(singleTask);
 
-            // ! adding the eventlistener to show the modal
-            //converting the htmlcollections (li's) form the DOM into an array
-            Array.prototype.slice.call(singleTask.getElementsByTagName("li")).forEach(item => {
-                item.addEventListener('click', e => {
-                    // create modal out of task object
-                    UICtrl.showModal(task);
+                // ! adding the eventlistener to show the modal
+                //converting the htmlcollections (li's) form the DOM into an array
+                Array.prototype.slice.call(singleTask.getElementsByTagName("li")).forEach(item => {
+                    item.addEventListener('click', e => {
+                        // create modal out of task object
+                        UICtrl.showModal(task);
 
-                    // add event listener to submit modal form
-                    document.querySelector(elements.taskDetailModalForm).addEventListener('submit', updateTaskDetails);
+                        // add event listener to submit modal form
+                        document.querySelector(elements.taskDetailModalForm).addEventListener('submit', updateTaskDetails);
 
+                    });
                 });
-            });
+
+            })
+
+            // TODO Task count
+            document.querySelector(elements.allTasksCount).innerHTML = tasks.length; // all tasks
+            document.querySelector(elements.pendingTasksCount).innerHTML = countPendingTasks(tasks); // pending tasks
+            document.querySelector(elements.completedTasksCount).innerHTML = countCompletedTasks(tasks); // completed tasks
 
         })
-
-        // TODO Task count
-        document.querySelector(elements.allTasksCount).innerHTML = tasks.length; // all tasks
-        document.querySelector(elements.pendingTasksCount).innerHTML = countPendingTasks(tasks); // pending tasks
-        document.querySelector(elements.completedTasksCount).innerHTML = countCompletedTasks(tasks); // completed tasks
-
-    });
-
+        .catch(error => UICtrl.popupAlert(error, 'error'))
 
 }
 
@@ -535,6 +544,13 @@ export const updateTaskDetails = async e => {
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END DASHBOARD ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
+
+// function to get cookie by name
+export const getCookie = cookieName => {
+    var match = document.cookie.match(new RegExp('(^| )' + cookieName + '=([^;]+)'));
+    if (match) return match[2];
+}
 
 
 //function to 
