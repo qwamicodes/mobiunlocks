@@ -4,8 +4,8 @@
 ? The event listeners that call these functions (for API requests) are also defined here
 */
 
-const baseBackendURL = "http://127.0.0.1:8080";
-const baseBackendAPIURL = "http://127.0.0.1:8080/api/v1";
+const baseBackendURL = "http://127.0.0.1:8000";
+const baseBackendAPIURL = "http://127.0.0.1:8000/api/v1";
 // const baseBackendURL = "https://api.mobitechunlocks.com";
 // const baseBackendAPIURL = "https://api.mobitechunlocks.com/api/v1";
 
@@ -356,6 +356,24 @@ export const updateCarrierUnlockTask = async (trackingID, formData) => {
 
 }
 
+
+// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ USER DETAILS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+export const getAdminDetails = async user_email => {
+    const getAdminDetailsEndpoint = `${baseBackendAPIURL}/users/${user_email}/`;
+
+    return new Promise((resolve, reject) => {
+        fetch(getAdminDetailsEndpoint, {
+            credentials: 'include',
+        })
+            .then(response => {
+                if (response.ok) resolve(response.json());
+                else if (response.status === 401) throw TypeError("Unauthorized"); 
+            })
+        })
+        .catch(error => reject(`Internal Server Error<br>${error}<br><br>Kindly contact developer team`))
+} 
+
+
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AUTHENTICATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 export const performLogin = async (email, password) => {
 
@@ -391,3 +409,26 @@ export const performLogin = async (email, password) => {
     })
 
 }
+
+
+export const refreshToken = async refreshToken => {
+
+    const refreshTokenEndpoint = `${baseBackendAPIURL}/auth/token/refresh/`;
+
+    return new Promise((resolve, reject) => {
+        fetch(refreshTokenEndpoint, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            credentials: 'include',
+            body: JSON.stringify({
+                'refresh': getCookie('mbt_ref_txn')
+            })
+        })
+            .then(response => console.log(response))
+
+    })
+
+}
+

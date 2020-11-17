@@ -13,7 +13,7 @@ document.querySelector(elements.dashboardLoginForm).addEventListener('submit', e
     performLogin(email, password)
         .then((refreshToken) => {
             // notify admin of login success via popup alert
-            document.cookie = `refreshtoken=${refreshToken}; path=/`;
+            document.cookie = `mbt_ref_txn=${refreshToken}; path=/`;
             popupAlert('Login Success', 'success', 10000);
 
             // reset form

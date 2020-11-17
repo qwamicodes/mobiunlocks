@@ -2,13 +2,26 @@ import * as UICtrl from '../views/UICtrl';
 import { elements } from '../views/base';
 import { Payment } from './payment';
 // import { testStoreDetails } from "../api"; // !! uncomment when testing task detail storage
-import { getAllTasks, updateIMEICheckTask, updateICloudUnlockTask, updateCarrierUnlockTask, searchTaskByTracking } from "../api";
+import { getAllTasks, updateIMEICheckTask, updateICloudUnlockTask, updateCarrierUnlockTask, getAdminDetails } from "../api";
 
 
 // this object stores payment data and task details for a task which a user has requested  
 export const Data = {
     invoices: [],
     taskDetail: {},
+}
+
+// function to get cookie by name
+const getCookie = cookieName => {
+    var match = document.cookie.match(new RegExp('(^| )' + cookieName + '=([^;]+)'));
+    if (match) return match[2];
+}
+
+// parse a JWT to get payload as object
+const parseJWT = token => {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace('-', '+').replace('_', '/');
+    return JSON.parse(atob(base64));
 }
 
 //funtion to run when to check if the page height is reach the limit 
@@ -389,20 +402,23 @@ export const populatePage = () => {
 
 // function to set admin details on dashboard
 export const setAdminDetailsOnDashboard = () => {
-    //
-    console.log("Admin set");
+    // get refresh token from cookie
+    const ref_txn = getCookie('mbt_ref_txn');
+
+    // get user email claim from parsed refresh JWT
+    const authUserEmail = parseJWT(ref_txn).user_email;
+
+    // make API call to get admin details and set them on dashboard
+    getAdminDetails(authUserEmail)
+        .then(adminDetails => {
+            document.querySelector(elements.adminUsername).innerText = adminDetails.username;
+            document.querySelector(elements.adminAvatarImage).src = adminDetails.user_avatar;
+        })
+        .catch(error => UICtrl.popupAlert(error, 'error'))
 }
 
 // function to list all tasks on dashboard
 export const listTasksOnDashboard = () => {
-
-    searchTaskByTracking(5839255181)
-        .then(taskDetail => {
-            UICtrl.popupAlert(taskDetail['task_detail']['task_type'], 'success');
-        })
-        .catch(error => UICtrl.popupAlert(error, 'error'))
-
-    return
 
     // HTML <ul> Element for holding individual <li> elements for each task 
     let allTasksListElement = document.querySelector(elements.allTasksListElement);
@@ -543,15 +559,6 @@ export const updateTaskDetails = async e => {
 }
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END DASHBOARD ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-
-// function to get cookie by name
-export const getCookie = cookieName => {
-    var match = document.cookie.match(new RegExp('(^| )' + cookieName + '=([^;]+)'));
-    if (match) return match[2];
-}
-
 
 //function to 
 export const mobileNav = () => {
