@@ -4,10 +4,11 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: ['@babel/polyfill','./src/js/app.js'],
-    dashboard: ['@babel/polyfill','./src/js/dashboard.js'],
-    tracking: ['@babel/polyfill','./src/js/tracking.js'],
-},
+    app: ['@babel/polyfill', './src/js/app.js'],
+    dashboard: ['@babel/polyfill', './src/js/dashboard.js'],
+    tracking: ['@babel/polyfill', './src/js/tracking.js'],
+    login: ['@babel/polyfill', './src/js/login.js'],
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: './js/[name].[contentHash].bundle.js'
@@ -44,11 +45,11 @@ module.exports = {
     })
   ],
   module: {
-    rules : [
+    rules: [
       {
         test: /\.js/,
         exclude: /node_modules/,
-        use : {
+        use: {
           loader: 'babel-loader'
         }
       }

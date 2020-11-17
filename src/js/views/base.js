@@ -42,4 +42,12 @@
   taskItemLi: '.dashboard__tasks--item li',
   taskTab: '.dashboard__tab',
   trackingForm: '#tracking-form',
+  allTasksListElement: '#dashboard__tasks--list',
+  allTasksCount: '#all-tasks-count',
+  pendingTasksCount: '#pending-tasks-count',
+  completedTasksCount: '#completed-tasks-count',
+  taskDetailModalForm: '.task__detail--modal-form',
+  dashboardLoginForm: '#dashboard-login-form',
+  adminUsername: '#admin-username',
+  adminAvatarImage: '#admin-avatar'
 };

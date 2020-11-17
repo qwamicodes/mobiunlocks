@@ -29,10 +29,10 @@
         </div>
         <div class="dashboard__nav--account">
           <div class="dashboard__nav--account-name">
-            <span>tony ocran</span>
+            <span id="admin-username">tony ocran</span>
           </div>
           <div class="dashboard__nav--account-avatar">
-            <img src="../assets/img/avatar.webp" alt="Profile Picture">
+            <img src="../assets/img/avatar.webp" alt="Profile Picture" id="admin-avatar">
           </div>
         </div>
       </div>
@@ -65,19 +65,19 @@
               <li>
                 <span data-value="all" class="dashboard__tab dashboard__tab-active">
                   All
-                  <span class="dashboard__tasks--count" id="task-all">12</span>
+                  <span class="dashboard__tasks--count" id="all-tasks-count">12</span>
                 </span>
               </li>
               <li>
                 <span data-value="pending" class="dashboard__tab">
                   Pending
-                  <span class="dashboard__tasks--count" id="task-pending">10</span>
+                  <span class="dashboard__tasks--count" id="pending-tasks-count">10</span>
                 </span>
               </li>
               <li>
                 <span data-value="completed" class="dashboard__tab">
                 Completed
-                  <span class="dashboard__tasks--count" id="task-completed">2</span>
+                  <span class="dashboard__tasks--count" id="completed-tasks-count">2</span>
                 </span>
               </li>
             </ul>
@@ -90,14 +90,15 @@
                   <li>Type</li>
                   <li>Model Name</li>
                   <li>IMEI</li>
-                  <li>Carrier</li>
+                  <li>Carrier Details</li>
                   <li>Status</li>
                 </ul>
               </li>
             </ul>
           </div>
           <div class="dashboard__tasks--value">
-            <ul>
+            <!-- ? list of tasks -->
+            <ul id="dashboard__tasks--list">
               <li class="dashboard__tasks--value-li">
                 <ul class="dashboard__tasks--item">
                   <li>#DSJ323NS2S</li>
