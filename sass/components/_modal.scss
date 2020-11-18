@@ -52,7 +52,7 @@
       width: 100%;
       height: 100%;
       @extend %dg;
-      grid-template-rows: repeat(7, 1fr);
+      grid-template-rows: repeat(7, auto);
 
       li {
         font: $prozaLibre-regular;

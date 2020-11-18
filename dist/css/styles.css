@@ -658,7 +658,7 @@ select {
     .modal__form ul {
       width: 100%;
       height: 100%;
-      grid-template-rows: repeat(7, 1fr); }
+      grid-template-rows: repeat(7, auto); }
       .modal__form ul li {
         font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
         font-size: 1.8rem;
