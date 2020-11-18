@@ -510,17 +510,13 @@ export const updateTaskDetails = async e => {
     const imei = e.target.querySelector('span[data-task_property="imei"]').innerText;
     const completed = e.target.elements.status.value === "completed" ? true : false;
     const task_type = e.target.querySelector('span[data-task_property="task_type"]').innerText.toLowerCase();
-
+    const results = e.target.elements.results.value
+    
     // append details to FormData
     let formData = new FormData();
     formData.append('completed', completed);
     formData.append('imei', imei);
-
-    // add results textarea value to FormData object if task type is IMEI checking
-    if (task_type === "imei checking") {
-        const results = e.target.elements.results.value
-        formData.append('results', results);
-    }
+    formData.append('results', results);
 
     switch (task_type) {
         case "icloud unlocking":

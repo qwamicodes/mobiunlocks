@@ -326,6 +326,9 @@ export const showModal = (task, page = 'dashboard') => {
                   <span data-task_property="carrier">${task.phone_carrier_network ? task.phone_carrier_network : "---"}</span>
                 </li>
                 <li>
+                  <textarea class="modal__form--textarea" id="task-details" name="results" placeholder="Place results of checking here...">${task.results}</textarea>
+                </li>
+                <li>
                   <select name="status" class="modal__form--select" id="task-modal">
                     <option value="pending" ${!task.completed ? "selected" : ""}>Pending</option>
                     <option value="completed" ${task.completed ? "selected" : ""}>Completed</option>
