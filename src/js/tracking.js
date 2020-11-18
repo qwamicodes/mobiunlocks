@@ -8,7 +8,9 @@ document.querySelector(elements.trackingForm).addEventListener('submit', e => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
-    const trackingNumber = formData.get('tracking-number');
+    let trackingNumber = formData.get('tracking-number');
+
+    trackingNumber = Math.floor(trackingNumber);
 
     searchTaskByTracking(trackingNumber)
         .then(taskSearchResults => {
@@ -21,6 +23,7 @@ document.querySelector(elements.trackingForm).addEventListener('submit', e => {
             }
 
         })
+        .catch(error => UICtrl.popupAlert(error, 'error'))
     
     // UICtrl.showModal('#GGI843W42', "IMEI Checking", "iPhone XS Max", "8376327532734232", "Verizon - USA", 'Machele Ahmed', 'tracking');
     

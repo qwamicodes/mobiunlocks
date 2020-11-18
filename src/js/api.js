@@ -200,8 +200,6 @@ export const searchTaskByTracking = async trackingID => {
                     // if task is not found
                 } else if (response.status === 404) {
                     taskSearchResults = await response.json();
-                } else if (response.status === 401) {
-                    reject("unauthorized");
                 }
             })
             .then(() => resolve(taskSearchResults))
@@ -367,11 +365,11 @@ export const getAdminDetails = async user_email => {
         })
             .then(response => {
                 if (response.ok) resolve(response.json());
-                else if (response.status === 401) throw TypeError("Unauthorized"); 
+                else if (response.status === 401) throw TypeError("Unauthorized");
             })
-        })
+    })
         .catch(error => reject(`Internal Server Error<br>${error}<br><br>Kindly contact developer team`))
-} 
+}
 
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AUTHENTICATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
