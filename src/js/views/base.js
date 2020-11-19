@@ -33,6 +33,7 @@
   paymentItems: '.payment__items',
   paymentBtn: '#payment-checkout',
   modal: '.modal-container',
+  modalLogin: '.modal-login',
   modalClose: '.modal-close',
   modalCopy: '.modal-copy',
   modalCopier: '.modal-copier',
@@ -42,4 +43,5 @@
   taskItemLi: '.dashboard__tasks--item li',
   taskTab: '.dashboard__tab',
   trackingForm: '#tracking-form',
+  loaderContainer: '.loader-container',
 };

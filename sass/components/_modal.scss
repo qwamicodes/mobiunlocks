@@ -37,7 +37,8 @@
     background-color: $accent-color;
   }
 
-  &-container {
+  &-container,
+  &-login {
     display: none;
     position: absolute;
     width: 100%;

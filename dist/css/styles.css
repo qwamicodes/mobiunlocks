@@ -219,6 +219,12 @@
   100% {
     transform: translateY(0); } }
 
+@keyframes loaderSpin {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
 * {
   margin: 0;
   padding: 0;
@@ -271,6 +277,9 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none; }
+
+#main {
+  position: relative; }
 
 @font-face {
   font-family: "ProzaLibre Italic";
@@ -506,6 +515,68 @@ select {
     width: 30rem;
     height: 30rem; }
 
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4rem;
+  height: 4rem;
+  transform: translate(-20px, -20px) scale(0.25) translate(20px, 20px); }
+  .loader-container {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(1px); }
+  .loader-show {
+    display: block; }
+  .loader div {
+    position: absolute;
+    top: 9rem;
+    left: 3rem;
+    width: 10px;
+    height: 25px;
+    background: #a1a1a1;
+    border-radius: 40%;
+    transform-origin: 5px 65px;
+    animation: loaderSpin linear 1s infinite alternate; }
+    .loader div:nth-child(1) {
+      transform: rotate(0deg);
+      animation-delay: -0.22s; }
+    .loader div:nth-child(2) {
+      transform: rotate(30deg);
+      animation-delay: -0.14s; }
+    .loader div:nth-child(3) {
+      transform: rotate(60deg);
+      animation-delay: 0.02s; }
+    .loader div:nth-child(4) {
+      transform: rotate(90deg);
+      animation-delay: 0.1s; }
+    .loader div:nth-child(5) {
+      transform: rotate(120deg);
+      animation-delay: 0.18s; }
+    .loader div:nth-child(6) {
+      transform: rotate(150deg);
+      animation-delay: 0.23s; }
+    .loader div:nth-child(7) {
+      transform: rotate(180deg);
+      animation-delay: 0.3s; }
+    .loader div:nth-child(8) {
+      transform: rotate(210deg);
+      animation-delay: 0.38s; }
+    .loader div:nth-child(9) {
+      transform: rotate(240deg);
+      animation-delay: 0.42s; }
+    .loader div:nth-child(10) {
+      transform: rotate(270deg);
+      animation-delay: 0.49s; }
+    .loader div:nth-child(11) {
+      transform: rotate(300deg);
+      animation-delay: 0.54s; }
+    .loader div:nth-child(12) {
+      transform: rotate(330deg);
+      animation-delay: 0.6s; }
+
 .form {
   min-width: 100%;
   height: 90%;
@@ -647,7 +718,7 @@ select {
     width: 2px; }
   .modal::-webkit-scrollbar-thumb {
     background-color: #3c435a; }
-  .modal-container {
+  .modal-container, .modal-login {
     display: none;
     position: absolute;
     width: 100%;
@@ -1765,10 +1836,16 @@ section {
   z-index: -1; }
 
 .login {
+  position: relative;
   width: 100%;
   max-height: 100vh;
   height: 100vh; }
   .login__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
     box-shadow: 0 2px 1px rgba(161, 161, 161, 0.07), 0 4px 2px rgba(161, 161, 161, 0.07), 0 8px 4px rgba(161, 161, 161, 0.07), 0 16px 8px rgba(161, 161, 161, 0.07), 0 32px 16px rgba(161, 161, 161, 0.07);
     width: 35rem;
     height: 30rem; }
@@ -1784,6 +1861,11 @@ section {
       font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
       font-size: 1.8rem;
       padding: 0.5rem 1rem; }
+  .login-expire {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
 
 .tracking {
   grid-template-rows: 10% 10% 80%;
