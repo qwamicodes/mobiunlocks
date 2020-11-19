@@ -392,6 +392,43 @@ export const filterList = tab => {
 };
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DASHBOARD ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+export const ensureAuth = () => {
+    /* 
+    this function is used to check if authentication is done before
+    accessing the dashboard page. If the user has been authenticated successfully
+    then the loading proceeds. Else, the user is redirected to the login page.
+    Authentication check is performed by first checking existence of refresh token
+    Then if it exists check if it is valid
+    */
+    let authenticated = true;
+    let refreshPresent = false;
+    
+    return new Promise((resolve, reject) => {
+        // if no refresh token exists in cookies
+        if (!getCookie('mbt_ref_txn')) {
+            console.log("NO AUTH - refresh token not found");
+            authenticated = false;
+            resolve({"authenticated": authenticated, "refreshPresent": refreshPresent});
+            return
+        }
+        
+        // check validity of refresh token if it exists in cookies
+        const refreshToken = getCookie('mbt_ref_txn');
+        const tokenExpiryDate = parseJWT(refreshToken).exp;
+        if (Date.now() >= tokenExpiryDate * 1000) {
+            console.log("NO AUTH - refresh token expired");
+            
+            authenticated = false;
+            refreshPresent = true;
+            resolve({"authenticated": authenticated, "refreshPresent": refreshPresent});
+            return
+        }
+        resolve({"authenticated": authenticated, "refreshPresent": refreshPresent})
+    })
+
+}
+
+
 export const populatePage = () => {
     // TODO Listing the Tasks 
     listTasksOnDashboard();
@@ -511,7 +548,7 @@ export const updateTaskDetails = async e => {
     const completed = e.target.elements.status.value === "completed" ? true : false;
     const task_type = e.target.querySelector('span[data-task_property="task_type"]').innerText.toLowerCase();
     const results = e.target.elements.results.value
-    
+
     // append details to FormData
     let formData = new FormData();
     formData.append('completed', completed);
