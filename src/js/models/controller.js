@@ -2,7 +2,7 @@ import * as UICtrl from '../views/UICtrl';
 import { elements } from '../views/base';
 import { Payment } from './payment';
 // import { testStoreDetails } from "../api"; // !! uncomment when testing task detail storage
-import { getAllTasks, updateIMEICheckTask, updateICloudUnlockTask, updateCarrierUnlockTask, getAdminDetails } from "../api";
+import { getAllTasks, updateIMEICheckTask, updateICloudUnlockTask, updateCarrierUnlockTask, getAdminDetails, performLogin } from "../api";
 
 
 // this object stores payment data and task details for a task which a user has requested  
@@ -392,42 +392,6 @@ export const filterList = tab => {
 };
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DASHBOARD ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-export const ensureAuth = () => {
-    /* 
-    this function is used to check if authentication is done before
-    accessing the dashboard page. If the user has been authenticated successfully
-    then the loading proceeds. Else, the user is redirected to the login page.
-    Authentication check is performed by first checking existence of refresh token
-    Then if it exists check if it is valid
-    */
-    let authenticated = true;
-    let refreshPresent = false;
-    
-    return new Promise((resolve, reject) => {
-        // if no refresh token exists in cookies
-        if (!getCookie('mbt_ref_txn')) {
-            console.log("NO AUTH - refresh token not found");
-            authenticated = false;
-            resolve({"authenticated": authenticated, "refreshPresent": refreshPresent});
-            return
-        }
-        
-        // check validity of refresh token if it exists in cookies
-        const refreshToken = getCookie('mbt_ref_txn');
-        const tokenExpiryDate = parseJWT(refreshToken).exp;
-        if (Date.now() >= tokenExpiryDate * 1000) {
-            console.log("NO AUTH - refresh token expired");
-            
-            authenticated = false;
-            refreshPresent = true;
-            resolve({"authenticated": authenticated, "refreshPresent": refreshPresent});
-            return
-        }
-        resolve({"authenticated": authenticated, "refreshPresent": refreshPresent})
-    })
-
-}
-
 
 export const populatePage = () => {
     // TODO Listing the Tasks 
@@ -599,3 +563,72 @@ export const mobileNav = () => {
         UICtrl.collapseNav();
     }, 250);
 }
+
+// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AUTHENTICATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// function to ensure that the user is authenticated 
+export const ensureAuth = () => {
+    /* 
+    this function is used to check if authentication is done before
+    accessing the dashboard page. If the user has been authenticated successfully
+    then the loading proceeds. Else, the user is redirected to the login page.
+    Authentication check is performed by first checking existence of refresh token
+    Then if it exists check if it is valid
+    */
+    let authenticated = true;
+    let refreshPresent = false;
+
+    return new Promise((resolve, reject) => {
+        // if no refresh token exists in cookies
+        if (!getCookie('mbt_ref_txn')) {
+            console.log("NO AUTH - refresh token not found");
+            authenticated = false;
+            resolve({ "authenticated": authenticated, "refreshPresent": refreshPresent });
+            return
+        }
+
+        // check validity of refresh token if it exists in cookies
+        const refreshToken = getCookie('mbt_ref_txn');
+        const tokenExpiryDate = parseJWT(refreshToken).exp;
+        if (Date.now() >= tokenExpiryDate * 1000) {
+            console.log("NO AUTH - refresh token expired");
+
+            authenticated = false;
+            refreshPresent = true;
+            resolve({ "authenticated": authenticated, "refreshPresent": refreshPresent });
+            return
+        }
+        resolve({ "authenticated": authenticated, "refreshPresent": refreshPresent })
+    })
+
+}
+
+// function to redo login after token expiry
+export const redoLoginAndPopulatePage = e => {
+    e.preventDefault();
+
+    const email = e.target.elements.email.value;
+    const password = e.target.elements.password.value;
+
+    performLogin(email, password)
+        .then((refreshToken) => {
+            // notify admin of authentication success via popup alert
+            document.cookie = `mbt_ref_txn=${refreshToken}; path=/`;
+            UICtrl.popupAlert('Authentication Success', 'success', 10000);
+
+            // reset form
+            e.target.reset();
+            // hide modal
+            UICtrl.hideExpireLoginModal();
+            // populate page
+            populatePage();
+
+        })
+        .catch(error => UICtrl.popupAlert(error, 'error', 10000))
+
+
+}
+
+
+
+// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END AUTHENTICATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

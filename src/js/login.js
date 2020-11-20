@@ -26,5 +26,4 @@ document.querySelector(elements.dashboardLoginForm).addEventListener('submit', e
             }, 2000)
         })
         .catch(error => popupAlert(error, 'error', 10000))
-
 })

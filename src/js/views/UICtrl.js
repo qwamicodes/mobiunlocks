@@ -62,7 +62,7 @@ export const changeForm = loc => {
 };
 
 //function to popup the alert to thre user
-export const popupAlert = (message, type, timeout=3000) => {
+export const popupAlert = (message, type, timeout = 3000) => {
   const checkSVG = type => {
     if (type === 'success') {
       const svg = `<ion-icon name="checkmark-outline" size="small"></ion-icon>`;
@@ -183,7 +183,7 @@ export const showModal = (task, page = 'dashboard') => {
 
     // ? if result is for ICloud Unlocking task
     else if (task.task_type === 'ICloud Unlocking') {
-    let html = `
+      let html = `
       <div class="modal">
        <div class="modal__preview">
         <div class="modal-svg modal-close">
@@ -212,7 +212,7 @@ export const showModal = (task, page = 'dashboard') => {
 
     // ? if result is for Carrier Unlocking task
     else if (task.task_type === 'Carrier Unlocking') {
-    let html = `
+      let html = `
       <div class="modal">
        <div class="modal__preview">
         <div class="modal-svg modal-close">
@@ -350,7 +350,8 @@ export const expireLogin = () => {
   document.querySelector(elements.modalLogin).classList.add('modal-show');
 
   let html = `
-      <form method="POST" id="dashboard-login" class="login__container login-expire">
+      <form method="POST" id="auth__expiry-login-form" class="login__container login-expire">
+        <p class="">Session Expired</p>
         <div class="login__group">
           <label for="login-email">Email</label>
           <input type="email" name="email" id="login-email" required>
@@ -367,6 +368,10 @@ export const expireLogin = () => {
 
   document.querySelector(elements.modalLogin).insertAdjacentHTML('beforeend', html);
 };
+
+export const hideExpireLoginModal = () => {
+  document.querySelector(elements.modalLogin).classList.remove('modal-show');
+}
 
 //function to show the loader
 export const showLoader = () => {

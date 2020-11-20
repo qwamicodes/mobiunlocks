@@ -10,14 +10,13 @@ if (document.readyState === "loading") {
     // ensure authentication
     controller.ensureAuth()
         .then(auth => {
-            // upon authentication failure 
+            // ? upon authentication failure 
             if (!auth.authenticated) {
                 // if refresh token is present but exprired
                 if (auth.refreshPresent){
-                    // show modal
-                    alert('show modal');
-                    // then populate page
-                    // controller.populatePage();
+                    // show modal and add its event listener
+                    UICtrl.expireLogin();
+                    document.querySelector(elements.authExpiryLoginForm).addEventListener('submit', controller.redoLoginAndPopulatePage)
                 } else {
                     // if refresh token is not present at all
                     // redirect to login page
@@ -25,7 +24,8 @@ if (document.readyState === "loading") {
                 }
                 return
             }
-            // if authenticated, 
+
+            // ? if authenticated, 
             // ! remove loader
             // !!!!!!!!!!!!!!!
             // populate page
