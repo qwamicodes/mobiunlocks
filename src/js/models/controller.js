@@ -399,6 +399,9 @@ export const populatePage = () => {
 
     // TODO Setting admin details
     setAdminDetailsOnDashboard();
+
+    UICtrl.hideLoader();
+
 }
 
 // function to set admin details on dashboard
@@ -576,14 +579,15 @@ export const ensureAuth = () => {
     Then if it exists check if it is valid
     */
     let authenticated = true;
-    let refreshPresent = false;
+    let refreshPresent = true;
 
     return new Promise((resolve, reject) => {
         // if no refresh token exists in cookies
         if (!getCookie('mbt_ref_txn')) {
             console.log("NO AUTH - refresh token not found");
             authenticated = false;
-            resolve({ "authenticated": authenticated, "refreshPresent": refreshPresent });
+            refreshPresent = false;
+            reject({ "authenticated": authenticated, "refreshPresent": refreshPresent });
             return
         }
 
@@ -595,9 +599,11 @@ export const ensureAuth = () => {
 
             authenticated = false;
             refreshPresent = true;
-            resolve({ "authenticated": authenticated, "refreshPresent": refreshPresent });
+            reject({ "authenticated": authenticated, "refreshPresent": refreshPresent });
             return
         }
+
+        // user is authenticated at this point 
         resolve({ "authenticated": authenticated, "refreshPresent": refreshPresent })
     })
 
@@ -626,7 +632,7 @@ export const redoLoginAndPopulatePage = e => {
         })
         .catch(error => UICtrl.popupAlert(error, 'error', 10000))
 
-
+    UICtrl.hideLoader();
 }
 
 

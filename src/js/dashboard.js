@@ -9,11 +9,21 @@ import { elements } from './views/base';
 if (document.readyState === "loading") {
     // ensure authentication
     controller.ensureAuth()
+        // if authenticated
         .then(auth => {
+            if (auth.authenticated && auth.refreshPresent) {
+                controller.populatePage();
+            }
+        })
+
+        // if not authenticated
+        .catch(auth => {
             // ? upon authentication failure 
             if (!auth.authenticated) {
                 // if refresh token is present but exprired
-                if (auth.refreshPresent){
+                if (auth.refreshPresent) {
+                    // hide loader
+                    UICtrl.hideLoader();
                     // show modal and add its event listener
                     UICtrl.expireLogin(controller.parseJWT(controller.getCookie('mbt_ref_txn')).user_email);
                     document.querySelector(elements.authExpiryLoginForm).addEventListener('submit', controller.redoLoginAndPopulatePage)
@@ -25,24 +35,9 @@ if (document.readyState === "loading") {
                 return
             }
 
-            // ? if authenticated, 
-            // ! remove loader
-            // !!!!!!!!!!!!!!!
-            // populate page
-            controller.populatePage();
-
         })
+
 }
-
-// // document.addEventListener("DOMContentLoaded", controller.checkAuth());
-
-
-//**** On Page Load Event listners ****//
-
-// this function builds the task list and fills in the admin details
-document.addEventListener('DOMContentLoaded', e => {
-
-})
 
 
 //**** Modal Event listners ****//

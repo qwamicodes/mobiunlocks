@@ -354,7 +354,7 @@ export const expireLogin = (email) => {
         <p class="alert__bottom">Session Expired</p>
         <div class="login__group">
           <label for="login-email">Email</label>
-          <input type="email" name="email" id="login-email" value="${email}" required readonly>
+          <input type="email" name="email" id="login-email" value="${email}" disabled>
         </div>
         <div class="login__group">
           <label for="login-password">Password</label>
@@ -397,6 +397,12 @@ export const showLoader = () => {
 
   document.querySelector(elements.loaderContainer).insertAdjacentHTML('beforeend', html);
 };
+
+//function to show the loader
+export const hideLoader = () => {
+  document.querySelector(elements.loaderContainer).classList.remove('loader-show');
+  
+}
 
 //function to hide the modal
 export const hideModal = () => {
