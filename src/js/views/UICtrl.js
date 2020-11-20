@@ -346,15 +346,15 @@ export const showModal = (task, page = 'dashboard') => {
 };
 
 //function to display the session expire login on the dasboard
-export const expireLogin = () => {
+export const expireLogin = (email) => {
   document.querySelector(elements.modalLogin).classList.add('modal-show');
 
   let html = `
       <form method="POST" id="auth__expiry-login-form" class="login__container login-expire">
-        <p class="">Session Expired</p>
+        <p class="alert__bottom">Session Expired</p>
         <div class="login__group">
           <label for="login-email">Email</label>
-          <input type="email" name="email" id="login-email" required>
+          <input type="email" name="email" id="login-email" value="${email}" required readonly>
         </div>
         <div class="login__group">
           <label for="login-password">Password</label>
@@ -363,6 +363,7 @@ export const expireLogin = () => {
         <div class="login__group">
           <button class="btn btn-checkout">Sign in</button>
         </div>
+        <a class="alert__bottom" href="./login.html">Login with a different account</a>
       </form>
   `;
 

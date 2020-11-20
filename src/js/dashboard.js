@@ -15,7 +15,7 @@ if (document.readyState === "loading") {
                 // if refresh token is present but exprired
                 if (auth.refreshPresent){
                     // show modal and add its event listener
-                    UICtrl.expireLogin();
+                    UICtrl.expireLogin(controller.parseJWT(controller.getCookie('mbt_ref_txn')).user_email);
                     document.querySelector(elements.authExpiryLoginForm).addEventListener('submit', controller.redoLoginAndPopulatePage)
                 } else {
                     // if refresh token is not present at all

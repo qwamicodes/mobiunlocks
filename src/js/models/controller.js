@@ -12,13 +12,13 @@ export const Data = {
 }
 
 // function to get cookie by name
-const getCookie = cookieName => {
+export const getCookie = cookieName => {
     var match = document.cookie.match(new RegExp('(^| )' + cookieName + '=([^;]+)'));
     if (match) return match[2];
 }
 
 // parse a JWT to get payload as object
-const parseJWT = token => {
+export const parseJWT = token => {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace('-', '+').replace('_', '/');
     return JSON.parse(atob(base64));
