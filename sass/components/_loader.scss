@@ -1,0 +1,92 @@
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4rem;
+  height: 4rem;
+  transform: translate(-20px, -20px) scale(0.25) translate(20px, 20px);
+
+  &-container {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(1px);
+  }
+
+  &-show {
+    display: block;
+  }
+
+  & div {
+    position: absolute;
+    top: 9rem;
+    left: 3rem;
+    width: 10px;
+    height: 25px;
+    background: $color-grey-light;
+    border-radius: 40%;
+    transform-origin: 5px 65px;
+    animation: loaderSpin linear 1s infinite alternate;
+
+    &:nth-child(1) {
+      transform: rotate(0deg);
+      animation-delay: -0.22s;
+    }
+
+    &:nth-child(2) {
+      transform: rotate(30deg);
+      animation-delay: -0.14s;
+    }
+
+    &:nth-child(3) {
+      transform: rotate(60deg);
+      animation-delay: 0.02s;
+    }
+
+    &:nth-child(4) {
+      transform: rotate(90deg);
+      animation-delay: 0.1s;
+    }
+
+    &:nth-child(5) {
+      transform: rotate(120deg);
+      animation-delay: 0.18s;
+    }
+
+    &:nth-child(6) {
+      transform: rotate(150deg);
+      animation-delay: 0.23s;
+    }
+
+    &:nth-child(7) {
+      transform: rotate(180deg);
+      animation-delay: 0.3s;
+    }
+
+    &:nth-child(8) {
+      transform: rotate(210deg);
+      animation-delay: 0.38s;
+    }
+
+    &:nth-child(9) {
+      transform: rotate(240deg);
+      animation-delay: 0.42s;
+    }
+
+    &:nth-child(10) {
+      transform: rotate(270deg);
+      animation-delay: 0.49s;
+    }
+
+    &:nth-child(11) {
+      transform: rotate(300deg);
+      animation-delay: 0.54s;
+    }
+
+    &:nth-child(12) {
+      transform: rotate(330deg);
+      animation-delay: 0.6s;
+    }
+  }
+}

@@ -33,6 +33,7 @@
   paymentItems: '.payment__items',
   paymentBtn: '#payment-checkout',
   modal: '.modal-container',
+  modalLogin: '.modal-login',
   modalClose: '.modal-close',
   modalCopy: '.modal-copy',
   modalCopier: '.modal-copier',
@@ -50,4 +51,5 @@
   dashboardLoginForm: '#dashboard-login-form',
   adminUsername: '#admin-username',
   adminAvatarImage: '#admin-avatar',
+  loaderContainer: '.loader-container',
 };

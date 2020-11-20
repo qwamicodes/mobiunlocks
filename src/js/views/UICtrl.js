@@ -343,7 +343,53 @@ export const showModal = (task, page = 'dashboard') => {
       document.querySelector(elements.modal).innerHTML = html;
     };
   }
+};
 
+//function to display the session expire login on the dasboard
+export const expireLogin = () => {
+  document.querySelector(elements.modalLogin).classList.add('modal-show');
+
+  let html = `
+      <form method="POST" id="dashboard-login" class="login__container login-expire">
+        <div class="login__group">
+          <label for="login-email">Email</label>
+          <input type="email" name="email" id="login-email" required>
+        </div>
+        <div class="login__group">
+          <label for="login-password">Password</label>
+          <input type="password" name="password" id="login-password" required>
+        </div>
+        <div class="login__group">
+          <button class="btn btn-checkout">Sign in</button>
+        </div>
+      </form>
+  `;
+
+  document.querySelector(elements.modalLogin).insertAdjacentHTML('beforeend', html);
+};
+
+//function to show the loader
+export const showLoader = () => {
+  document.querySelector(elements.loaderContainer).classList.add('loader-show');
+
+  let html = `
+    <div class="loader" id="loader">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  `;
+
+  document.querySelector(elements.loaderContainer).insertAdjacentHTML('beforeend', html);
 };
 
 //function to hide the modal
