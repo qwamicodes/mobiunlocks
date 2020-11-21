@@ -617,9 +617,8 @@ export const redoLoginAndPopulatePage = e => {
     const password = e.target.elements.password.value;
 
     api.performLogin(email, password)
-        .then((refreshToken) => {
+        .then(() => {
             // notify admin of authentication success via popup alert
-            document.cookie = `mbt_ref_txn=${refreshToken}; path=/`;
             UICtrl.popupAlert('Authentication Success', 'success', 10000);
 
             // reset form
