@@ -2,7 +2,7 @@ import * as UICtrl from '../views/UICtrl';
 import { elements } from '../views/base';
 import { Payment } from './payment';
 // import { testStoreDetails } from "../api"; // !! uncomment when testing task detail storage
-import { getAllTasks, updateIMEICheckTask, updateICloudUnlockTask, updateCarrierUnlockTask, getAdminDetails, performLogin } from "../api";
+import * as api from "../api";
 
 
 // this object stores payment data and task details for a task which a user has requested  
@@ -413,7 +413,7 @@ export const setAdminDetailsOnDashboard = () => {
     const authUserEmail = parseJWT(ref_txn).user_email;
 
     // make API call to get admin details and set them on dashboard
-    getAdminDetails(authUserEmail)
+    api.getAdminDetails(authUserEmail)
         .then(adminDetails => {
             document.querySelector(elements.adminUsername).innerText = adminDetails.username;
             document.querySelector(elements.adminAvatarImage).src = adminDetails.user_avatar;
@@ -431,7 +431,7 @@ export const listTasksOnDashboard = () => {
     allTasksListElement.innerHTML = "";
 
     // ? get AllTasks
-    getAllTasks()
+    api.getAllTasks()
         .then(tasks => {
             allTasksListElement.innerHTML = "";
             // TODO listing tasks in dashboard
@@ -524,7 +524,7 @@ export const updateTaskDetails = async e => {
 
     switch (task_type) {
         case "icloud unlocking":
-            updateICloudUnlockTask(trackingID, formData)
+            api.updateICloudUnlockTask(trackingID, formData)
                 .then(async () => {
                     // hide modal and repopulate page
                     UICtrl.hideModal();
@@ -534,7 +534,7 @@ export const updateTaskDetails = async e => {
             break;
 
         case "carrier unlocking":
-            updateCarrierUnlockTask(trackingID, formData)
+            api.updateCarrierUnlockTask(trackingID, formData)
                 .then(async () => {
                     // hide modal and repopulate page
                     UICtrl.hideModal();
@@ -544,7 +544,7 @@ export const updateTaskDetails = async e => {
             break;
 
         case "imei checking":
-            updateIMEICheckTask(trackingID, formData)
+            api.updateIMEICheckTask(trackingID, formData)
                 .then(async () => {
                     // hide modal and repopulate page
                     UICtrl.hideModal();
@@ -616,7 +616,7 @@ export const redoLoginAndPopulatePage = e => {
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
 
-    performLogin(email, password)
+    api.performLogin(email, password)
         .then((refreshToken) => {
             // notify admin of authentication success via popup alert
             document.cookie = `mbt_ref_txn=${refreshToken}; path=/`;
@@ -635,6 +635,17 @@ export const redoLoginAndPopulatePage = e => {
     UICtrl.hideLoader();
 }
 
+// logout function
+export const logout = e => {
+    UICtrl.showLoader();
 
+    api.performLogout()
+        .then(() => {
+            UICtrl.hideLoader();
+            // redirect to login page
+            location.href = './login.html'
+        })
+        .catch(error => UICtrl.popupAlert(error))
+}
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END AUTHENTICATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

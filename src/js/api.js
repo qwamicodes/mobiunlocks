@@ -392,16 +392,12 @@ export const performLogin = async (email, password) => {
         })
             .then(async response => {
                 if (response.ok) {
-                    return await response.json();
+                    resolve(); // resolve the login response
                 } else if (response.status === 401) {
                     reject("Invalid Login Credentials");
                 } else {
                     reject(`Internal Server Error<br>${response.status}: ${response.statusText}<br><br>Kindly contact developer team`);
                 }
-            })
-            .then(response => {
-                const refreshToken = response['refresh']; //store refresh token in variable
-                resolve(refreshToken); // resolve the login response
             })
             .catch(error => reject(`Internal Server Error<br>${error}<br><br>Kindly contact developer team`))
     })
@@ -430,3 +426,25 @@ export const refreshToken = async refreshToken => {
 
 }
 
+export const performLogout = async () => {
+
+    const logoutEndpoint = `${baseBackendAPIURL}/auth/logout/`;
+
+    return new Promise((resolve, reject) => {
+
+        fetch(logoutEndpoint, {
+            credentials: 'include',
+            method: 'GET'
+        })
+            .then(async response => {
+                if (response.ok) {
+                    resolve();
+                } else {
+                    reject();
+                }
+            })
+            .catch(error => reject(`Internal Server Error<br>${error}<br><br>Kindly contact developer team`))
+
+    })
+
+}

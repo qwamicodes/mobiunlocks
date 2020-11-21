@@ -53,4 +53,5 @@
   adminUsername: '#admin-username',
   adminAvatarImage: '#admin-avatar',
   loaderContainer: '.loader-container',
+  dashboardLogoutBtn: '#dashboard-logout-button',
 };

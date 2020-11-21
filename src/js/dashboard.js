@@ -65,3 +65,7 @@ document.querySelectorAll(elements.taskTab).forEach(tab => {
     });
 });
 
+
+//**** Logout Event listners ****//
+
+document.querySelector(elements.dashboardLogoutBtn).addEventListener('click', controller.logout);
