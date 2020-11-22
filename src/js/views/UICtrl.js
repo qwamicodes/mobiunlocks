@@ -203,7 +203,7 @@ export const showModal = (id, type, modelName, imei, carrier, cusName, page = 'd
       `;
 
       document.querySelector(elements.modal).innerHTML = html;
-    }
+    };
   } else {
     if(type.includes('IMEI')) {
       let html = `
@@ -298,7 +298,7 @@ export const showModal = (id, type, modelName, imei, carrier, cusName, page = 'd
   
       document.querySelector(elements.modal).innerHTML = html;
     };
-  }
+  };
 };
 
 //function to display the session expire login on the dasboard
