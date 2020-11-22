@@ -250,3 +250,10 @@
     }
   }
 }
+
+.task {
+  &-updated {
+    background-color: #30fa0854;
+    transition: $transition-faster;
+  }
+}

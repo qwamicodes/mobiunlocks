@@ -15,6 +15,7 @@ document.querySelectorAll(elements.taskItem).forEach(item => {
             });
 
             controller.modalList(lists);
+            // UICtrl.listUpdater(e.target.parentElement.parentElement);
         };
     });
 });

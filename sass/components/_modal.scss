@@ -10,6 +10,10 @@
   box-shadow: $box-shadow-long;
   overflow-y: scroll;
 
+  &-large {
+    width: 45rem;
+  }
+
   @include respond(tab) {
     width: 60%;
   }

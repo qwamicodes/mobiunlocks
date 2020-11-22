@@ -125,7 +125,7 @@ export const showModal = (id, type, modelName, imei, carrier, cusName, page = 'd
   if(page === 'tracking') {
     if(type.includes('IMEI')) {
       let html = `
-          <div class="modal">
+          <div class="modal modal-large">
             <div class="modal__preview">
             <div class="modal-svg modal-close">
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
@@ -181,7 +181,7 @@ export const showModal = (id, type, modelName, imei, carrier, cusName, page = 'd
       document.querySelector(elements.modal).innerHTML = html;
     } else {
       let html = `
-          <div class="modal">
+          <div class="modal modal-large">
             <div class="modal__preview">
             <div class="modal-svg modal-close">
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
@@ -365,4 +365,13 @@ export const removeList = lists => {
 //function to collapse the nav bar
 export const collapseNav = () => {
   document.querySelector(elements.navInput).checked = false;
+}
+
+//function to add the animation to the updated lists
+export const listUpdater = list => {
+  list.classList.add('task-updated');
+
+  setTimeout(() => {
+    list.classList.remove('task-updated');
+  }, 1500);
 }
