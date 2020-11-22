@@ -422,7 +422,7 @@ export const setAdminDetailsOnDashboard = () => {
 }
 
 // function to list all tasks on dashboard
-export const listTasksOnDashboard = () => {
+export const listTasksOnDashboard = async () => {
 
     // HTML <ul> Element for holding individual <li> elements for each task 
     let allTasksListElement = document.querySelector(elements.allTasksListElement);
@@ -431,7 +431,7 @@ export const listTasksOnDashboard = () => {
     allTasksListElement.innerHTML = "";
 
     // ? get AllTasks
-    api.getAllTasks()
+    await api.getAllTasks()
         .then(tasks => {
             allTasksListElement.innerHTML = "";
             // TODO listing tasks in dashboard
@@ -439,7 +439,7 @@ export const listTasksOnDashboard = () => {
             tasks.forEach(task => {
                 // creating individual HTML elements for each task, populating it with data from the database
                 let singleTask = document.createElement("li");
-                singleTask.id = `#${task.tracking_id}`
+                singleTask.id = `task_${task.tracking_id}`
                 singleTask.classList.add("dashboard__tasks--value-li");
                 singleTask.innerHTML =
                     `
@@ -505,6 +505,17 @@ const countCompletedTasks = tasksList => {
     return counter;
 }
 
+// function to briefly highlight an updated tasks HTML
+const briefHighlight = el => {
+    const initialBackgroundColor = el.style.backgroundColor;
+    el.style.backgroundColor = '#e7f65bcf';
+
+    setTimeout(() => {
+        el.style.backgroundColor = initialBackgroundColor;
+    }, 2000);
+
+}
+
 // * event handler for sending dashboard-updated task details to DB 
 export const updateTaskDetails = async e => {
     e.preventDefault();
@@ -513,7 +524,7 @@ export const updateTaskDetails = async e => {
     const trackingID = e.target.querySelector('span[data-task_property="tracking_id"]').innerText.slice(1);
     const imei = e.target.querySelector('span[data-task_property="imei"]').innerText;
     const completed = e.target.elements.status.value === "completed" ? true : false;
-    const task_type = e.target.querySelector('span[data-task_property="task_type"]').innerText.toLowerCase();
+    const taskType = e.target.querySelector('span[data-task_property="task_type"]').innerText.toLowerCase();
     const results = e.target.elements.results.value
 
     // append details to FormData
@@ -522,14 +533,25 @@ export const updateTaskDetails = async e => {
     formData.append('imei', imei);
     formData.append('results', results);
 
-    switch (task_type) {
+    // task status after edit
+    const taskStatus = e.target.elements.status.value;
+    // HTML element for the tab that corresponds with the task status
+    const correspondingTabElement = document.querySelector(`${elements.taskTab}[data-value="${taskStatus}"]`);
+
+
+    switch (taskType) {
         case "icloud unlocking":
             api.updateICloudUnlockTask(trackingID, formData)
                 .then(async () => {
                     // hide modal and repopulate page
                     UICtrl.hideModal();
-                    // await new Promise(resolve => setTimeout(resolve, 5000));
-                    listTasksOnDashboard();
+                    await listTasksOnDashboard();
+                    // switch tabs
+                    filterList(correspondingTabElement);
+                    // HTML element for the task 
+                    const taskHTMLElement = document.getElementById(`task_${trackingID}`);
+                    // highlight updated task
+                    briefHighlight(taskHTMLElement);
                 })
             break;
 
@@ -538,8 +560,13 @@ export const updateTaskDetails = async e => {
                 .then(async () => {
                     // hide modal and repopulate page
                     UICtrl.hideModal();
-                    // await new Promise(resolve => setTimeout(resolve, 5000));
-                    listTasksOnDashboard();
+                    await listTasksOnDashboard();
+                    // switch tabs
+                    filterList(correspondingTabElement);
+                    // HTML element for the task 
+                    const taskHTMLElement = document.getElementById(`task_${trackingID}`);
+                    // highlight updated task
+                    briefHighlight(taskHTMLElement);
                 })
             break;
 
@@ -548,13 +575,16 @@ export const updateTaskDetails = async e => {
                 .then(async () => {
                     // hide modal and repopulate page
                     UICtrl.hideModal();
-                    // await new Promise(resolve => setTimeout(resolve, 5000));
-                    listTasksOnDashboard();
+                    await listTasksOnDashboard();
+                    // switch tabs
+                    filterList(correspondingTabElement);
+                    // HTML element for the task 
+                    const taskHTMLElement = document.getElementById(`task_${trackingID}`);
+                    // highlight updated task
+                    briefHighlight(taskHTMLElement);
                 })
             break;
     }
-
-
 
 }
 
@@ -619,7 +649,7 @@ export const redoLoginAndPopulatePage = e => {
     api.performLogin(email, password)
         .then(() => {
             // notify admin of authentication success via popup alert
-            UICtrl.popupAlert('Authentication Success', 'success', 10000);
+            UICtrl.popupAlert('Authentication Success', 'success');
 
             // reset form
             e.target.reset();
