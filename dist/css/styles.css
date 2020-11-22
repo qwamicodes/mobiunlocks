@@ -1440,7 +1440,8 @@ g {
       grid-area: 2 / 1 / 3 / 2;
       width: 100%;
       justify-content: center;
-      align-items: flex-end; }
+      align-items: center;
+      border-bottom: 3px solid #a1a1a1; }
       .dashboard__tasks--title ul {
         width: 95%;
         margin: 0 auto; }

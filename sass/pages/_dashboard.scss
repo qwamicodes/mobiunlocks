@@ -156,8 +156,9 @@
       width: 100%;
       @extend %df;
       justify-content: center;
-      align-items: flex-end;
-
+      align-items: center;
+      border-bottom: 3px solid $color-grey-light;
+      
       ul {
         width: 95%;
         margin: 0 auto;
