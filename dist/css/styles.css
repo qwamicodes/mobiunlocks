@@ -699,6 +699,8 @@ select {
   height: auto;
   box-shadow: 0 2px 1px rgba(161, 161, 161, 0.07), 0 4px 2px rgba(161, 161, 161, 0.07), 0 8px 4px rgba(161, 161, 161, 0.07), 0 16px 8px rgba(161, 161, 161, 0.07), 0 32px 16px rgba(161, 161, 161, 0.07);
   overflow-y: scroll; }
+  .modal-large {
+    width: 45rem; }
   @media only screen and (max-width: 56.25em) {
     .modal {
       width: 60%; } }
@@ -1461,7 +1463,8 @@ g {
         margin: 0 auto; }
       .dashboard__tasks--value-li {
         padding: 1.5rem 0;
-        border-bottom: 1px solid rgba(102, 102, 102, 0.47); }
+        border-bottom: 1px solid rgba(102, 102, 102, 0.47);
+        transition: all 0.5s cubic-bezier(0.21, 0.45, 0.83, 0.67); }
       .dashboard__tasks--value-heading {
         width: 80%;
         grid-template-columns: 15% 15% 15% 25% 20% 10%;
@@ -1499,6 +1502,12 @@ g {
     .dashboard__tab-active {
       background-color: #3c435a;
       color: #fff; }
+
+.task-updated-pending {
+  background-color: #f6af0063; }
+
+.task-updated-completed {
+  background-color: #2dff0057; }
 
 section {
   padding-top: 5rem;

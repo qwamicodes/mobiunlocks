@@ -191,6 +191,7 @@
       &-li {
         padding: 1.5rem 0;
         border-bottom: 1px solid rgba($color-grey, 0.47);
+        transition: $transition-faster;
       }
 
       &-heading {
@@ -248,6 +249,17 @@
     &-active {
       background-color: $accent-color;
       color: $color-white;
+    }
+  }
+}
+
+.task {
+  &-updated {
+    &-pending{
+      background-color: #f6af0063;
+    }
+    &-completed{
+      background-color: #2dff0057;
     }
   }
 }

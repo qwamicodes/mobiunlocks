@@ -505,17 +505,6 @@ const countCompletedTasks = tasksList => {
     return counter;
 }
 
-// function to briefly highlight an updated tasks HTML
-const briefHighlight = el => {
-    const initialBackgroundColor = el.style.backgroundColor;
-    el.style.backgroundColor = '#e7f65bcf';
-
-    setTimeout(() => {
-        el.style.backgroundColor = initialBackgroundColor;
-    }, 2000);
-
-}
-
 // * event handler for sending dashboard-updated task details to DB 
 export const updateTaskDetails = async e => {
     e.preventDefault();
@@ -550,8 +539,10 @@ export const updateTaskDetails = async e => {
                     filterList(correspondingTabElement);
                     // HTML element for the task 
                     const taskHTMLElement = document.getElementById(`task_${trackingID}`);
+                    // scroll element into view
+                    taskHTMLElement.scrollIntoView(true);
                     // highlight updated task
-                    briefHighlight(taskHTMLElement);
+                    UICtrl.highlightUpdatedTask(taskHTMLElement, taskStatus);
                 })
             break;
 
@@ -565,8 +556,10 @@ export const updateTaskDetails = async e => {
                     filterList(correspondingTabElement);
                     // HTML element for the task 
                     const taskHTMLElement = document.getElementById(`task_${trackingID}`);
+                    // scroll element into view
+                    taskHTMLElement.scrollIntoView(true);
                     // highlight updated task
-                    briefHighlight(taskHTMLElement);
+                    UICtrl.highlightUpdatedTask(taskHTMLElement, taskStatus);
                 })
             break;
 
@@ -580,8 +573,10 @@ export const updateTaskDetails = async e => {
                     filterList(correspondingTabElement);
                     // HTML element for the task 
                     const taskHTMLElement = document.getElementById(`task_${trackingID}`);
+                    // scroll element into view
+                    taskHTMLElement.scrollIntoView(true);
                     // highlight updated task
-                    briefHighlight(taskHTMLElement);
+                    UICtrl.highlightUpdatedTask(taskHTMLElement, taskStatus);
                 })
             break;
     }

@@ -149,7 +149,7 @@ export const showModal = (task, page = 'dashboard') => {
     // ? if result is for IMEI Checking task
     else if (task.task_type === 'IMEI Checking') {
       let html = `
-          <div class="modal">
+          <div class="modal modal-large">
             <div class="modal__preview">
             <div class="modal-svg modal-close">
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
@@ -342,7 +342,7 @@ export const showModal = (task, page = 'dashboard') => {
 
       document.querySelector(elements.modal).innerHTML = html;
     };
-  }
+  };
 };
 
 //function to display the session expire login on the dasboard
@@ -398,7 +398,7 @@ export const showLoader = () => {
   document.querySelector(elements.loaderContainer).insertAdjacentHTML('beforeend', html);
 };
 
-//function to show the loader
+//function to hide the loader
 export const hideLoader = () => {
   document.querySelector(elements.loaderContainer).classList.remove('loader-show');
   
@@ -421,4 +421,14 @@ export const removeList = lists => {
 //function to collapse the nav bar
 export const collapseNav = () => {
   document.querySelector(elements.navInput).checked = false;
+}
+
+//function to add the animation to the updated lists
+export const highlightUpdatedTask = (taskHTMLElement, status) => {
+  
+  taskHTMLElement.classList.add(`task-updated-${status}`);
+
+  setTimeout(() => {
+    taskHTMLElement.classList.remove(`task-updated-${status}`);
+  }, 1500);
 }
