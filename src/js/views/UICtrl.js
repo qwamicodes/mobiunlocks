@@ -119,7 +119,7 @@ export const addTask = (id, type, modelName, imei, carrier, status = 'pending') 
 };
 
 //function template for the modal popup
-export const showModal = (task, page = 'dashboard') => {
+export const showModal = (task, page) => {
   document.querySelector(elements.modal).classList.add('modal-show');
 
   // TODO display search results modal for tracking page
@@ -160,8 +160,8 @@ export const showModal = (task, page = 'dashboard') => {
                 <li>
                     <div class="modal__preview--info">
                           Tracking ID:<br> <span>${task.tracking_id}</span> <br>
-                          Customer:<br> <span>${task.customer_name} - ${task.customer_email}</span> <br>
                           Service Type:<br> <span>${task.task_type}</span> <br>
+                          Customer:<br> <span>${task.customer_name} - ${task.customer_email}</span> <br>
                           Request Date:<br> <span>${task.request_date}</span> <br>
                           Checking Details:<br> <span>${task.details}</span> <br>
                           Status:<br> <span data-type="${task.completed ? "completed" : "pending"}">${task.completed ? "completed" : "pending"}</span>
@@ -195,8 +195,8 @@ export const showModal = (task, page = 'dashboard') => {
           <li>
               <div class="modal__preview--info">
                     Tracking ID:<br> <span>${task.tracking_id}</span> <br>
-                    Customer:<br> <span>${task.customer_name} - ${task.customer_email}</span> <br>
                     Service Type:<br> <span>${task.task_type}</span> <br>
+                    Customer:<br> <span>${task.customer_name} - ${task.customer_email}</span> <br>
                     Request Date:<br> <span>${task.request_date}</span> <br>
                     Phone Model:<br> <span>${task.phone_model}</span> <br>
                     Status:<br> <span data-type="${task.completed ? "completed" : "pending"}">${task.completed ? "completed" : "pending"}</span>
@@ -224,8 +224,8 @@ export const showModal = (task, page = 'dashboard') => {
           <li>
               <div class="modal__preview--info">
                     Tracking ID:<br> <span>${task.tracking_id}</span> <br>
-                    Customer:<br> <span>${task.customer_name} - ${task.customer_email}</span> <br>
                     Service Type:<br> <span>${task.task_type}</span> <br>
+                    Customer:<br> <span>${task.customer_name} - ${task.customer_email}</span> <br>
                     Request Date:<br> <span>${task.request_date}</span> <br>
                     Phone Model:<br> <span>${task.phone_model}</span> <br>
                     Carrier Network:<br> <span>${task.phone_carrier_network}</span> <br>
@@ -243,7 +243,7 @@ export const showModal = (task, page = 'dashboard') => {
   }
 
   // TODO display modals for individual tasks in dashboard
-  else {
+  else if (page === 'dashboard') {
     // ? modal for IMEI Checking task detail
     if (task.task_type === 'IMEI Checking') {
       let html = `
@@ -342,7 +342,28 @@ export const showModal = (task, page = 'dashboard') => {
 
       document.querySelector(elements.modal).innerHTML = html;
     };
-  };
+  }
+
+  else if (page === 'home') {
+    let html = `
+            <div class="modal">
+              <div class="modal__preview">
+                <div class="modal-svg modal-close">
+                  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+                    <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M368 368L144 144M368 144L144 368'/>
+                  </svg>
+                </div>
+                <ul>
+                  <li>
+                    <div class="modal__preview--info">Payment Success! Your order has been placed successfully. Your tracking ID is <span>${task.tracking_id}</span>. Keep it well</div>
+                  </li>
+                </ul>
+              </div> 
+            </div>
+        `;
+    document.querySelector(elements.modal).innerHTML = html;
+
+  }
 };
 
 //function to display the session expire login on the dasboard
@@ -401,7 +422,7 @@ export const showLoader = () => {
 //function to hide the loader
 export const hideLoader = () => {
   document.querySelector(elements.loaderContainer).classList.remove('loader-show');
-  
+
 }
 
 //function to hide the modal
@@ -425,7 +446,7 @@ export const collapseNav = () => {
 
 //function to add the animation to the updated lists
 export const highlightUpdatedTask = (taskHTMLElement, status) => {
-  
+
   taskHTMLElement.classList.add(`task-updated-${status}`);
 
   setTimeout(() => {

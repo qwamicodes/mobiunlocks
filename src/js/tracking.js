@@ -38,9 +38,10 @@ document.querySelector(elements.trackingForm).addEventListener('submit', e => {
 
 document.querySelector(elements.modal).addEventListener('click', (e) => {
     //Event listner to hide the modal 
-    if (e.target.classList.contains('modal-show')) {
-        UICtrl.hideModal();
-    } else if (e.target.closest(elements.modalClose)) {
+    // // if (e.target.classList.contains('modal-show')) {
+    // //     UICtrl.hideModal();
+    // // } else 
+    if (e.target.closest(elements.modalClose)) {
         UICtrl.hideModal();
     };
 });

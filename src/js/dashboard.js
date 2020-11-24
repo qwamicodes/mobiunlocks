@@ -57,8 +57,8 @@ if (document.readyState === "loading") {
 //     });
 // });
 
+//Event listner to hide the modal 
 document.querySelector(elements.modal).addEventListener('click', (e) => {
-    //Event listner to hide the modal 
     if (e.target.classList.contains('modal-show')) {
         UICtrl.hideModal();
     } else if (e.target.closest(elements.modalClose)) {

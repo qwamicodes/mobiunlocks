@@ -1,7 +1,6 @@
 import * as UICtrl from '../views/UICtrl';
 import { elements } from '../views/base';
 import { Payment } from './payment';
-// import { testStoreDetails } from "../api"; // !! uncomment when testing task detail storage
 import * as api from "../api";
 
 
@@ -328,12 +327,18 @@ export const preparePayment = (fullname, email, amount) => {
 
     //parsing the details into the payment class
     // ! When testing without payments, comment this line below and
-    new Payment(email, amount, firstName, lastName).storeInv().makePayment();
+    // new Payment(email, amount, firstName, lastName).storeInv().makePayment();
 
     // ! When testing without payments, uncomment these two lines below
-    // new Payment(email, amount, firstName, lastName).storeInv();
-    // testStoreDetails(Data.taskDetail);
-
+    new Payment(email, amount, firstName, lastName).storeInv();
+    UICtrl.showLoader();
+    api.testStoreDetails(Data.taskDetail)
+        .then(taskDetails => {
+            UICtrl.hideLoader();
+            UICtrl.showModal(taskDetails, 'home');
+            console.log(taskDetails);
+        })
+    .catch(error => UICtrl.popupAlert(error))
 };
 
 //Function to copy the text from the UI
@@ -463,7 +468,7 @@ export const listTasksOnDashboard = async () => {
                 Array.prototype.slice.call(singleTask.getElementsByTagName("li")).forEach(item => {
                     item.addEventListener('click', e => {
                         // create modal out of task object
-                        UICtrl.showModal(task);
+                        UICtrl.showModal(task, 'dashboard');
 
                         // add event listener to submit modal form
                         document.querySelector(elements.taskDetailModalForm).addEventListener('submit', updateTaskDetails);

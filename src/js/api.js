@@ -20,7 +20,7 @@ const getCookie = cookieName => {
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TASK OPERATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // !! TESTING send requests to API endpoints to create tasks in DB depending on task type
-export const testStoreDetails = taskDetails => {
+export const testStoreDetails = async taskDetails => {
     let paymentDetails = {
         "customer_name": "Jay",
         "customer_email": "jay@lasdf.com",
@@ -28,27 +28,38 @@ export const testStoreDetails = taskDetails => {
         "payment_reference": Math.trunc(Math.random() * 1025731264223)
     };
 
-    switch (taskDetails.taskType) {
-        // IMEI Checking task
+    return new Promise((resolve, reject) => {
+       
+        switch (taskDetails.taskType) {
+            // IMEI Checking task
+    
+            case "imei":
+                submitIMEICheckTask(paymentDetails, taskDetails)
+                .then(data => resolve(data))
+                .catch(error => reject(error))
+                break;
+    
+            // Carrier Unlocking task
+            case "carrier":
+                submitCarrierUnlockTask(paymentDetails, taskDetails)
+                .then(data => resolve(data))
+                .catch(error => reject(error))
+                break;
+    
+            // ICloud Unlocking task
+            case "unlocking":
+                submitICloudUnlockTask(paymentDetails, taskDetails)
+                .then(data => resolve(data))
+                .catch(error => reject(error))
+                break;
+    
+            default:
+                alert('error with task type');
+                break;
+        }
 
-        case "imei":
-            submitIMEICheckTask(paymentDetails, taskDetails);
-            break;
+    })
 
-        // Carrier Unlocking task
-        case "carrier":
-            submitCarrierUnlockTask(paymentDetails, taskDetails);
-            break;
-
-        // ICloud Unlocking task
-        case "unlocking":
-            submitICloudUnlockTask(paymentDetails, taskDetails);
-            break;
-
-        default:
-            alert('error with task type');
-            break;
-    }
 
 };
 // !! 
@@ -63,116 +74,132 @@ export const confirmPayAndStoreDetails = (paymentReference, taskDetails) => {
 
     const confirmPaymentEndpoint = `${baseBackendAPIURL}/payments/confirm/?reference=${paymentReference}`;
 
-    fetch(confirmPaymentEndpoint, {
-        method: 'GET',
-        credentials: 'include',
-    })
-        .then(async response => {
-            // JSON that contains response from payment confirmation,
-            // includes payment customer details too
-            const paymentData = await response.json();
-            // if payment was made, then
-            if (paymentData.payment_made === true) {
-                // send requests to API endpoints to create tasks in DB depending on task type
-                switch (taskDetails.taskType) {
-                    // IMEI Checking task
-                    case "imei":
-                        submitIMEICheckTask(paymentData.payment_info, taskDetails);
-                        break;
-
-                    // Carrier Unlocking task
-                    case "carrier":
-                        submitCarrierUnlockTask(paymentData.payment_info, taskDetails);
-                        break;
-
-                    // ICloud Unlocking task
-                    case "unlocking":
-                        submitICloudUnlockTask(paymentData.payment_info, taskDetails);
-                        break;
-
-                    default:
-                        alert('error with task type');
-                        break;
-                }
-            } else {
-                alert('payment was not made')
-            }
+    return new Promise((resolve, reject) => {
+        fetch(confirmPaymentEndpoint, {
+            method: 'GET',
+            credentials: 'include',
         })
+            .then(async response => {
+                // JSON that contains response from payment confirmation,
+                // includes payment customer details too
+                const paymentData = await response.json();
+                // if payment was made, then
+                if (paymentData.payment_made === true) {
+                    // send requests to API endpoints to create tasks in DB depending on task type
+                    switch (taskDetails.taskType) {
+                        // IMEI Checking task
+                        case "imei":
+                            submitIMEICheckTask(paymentData.payment_info, taskDetails);
+                            break;
+
+                        // Carrier Unlocking task
+                        case "carrier":
+                            submitCarrierUnlockTask(paymentData.payment_info, taskDetails);
+                            break;
+
+                        // ICloud Unlocking task
+                        case "unlocking":
+                            submitICloudUnlockTask(paymentData.payment_info, taskDetails);
+                            break;
+
+                        default:
+                            alert('error with task type');
+                            break;
+                    }
+                } else {
+                    reject('payment was not made');
+                }
+            })
+            .catch(error => reject(error))
+
+    })
 };
 
 // TODO send carrier unlock task to database
 const submitCarrierUnlockTask = (paymentDetails, taskDetails) => {
     const carrierUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/carrier/`;
 
-    fetch(carrierUnlockTaskEndpoint, {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            ...taskDetails,
-            ...paymentDetails,
-        }),
-    })
-        .then(async response => {
-            if (response.ok) {
-                const data = await response.json();
-                console.log(data);
-            } else {
-                console.log(response)
-            }
+    return new Promise((resolve, reject) => {
+
+        fetch(carrierUnlockTaskEndpoint, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                ...taskDetails,
+                ...paymentDetails,
+            }),
         })
+            .then(async response => {
+                if (response.ok) {
+                    const data = await response.json();
+                    resolve(data);
+                } else {
+                    reject("error creating task")
+                }
+            })
+            .catch(error => reject(error))
+    })
 }
 
 // TODO send icloud unlock task to database
 const submitICloudUnlockTask = (paymentDetails, taskDetails) => {
     const icloudUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/icloud/`;
 
-    fetch(icloudUnlockTaskEndpoint, {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            ...taskDetails,
-            ...paymentDetails,
-        }),
-    })
-        .then(async response => {
-            if (response.ok) {
-                const data = await response.json();
-                console.log(data);
-            } else {
-                console.log(response)
-            }
+    return new Promise((resolve, reject) => {
+
+        fetch(icloudUnlockTaskEndpoint, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                ...taskDetails,
+                ...paymentDetails,
+            }),
         })
+            .then(async response => {
+                if (response.ok) {
+                    const data = await response.json();
+                    resolve(data);
+                } else {
+                    reject("error creating task")
+                }
+            })
+            .catch(error => reject(error))
+    })
 }
 
 // TODO send imei checking task to database
 const submitIMEICheckTask = (paymentDetails, taskDetails) => {
     const imeiCheckTaskEndpoint = `${baseBackendAPIURL}/tasks/imei/`;
 
-    fetch(imeiCheckTaskEndpoint, {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            ...taskDetails,
-            ...paymentDetails,
-        }),
-    })
-        .then(async response => {
-            if (response.ok) {
-                const data = await response.json();
-                console.log(data);
-            } else {
-                console.log(response)
-            }
+    return new Promise((resolve, reject) => {
+
+        fetch(imeiCheckTaskEndpoint, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                ...taskDetails,
+                ...paymentDetails,
+            }),
         })
+            .then(async response => {
+                if (response.ok) {
+                    const data = await response.json();
+                    resolve(data);
+                } else {
+                    reject("error creating task")
+                }
+            })
+            .catch(error => reject(error))
+    })
 }
 
 

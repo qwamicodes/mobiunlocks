@@ -164,3 +164,14 @@ document.querySelector(elements.navAside).addEventListener('click', e => {
         controller.mobileNav();
     }
 });
+
+
+//Event listner to hide the modal 
+document.querySelector(elements.modal).addEventListener('click', (e) => {
+    // // if (e.target.classList.contains('modal-show')) {
+    // //     UICtrl.hideModal();
+    // // } else 
+    if (e.target.closest(elements.modalClose)) {
+        UICtrl.hideModal();
+    };
+});
