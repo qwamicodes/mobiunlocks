@@ -161,7 +161,7 @@ export const showModal = (task, page) => {
                     <div class="modal__preview--info">
                           Tracking ID:<br> <span>${task.tracking_id}</span> <br>
                           Service Type:<br> <span>${task.task_type}</span> <br>
-                          Customer:<br><span>${task.customer_name}<br>${task.customer_email}</span> <br>
+                          Customer:<br><span>${task.customer_name},<br>${task.customer_email}</span> <br>
                           Request Date:<br> <span>${task.request_date}</span> <br>
                           Checking Details:<br> <span>${task.details}</span> <br>
                           Status:<br> <span data-type="${task.completed ? "completed" : "pending"}">${task.completed ? "completed" : "pending"}</span>
@@ -196,7 +196,7 @@ export const showModal = (task, page) => {
               <div class="modal__preview--info">
                     Tracking ID:<br> <span>${task.tracking_id}</span> <br>
                     Service Type:<br> <span>${task.task_type}</span> <br>
-                    Customer:<br><span>${task.customer_name}<br>${task.customer_email}</span> <br>
+                    Customer:<br><span>${task.customer_name},<br>${task.customer_email}</span> <br>
                     Request Date:<br> <span>${task.request_date}</span> <br>
                     Phone Model:<br> <span>${task.phone_model}</span> <br>
                     Status:<br> <span data-type="${task.completed ? "completed" : "pending"}">${task.completed ? "completed" : "pending"}</span>
@@ -231,7 +231,7 @@ export const showModal = (task, page) => {
               <div class="modal__preview--info">
                     Tracking ID:<br> <span>${task.tracking_id}</span> <br>
                     Service Type:<br> <span>${task.task_type}</span> <br>
-                    Customer:<br><span>${task.customer_name}<br>${task.customer_email}</span> <br>
+                    Customer:<br><span>${task.customer_name},<br>${task.customer_email}</span> <br>
                     Request Date:<br> <span>${task.request_date}</span> <br>
                     Phone Model:<br> <span>${task.phone_model}</span> <br>
                     Carrier Network:<br> <span>${task.phone_carrier_network}</span> <br>
@@ -367,7 +367,7 @@ export const showModal = (task, page) => {
                 </div>
                 <ul>
                   <li>
-                    <div class="modal__preview--info">Payment Success! Your <span>${task.task_type}</span> order has been placed successfully. Your tracking ID is <span>${task.tracking_id}</span>. Keep it well</div>
+                    <div class="modal__preview--info">Payment Success! Your <span>${task.task_type}</span> order has been placed successfully with tracking ID: <span>${task.tracking_id}</span>. Keep it well. You can visit <a href="./public/tracking.html">the tracking page</a> to check the progress of your order.</div>
                   </li>
                 </ul>
               </div> 
