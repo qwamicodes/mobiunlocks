@@ -29,30 +29,30 @@ export const testStoreDetails = async taskDetails => {
     };
 
     return new Promise((resolve, reject) => {
-       
+
         switch (taskDetails.taskType) {
             // IMEI Checking task
-    
+
             case "imei":
                 submitIMEICheckTask(paymentDetails, taskDetails)
-                .then(data => resolve(data))
-                .catch(error => reject(error))
+                    .then(data => resolve(data))
+                    .catch(error => reject(error))
                 break;
-    
+
             // Carrier Unlocking task
             case "carrier":
                 submitCarrierUnlockTask(paymentDetails, taskDetails)
-                .then(data => resolve(data))
-                .catch(error => reject(error))
+                    .then(data => resolve(data))
+                    .catch(error => reject(error))
                 break;
-    
+
             // ICloud Unlocking task
             case "unlocking":
                 submitICloudUnlockTask(paymentDetails, taskDetails)
-                .then(data => resolve(data))
-                .catch(error => reject(error))
+                    .then(data => resolve(data))
+                    .catch(error => reject(error))
                 break;
-    
+
             default:
                 alert('error with task type');
                 break;
@@ -89,21 +89,27 @@ export const confirmPayAndStoreDetails = (paymentReference, taskDetails) => {
                     switch (taskDetails.taskType) {
                         // IMEI Checking task
                         case "imei":
-                            submitIMEICheckTask(paymentData.payment_info, taskDetails);
+                            submitIMEICheckTask(paymentData.payment_info, taskDetails)
+                                .then(data => resolve(data))
+                                .catch(error => resolve(error))
                             break;
 
                         // Carrier Unlocking task
                         case "carrier":
-                            submitCarrierUnlockTask(paymentData.payment_info, taskDetails);
+                            submitCarrierUnlockTask(paymentData.payment_info, taskDetails)
+                                .then(data => resolve(data))
+                                .catch(error => resolve(error))
                             break;
 
                         // ICloud Unlocking task
                         case "unlocking":
-                            submitICloudUnlockTask(paymentData.payment_info, taskDetails);
+                            submitICloudUnlockTask(paymentData.payment_info, taskDetails)
+                                .then(data => resolve(data))
+                                .catch(error => resolve(error))
                             break;
 
                         default:
-                            alert('error with task type');
+                            reject('error with task type');
                             break;
                     }
                 } else {
@@ -383,8 +389,8 @@ export const updateCarrierUnlockTask = async (trackingID, formData) => {
 
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ USER DETAILS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-export const getAdminDetails = async user_email => {
-    const getAdminDetailsEndpoint = `${baseBackendAPIURL}/users/${user_email}/`;
+export const getAdminDetails = async userEmail => {
+    const getAdminDetailsEndpoint = `${baseBackendAPIURL}/users/${userEmail}/`;
 
     return new Promise((resolve, reject) => {
         fetch(getAdminDetailsEndpoint, {
@@ -432,7 +438,7 @@ export const performLogin = async (email, password) => {
 }
 
 
-export const refreshToken = async refreshToken => {
+export const refreshToken = async () => {
 
     const refreshTokenEndpoint = `${baseBackendAPIURL}/auth/token/refresh/`;
 

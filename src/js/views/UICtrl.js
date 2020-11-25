@@ -161,7 +161,7 @@ export const showModal = (task, page) => {
                     <div class="modal__preview--info">
                           Tracking ID:<br> <span>${task.tracking_id}</span> <br>
                           Service Type:<br> <span>${task.task_type}</span> <br>
-                          Customer:<br> <span>${task.customer_name} - ${task.customer_email}</span> <br>
+                          Customer:<br><span>${task.customer_name}<br>${task.customer_email}</span> <br>
                           Request Date:<br> <span>${task.request_date}</span> <br>
                           Checking Details:<br> <span>${task.details}</span> <br>
                           Status:<br> <span data-type="${task.completed ? "completed" : "pending"}">${task.completed ? "completed" : "pending"}</span>
@@ -196,7 +196,7 @@ export const showModal = (task, page) => {
               <div class="modal__preview--info">
                     Tracking ID:<br> <span>${task.tracking_id}</span> <br>
                     Service Type:<br> <span>${task.task_type}</span> <br>
-                    Customer:<br> <span>${task.customer_name} - ${task.customer_email}</span> <br>
+                    Customer:<br><span>${task.customer_name}<br>${task.customer_email}</span> <br>
                     Request Date:<br> <span>${task.request_date}</span> <br>
                     Phone Model:<br> <span>${task.phone_model}</span> <br>
                     Status:<br> <span data-type="${task.completed ? "completed" : "pending"}">${task.completed ? "completed" : "pending"}</span>
@@ -225,7 +225,7 @@ export const showModal = (task, page) => {
               <div class="modal__preview--info">
                     Tracking ID:<br> <span>${task.tracking_id}</span> <br>
                     Service Type:<br> <span>${task.task_type}</span> <br>
-                    Customer:<br> <span>${task.customer_name} - ${task.customer_email}</span> <br>
+                    Customer:<br><span>${task.customer_name}<br>${task.customer_email}</span> <br>
                     Request Date:<br> <span>${task.request_date}</span> <br>
                     Phone Model:<br> <span>${task.phone_model}</span> <br>
                     Carrier Network:<br> <span>${task.phone_carrier_network}</span> <br>

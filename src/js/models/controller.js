@@ -322,23 +322,41 @@ export const preparePayment = (fullname, email, amount) => {
         };
         return firstName, lastName;
     };
-
     split(fullname);
 
-    //parsing the details into the payment class
-    // ! When testing without payments, comment this line below and
-    // new Payment(email, amount, firstName, lastName).storeInv().makePayment();
+    // ? parsing the details into the payment class
+    // ! LIVE PAYMENT
+    // create Payment Object
+    new Payment(email, amount, firstName, lastName)
+        // store payment details in invoice
+        .storeInv()
+        // make payment
+        .makePayment();
+    // ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    // ! When testing without payments, uncomment these two lines below
-    new Payment(email, amount, firstName, lastName).storeInv();
+
+
+    // ! TESTING WITHOUT PAYMENTS
+    // Create Payment Object
+    new Payment(email, amount, firstName, lastName)
+        // store payment details in invoice
+        .storeInv();
+
+    // show loader
     UICtrl.showLoader();
+    
+    // store task details without payment 
     api.testStoreDetails(Data.taskDetail)
         .then(taskDetails => {
+            // hide loader
             UICtrl.hideLoader();
+            // show modal
             UICtrl.showModal(taskDetails, 'home');
             console.log(taskDetails);
         })
-    .catch(error => UICtrl.popupAlert(error))
+        .catch(error => UICtrl.popupAlert(error))
+    // ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 };
 
 //Function to copy the text from the UI

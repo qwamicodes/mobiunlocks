@@ -40,17 +40,16 @@ export class Payment {
     this.invoiceID = invoiceParser();
     this.date = new Date().toLocaleString();
     this.email = email;
-    // this.amount = parseInt(amount, 10);
-    this.amount = parseInt(1, 10); // ! TESTING PURPOSES
     this.lastName = lastName;
     this.firstName = firstName;
+    // this.amount = parseInt(amount, 10);
+    this.amount = parseInt(1, 10); // ! TESTING PURPOSES
   }
 
   //Function to store the invoice with other neccessary infos
   storeInv() {
     // * first remove previous invoices from the Data object if any
     Data.invoices = []; // ? reset invoice
-    // console.log("cleared previous invoice data")
 
     Data.invoices.push({
       invoiceID: this.invoiceID,
@@ -63,12 +62,8 @@ export class Payment {
     return this;
   }
 
-  //Function to make payment to paystack
+  //Function to make payment to paystack and store task details in DB
   makePayment() {
-
-    console.log('Payment Class', this);
-    console.log('Invoice', Data.invoices);
-    console.log('Task Detail', Data.taskDetail);
 
     let handler = PaystackPop.setup({
       key: this.liveKey,
@@ -78,15 +73,27 @@ export class Payment {
       lastname: this.lastName,
       ref: this.invoiceID,
       currency: 'GHS',
+
       onClose: function () {
         UICtrl.popupAlert(`Payment not completed. Please try again`, 'error');
       },
-      callback: function (response) {
-        // ! API CALL TO BACKEND WITH TASK DETAILS STORED IN THE `Data` object.
-        // ! payment is confirmed in backend first then details are stored.
-        confirmPayAndStoreDetails(response.reference, Data.taskDetail);
 
-        UICtrl.popupAlert(`Payment completed! Your payment invoice/reference ID: ${response.reference}`, 'success');
+      // upon payment success
+      callback: function (response) {
+
+        // ? Confirm payment from backend server, store task details in DB
+        confirmPayAndStoreDetails(response.reference, Data.taskDetail)
+          .then(taskDetails => {
+            // hide loader
+            UICtrl.hideLoader();
+            // notify of payment success
+            UICtrl.popupAlert(`Payment completed! Your payment invoice/reference ID: ${response.reference}`, 'success');
+            // show modal containing further instructions (TRACKING ID, etc.)
+            UICtrl.showModal(taskDetails, 'home');
+            console.log(taskDetails);
+          })
+          .catch(error => UICtrl.popupAlert(error))
+
       }
     });
 
