@@ -326,12 +326,12 @@ export const preparePayment = (fullname, email, amount) => {
 
     // ? parsing the details into the payment class
     // ! LIVE PAYMENT
-    // create Payment Object
-    new Payment(email, amount, firstName, lastName)
-        // store payment details in invoice
-        .storeInv()
-        // make payment
-        .makePayment();
+    // // create Payment Object
+    // new Payment(email, amount, firstName, lastName)
+    //     // store payment details in invoice
+    //     .storeInv()
+    //     // make payment
+    //     .makePayment();
     // ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 

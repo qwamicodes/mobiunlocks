@@ -202,6 +202,12 @@ export const showModal = (task, page) => {
                     Status:<br> <span data-type="${task.completed ? "completed" : "pending"}">${task.completed ? "completed" : "pending"}</span>
               </div>
           </li>
+          <li>
+            Results:
+            <div class="modal__preview--details">
+              ${task.results ? task.results : "awaiting results..."}
+            </div>
+          </li>
         </ul>
         </div> 
       </div>
@@ -230,6 +236,12 @@ export const showModal = (task, page) => {
                     Phone Model:<br> <span>${task.phone_model}</span> <br>
                     Carrier Network:<br> <span>${task.phone_carrier_network}</span> <br>
                     Status:<br> <span data-type="${task.completed ? "completed" : "pending"}">${task.completed ? "completed" : "pending"}</span>
+              </div>
+          </li>
+          <li>
+              Results:
+              <div class="modal__preview--details">
+                ${task.results ? task.results : "awaiting results..."}
               </div>
           </li>
         </ul>
@@ -355,7 +367,7 @@ export const showModal = (task, page) => {
                 </div>
                 <ul>
                   <li>
-                    <div class="modal__preview--info">Payment Success! Your order has been placed successfully. Your tracking ID is <span>${task.tracking_id}</span>. Keep it well</div>
+                    <div class="modal__preview--info">Payment Success! Your <span>${task.task_type}</span> order has been placed successfully. Your tracking ID is <span>${task.tracking_id}</span>. Keep it well</div>
                   </li>
                 </ul>
               </div> 

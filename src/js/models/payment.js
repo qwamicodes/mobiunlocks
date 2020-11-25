@@ -43,7 +43,7 @@ export class Payment {
     this.lastName = lastName;
     this.firstName = firstName;
     // this.amount = parseInt(amount, 10);
-    this.amount = parseInt(1, 10); // ! TESTING PURPOSES
+    this.amount = 0.5; // ! TESTING PURPOSES
   }
 
   //Function to store the invoice with other neccessary infos
