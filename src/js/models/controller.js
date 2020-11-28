@@ -337,24 +337,26 @@ export const preparePayment = (fullname, email, amount) => {
 
 
     // ! TESTING WITHOUT PAYMENTS
-    // Create Payment Object
-    new Payment(email, amount, firstName, lastName)
-        // store payment details in invoice
-        .storeInv();
+    // Create Payment Object store payment details in invoice 
+    new Payment(email, amount, firstName, lastName).storeInv();
 
     // show loader
     UICtrl.showLoader();
+
+    const paystackReference = prompt("Please enter your payment reference from Paystack");
     
     // store task details without payment 
-    api.testStoreDetails(Data.taskDetail)
+    api.mockconfirmPayAndStoreDetails(paystackReference, Data.taskDetail)
         .then(taskDetails => {
             // hide loader
             UICtrl.hideLoader();
-            // show modal
+            // notify of payment success
+            UICtrl.popupAlert(`Payment completed! Your payment invoice/reference ID: ${paystackReference}`, 'success');
+            // show modal containing further instructions (TRACKING ID, etc.)
             UICtrl.showModal(taskDetails, 'home');
             console.log(taskDetails);
         })
-        .catch(error => UICtrl.popupAlert(error))
+        .catch(error => UICtrl.popupAlert(error, 'error'))
     // ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 };
@@ -567,6 +569,7 @@ export const updateTaskDetails = async e => {
                     // highlight updated task
                     UICtrl.highlightUpdatedTask(taskHTMLElement, taskStatus);
                 })
+                .catch(error => UICtrl.popupAlert(error, 'error'))
             break;
 
         case "carrier unlocking":
@@ -584,6 +587,7 @@ export const updateTaskDetails = async e => {
                     // highlight updated task
                     UICtrl.highlightUpdatedTask(taskHTMLElement, taskStatus);
                 })
+                .catch(error => UICtrl.popupAlert(error, 'error'))
             break;
 
         case "imei checking":
@@ -601,6 +605,7 @@ export const updateTaskDetails = async e => {
                     // highlight updated task
                     UICtrl.highlightUpdatedTask(taskHTMLElement, taskStatus);
                 })
+                .catch(error => UICtrl.popupAlert(error, 'error'))
             break;
     }
 

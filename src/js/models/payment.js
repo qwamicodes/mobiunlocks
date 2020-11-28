@@ -92,7 +92,7 @@ export class Payment {
             UICtrl.showModal(taskDetails, 'home');
             console.log(taskDetails);
           })
-          .catch(error => UICtrl.popupAlert(error))
+          .catch(error => UICtrl.popupAlert(error, 'error'))
 
       }
     });

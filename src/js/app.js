@@ -152,7 +152,7 @@ document.querySelector(elements.paymentForm).addEventListener('submit', e => {
     const email = e.target.email.value;
     const amount = e.target.amount.value;
     
-    // parse it to the payment starter function
+    // parse it to the payment starter function to make payment
     controller.preparePayment(fullname, email, amount);
     //reseting the form
     e.target.reset();

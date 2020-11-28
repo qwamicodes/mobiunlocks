@@ -4,8 +4,8 @@
 ? The event listeners that call these functions (for API requests) are also defined here
 */
 
-const baseBackendURL = "http://127.0.0.1:8000";
-const baseBackendAPIURL = "http://127.0.0.1:8000/api/v1";
+const baseBackendURL = "http://127.0.0.1:8001";
+const baseBackendAPIURL = "http://127.0.0.1:8001/api/v1";
 // const baseBackendURL = "https://api.mobitechunlocks.com";
 // const baseBackendAPIURL = "https://api.mobitechunlocks.com/api/v1";
 
@@ -20,59 +20,67 @@ const getCookie = cookieName => {
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TASK OPERATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // !! TESTING send requests to API endpoints to create tasks in DB depending on task type
-export const testStoreDetails = async taskDetails => {
-    let paymentDetails = {
-        "customer_name": "Jay",
-        "customer_email": "jay@lasdf.com",
-        "payment_amount": Math.trunc(Math.random() * 205),
-        "payment_reference": Math.trunc(Math.random() * 1025731264223)
-    };
+export const mockconfirmPayAndStoreDetails = async (paystackReference, taskDetails) => {
+
+    const mockConfirmPaymentEndpoint = `${baseBackendAPIURL}/payments/mock/confirm/?reference=${paystackReference}`;
 
     return new Promise((resolve, reject) => {
+        fetch(mockConfirmPaymentEndpoint, {
+            method: 'GET',
+            credentials: 'include',
+        })
+            .then(async response => {
+                // JSON that contains response from payment confirmation,
+                // includes payment customer details too
+                const responseData = await response.json();
+                // if payment was made, then
+                if (responseData.payment_made === true) {
+                    // send requests to API endpoints to create tasks in DB depending on task type
+                    switch (taskDetails.taskType) {
+                        // IMEI Checking task
+                        case "imei":
+                            submitIMEICheckTask(responseData.payment_info, taskDetails, responseData.acc_txn)
+                                .then(data => resolve(data))
+                                .catch(error => resolve(error))
+                            break;
 
-        switch (taskDetails.taskType) {
-            // IMEI Checking task
+                        // Carrier Unlocking task
+                        case "carrier":
+                            submitCarrierUnlockTask(responseData.payment_info, taskDetails, responseData.acc_txn)
+                                .then(data => resolve(data))
+                                .catch(error => resolve(error))
+                            break;
 
-            case "imei":
-                submitIMEICheckTask(paymentDetails, taskDetails)
-                    .then(data => resolve(data))
-                    .catch(error => reject(error))
-                break;
+                        // ICloud Unlocking task
+                        case "unlocking":
+                            submitICloudUnlockTask(responseData.payment_info, taskDetails, responseData.acc_txn)
+                                .then(data => resolve(data))
+                                .catch(error => resolve(error))
+                            break;
 
-            // Carrier Unlocking task
-            case "carrier":
-                submitCarrierUnlockTask(paymentDetails, taskDetails)
-                    .then(data => resolve(data))
-                    .catch(error => reject(error))
-                break;
-
-            // ICloud Unlocking task
-            case "unlocking":
-                submitICloudUnlockTask(paymentDetails, taskDetails)
-                    .then(data => resolve(data))
-                    .catch(error => reject(error))
-                break;
-
-            default:
-                alert('error with task type');
-                break;
-        }
+                        default:
+                            reject('error with task type');
+                            break;
+                    }
+                } else {
+                    reject('payment was not made');
+                }
+            })
+            .catch(error => reject(error))
 
     })
-
-
 };
-// !! 
+// ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // TODO confirm payment and store task details in database
-export const confirmPayAndStoreDetails = (paymentReference, taskDetails) => {
+export const confirmPayAndStoreDetails = (paystackReference, taskDetails) => {
     /*
     This function is a heavy function that first confirms payment by sending a request with the reference
     to the backend. after payment is confirmed another request is sent to a different endpoint
     to store the task details. The endpoint to hit is determined by the `taskDetails` 
     */
 
-    const confirmPaymentEndpoint = `${baseBackendAPIURL}/payments/confirm/?reference=${paymentReference}`;
+    const confirmPaymentEndpoint = `${baseBackendAPIURL}/payments/confirm/?reference=${paystackReference}`;
 
     return new Promise((resolve, reject) => {
         fetch(confirmPaymentEndpoint, {
@@ -82,28 +90,28 @@ export const confirmPayAndStoreDetails = (paymentReference, taskDetails) => {
             .then(async response => {
                 // JSON that contains response from payment confirmation,
                 // includes payment customer details too
-                const paymentData = await response.json();
+                const responseData = await response.json();
                 // if payment was made, then
-                if (paymentData.payment_made === true) {
+                if (responseData.payment_made === true) {
                     // send requests to API endpoints to create tasks in DB depending on task type
                     switch (taskDetails.taskType) {
                         // IMEI Checking task
                         case "imei":
-                            submitIMEICheckTask(paymentData.payment_info, taskDetails)
+                            submitIMEICheckTask(responseData.payment_info, taskDetails, responseData.acc_txn)
                                 .then(data => resolve(data))
                                 .catch(error => resolve(error))
                             break;
 
                         // Carrier Unlocking task
                         case "carrier":
-                            submitCarrierUnlockTask(paymentData.payment_info, taskDetails)
+                            submitCarrierUnlockTask(responseData.payment_info, taskDetails, responseData.acc_txn)
                                 .then(data => resolve(data))
                                 .catch(error => resolve(error))
                             break;
 
                         // ICloud Unlocking task
                         case "unlocking":
-                            submitICloudUnlockTask(paymentData.payment_info, taskDetails)
+                            submitICloudUnlockTask(responseData.payment_info, taskDetails, responseData.acc_txn)
                                 .then(data => resolve(data))
                                 .catch(error => resolve(error))
                             break;
@@ -121,8 +129,9 @@ export const confirmPayAndStoreDetails = (paymentReference, taskDetails) => {
     })
 };
 
+
 // TODO send carrier unlock task to database
-const submitCarrierUnlockTask = (paymentDetails, taskDetails) => {
+const submitCarrierUnlockTask = (paymentDetails, taskDetails, acc_txn) => {
     const carrierUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/carrier/`;
 
     return new Promise((resolve, reject) => {
@@ -132,6 +141,7 @@ const submitCarrierUnlockTask = (paymentDetails, taskDetails) => {
             credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${acc_txn}`
             },
             body: JSON.stringify({
                 ...taskDetails,
@@ -142,6 +152,8 @@ const submitCarrierUnlockTask = (paymentDetails, taskDetails) => {
                 if (response.ok) {
                     const data = await response.json();
                     resolve(data);
+                } else if (response.status === 403 || response.status === 401) {
+                    reject("unauthorized")
                 } else {
                     reject("error creating task")
                 }
@@ -151,7 +163,7 @@ const submitCarrierUnlockTask = (paymentDetails, taskDetails) => {
 }
 
 // TODO send icloud unlock task to database
-const submitICloudUnlockTask = (paymentDetails, taskDetails) => {
+const submitICloudUnlockTask = (paymentDetails, taskDetails, acc_txn) => {
     const icloudUnlockTaskEndpoint = `${baseBackendAPIURL}/tasks/icloud/`;
 
     return new Promise((resolve, reject) => {
@@ -161,6 +173,7 @@ const submitICloudUnlockTask = (paymentDetails, taskDetails) => {
             credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${acc_txn}`
             },
             body: JSON.stringify({
                 ...taskDetails,
@@ -171,6 +184,8 @@ const submitICloudUnlockTask = (paymentDetails, taskDetails) => {
                 if (response.ok) {
                     const data = await response.json();
                     resolve(data);
+                } else if (response.status === 403 || response.status === 401) {
+                    reject("unauthorized")
                 } else {
                     reject("error creating task")
                 }
@@ -180,7 +195,7 @@ const submitICloudUnlockTask = (paymentDetails, taskDetails) => {
 }
 
 // TODO send imei checking task to database
-const submitIMEICheckTask = (paymentDetails, taskDetails) => {
+const submitIMEICheckTask = (paymentDetails, taskDetails, acc_txn) => {
     const imeiCheckTaskEndpoint = `${baseBackendAPIURL}/tasks/imei/`;
 
     return new Promise((resolve, reject) => {
@@ -190,6 +205,7 @@ const submitIMEICheckTask = (paymentDetails, taskDetails) => {
             credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${acc_txn}`
             },
             body: JSON.stringify({
                 ...taskDetails,
@@ -200,6 +216,8 @@ const submitIMEICheckTask = (paymentDetails, taskDetails) => {
                 if (response.ok) {
                     const data = await response.json();
                     resolve(data);
+                } else if (response.status === 403 || response.status === 401) {
+                    reject("unauthorized")
                 } else {
                     reject("error creating task")
                 }
@@ -317,7 +335,7 @@ export const updateIMEICheckTask = async (trackingID, formData) => {
 
     let updatedTask;
 
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         fetch(imeiCheckTaskEndpoint, {
             method: 'PUT',
             credentials: 'include',
@@ -326,8 +344,8 @@ export const updateIMEICheckTask = async (trackingID, formData) => {
             .then(async response => {
                 if (response.ok) {
                     updatedTask = await response.json(); // return task list
-                } else {
-                    console.log(response)
+                } else if (response.status === 403) {
+                    reject("unauthorized");
                 }
             })
             .then(() => resolve(updatedTask))
@@ -344,7 +362,7 @@ export const updateICloudUnlockTask = async (trackingID, formData) => {
 
     let updatedTask;
 
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         fetch(ICloudUnlockTaskEndpoint, {
             method: 'PUT',
             credentials: 'include',
@@ -353,8 +371,8 @@ export const updateICloudUnlockTask = async (trackingID, formData) => {
             .then(async response => {
                 if (response.ok) {
                     updatedTask = await response.json(); // return task list
-                } else {
-                    console.log(response)
+                } else if (response.status === 403) {
+                    reject("unauthorized");
                 }
             })
             .then(() => resolve(updatedTask))
@@ -369,7 +387,7 @@ export const updateCarrierUnlockTask = async (trackingID, formData) => {
 
     let updatedTask;
 
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         fetch(CarrierUnlockTaskEndpoint, {
             method: 'PUT',
             credentials: 'include',
@@ -378,8 +396,8 @@ export const updateCarrierUnlockTask = async (trackingID, formData) => {
             .then(async response => {
                 if (response.ok) {
                     updatedTask = await response.json(); // return task list
-                } else {
-                    console.log(response)
+                } else if (response.status === 403) {
+                    reject("unauthorized");
                 }
             })
             .then(() => resolve(updatedTask))
