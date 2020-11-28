@@ -344,14 +344,14 @@ export const preparePayment = (fullname, email, amount) => {
     UICtrl.showLoader();
 
     const paystackReference = prompt("Please enter your payment reference from Paystack");
-    
+
     // store task details without payment 
     api.mockconfirmPayAndStoreDetails(paystackReference, Data.taskDetail)
         .then(taskDetails => {
             // hide loader
             UICtrl.hideLoader();
             // notify of payment success
-            UICtrl.popupAlert(`Payment completed! Your payment invoice/reference ID: ${paystackReference}`, 'success');
+            UICtrl.popupAlert(`Payment completed! Your payment invoice/reference ID: ${paystackReference}`, 'success', 10000);
             // show modal containing further instructions (TRACKING ID, etc.)
             UICtrl.showModal(taskDetails, 'home');
             console.log(taskDetails);
@@ -443,7 +443,12 @@ export const setAdminDetailsOnDashboard = () => {
             document.querySelector(elements.adminUsername).innerText = adminDetails.username;
             document.querySelector(elements.adminAvatarImage).src = adminDetails.user_avatar;
         })
-        .catch(error => UICtrl.popupAlert(error, 'error'))
+        .catch(error => {
+            if (error === "unauthorized") api.refreshToken().then(setAdminDetailsOnDashboard());
+            else {
+                UICtrl.popupAlert(error, 'error')
+            }
+        })
 }
 
 // function to list all tasks on dashboard
@@ -504,8 +509,13 @@ export const listTasksOnDashboard = async () => {
             document.querySelector(elements.completedTasksCount).innerHTML = countCompletedTasks(tasks); // completed tasks
 
         })
-        .catch(error => UICtrl.popupAlert(error, 'error'))
-
+        .catch(error => {
+            console.log(error);
+            if (error === "unauthorized") api.refreshToken().then(listTasksOnDashboard());
+            else {
+                UICtrl.popupAlert(`Internal Server Error<br>${error}<br><br>Kindly contact developer team`, 'error')
+            }
+        })
 }
 
 // function to count pending tasks
@@ -530,7 +540,7 @@ const countCompletedTasks = tasksList => {
     return counter;
 }
 
-// * event handler for sending dashboard-updated task details to DB 
+// event handler for sending dashboard-updated task details to DB 
 export const updateTaskDetails = async e => {
     e.preventDefault();
 
@@ -569,7 +579,13 @@ export const updateTaskDetails = async e => {
                     // highlight updated task
                     UICtrl.highlightUpdatedTask(taskHTMLElement, taskStatus);
                 })
-                .catch(error => UICtrl.popupAlert(error, 'error'))
+                .catch(error => {
+                    console.log(error);
+                    if (error === "unauthorized") api.refreshToken().then(updateTaskDetails());
+                    else {
+                        UICtrl.popupAlert(error, 'error')
+                    }
+                })
             break;
 
         case "carrier unlocking":
@@ -587,7 +603,13 @@ export const updateTaskDetails = async e => {
                     // highlight updated task
                     UICtrl.highlightUpdatedTask(taskHTMLElement, taskStatus);
                 })
-                .catch(error => UICtrl.popupAlert(error, 'error'))
+                .catch(error => {
+                    console.log(error);
+                    if (error === "unauthorized") api.refreshToken().then(updateTaskDetails());
+                    else {
+                        UICtrl.popupAlert(error, 'error')
+                    }
+                })
             break;
 
         case "imei checking":
@@ -605,7 +627,13 @@ export const updateTaskDetails = async e => {
                     // highlight updated task
                     UICtrl.highlightUpdatedTask(taskHTMLElement, taskStatus);
                 })
-                .catch(error => UICtrl.popupAlert(error, 'error'))
+                .catch(error => {
+                    console.log(error);
+                    if (error === "unauthorized") api.refreshToken().then(updateTaskDetails());
+                    else {
+                        UICtrl.popupAlert(error, 'error')
+                    }
+                })
             break;
     }
 

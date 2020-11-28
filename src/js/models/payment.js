@@ -87,7 +87,7 @@ export class Payment {
             // hide loader
             UICtrl.hideLoader();
             // notify of payment success
-            UICtrl.popupAlert(`Payment completed! Your payment invoice/reference ID: ${response.reference}`, 'success');
+            UICtrl.popupAlert(`Payment completed! Your payment invoice/reference ID: ${response.reference}`, 'success', 10000);
             // show modal containing further instructions (TRACKING ID, etc.)
             UICtrl.showModal(taskDetails, 'home');
             console.log(taskDetails);

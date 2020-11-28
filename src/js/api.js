@@ -285,7 +285,7 @@ export const getAllTasks = async () => {
                     if (response.ok) {
                         return response.json()
                     } else if (response.status === 401) {
-                        throw TypeError("Unauthorized")
+                        throw ("unauthorized")
                     }
                 });
         // push the Fetch API to the `apiRequests` array
@@ -324,7 +324,10 @@ export const getAllTasks = async () => {
 
             // resolve Promise into array of all tasks
             .then(() => resolve(allTasks))
-            .catch(error => reject(`Internal Server Error<br>${error}<br><br>Kindly contact developer team`))
+            .catch(error => {
+                console.log(error);
+                reject(error);
+            })
     })
 }
 
@@ -344,7 +347,7 @@ export const updateIMEICheckTask = async (trackingID, formData) => {
             .then(async response => {
                 if (response.ok) {
                     updatedTask = await response.json(); // return task list
-                } else if (response.status === 403) {
+                } else if (response.status === 401) {
                     reject("unauthorized");
                 }
             })
@@ -371,7 +374,7 @@ export const updateICloudUnlockTask = async (trackingID, formData) => {
             .then(async response => {
                 if (response.ok) {
                     updatedTask = await response.json(); // return task list
-                } else if (response.status === 403) {
+                } else if (response.status === 401) {
                     reject("unauthorized");
                 }
             })
@@ -396,7 +399,7 @@ export const updateCarrierUnlockTask = async (trackingID, formData) => {
             .then(async response => {
                 if (response.ok) {
                     updatedTask = await response.json(); // return task list
-                } else if (response.status === 403) {
+                } else if (response.status === 401) {
                     reject("unauthorized");
                 }
             })
@@ -416,10 +419,10 @@ export const getAdminDetails = async userEmail => {
         })
             .then(response => {
                 if (response.ok) resolve(response.json());
-                else if (response.status === 401) throw TypeError("Unauthorized");
+                else if (response.status === 401) throw ("unauthorized");
             })
     })
-        .catch(error => reject(`Internal Server Error<br>${error}<br><br>Kindly contact developer team`))
+        .catch(error => reject(error))
 }
 
 
@@ -471,7 +474,6 @@ export const refreshToken = async () => {
                 'refresh': getCookie('mbt_ref_txn')
             })
         })
-            .then(response => console.log(response))
 
     })
 
