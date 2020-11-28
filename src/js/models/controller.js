@@ -326,37 +326,37 @@ export const preparePayment = (fullname, email, amount) => {
 
     // ? parsing the details into the payment class
     // ! LIVE PAYMENT
-    // // create Payment Object
-    // new Payment(email, amount, firstName, lastName)
-    //     // store payment details in invoice
-    //     .storeInv()
-    //     // make payment
-    //     .makePayment();
+    // create Payment Object
+    new Payment(email, amount, firstName, lastName)
+        // store payment details in invoice
+        .storeInv()
+        // make payment
+        .makePayment();
     // ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
     // ! TESTING WITHOUT PAYMENTS
-    // Create Payment Object store payment details in invoice 
-    new Payment(email, amount, firstName, lastName).storeInv();
+    // // Create Payment Object store payment details in invoice 
+    // new Payment(email, amount, firstName, lastName).storeInv();
 
-    // show loader
-    UICtrl.showLoader();
+    // // show loader
+    // UICtrl.showLoader();
 
-    const paystackReference = prompt("Please enter your payment reference from Paystack");
+    // const paystackReference = prompt("Please enter your payment reference from Paystack");
 
-    // store task details without payment 
-    api.mockconfirmPayAndStoreDetails(paystackReference, Data.taskDetail)
-        .then(taskDetails => {
-            // hide loader
-            UICtrl.hideLoader();
-            // notify of payment success
-            UICtrl.popupAlert(`Payment completed! Your payment invoice/reference ID: ${paystackReference}`, 'success', 10000);
-            // show modal containing further instructions (TRACKING ID, etc.)
-            UICtrl.showModal(taskDetails, 'home');
-            console.log(taskDetails);
-        })
-        .catch(error => UICtrl.popupAlert(error, 'error'))
+    // // store task details without payment 
+    // api.mockconfirmPayAndStoreDetails(paystackReference, Data.taskDetail)
+    //     .then(taskDetails => {
+    //         // hide loader
+    //         UICtrl.hideLoader();
+    //         // notify of payment success
+    //         UICtrl.popupAlert(`Payment completed! Your payment invoice/reference ID: ${paystackReference}`, 'success', 10000);
+    //         // show modal containing further instructions (TRACKING ID, etc.)
+    //         UICtrl.showModal(taskDetails, 'home');
+    //         console.log(taskDetails);
+    //     })
+    //     .catch(error => UICtrl.popupAlert(error, 'error'))
     // ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 };
