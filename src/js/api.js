@@ -27,7 +27,6 @@ export const mockconfirmPayAndStoreDetails = async (paystackReference, taskDetai
     return new Promise((resolve, reject) => {
         fetch(mockConfirmPaymentEndpoint, {
             method: 'GET',
-            credentials: 'include',
         })
             .then(async response => {
                 // JSON that contains response from payment confirmation,
@@ -35,6 +34,10 @@ export const mockconfirmPayAndStoreDetails = async (paystackReference, taskDetai
                 const responseData = await response.json();
                 // if payment was made, then
                 if (responseData.payment_made === true) {
+                    // ! remove Paystack reference from payment details to prevent conflict when storing task since a task with
+                    // ! the same reference already exists
+                    delete responseData.payment_info.paystack_reference;
+
                     // send requests to API endpoints to create tasks in DB depending on task type
                     switch (taskDetails.taskType) {
                         // IMEI Checking task
@@ -85,7 +88,6 @@ export const confirmPayAndStoreDetails = (paystackReference, taskDetails) => {
     return new Promise((resolve, reject) => {
         fetch(confirmPaymentEndpoint, {
             method: 'GET',
-            credentials: 'include',
         })
             .then(async response => {
                 // JSON that contains response from payment confirmation,
@@ -138,7 +140,7 @@ const submitCarrierUnlockTask = (paymentDetails, taskDetails, acc_txn) => {
 
         fetch(carrierUnlockTaskEndpoint, {
             method: 'POST',
-            credentials: 'include',
+            // credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${acc_txn}`
@@ -170,7 +172,7 @@ const submitICloudUnlockTask = (paymentDetails, taskDetails, acc_txn) => {
 
         fetch(icloudUnlockTaskEndpoint, {
             method: 'POST',
-            credentials: 'include',
+            // credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${acc_txn}`
@@ -202,7 +204,7 @@ const submitIMEICheckTask = (paymentDetails, taskDetails, acc_txn) => {
 
         fetch(imeiCheckTaskEndpoint, {
             method: 'POST',
-            credentials: 'include',
+            // credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${acc_txn}`
@@ -259,6 +261,7 @@ export const searchTaskByTracking = async trackingID => {
 
 
 }
+
 
 // TODO Get all tasks
 export const getAllTasks = async () => {
@@ -325,7 +328,7 @@ export const getAllTasks = async () => {
             // resolve Promise into array of all tasks
             .then(() => resolve(allTasks))
             .catch(error => {
-                console.log(error);
+                // console.log(error);
                 reject(error);
             })
     })
@@ -478,6 +481,7 @@ export const refreshToken = async () => {
     })
 
 }
+
 
 export const performLogout = async () => {
 

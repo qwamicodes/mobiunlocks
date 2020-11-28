@@ -367,7 +367,7 @@ export const showModal = (task, page) => {
                 </div>
                 <ul>
                   <li>
-                    <div class="modal__preview--info">Payment Success! Your <span>${task.task_type}</span> order has been placed successfully with tracking ID: <span>${task.tracking_id}</span>. Keep it well. You can visit <a href="./public/tracking.html">the tracking page</a> to check the progress of your order.</div>
+                    <div class="modal__preview--info">Payment Success! Your <span>${task.task_type}</span> order has been placed successfully with tracking ID: <span>${task.tracking_id}</span>. Keep it well. You can visit <a href="./public/tracking.html" target="_blank">the tracking page</a> to check the progress of your order.</div>
                   </li>
                 </ul>
               </div> 
