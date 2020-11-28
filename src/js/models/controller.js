@@ -580,7 +580,7 @@ export const updateTaskDetails = async e => {
                     UICtrl.highlightUpdatedTask(taskHTMLElement, taskStatus);
                 })
                 .catch(error => {
-                    console.log(error);
+                    // console.log(error);
                     if (error === "unauthorized") api.refreshToken().then(updateTaskDetails(e));
                     else {
                         UICtrl.popupAlert(error, 'error')
@@ -604,7 +604,7 @@ export const updateTaskDetails = async e => {
                     UICtrl.highlightUpdatedTask(taskHTMLElement, taskStatus);
                 })
                 .catch(error => {
-                    console.log(error);
+                    // console.log(error);
                     if (error === "unauthorized") api.refreshToken().then(updateTaskDetails(e));
                     else {
                         UICtrl.popupAlert(error, 'error')
@@ -628,7 +628,7 @@ export const updateTaskDetails = async e => {
                     UICtrl.highlightUpdatedTask(taskHTMLElement, taskStatus);
                 })
                 .catch(error => {
-                    console.log(error);
+                    // console.log(error);
                     if (error === "unauthorized") api.refreshToken().then(updateTaskDetails(e));
                     else {
                         UICtrl.popupAlert(error, 'error')
