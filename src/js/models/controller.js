@@ -581,7 +581,7 @@ export const updateTaskDetails = async e => {
                 })
                 .catch(error => {
                     console.log(error);
-                    if (error === "unauthorized") api.refreshToken().then(updateTaskDetails());
+                    if (error === "unauthorized") api.refreshToken().then(updateTaskDetails(e));
                     else {
                         UICtrl.popupAlert(error, 'error')
                     }
@@ -605,7 +605,7 @@ export const updateTaskDetails = async e => {
                 })
                 .catch(error => {
                     console.log(error);
-                    if (error === "unauthorized") api.refreshToken().then(updateTaskDetails());
+                    if (error === "unauthorized") api.refreshToken().then(updateTaskDetails(e));
                     else {
                         UICtrl.popupAlert(error, 'error')
                     }
@@ -629,7 +629,7 @@ export const updateTaskDetails = async e => {
                 })
                 .catch(error => {
                     console.log(error);
-                    if (error === "unauthorized") api.refreshToken().then(updateTaskDetails());
+                    if (error === "unauthorized") api.refreshToken().then(updateTaskDetails(e));
                     else {
                         UICtrl.popupAlert(error, 'error')
                     }
