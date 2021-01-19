@@ -2,6 +2,7 @@ import * as UICtrl from '../views/UICtrl';
 import { elements } from '../views/base';
 import { Payment } from './payment';
 
+//An object that stores the states of the Data
 export const Data = {
     invoices : []
 }
