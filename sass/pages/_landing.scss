@@ -415,6 +415,12 @@ section {
     background-color: $danger-color;
     @include flexcenter;
 
+    &--text {
+      font: $prozaLibre-regular;
+      font-size: 1.5rem;
+      color: $danger-color;
+    }
+
     ul {
       width: 80%;
       margin: 0 auto;

@@ -115,27 +115,34 @@ export class Pay {
     calcPrice () {
         switch (this.type) {
             case 'carrier':
-                if(this.network === 'at&t' || this.network === 'verizon') {
+                if(this.network === 'at&t' || this.network === 'verizon' || this.network === 'orange' || this.network === 'ee' || this.network === 'tmobile-uk') {
                     if(this.model >= 101 && this.model <= 109 ) {
-                        this.price =  (170).toFixed(2);
+                        this.price = (170).toFixed(2);
                     } else if(this.model >= 110 && this.model <= 113) {
-                        this.price =  (270).toFixed(2);
+                        this.price = (270).toFixed(2);
                     } else if(this.model >= 114 && this.model <= 118) {
-                        this.price =  (370).toFixed(2);
+                        this.price = (370).toFixed(2);
                     } else if(this.model >= 119 && this.model <= 122) {
-                        this.price =  (470).toFixed(2);
+                        this.price = (470).toFixed(2);
+                    } else if(this.model >= 123 && this.model <= 125) {
+                        this.price = (570).toFixed(2);
                     };
                 } else if(this.network === 'sprint') {
-                    if(this.model >= 101 && this.model <= 109 ) {
-                        this.price =  (250).toFixed(2);
-                    } else if(this.model >= 110 && this.model <= 113) {
-                        this.price =  (350).toFixed(2);
-                    } else if(this.model >= 114 && this.model <= 118) {
-                        this.price =  (450).toFixed(2);
+                    if(this.model >= 101 && this.model <= 122 ) {
+                        this.price = (300).toFixed(2);
+                    } else if(this.model >= 113 && this.model <= 118) {
+                        this.price = (400).toFixed(2);
                     } else if(this.model >= 119 && this.model <= 122) {
-                        this.price =  (550).toFixed(2);
+                        this.price = (570).toFixed(2);
+                    } else {
+                        this.price = (1000).toFixed(2);
                     };
                 } else if(this.network === 'tmobile') {
+                    if(this.model >= 101 && this.model <= 113) {
+                        this.price = (600).toFixed(2);
+                    } else if(this.model >= 114 && this.model <= 125) {
+                        this.price = (800).toFixed(2);
+                    };
                 } else if(this.network === 'o2' || this.network === 'tesco') {
                     if(this.model >= 101 && this.model <= 109 ) {
                         this.price =  (170).toFixed(2);
@@ -151,6 +158,16 @@ export class Pay {
                         this.price =  (700).toFixed(2);
                     } else if(this.model >= 114 && this.model <= 122) {
                         this.price =  (1000).toFixed(2);
+                    };
+                } else if(this.network === 'vodafone') {
+                    if(this.model >= 101 && this.model <= 113 ) {
+                        this.price =  (370).toFixed(2);
+                    } else if(this.model >= 114 && this.model <= 118) {
+                        this.price =  (600).toFixed(2);
+                    } else if(this.model >= 119 && this.model <= 122) {
+                        this.price = (700).toFixed(2);
+                    } else if(this.model >= 123 && this.model <= 125) {
+                        this.price = (1000).toFixed(2);
                     };
                 };
                 break;
@@ -241,7 +258,18 @@ export class Pay {
                 document.querySelector(elements.paymentItems).innerHTML = html;
             };
         };
-   
+
+        const cautionHtml = `
+                <div class="payment__items--item">
+                    <span class="payment__caution--text">
+                        Please make sure details provided are correct<br>
+                        Or read the read the rules
+                    </span>
+                </div>
+        `;
+        
+        document.querySelector(elements.paymentItems).insertAdjacentHTML('beforeend', cautionHtml);
+
         document.querySelectorAll(elements.paymentPrice).forEach(el => {
             el.innerHTML = `GHC ${this.price}`;
         });
