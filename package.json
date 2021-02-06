@@ -1,4 +1,4 @@
-{
+ {
   "name": "mobiunlocks",
   "version": "1.0.0",
   "description": "A website for that helps remotely unlock your carriers and phones",
@@ -15,7 +15,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
     "autoprefixer": "^9.7.6",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "concat": "^1.0.3",
     "live-server": "^1.2.1",
     "node-sass": "^4.14.1",

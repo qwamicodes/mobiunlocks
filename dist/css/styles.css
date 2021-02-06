@@ -1783,6 +1783,10 @@ section {
   .payment__caution {
     flex: 1;
     background-color: #ff3d51; }
+    .payment__caution--text {
+      font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
+      font-size: 1.5rem;
+      color: #ff3d51; }
     .payment__caution ul {
       width: 80%;
       margin: 0 auto;

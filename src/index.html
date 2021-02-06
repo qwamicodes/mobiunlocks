@@ -597,8 +597,6 @@
                   <select class="form__input form__select" id="carrier-model" required>
                     <option name="model" value="" class="form__select--option">Select phone model</option>
                     <div class="form__select--iphone-carrier">
-                      <option name="model" value="101" class="form__carrier--iphone">iPhone 4</option>
-                      <option name="model" value="102" class="form__carrier--iphone">iPhone 4s</option>
                       <option name="model" value="103" class="form__carrier--iphone">iPhone 5</option>
                       <option name="model" value="104" class="form__carrier--iphone">iPhone 5c</option>
                       <option name="model" value="105" class="form__carrier--iphone">iPhone 5s</option>
@@ -619,6 +617,9 @@
                       <option name="model" value="120" class="form__carrier--iphone">iPhone 11 PRO</option>
                       <option name="model" value="121" class="form__carrier--iphone">iPhone 11 PRO MAX</option>
                       <option name="model" value="122" class="form__carrier--iphone">iPhone SE (2nd Gen)</option>
+                      <option name="model" value="123" class="form__carrier--iphone">iPhone 12</option>
+                      <option name="model" value="124" class="form__carrier--iphone">iPhone 12 PRO</option>
+                      <option name="model" value="125" class="form__carrier--iphone">iPhone 12 PRO MAX</option>
                     </div>
                   </select>
                 </div>
@@ -626,12 +627,16 @@
                   <select class="form__input form__select" id="carrier-network" required>
                     <option name="carrier" value="" class="form__select--option">Choose phone carrier network</option>
                     <option name="carrier" value="at&t" class="form__select--option">AT&T-USA</option>
-                    <option name="carrier" value="sprint" class="form__select--option">SPRINT-USA</option>
+                    <option name="carrier" value="ee" class="form__select--option">EE-UK</option>
                     <option name="carrier" value="metropcs" class="form__select--option">METRO PCS-USA</option>
-                    <option name="carrier" value="tmobile" class="form__select--option">T-MOBILE-USA</option>
-                    <option name="carrier" value="verizon" class="form__select--option">VERIZON-USA</option>
                     <option name="carrier" value="o2" class="form__select--option">O2-UK</option>
+                    <option name="carrier" value="orange" class="form__select--option">ORANGE-UK</option>
+                    <option name="carrier" value="sprint" class="form__select--option">SPRINT-USA</option>
                     <option name="carrier" value="tesco" class="form__select--option">TESCO-UK</option>
+                    <option name="carrier" value="tmobile" class="form__select--option">T-MOBILE-USA</option>
+                    <option name="carrier" value="tmobile-uk" class="form__select--option">T-MOBILE-UK</option>
+                    <option name="carrier" value="verizon" class="form__select--option">VERIZON-USA</option>
+                    <option name="carrier" value="vodafone" class="form__select--option">VODAFONE-UK</option>
                   </select>
                 </div>
                 <div class="form__group">
@@ -661,6 +666,8 @@
                     <option name="carrier" value="Worldwide Blacklist|Clean|Generic" class="form__select--option">Worldwide Blacklist|Clean|Generic</option>
                     <option name="carrier" value="iCloud ON/OFF Check Service Via IMEI/Serial" class="form__select--option">iCloud ON/OFF Check Service Via IMEI/Serial</option>
                     <option name="carrier" value="iCloud Clean/Lost Check Service Via IMEI/Serial" class="form__select--option">iCloud Clean/Lost Check Service Via IMEI/Serial</option>
+                    <option name="carrier" value="iPhone Carrier & Simlock Check" class="form__select--option">iPhone Carrier & Simlock Check</option>
+                    <option name="carrier" value="iPhone Carrier & Simlock Check by" class="form__select--option">iPhone Carrier & Simlock Check by</option>
                   </select>
                 </div>
                 <div class="form__group">
@@ -690,8 +697,6 @@
                   <select class="form__input form__select" id="unlocking-model" required>
                     <option name="model" value="" class="form__select--option">Select phone model</option>
                     <div class="form__select--iphone-unlock">
-                      <option name="model" value="101" class="form__unlock--iphone">iPhone 4</option>
-                      <option name="model" value="102" class="form__unlock--iphone">iPhone 4s</option>
                       <option name="model" value="103" class="form__unlock--iphone">iPhone 5</option>
                       <option name="model" value="104" class="form__unlock--iphone">iPhone 5c</option>
                       <option name="model" value="105" class="form__unlock--iphone">iPhone 5s</option>
@@ -712,6 +717,9 @@
                       <option name="model" value="120" class="form__unlock--iphone">iPhone 11 PRO</option>
                       <option name="model" value="121" class="form__unlock--iphone">iPhone 11 PRO MAX</option>
                       <option name="model" value="122" class="form__unlock--iphone">iPhone SE (2nd Gen)</option>
+                      <option name="model" value="123" class="form__unlock--iphone">iPhone 12</option>
+                      <option name="model" value="124" class="form__unlock--iphone">iPhone 12 PRO</option>
+                      <option name="model" value="125" class="form__unlock--iphone">iPhone 12 PRO MAX</option>
                     </div>
                     <div class="form__select--ipad-unlock">
                       <option name="model" value="123" class="form__unlock--ipad">iPad Mini 2</option>
@@ -847,12 +855,12 @@
             </form>
           </div>
           <div class="footer__container">
-            <div class="footer__contact">
+          <div class="footer__contact">
               <div class="footer__contact--call">
                 <div class="footer__title">
                   <h3>contact us</h3>
                 </div>
-                <a target="_blank" class="u-margin-top-medium" href="tel:+233203804551">+233 20 380 4551</a>
+                <a target="_blank" class="u-margin-top-medium" href="tel:+233550811800">(+233)0 55 081 1800</a>
               </div>
               <div class="footer__contact--address">
                 <div class="footer__title">
@@ -865,27 +873,22 @@
             <div class="footer__social">
               <ul>
                 <li>
-                  <a href="#" class="footer__social--btn" type="facebook">
+                  <a target="_blank" href="https://www.facebook.com/Mobitechunlock-102882015157993/" class="footer__social--btn" type="facebook">
                     <ion-icon name="logo-facebook" size="small"></ion-icon>
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="footer__social--btn" type="whatsapp">
+                  <a target="_blank" href="https://wa.me/233550811800" class="footer__social--btn" type="whatsapp">
                     <ion-icon name="logo-whatsapp" size="small"></ion-icon>
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="footer__social--btn" type="instagram">
+                  <a target="_blank" href="https://instagram.com/mobitechunlock?igshid=fg69yyp7t7rv" class="footer__social--btn" type="instagram">
                     <ion-icon name="logo-instagram" size="small"></ion-icon>
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="footer__social--btn" type="twitter">
-                    <ion-icon name="logo-twitter" size="small"></ion-icon>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="footer__social--btn" type="google">
+                  <a target="_blank" href="mailto:mobitechunlock@gmail.com" class="footer__social--btn" type="google">
                     <ion-icon name="logo-google" size="small"></ion-icon>
                   </a>
                 </li>

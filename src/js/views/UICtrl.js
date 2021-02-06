@@ -454,7 +454,7 @@ export const removeList = lists => {
 //function to collapse the nav bar
 export const collapseNav = () => {
   document.querySelector(elements.navInput).checked = false;
-}
+};
 
 //function to add the animation to the updated lists
 export const highlightUpdatedTask = (taskHTMLElement, status) => {
@@ -464,4 +464,4 @@ export const highlightUpdatedTask = (taskHTMLElement, status) => {
   setTimeout(() => {
     taskHTMLElement.classList.remove(`task-updated-${status}`);
   }, 1500);
-}
+};
