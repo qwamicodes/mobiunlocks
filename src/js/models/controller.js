@@ -8,6 +8,7 @@ import * as api from "../api";
 export const Data = {
     invoices: [],
     taskDetail: {},
+    price: null
 }
 
 // function to get cookie by name
@@ -202,6 +203,13 @@ export class Pay {
         return this;
     };
 
+    //Method to push the new price to the Data object
+    updateState () {
+        Data.price = this.price;
+
+        return this;
+    };
+
     //Method that takes care of the inserting the price after been calc
     insertPay() {
         if (this.type === 'carrier') {
@@ -289,8 +297,6 @@ export class Pay {
         document.querySelectorAll(elements.paymentPrice).forEach(el => {
             el.innerHTML = `GHC ${this.price}`;
         });
-
-        document.querySelector('#amount').value = this.price;
 
         const price = this.price.split('.');
         document.querySelector('.payment-price-big').innerHTML = `${price[0]}`;
