@@ -1491,6 +1491,10 @@ g {
           color: #f0b41e; }
         .dashboard__tasks--item li[data-type="completed"] {
           color: #009218; }
+    .dashboard__tasks--no-tasks {
+      text-align: center;
+      font-size: 3rem;
+      padding-top: 5rem; }
   .dashboard__tab {
     text-transform: uppercase;
     font: 2rem/1 "Nunito Light", Fallback, sans-serif;

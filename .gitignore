@@ -1,1 +1,3 @@
 node_modules/
+rsync_exclude.txt
+

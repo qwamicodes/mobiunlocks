@@ -509,17 +509,23 @@ export const listTasksOnDashboard = async () => {
     );
 
     // clear task list
-    allTasksListElement.innerHTML = "Loading Tasks";
+    allTasksListElement.innerHTML = "";
+    
+    // show loader
+    UICtrl.showLoader();
 
     // ? get AllTasks
     await api
         .getAllTasks()
         .then(tasks => {
+            // tasks = []
             // if no tasks are present
             if (tasks.length === 0) {
-                allTasksListElement.innerHTML = "";
+                allTasksListElement.innerHTML = "<p class='dashboard__tasks--no-tasks'>No Tasks</p>";
+                UICtrl.hideLoader();
                 return;
             }
+
             // TODO listing tasks in dashboard
             // loop over each element
             tasks.forEach(task => {
@@ -579,6 +585,9 @@ export const listTasksOnDashboard = async () => {
             document.querySelector(
                 elements.completedTasksCount
             ).innerHTML = countCompletedTasks(tasks); // completed tasks
+        
+            // hide loader
+            UICtrl.hideLoader();
         })
         .catch(error => {
             console.log(error);
@@ -590,6 +599,8 @@ export const listTasksOnDashboard = async () => {
                     "error"
                 );
             }
+            // hide loader
+            UICtrl.hideLoader();
         });
 };
 
