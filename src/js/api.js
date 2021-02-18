@@ -115,7 +115,7 @@ export const confirmPayAndStoreDetails = (paystackReference, taskDetails) => {
                                 responseData.acc_txn
                             )
                                 .then(data => resolve(data))
-                                .catch(error => resolve(error));
+                                .catch(error => reject(error));
                             break;
 
                         // Carrier Unlocking task
@@ -126,7 +126,7 @@ export const confirmPayAndStoreDetails = (paystackReference, taskDetails) => {
                                 responseData.acc_txn
                             )
                                 .then(data => resolve(data))
-                                .catch(error => resolve(error));
+                                .catch(error => reject(error));
                             break;
 
                         // ICloud Unlocking task
@@ -137,7 +137,7 @@ export const confirmPayAndStoreDetails = (paystackReference, taskDetails) => {
                                 responseData.acc_txn
                             )
                                 .then(data => resolve(data))
-                                .catch(error => resolve(error));
+                                .catch(error => reject(error));
                             break;
 
                         default:
@@ -176,7 +176,7 @@ const submitCarrierUnlockTask = (paymentDetails, taskDetails, acc_txn) => {
                 } else if (response.status === 403 || response.status === 401) {
                     reject("unauthorized");
                 } else {
-                    reject("error creating task");
+                    reject("error creating task, but payment made - please contact admin");
                 }
             })
             .catch(error => reject(error));
@@ -207,7 +207,7 @@ const submitICloudUnlockTask = (paymentDetails, taskDetails, acc_txn) => {
                 } else if (response.status === 403 || response.status === 401) {
                     reject("unauthorized");
                 } else {
-                    reject("error creating task");
+                    reject("error creating task, but payment made - please contact admin");
                 }
             })
             .catch(error => reject(error));
@@ -238,7 +238,7 @@ const submitIMEICheckTask = (paymentDetails, taskDetails, acc_txn) => {
                 } else if (response.status === 403 || response.status === 401) {
                     reject("unauthorized");
                 } else {
-                    reject("error creating task");
+                    reject("error creating task, but payment made - please contact admin");
                 }
             })
             .catch(error => reject(error));

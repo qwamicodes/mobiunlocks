@@ -625,7 +625,7 @@ select {
       color: #333; }
   .form__select {
     font: 2rem/1 "ProzaLibre Regular", Fallback, sans-serif;
-    font-size: 1.5rem; }
+    font-size: 1.5rem; cursor: pointer; }
     .form__select--option {
       padding: 1rem;
       border: 0; }
