@@ -4,10 +4,10 @@
 ? The event listeners that call these functions (for API requests) are also defined here
 */
 
-const baseBackendURL = "http://127.0.0.1:8001";
-const baseBackendAPIURL = "http://127.0.0.1:8001/api/v1";
-// const baseBackendURL = "https://api.mobitechunlock.com";
-// const baseBackendAPIURL = "https://api.mobitechunlock.com/api/v1";
+// const baseBackendURL = "http://127.0.0.1:8001";
+// const baseBackendAPIURL = "http://127.0.0.1:8001/api/v1";
+const baseBackendURL = "https://api.mobitechunlock.com";
+const baseBackendAPIURL = "https://api.mobitechunlock.com/api/v1";
 
 // function to get cookie by name
 const getCookie = cookieName => {
