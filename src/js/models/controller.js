@@ -383,20 +383,33 @@ export const preparePayment = (fullname, email, amount) => {
     // // show loader
     // UICtrl.showLoader();
 
-    // const paystackReference = prompt("Please enter your payment reference from Paystack");
-
+    // // const paystackReference = prompt("Please enter your payment reference from Paystack");
+    // const paystackReference = "5985912982";
     // // store task details without payment
     // api.mockconfirmPayAndStoreDetails(paystackReference, Data.taskDetail)
     //     .then(taskDetails => {
     //         // hide loader
     //         UICtrl.hideLoader();
     //         // notify of payment success
-    //         UICtrl.popupAlert(`Payment completed! Your payment invoice/reference ID: ${paystackReference}`, 'success', 10000);
+    //         UICtrl.popupAlert(
+    //             `Payment completed! Your payment invoice/reference ID: ${paystackReference}`,
+    //             "success",
+    //             10000
+    //         );
     //         // show modal containing further instructions (TRACKING ID, etc.)
-    //         UICtrl.showModal(taskDetails, 'home');
-    //         console.log(taskDetails);
+    //         UICtrl.showModal(taskDetails, "home");
+    //         // console.log(taskDetails);
+
+    //         return new Promise(resolve => resolve(taskDetails));
     //     })
-    //     .catch(error => UICtrl.popupAlert(error, 'error'))
+    //     .then(taskDetails => {
+    //         // console.log("START taskDetails in sms notification");
+    //         // console.log(taskDetails);
+    //         // console.log("END taskDetails in sms notification");
+
+    //         api.notifyAdminOfTaskViaSMS(taskDetails.taskType);
+    //     })
+    //     .catch(error => UICtrl.popupAlert(error, "error"));
     // ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 };
 
@@ -510,7 +523,7 @@ export const listTasksOnDashboard = async () => {
 
     // clear task list
     allTasksListElement.innerHTML = "";
-    
+
     // show loader
     UICtrl.showLoader();
 
@@ -521,7 +534,8 @@ export const listTasksOnDashboard = async () => {
             // tasks = []
             // if no tasks are present
             if (tasks.length === 0) {
-                allTasksListElement.innerHTML = "<p class='dashboard__tasks--no-tasks'>No Tasks</p>";
+                allTasksListElement.innerHTML =
+                    "<p class='dashboard__tasks--no-tasks'>No Tasks</p>";
                 UICtrl.hideLoader();
                 return;
             }
@@ -585,7 +599,7 @@ export const listTasksOnDashboard = async () => {
             document.querySelector(
                 elements.completedTasksCount
             ).innerHTML = countCompletedTasks(tasks); // completed tasks
-        
+
             // hide loader
             UICtrl.hideLoader();
         })
