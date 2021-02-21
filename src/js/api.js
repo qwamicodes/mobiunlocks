@@ -176,6 +176,7 @@ const submitCarrierUnlockTask = (paymentDetails, taskDetails, acc_txn) => {
                 } else if (response.status === 403 || response.status === 401) {
                     reject("unauthorized");
                 } else {
+                    console.log(response);
                     reject("error creating task, but payment made - please contact admin");
                 }
             })
@@ -207,6 +208,7 @@ const submitICloudUnlockTask = (paymentDetails, taskDetails, acc_txn) => {
                 } else if (response.status === 403 || response.status === 401) {
                     reject("unauthorized");
                 } else {
+                    console.log(response);
                     reject("error creating task, but payment made - please contact admin");
                 }
             })
@@ -238,6 +240,7 @@ const submitIMEICheckTask = (paymentDetails, taskDetails, acc_txn) => {
                 } else if (response.status === 403 || response.status === 401) {
                     reject("unauthorized");
                 } else {
+                    console.log(response);
                     reject("error creating task, but payment made - please contact admin");
                 }
             })
@@ -506,8 +509,8 @@ export const performLogout = async () => {
 };
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AUTHENTICATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-export const notifyAdminOfTaskViaSMS = async taskType => {
-    const notifyAdminOfTaskViaSMSEndpoint = `${baseBackendAPIURL}/sms/admin/notify?task_type=${taskType}`;
+export const notifyAdminOfTaskViaSMS = async trackingID => {
+    const notifyAdminOfTaskViaSMSEndpoint = `${baseBackendAPIURL}/sms/admin/notify?tracking_id=${trackingID}`;
 
     return new Promise((resolve, reject) => {
         fetch(notifyAdminOfTaskViaSMSEndpoint, {

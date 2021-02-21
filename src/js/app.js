@@ -52,8 +52,10 @@ document.querySelector(elements.cancelPayment).addEventListener("click", () => {
         } else {
             controller.disableField(btn);
         }
-        if (carImei.value.length > 20)
+        if (carImei.value.length > 20) {
             UICtrl.popupAlert("IMEI/SN must not exceed 20 digits", "warning");
+            controller.disableField(btn);
+        }
     });
 });
 
@@ -69,8 +71,10 @@ document.querySelector(elements.cancelPayment).addEventListener("click", () => {
         } else {
             controller.disableField(btn);
         }
-        if (carImei.value.length > 20)
+        if (carImei.value.length > 20) {
             UICtrl.popupAlert("IMEI/SN must not exceed 20 digits", "warning");
+            controller.disableField(btn);
+        }
     });
 });
 
@@ -107,8 +111,10 @@ document.querySelector(elements.cancelPayment).addEventListener("click", () => {
         } else {
             controller.disableField(btn);
         }
-        if (carImei.value.length > 20)
+        if (carImei.value.length > 20) {
             UICtrl.popupAlert("IMEI/SN must not exceed 20 digits", "warning");
+            controller.disableField(btn);
+        }
     });
 });
 

@@ -98,17 +98,19 @@ export class Payment {
                             10000
                         );
                         // show modal containing further instructions (TRACKING ID, etc.)
-                        UICtrl.showModal(Data.taskDetail, "home");
+                        console.log(taskDetails.tracking_id);
+                        console.log(taskDetails.task_type);
+                        UICtrl.showModal(taskDetails, "home");
                         // console.log(taskDetails);
 
-                        return new Promise(resolve => resolve(Data.taskDetail));
+                        return new Promise(resolve => resolve(taskDetails));
                     })
                     // ? send SMS notification to admin
                     .then(taskDetails => {
                         // console.log("START taskDetails in sms notification");
                         // console.log(taskDetails);
                         // console.log("END taskDetails in sms notification");
-                        notifyAdminOfTaskViaSMS(taskDetails.taskType);
+                        notifyAdminOfTaskViaSMS(taskDetails.tracking_id);
                     })
                     .catch(error => UICtrl.popupAlert(error, "error"));
             },
