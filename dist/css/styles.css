@@ -789,7 +789,8 @@ select {
       border: 1px solid rgba(161, 161, 161, 0.3);
       border-radius: 5px;
       overflow: hidden;
-      padding: 1rem; }
+      padding: 1rem; 
+      white-space: pre-line; }
       .modal__preview--details h3 {
         font: 2rem/1 "Nunito Regular", Fallback, sans-serif;
         font-size: 1.8; }

@@ -30,6 +30,7 @@ document.querySelectorAll(elements.tab).forEach(tab => {
 
 //Event listner to terminate the payment process
 document.querySelector(elements.cancelPayment).addEventListener("click", () => {
+    // 
     controller.hidePay();
 });
 
@@ -213,6 +214,9 @@ document.querySelector(elements.paymentForm).addEventListener("submit", e => {
     controller.preparePayment(fullname, email, amount);
     //reseting the form
     e.target.reset();
+
+    // ! let it slide off the view
+    controller.hidePay();
 });
 
 //Event handler for the mobile nav aside to collapse
