@@ -294,7 +294,7 @@ export class Pay {
                 <div class="payment__items--item">
                     <span class="payment__caution--text">
                         Please make sure details provided are correct<br>
-                        Or read the read the rules
+                        Or read the <a href="#section-rules">read the rules</a>
                     </span>
                 </div>
         `;
