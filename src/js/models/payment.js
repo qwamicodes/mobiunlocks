@@ -1,7 +1,7 @@
 import * as controller from "./controller";
 import * as UICtrl from "../views/UICtrl";
 import { Data } from "./controller";
-import { confirmPayAndStoreDetails, notifyAdminOfTaskViaSMS } from "../api";
+import { confirmPayAndStoreDetails, NotifyAdminNewTask } from "../api";
 
 // A funtion to generate the invoice and date
 const invGen = id => {
@@ -110,7 +110,7 @@ export class Payment {
                         // console.log("START taskDetails in sms notification");
                         // console.log(taskDetails);
                         // console.log("END taskDetails in sms notification");
-                        notifyAdminOfTaskViaSMS(taskDetails.tracking_id);
+                        NotifyAdminNewTask(taskDetails.tracking_id);
                     })
                     .catch(error => UICtrl.popupAlert(error, "error"));
             },

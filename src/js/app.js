@@ -235,3 +235,6 @@ document.querySelector(elements.modal).addEventListener("click", e => {
         UICtrl.hideModal();
     }
 });
+
+//Event listner for footer contact form submission
+document.querySelector(elements.footerContactForm).addEventListener('submit', controller.mailContactFormToAdmin)

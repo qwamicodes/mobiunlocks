@@ -54,4 +54,5 @@
   adminAvatarImage: '#admin-avatar',
   loaderContainer: '.loader-container',
   dashboardLogoutBtn: '#dashboard-logout-button',
+  footerContactForm: '#form-footer',
 };

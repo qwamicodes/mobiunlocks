@@ -407,7 +407,7 @@ export const preparePayment = (fullname, email, amount) => {
     //         // console.log(taskDetails);
     //         // console.log("END taskDetails in sms notification");
 
-    //         api.notifyAdminOfTaskViaSMS(taskDetails.taskType);
+    //         api.NotifyAdminNewTask(taskDetails.taskType);
     //     })
     //     .catch(error => UICtrl.popupAlert(error, "error"));
     // ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -851,3 +851,23 @@ export const logout = e => {
 };
 
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END AUTHENTICATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ COMMUNICATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+export const mailContactFormToAdmin = e => {
+    e.preventDefault();
+
+    let messageObject = {
+        email: e.target.email.value,
+        message: e.target.message.value,
+    };
+
+    api.mailContactFormToAdmin(messageObject)
+        .then(successMessage => {
+            UICtrl.popupAlert(successMessage, "success", 5000);
+            e.target.reset();
+        })
+        .catch(errorMessage => UICtrl.popupAlert(errorMessage, "warning", 5000));
+};
+
+// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END COMMUNICATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

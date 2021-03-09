@@ -4,10 +4,10 @@
 ? The event listeners that call these functions (for API requests) are also defined here
 */
 
-// const baseBackendURL = "http://127.0.0.1:8001";
-// const baseBackendAPIURL = "http://127.0.0.1:8001/api/v1";
-const baseBackendURL = "https://api.mobitechunlock.com";
-const baseBackendAPIURL = "https://api.mobitechunlock.com/api/v1";
+const baseBackendURL = "http://127.0.0.1:8001";
+const baseBackendAPIURL = "http://127.0.0.1:8001/api/v1";
+// const baseBackendURL = "https://api.mobitechunlock.com";
+// const baseBackendAPIURL = "https://api.mobitechunlock.com/api/v1";
 
 // function to get cookie by name
 const getCookie = cookieName => {
@@ -20,7 +20,10 @@ const getCookie = cookieName => {
 // * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TASK OPERATIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // !! TESTING send requests to API endpoints to create tasks in DB depending on task type
-export const mockconfirmPayAndStoreDetails = async (paystackReference, taskDetails) => {
+export const mockconfirmPayAndStoreDetails = async (
+    paystackReference,
+    taskDetails
+) => {
     const mockConfirmPaymentEndpoint = `${baseBackendAPIURL}/payments/mock/confirm/?reference=${paystackReference}`;
 
     return new Promise((resolve, reject) => {
@@ -177,7 +180,9 @@ const submitCarrierUnlockTask = (paymentDetails, taskDetails, acc_txn) => {
                     reject("unauthorized");
                 } else {
                     console.log(response);
-                    reject("error creating task, but payment made - please contact admin");
+                    reject(
+                        "error creating task, but payment made - please contact admin"
+                    );
                 }
             })
             .catch(error => reject(error));
@@ -209,7 +214,9 @@ const submitICloudUnlockTask = (paymentDetails, taskDetails, acc_txn) => {
                     reject("unauthorized");
                 } else {
                     console.log(response);
-                    reject("error creating task, but payment made - please contact admin");
+                    reject(
+                        "error creating task, but payment made - please contact admin"
+                    );
                 }
             })
             .catch(error => reject(error));
@@ -241,7 +248,9 @@ const submitIMEICheckTask = (paymentDetails, taskDetails, acc_txn) => {
                     reject("unauthorized");
                 } else {
                     console.log(response);
-                    reject("error creating task, but payment made - please contact admin");
+                    reject(
+                        "error creating task, but payment made - please contact admin"
+                    );
                 }
             })
             .catch(error => reject(error));
@@ -508,12 +517,12 @@ export const performLogout = async () => {
     });
 };
 
-// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AUTHENTICATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-export const notifyAdminOfTaskViaSMS = async trackingID => {
-    const notifyAdminOfTaskViaSMSEndpoint = `${baseBackendAPIURL}/sms/admin/notify?tracking_id=${trackingID}`;
+// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ COMMUNICATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+export const NotifyAdminNewTask = async trackingID => {
+    const NotifyAdminNewTaskEndpoint = `${baseBackendAPIURL}/mail/admin/new-task-notify?tracking_id=${trackingID}`;
 
     return new Promise((resolve, reject) => {
-        fetch(notifyAdminOfTaskViaSMSEndpoint, {
+        fetch(NotifyAdminNewTaskEndpoint, {
             // credentials: include,
             method: "GET",
         })
@@ -523,6 +532,31 @@ export const notifyAdminOfTaskViaSMS = async trackingID => {
             })
             .catch(error => {
                 reject(`Could not send sms notification to admin via SMS`);
+            });
+    });
+};
+
+export const mailContactFormToAdmin = async messageObject => {
+    const mailContactFormToAdminEndpoint = `${baseBackendAPIURL}/mail/admin/contact-form-notify/`;
+
+    return new Promise((resolve, reject) => {
+        fetch(mailContactFormToAdminEndpoint, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify(messageObject),
+        })
+            .then(response => {
+                if (response.ok)
+                    resolve(
+                        "Thank you for reaching out, we will get back to you shortly"
+                    );
+                else reject(`An error occured - mail could not be sent.<br>Error: ${response.statusText}`);
+            })
+            .catch(error => {
+                console.log(error);
+                reject(`Mail could not be sent - ${error.code}`);
             });
     });
 };
